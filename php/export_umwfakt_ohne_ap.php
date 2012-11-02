@@ -11,8 +11,8 @@ if ($link->connect_errno) {
 
 mysqli_set_charset($link, "utf8");
 
-$view = 'vApZielBer'; // view you want to export
-$file = 'ProgrammZielberichte'; // csv name.
+$view = 'vUmwfaktOhneAp'; // view you want to export
+$file = 'ProgrammUmweltfaktorenOhneProgramm'; // csv name.
 
 $result = mysqli_query($link, "SHOW COLUMNS FROM ".$view."");
 $i = 0;
