@@ -5,11 +5,8 @@
 /*jslint node: true, browser: true, nomen: true, todo: true */
 'use strict';
 
-
 var gulp       = require('gulp'),
-    sftp       = require('gulp-sftp'),
-    requireDir = require('require-dir'),
-    sftpPass   = require('../sftpPass.json');
+    requireDir = require('require-dir');
 
 requireDir('../gulp-tasks', {recurse: true});
 
