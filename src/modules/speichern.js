@@ -81,6 +81,9 @@ module.exports = function (that) {
         if (feldwert == 200 && apJahr && bekanntSeit < apJahr) {
             feldwert = 210;
         }
+        if (feldwert == 200 && !apJahr) {
+            feldwert = 210;
+        }
     }
     if (feldname === 'TPopHerkunft') {
         apJahr = window.apf.ap.ApJahr;
@@ -95,6 +98,9 @@ module.exports = function (that) {
             return;
         }
         if (feldwert == 200 && apJahr && bekanntSeit < apJahr) {
+            feldwert = 210;
+        }
+        if (feldwert == 200 && !apJahr) {
             feldwert = 210;
         }
     }
