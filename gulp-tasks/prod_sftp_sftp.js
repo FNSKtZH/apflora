@@ -13,6 +13,13 @@ var gulp       = require('gulp'),
 
 requireDir('../gulp-tasks', {recurse: true});
 
-return gulp.task('prod_sftp', ['prod_sftp_sftp'], function () {
-    gulp.start('prod_clean_dist');
+gulp.task('prod_sftp_sftp', function () {
+    return gulp.src('dist/**/*')
+        .pipe(sftp({
+            host: 'apflora.ch',
+            port: 31234,
+            remotePath: 'apflora',
+            user: sftpPass.user,
+            pass: sftpPass.pass
+        }));
 });
