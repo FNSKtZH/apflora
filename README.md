@@ -131,7 +131,7 @@ Dazu werden die Feld- und Freiwilligenkontrollen (ausser solche von soeben anges
 Die Anwendung wird auf einem virtuellen Server mit Ubuntu 14.04 gehostet.
 
 Serverseitig wird sie mit [node.js](//nodejs.org/) gesteuert. Als Webserver dient [hapi](//hapijs.com/), als Datenbank [MySQL](//de.wikipedia.org/wiki/MySQL) mit drei separaten Datenbanken:
-- alexande_apflora: die projekteigenen Daten. Sie sind vollständig von den übrigen Datenbanken getrennt, um Datensicherung und -wiederherstellung zu vereinfachen
+- alexande_apflora: die projekteigenen Daten. Sie sind vollständig von den übrigen Datenbanken getrennt, um Datensicherung und -wiederherstellung zu vereinfachen. Hier ein [Diagramm der Beziehungen](https://github.com/FNSKtZH/apflora/raw/master/etc/Beziehungen.pdf)
 - alexande_apflora_views: die Views. Sie liegen getrennt, weil der Aufbau komplexer Views eine Wiederherstellung der DB mittels sql-Dumpfile empfindlich stören kann
 - alexande_beob: benutzte Fremddaten, v.a. Beobachtungen von Info Spezies und der FNS sowie Arteigenschaften
 
