@@ -754,6 +754,7 @@ ORDER BY Jahr;
 CREATE OR REPLACE VIEW vBeobZuordnungInfospeziesArtAnzMut AS
 SELECT alexande_beob.ArtenDb_Arteigenschaften.Artname AS Art, alexande_apflora.tblBeobZuordnung.BeobMutWer, alexande_apflora.tblBeobZuordnung.BeobMutWann, Count(alexande_apflora.tblBeobZuordnung.NO_NOTE) AS AnzMut, "tblBeobZuordnung_Infospezies" AS Tabelle
 FROM ((alexande_apflora.tblAp INNER JOIN alexande_beob.ArtenDb_Arteigenschaften ON alexande_apflora.tblAp.ApArtId = alexande_beob.ArtenDb_Arteigenschaften.TaxonomieId) INNER JOIN alexande_beob.tblBeobInfospezies ON alexande_apflora.tblAp.ApArtId = alexande_beob.tblBeobInfospezies.NO_ISFS) INNER JOIN alexande_apflora.tblBeobZuordnung ON alexande_beob.tblBeobInfospezies.NO_NOTE = alexande_apflora.tblBeobZuordnung.NO_NOTE
+WHERE alexande_apflora.tblAp.ApArtId NOT IN (100, 150)
 GROUP BY alexande_beob.ArtenDb_Arteigenschaften.Artname, alexande_apflora.tblBeobZuordnung.BeobMutWer, alexande_apflora.tblBeobZuordnung.BeobMutWann;
 
 CREATE OR REPLACE VIEW vDatenstruktur AS
