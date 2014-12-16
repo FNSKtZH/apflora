@@ -2,5 +2,5 @@
 DRIVER=MySQL ODBC 5.2 Unicode Driver
 UID=alexande
 PORT=3306
-DATABASE=alexande_apflora
+DATABASE=apflora
 SERVER=apflora.ch

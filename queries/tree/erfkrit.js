@@ -10,7 +10,7 @@ var _                  = require('underscore'),
         host:     'localhost',
         user:     config.db.userName,
         password: config.db.passWord,
-        database: 'alexande_apflora'
+        database: 'apflora'
     });
 
 function buildChildFromData(data) {

@@ -9,14 +9,14 @@ var mysql              = require('mysql'),
         host:     'localhost',
         user:     config.db.userName,
         password: config.db.passWord,
-        database: 'alexande_apflora'
+        database: 'apflora'
     });
 
 module.exports = function (request, callback) {
     var apId = escapeStringForSql(request.params.apId);
 
     connection.query(
-        'SELECT alexande_apflora.tblAp.ApArtId, alexande_beob.ArtenDb_Arteigenschaften.Artname, alexande_apflora.tblAp.ApStatus, alexande_apflora.tblAp.ApJahr, alexande_apflora.tblAp.ApUmsetzung, alexande_apflora.tblAp.ApBearb, alexande_apflora.tblAp.ApArtwert, alexande_apflora.tblAp.MutWann, alexande_apflora.tblAp.MutWer FROM alexande_apflora.tblAp INNER JOIN alexande_beob.ArtenDb_Arteigenschaften ON alexande_apflora.tblAp.ApArtId = alexande_beob.ArtenDb_Arteigenschaften.TaxonomieId WHERE ApArtId = ' + apId,
+        'SELECT apflora.tblAp.ApArtId, apfloraBeob.ArtenDb_Arteigenschaften.Artname, apflora.tblAp.ApStatus, apflora.tblAp.ApJahr, apflora.tblAp.ApUmsetzung, apflora.tblAp.ApBearb, apflora.tblAp.ApArtwert, apflora.tblAp.MutWann, apflora.tblAp.MutWer FROM apflora.tblAp INNER JOIN apfloraBeob.ArtenDb_Arteigenschaften ON apflora.tblAp.ApArtId = apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId WHERE ApArtId = ' + apId,
         function (err, data) {
             if (err) { throw err; }
             callback(data);

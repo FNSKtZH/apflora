@@ -10,7 +10,7 @@ var _                  = require('underscore'),
         host:     'localhost',
         user:      config.db.userName,
         password:  config.db.passWord,
-        database: 'alexande_beob'
+        database: 'apfloraBeob'
     });
 
 function buildChildFromData(data) {
@@ -39,7 +39,7 @@ module.exports = function (request, reply) {
     var apId = escapeStringForSql(request.params.apId);
 
     connection.query(
-        "SELECT alexande_beob.tblBeobBereitgestellt.NO_ISFS, alexande_apflora.tblBeobZuordnung.NO_NOTE, alexande_apflora.tblBeobZuordnung.beobNichtZuordnen, alexande_apflora.tblBeobZuordnung.BeobBemerkungen, alexande_apflora.tblBeobZuordnung.BeobMutWann, alexande_apflora.tblBeobZuordnung.BeobMutWer, alexande_beob.tblBeobBereitgestellt.Datum, alexande_beob.tblBeobBereitgestellt.Autor, 'infospezies' AS beobtyp FROM alexande_apflora.tblBeobZuordnung INNER JOIN alexande_beob.tblBeobBereitgestellt ON alexande_apflora.tblBeobZuordnung.NO_NOTE = alexande_beob.tblBeobBereitgestellt.NO_NOTE WHERE alexande_apflora.tblBeobZuordnung.NO_NOTE IS NOT NULL AND alexande_apflora.tblBeobZuordnung.beobNichtZuordnen=1 AND alexande_beob.tblBeobBereitgestellt.NO_ISFS=" + apId + " UNION SELECT alexande_beob.tblBeobBereitgestellt.NO_ISFS, alexande_apflora.tblBeobZuordnung.NO_NOTE, alexande_apflora.tblBeobZuordnung.beobNichtZuordnen, alexande_apflora.tblBeobZuordnung.BeobBemerkungen, alexande_apflora.tblBeobZuordnung.BeobMutWann, alexande_apflora.tblBeobZuordnung.BeobMutWer, alexande_beob.tblBeobBereitgestellt.Datum, alexande_beob.tblBeobBereitgestellt.Autor, 'evab' AS beobtyp FROM alexande_apflora.tblBeobZuordnung INNER JOIN alexande_beob.tblBeobBereitgestellt ON alexande_apflora.tblBeobZuordnung.NO_NOTE = alexande_beob.tblBeobBereitgestellt.NO_NOTE_PROJET WHERE alexande_apflora.tblBeobZuordnung.NO_NOTE IS NOT NULL AND alexande_apflora.tblBeobZuordnung.beobNichtZuordnen=1 AND alexande_beob.tblBeobBereitgestellt.NO_ISFS=" + apId + " ORDER BY Datum DESC LIMIT 100",
+        "SELECT apfloraBeob.tblBeobBereitgestellt.NO_ISFS, apflora.tblBeobZuordnung.NO_NOTE, apflora.tblBeobZuordnung.beobNichtZuordnen, apflora.tblBeobZuordnung.BeobBemerkungen, apflora.tblBeobZuordnung.BeobMutWann, apflora.tblBeobZuordnung.BeobMutWer, apfloraBeob.tblBeobBereitgestellt.Datum, apfloraBeob.tblBeobBereitgestellt.Autor, 'infospezies' AS beobtyp FROM apflora.tblBeobZuordnung INNER JOIN apfloraBeob.tblBeobBereitgestellt ON apflora.tblBeobZuordnung.NO_NOTE = apfloraBeob.tblBeobBereitgestellt.NO_NOTE WHERE apflora.tblBeobZuordnung.NO_NOTE IS NOT NULL AND apflora.tblBeobZuordnung.beobNichtZuordnen=1 AND apfloraBeob.tblBeobBereitgestellt.NO_ISFS=" + apId + " UNION SELECT apfloraBeob.tblBeobBereitgestellt.NO_ISFS, apflora.tblBeobZuordnung.NO_NOTE, apflora.tblBeobZuordnung.beobNichtZuordnen, apflora.tblBeobZuordnung.BeobBemerkungen, apflora.tblBeobZuordnung.BeobMutWann, apflora.tblBeobZuordnung.BeobMutWer, apfloraBeob.tblBeobBereitgestellt.Datum, apfloraBeob.tblBeobBereitgestellt.Autor, 'evab' AS beobtyp FROM apflora.tblBeobZuordnung INNER JOIN apfloraBeob.tblBeobBereitgestellt ON apflora.tblBeobZuordnung.NO_NOTE = apfloraBeob.tblBeobBereitgestellt.NO_NOTE_PROJET WHERE apflora.tblBeobZuordnung.NO_NOTE IS NOT NULL AND apflora.tblBeobZuordnung.beobNichtZuordnen=1 AND apfloraBeob.tblBeobBereitgestellt.NO_ISFS=" + apId + " ORDER BY Datum DESC LIMIT 100",
         function (err, data) {
             var node = {};
 

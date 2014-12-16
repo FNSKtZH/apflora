@@ -10,7 +10,7 @@ var _                  = require('underscore'),
         host: 'localhost',
         user: config.db.userName,
         password: config.db.passWord,
-        database: 'alexande_apflora'
+        database: 'apflora'
     });
 
 function buildChildFromData(data) {
@@ -35,7 +35,7 @@ module.exports = function (request, reply) {
         response;
 
     connection.query(
-        'SELECT AaId, alexande_beob.ArtenDb_Arteigenschaften.Artname FROM tblAssozArten LEFT JOIN alexande_beob.ArtenDb_Arteigenschaften ON AaSisfNr = alexande_beob.ArtenDb_Arteigenschaften.TaxonomieId where AaApArtId = ' + apId + ' ORDER BY alexande_beob.ArtenDb_Arteigenschaften.Artname',
+        'SELECT AaId, apfloraBeob.ArtenDb_Arteigenschaften.Artname FROM tblAssozArten LEFT JOIN apfloraBeob.ArtenDb_Arteigenschaften ON AaSisfNr = apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId where AaApArtId = ' + apId + ' ORDER BY apfloraBeob.ArtenDb_Arteigenschaften.Artname',
         function (err, data) {
             if (err) { reply(err); }
             response      = {};
