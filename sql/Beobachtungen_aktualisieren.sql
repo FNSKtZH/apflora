@@ -30,7 +30,7 @@ Zuerst Tabelle leeren
 DELETE FROM tblBeobZuordnung
 
 Zuerst von info flora
-INSERT INTO alexande_apflora.tblBeobZuordnung (NO_NOTE, TPopId, BeobMutWann, BeobMutWer) SELECT NO_NOTE, TPopId, MutWann, MutWer FROM alexande_beob.tblBeob WHERE alexande_beob.tblBeob.TPopId > 0 AND alexande_beob.tblBeob.NO_NOTE is not null AND (alexande_beob.tblBeob.IdEvab is null OR alexande_beob.tblBeob.IdEvab = "")
+INSERT INTO apflora.tblBeobZuordnung (NO_NOTE, TPopId, BeobMutWann, BeobMutWer) SELECT NO_NOTE, TPopId, MutWann, MutWer FROM apfloraBeob.tblBeob WHERE apfloraBeob.tblBeob.TPopId > 0 AND apfloraBeob.tblBeob.NO_NOTE is not null AND (apfloraBeob.tblBeob.IdEvab is null OR apfloraBeob.tblBeob.IdEvab = "")
 
 jetzt von evab
-INSERT INTO alexande_apflora.tblBeobZuordnung (NO_NOTE, TPopId, BeobMutWann, BeobMutWer) SELECT IdEvab, TPopId, MutWann, MutWer FROM alexande_beob.tblBeob WHERE alexande_beob.tblBeob.TPopId > 0 AND (alexande_beob.tblBeob.IdEvab is not null AND tblBeob.IdEvab <> "")
+INSERT INTO apflora.tblBeobZuordnung (NO_NOTE, TPopId, BeobMutWann, BeobMutWer) SELECT IdEvab, TPopId, MutWann, MutWer FROM apfloraBeob.tblBeob WHERE apfloraBeob.tblBeob.TPopId > 0 AND (apfloraBeob.tblBeob.IdEvab is not null AND tblBeob.IdEvab <> "")

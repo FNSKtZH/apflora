@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.40, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: alexande_apflora
+-- Host: localhost    Database: apflora
 -- ------------------------------------------------------
 -- Server version	5.5.40-0ubuntu0.14.04.1
 
@@ -16,12 +16,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `alexande_apflora`
+-- Current Database: `apflora`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `alexande_apflora` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `apflora` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-USE `alexande_apflora`;
+USE `apflora`;
 
 --
 -- Table structure for table `domApBearbeitungsstand`
@@ -328,7 +328,7 @@ CREATE TABLE `tblAp` (
   `ApJahr` smallint(5) DEFAULT NULL COMMENT 'Wann wurde mit der Umsetzung des Aktionsplans begonnen?',
   `ApUmsetzung` int(10) DEFAULT NULL COMMENT 'In welchem Umsetzungsstand befindet sich der AP?',
   `ApBearb` int(10) DEFAULT NULL COMMENT 'Verantwortliche(r) für die Art',
-  `ApArtwert` int(11) DEFAULT NULL COMMENT 'redundant aber erspart viele Abfragen. Wird aktualisiert, wenn alexande_beob.ArtenDb_Arteigenschaften aktualisiert wird',
+  `ApArtwert` int(11) DEFAULT NULL COMMENT 'redundant aber erspart viele Abfragen. Wird aktualisiert, wenn apfloraBeob.ArtenDb_Arteigenschaften aktualisiert wird',
   `MutWann` date DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geändert?',
   `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
   PRIMARY KEY (`ApArtId`),

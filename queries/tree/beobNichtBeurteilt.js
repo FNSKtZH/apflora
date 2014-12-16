@@ -10,7 +10,7 @@ var _                  = require('underscore'),
         host:     'localhost',
         user:     config.db.userName,
         password: config.db.passWord,
-        database: 'alexande_apflora'
+        database: 'apflora'
     });
 
 function buildChildFromData(data) {
@@ -45,7 +45,7 @@ module.exports = function (request, reply) {
     var apId = escapeStringForSql(request.params.apId);
 
     connection.query(
-        "SELECT alexande_beob.tblBeobBereitgestellt.NO_NOTE, alexande_beob.tblBeobBereitgestellt.NO_NOTE_PROJET, alexande_beob.tblBeobBereitgestellt.NO_ISFS, alexande_beob.tblBeobBereitgestellt.Datum, alexande_beob.tblBeobBereitgestellt.Autor FROM (alexande_beob.tblBeobBereitgestellt LEFT JOIN alexande_apflora.tblBeobZuordnung ON alexande_beob.tblBeobBereitgestellt.NO_NOTE = alexande_apflora.tblBeobZuordnung.NO_NOTE) LEFT JOIN alexande_apflora.tblBeobZuordnung AS tblBeobZuordnung_1 ON alexande_beob.tblBeobBereitgestellt.NO_NOTE_PROJET = tblBeobZuordnung_1.NO_NOTE WHERE alexande_beob.tblBeobBereitgestellt.NO_ISFS=" + apId + " AND ((alexande_beob.tblBeobBereitgestellt.NO_NOTE_PROJET Is Not Null AND tblBeobZuordnung_1.NO_NOTE Is Null) OR (alexande_beob.tblBeobBereitgestellt.NO_NOTE Is Not Null AND alexande_apflora.tblBeobZuordnung.NO_NOTE Is Null)) ORDER BY alexande_beob.tblBeobBereitgestellt.Datum DESC LIMIT 100",
+        "SELECT apfloraBeob.tblBeobBereitgestellt.NO_NOTE, apfloraBeob.tblBeobBereitgestellt.NO_NOTE_PROJET, apfloraBeob.tblBeobBereitgestellt.NO_ISFS, apfloraBeob.tblBeobBereitgestellt.Datum, apfloraBeob.tblBeobBereitgestellt.Autor FROM (apfloraBeob.tblBeobBereitgestellt LEFT JOIN apflora.tblBeobZuordnung ON apfloraBeob.tblBeobBereitgestellt.NO_NOTE = apflora.tblBeobZuordnung.NO_NOTE) LEFT JOIN apflora.tblBeobZuordnung AS tblBeobZuordnung_1 ON apfloraBeob.tblBeobBereitgestellt.NO_NOTE_PROJET = tblBeobZuordnung_1.NO_NOTE WHERE apfloraBeob.tblBeobBereitgestellt.NO_ISFS=" + apId + " AND ((apfloraBeob.tblBeobBereitgestellt.NO_NOTE_PROJET Is Not Null AND tblBeobZuordnung_1.NO_NOTE Is Null) OR (apfloraBeob.tblBeobBereitgestellt.NO_NOTE Is Not Null AND apflora.tblBeobZuordnung.NO_NOTE Is Null)) ORDER BY apfloraBeob.tblBeobBereitgestellt.Datum DESC LIMIT 100",
         function (err, data) {
             var node = {};
 

@@ -10,7 +10,7 @@ var mysql              = require('mysql'),
         host:     'localhost',
         user:     config.db.userName,
         password: config.db.passWord,
-        database: 'alexande_apflora_views'
+        database: 'apfloraViews'
     });
 
 module.exports = function (request, callback) {

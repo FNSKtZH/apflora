@@ -8,7 +8,7 @@ var mysql      = require('mysql'),
         host:     'localhost',
         user:     config.db.userName,
         password: config.db.passWord,
-        database: 'alexande_apflora'
+        database: 'apflora'
     });
 
 module.exports = function (request, callback) {
@@ -19,14 +19,14 @@ module.exports = function (request, callback) {
     // url setzen
     switch (programm) {
     case 'programmAp':
-        sql = "SELECT alexande_beob.ArtenDb_Arteigenschaften.Artname AS label, alexande_beob.ArtenDb_Arteigenschaften.TaxonomieId AS id FROM alexande_beob.ArtenDb_Arteigenschaften INNER JOIN alexande_apflora.tblAp ON alexande_beob.ArtenDb_Arteigenschaften.TaxonomieId=alexande_apflora.tblAp.ApArtId WHERE alexande_apflora.tblAp.ApStatus BETWEEN 1 AND 3 ORDER BY label";
+        sql = "SELECT apfloraBeob.ArtenDb_Arteigenschaften.Artname AS label, apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId AS id FROM apfloraBeob.ArtenDb_Arteigenschaften INNER JOIN apflora.tblAp ON apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId=apflora.tblAp.ApArtId WHERE apflora.tblAp.ApStatus BETWEEN 1 AND 3 ORDER BY label";
         break;
     case 'programmNeu':
-        sql = "SELECT IF(alexande_beob.ArtenDb_Arteigenschaften.Status NOT LIKE 'akzeptierter Name', CONCAT(alexande_beob.ArtenDb_Arteigenschaften.Artname, ' (', alexande_beob.ArtenDb_Arteigenschaften.Status, ')'), alexande_beob.ArtenDb_Arteigenschaften.Artname) AS label, alexande_beob.ArtenDb_Arteigenschaften.TaxonomieId AS id FROM alexande_beob.ArtenDb_Arteigenschaften WHERE alexande_beob.ArtenDb_Arteigenschaften.TaxonomieId not in (SELECT alexande_apflora.tblAp.ApArtId FROM alexande_apflora.tblAp) ORDER BY label";
+        sql = "SELECT IF(apfloraBeob.ArtenDb_Arteigenschaften.Status NOT LIKE 'akzeptierter Name', CONCAT(apfloraBeob.ArtenDb_Arteigenschaften.Artname, ' (', apfloraBeob.ArtenDb_Arteigenschaften.Status, ')'), apfloraBeob.ArtenDb_Arteigenschaften.Artname) AS label, apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId AS id FROM apfloraBeob.ArtenDb_Arteigenschaften WHERE apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId not in (SELECT apflora.tblAp.ApArtId FROM apflora.tblAp) ORDER BY label";
         break;
     // 'programmAlle' ist auch default
     default:
-        sql = "SELECT alexande_beob.ArtenDb_Arteigenschaften.Artname AS label, alexande_beob.ArtenDb_Arteigenschaften.TaxonomieId AS id FROM alexande_beob.ArtenDb_Arteigenschaften INNER JOIN alexande_apflora.tblAp ON alexande_beob.ArtenDb_Arteigenschaften.TaxonomieId=alexande_apflora.tblAp.ApArtId ORDER BY label";
+        sql = "SELECT apfloraBeob.ArtenDb_Arteigenschaften.Artname AS label, apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId AS id FROM apfloraBeob.ArtenDb_Arteigenschaften INNER JOIN apflora.tblAp ON apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId=apflora.tblAp.ApArtId ORDER BY label";
         break;
     }
 

@@ -10,13 +10,13 @@ var mysql              = require('mysql'),
         host: 'localhost',
         user: config.db.userName,
         password: config.db.passWord,
-        database: 'alexande_apflora'
+        database: 'apflora'
     }),
     connection2 = mysql.createConnection({
         host: 'localhost',
         user: config.db.userName,
         password: config.db.passWord,
-        database: 'alexande_beob'
+        database: 'apfloraBeob'
     });
 
 module.exports = function (request, callback) {
@@ -27,7 +27,7 @@ module.exports = function (request, callback) {
     async.parallel({
         insertIntoTblAktionsplan: function (callback) {
             connection.query(
-                'INSERT INTO alexande_apflora.tblAp (ApArtId, MutWann, MutWer) VALUES (' + apId + ', "' + date + '", "' + user + '")',
+                'INSERT INTO apflora.tblAp (ApArtId, MutWann, MutWer) VALUES (' + apId + ', "' + date + '", "' + user + '")',
                 function (err, data) {
                     console.log('apInsert, insertIntoTblAktionsplan: data after insert = ', data);
                     callback(err, null);
@@ -36,7 +36,7 @@ module.exports = function (request, callback) {
         },
         getArtwert: function (callback) {
             connection2.query(
-                'SELECT Artwert FROM alexande_beob.ArtenDb_Arteigenschaften WHERE TaxonomieId=' + apId,
+                'SELECT Artwert FROM apfloraBeob.ArtenDb_Arteigenschaften WHERE TaxonomieId=' + apId,
                 function (err, data) {
                     console.log('apInsert, getArtwert: data after insert = ', data);
                     // keine Fehler melden, wenn bloss der Artwert nicht geholt wurde
@@ -53,7 +53,7 @@ module.exports = function (request, callback) {
         var artwert = results.getArtwert || null;
         if (artwert) {
             connection.query(
-                'UPDATE alexande_apflora.tblAp SET ApArtwert="' + artwert + '" WHERE ApArtId = ' + apId,
+                'UPDATE apflora.tblAp SET ApArtwert="' + artwert + '" WHERE ApArtId = ' + apId,
                 function (err, data) {
                     console.log('apInsert, update Aktionsplan with artwert: data after update = ', data);
                     // nichts tun
