@@ -59,7 +59,21 @@ module.exports = function (request, callback) {
             );
         }
     ], function (err, results) {
-        // neue id zurück liefern
-        callback(err, results[3]);
+        var sql = '',
+            tpopkontridNeu = results[3];
+
+        if (err) { return callback(err, null); }
+        // Zählungen der herkunfts-Kontrolle holen und der neuen Kontrolle anfügen
+        sql += 'INSERT INTO tblTPopKontrZaehl (Anzahl, Zaehleinheit, Methode, MutWann, MutWer, TPopKontrId)';
+        sql += ' SELECT tblTPopKontrZaehl.Anzahl, tblTPopKontrZaehl.Zaehleinheit, tblTPopKontrZaehl.Methode, tblTPopKontrZaehl.MutWann, tblTPopKontrZaehl.MutWer, ' + tpopkontridNeu;
+        sql += ' FROM tblTPopKontrZaehl';
+        sql += ' WHERE tblTPopKontrZaehl.TPopKontrId=' + tpopKontrId;
+        connection.query(
+            sql,
+            function (err, data) {
+                // neue tpopkontrId zurück liefern
+                callback(null, tpopkontridNeu);
+            }
+        );
     });
 };

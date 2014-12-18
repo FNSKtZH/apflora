@@ -9,10 +9,11 @@ var $                                         = require('jquery'),
     erstelleLabelFuerFeldkontrolle            = require('../erstelleLabelFuerFeldkontrolle');
 
 module.exports = function (aktiverNode, parentNode, nodeTpopId) {
+    var herkunftKontrId = erstelleIdAusDomAttributId($(window.apf.tpopfeldkontrNodeKopiert).attr("id"));
     // und an die DB schicken
     $.ajax({
         type: 'post',
-        url: 'api/v1/tpopfeldkontrInsertKopie/tpopId=' + erstelleIdAusDomAttributId(nodeTpopId) + '/tpopKontrId=' + erstelleIdAusDomAttributId($(window.apf.tpopfeldkontrNodeKopiert).attr("id")) + '/user=' + encodeURIComponent(sessionStorage.user)
+        url: 'api/v1/tpopkontrInsertKopie/tpopId=' + erstelleIdAusDomAttributId(nodeTpopId) + '/tpopKontrId=' + herkunftKontrId + '/user=' + encodeURIComponent(sessionStorage.user)
     }).done(function (id) {
         var strukturtyp = "tpopfeldkontr",
             beschriftung = erstelleLabelFuerFeldkontrolle(window.apf.tpopfeldkontrObjektKopiert.TPopKontrJahr, window.apf.tpopfeldkontrObjektKopiert.TPopKontrTyp);
