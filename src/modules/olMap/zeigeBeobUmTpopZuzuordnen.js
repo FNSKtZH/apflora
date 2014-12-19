@@ -22,8 +22,7 @@ module.exports = function (tpopListeMarkiert) {
         // Karte zum richtigen Ausschnitt zoomen
         window.apf.olMap.map.updateSize();
         window.apf.olMap.map.getView().fitExtent(markierteTpop.bounds, window.apf.olMap.map.getSize());
-        // tpop und pop ergänzen
-        // alle tpop holen
+        // tpop ergänzen
         $.ajax({
             type: 'get',
             url: 'api/v1/tpopKarteAlle/apId=' + window.apf.ap.ApArtId
@@ -31,7 +30,7 @@ module.exports = function (tpopListeMarkiert) {
             $.when(
                 // Layer für Symbole und Beschriftung erstellen
                 erstelleTPopLayer(tpopListe, markierteTpop.tpopidMarkiert, true),
-                // alle Pop holen
+                // Pop holen, aber ausgeblendet
                 zeigePopInTPop(overlayPopVisible)
             ).then(function () {
                 // layertree neu aufbauen

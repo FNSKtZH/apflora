@@ -39,7 +39,7 @@ module.exports = function (popListeMarkiert) {
                 // Layer für Symbole und Beschriftung erstellen
                 erstelleTPopLayer(tpopListe),
                 // alle Pop holen, symbole und nr sichtbar schalten, Markierung übergeben
-                zeigePopInTPop(true, true, markiertePop.popidMarkiert)
+                zeigePopInTPop(true, markiertePop.popidMarkiert)
             ).then(function () {
                 // layertree neu aufbauen
                 initiiereLayertree();
