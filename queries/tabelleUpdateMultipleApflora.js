@@ -62,8 +62,7 @@ module.exports = function (request, callback) {
     connection.query(
         sql,
         function (err, data) {
-            if (err) { throw err; }
-            callback(data);
+            callback(err, data);
         }
     );
 };

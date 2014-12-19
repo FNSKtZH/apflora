@@ -22,7 +22,6 @@ module.exports = function (request, callback) {
     connection.query(
         sql,
         function (err, data) {
-            if (err) { throw err; }
             // null-werte eliminieren
             var data2 = data;
             _.each(data2, function (object) {
@@ -32,7 +31,7 @@ module.exports = function (request, callback) {
                     }
                 });
             });
-            callback(data2);
+            callback(err, data2);
         }
     );
 };

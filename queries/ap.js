@@ -18,8 +18,7 @@ module.exports = function (request, callback) {
     connection.query(
         'SELECT apflora.tblAp.ApArtId, apfloraBeob.ArtenDb_Arteigenschaften.Artname, apflora.tblAp.ApStatus, apflora.tblAp.ApJahr, apflora.tblAp.ApUmsetzung, apflora.tblAp.ApBearb, apflora.tblAp.ApArtwert, apflora.tblAp.MutWann, apflora.tblAp.MutWer FROM apflora.tblAp INNER JOIN apfloraBeob.ArtenDb_Arteigenschaften ON apflora.tblAp.ApArtId = apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId WHERE ApArtId = ' + apId,
         function (err, data) {
-            if (err) { throw err; }
-            callback(data);
+            callback(err, data);
         }
     );
 };

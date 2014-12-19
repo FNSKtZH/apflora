@@ -29,8 +29,7 @@ module.exports = function (request, callback) {
     connection.query(
         sql,
         function (err, data) {
-            if (err) { throw err; }
-            callback(data.insertId);
+            callback(err, data.insertId);
         }
     );
 };

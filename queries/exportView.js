@@ -19,9 +19,6 @@ module.exports = function (request, callback) {
     connection.query(
         'SELECT * FROM ' + view,
         function (err, data) {
-            if (err) {
-                throw err;
-            }
             // null-werte eliminieren
             var data2 = data;
             _.each(data2, function (object) {

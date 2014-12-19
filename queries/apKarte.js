@@ -19,8 +19,7 @@ module.exports = function (request, callback) {
     connection.query(
         'SELECT apflora.tblAp.ApArtId, apfloraBeob.ArtenDb_Arteigenschaften.Artname, apflora.domApUmsetzung.DomainTxt AS ApUmsetzung, apflora.tblPop.PopId, apflora.tblPop.PopNr, apflora.tblPop.PopName, apflora.domPopHerkunft.HerkunftTxt AS PopHerkunft, apflora.tblPop.PopBekanntSeit, apflora.tblTPop.TPopId, apflora.tblTPop.TPopFlurname, apflora.tblTPop.TPopNr, apflora.tblTPop.TPopGemeinde, apflora.tblTPop.TPopXKoord, apflora.tblTPop.TPopYKoord, domPopHerkunft_1.HerkunftTxt AS TPopHerkunft FROM (((((apflora.tblAp INNER JOIN apflora.tblPop ON apflora.tblAp.ApArtId = apflora.tblPop.ApArtId) INNER JOIN apflora.tblTPop ON apflora.tblPop.PopId = apflora.tblTPop.PopId) INNER JOIN apfloraBeob.ArtenDb_Arteigenschaften ON apflora.tblAp.ApArtId = apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId) LEFT JOIN apflora.domPopHerkunft ON apflora.tblPop.PopHerkunft = apflora.domPopHerkunft.HerkunftId) LEFT JOIN apflora.domApUmsetzung ON apflora.tblAp.ApUmsetzung = apflora.domApUmsetzung.DomainCode) LEFT JOIN apflora.domPopHerkunft AS domPopHerkunft_1 ON apflora.tblTPop.TPopHerkunft = domPopHerkunft_1.HerkunftId WHERE apflora.tblTPop.TPopXKoord Is Not Null AND apflora.tblTPop.TPopYKoord Is Not Null AND apflora.tblAp.ApArtId = ' + apId,
         function (err, data) {
-            if (err) { throw err; }
-            callback(data);
+            callback(err, data);
         }
     );
 };
