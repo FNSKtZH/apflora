@@ -33,15 +33,14 @@ module.exports = function (request, callback) {
 
     sql = 'UPDATE ' + tabelle + ' SET ' + feld + '="' + wert + '", ' + mutWannFeld + '="' + date + '", ' + mutWerFeld + '="' + user + '" WHERE ' + tabelleIdFeld + ' = "' + tabelleId + '"';
     // Ist ein Feld neu leer, muss NULL übergeben werden. wert ist dann 'undefined'
-    if (wert === 'undefined' || !wert) {
+    if (!wert) {
         sql = 'UPDATE ' + tabelle + ' SET ' + feld + '= NULL, ' + mutWannFeld + '="' + date + '", ' + mutWerFeld + '="' + user + '" WHERE ' + tabelleIdFeld + ' = "' + tabelleId + '"';
     }
 
     connection.query(
         sql,
         function (err, data) {
-            if (err) { throw err; }
-            callback(data);
+            callback(err, data);
         }
     );
 };

@@ -20,8 +20,7 @@ module.exports = function (request, callback) {
     connection.query(
         'SELECT TPopId, TPopFlurname, SQRT((' + X + '-TPopXKoord)*(' + X + '-TPopXKoord)+(' + Y + '-TPopYKoord)*(' + Y + '-TPopYKoord)) AS DistZuTPop FROM tblPop INNER JOIN tblTPop ON tblPop.PopId = tblTPop.PopId WHERE ApArtId = ' + apId + ' AND TPopXKoord IS NOT NULL AND TPopYKoord IS NOT NULL ORDER BY DistzuTPop LIMIT 1',
         function (err, data) {
-            if (err) { throw err; }
-            callback(data);
+            callback(err, data);
         }
     );
 };

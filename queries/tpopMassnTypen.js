@@ -15,8 +15,7 @@ module.exports = function (request, callback) {
     connection.query(
         'SELECT MassnTypCode as id, MassnTypTxt FROM domTPopMassnTyp ORDER BY MassnTypOrd',
         function (err, data) {
-            if (err) { throw err; }
-            callback(data);
+            callback(err, data);
         }
     );
 };

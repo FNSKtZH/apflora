@@ -15,8 +15,7 @@ module.exports = function (request, callback) {
     connection.query(
         'SELECT DomainCode, DomainTxt FROM domTPopKontrIdBiotUebereinst ORDER BY DomainOrd',
         function (err, data) {
-            if (err) { throw err; }
-            callback(data);
+            callback(err, data);
         }
     );
 };

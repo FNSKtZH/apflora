@@ -552,7 +552,7 @@ module.exports = function (node) {
                     loescheTpop(aktiverNode, parentNode);
                 }
             },
-            "GeoAdminMaps": {
+            "aufOlmapZeigen": {
                 "label":            "auf CH-Karten zeigen",
                 "separator_before": true,
                 "icon":             "style/images/flora_icon_gelb.png",
@@ -560,12 +560,20 @@ module.exports = function (node) {
                     zeigeTpopAufOlmap($(aktiverNode).attr("id"));
                 }
             },
-            "verortenGeoAdmin": {
+            "aufOlmapVerorten": {
                 "label":            "auf CH-Karten verorten",
                 "separator_before": true,
                 "icon":             "style/images/flora_icon_rot.png",
                 "action": function () {
                     verorteTpopAufOlmap($(aktiverNode).attr("id"));
+                }
+            },
+            "aufOlmapBeobZuordnen": {
+                "label":            "auf CH-Karten<br>&nbsp;&nbsp;&nbsp;Beobachtungen zuordnen",
+                "separator_before": true,
+                "icon":             "style/images/flora_icon_violett.png",
+                "action": function () {
+                    zeigeBeobNichtBeurteiltUndTpopAufOlmap($(aktiverNode).attr("id"));
                 }
             },
             "GoogleMaps": {

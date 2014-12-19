@@ -19,8 +19,7 @@ module.exports = function (request, callback) {
     connection.query(
         'SELECT tblAp.ApArtId, apfloraBeob.ArtenDb_Arteigenschaften.Artname, domApUmsetzung.DomainTxt AS ApUmsetzung, tblPop.PopId, tblPop.PopNr, tblPop.PopName, domPopHerkunft.HerkunftTxt AS PopHerkunft, tblPop.PopBekanntSeit, tblPop.PopXKoord, tblPop.PopYKoord, tblPop.PopGuid FROM (((tblAp INNER JOIN tblPop ON tblAp.ApArtId = tblPop.ApArtId) INNER JOIN apfloraBeob.ArtenDb_Arteigenschaften ON tblAp.ApArtId = apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId) LEFT JOIN domPopHerkunft ON tblPop.PopHerkunft = domPopHerkunft.HerkunftId) LEFT JOIN domApUmsetzung ON tblAp.ApUmsetzung = domApUmsetzung.DomainCode WHERE tblPop.PopXKoord Is Not Null AND tblPop.PopYKoord Is Not Null AND tblAp.ApArtId = ' + apId,
         function (err, data) {
-            if (err) { throw err; }
-            callback(data);
+            callback(err, data);
         }
     );
 };
