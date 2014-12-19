@@ -65,9 +65,10 @@ module.exports = function (request, callback) {
         if (err) { return callback(err, null); }
         // Zählungen der herkunfts-Kontrolle holen und der neuen Kontrolle anfügen
         sql += 'INSERT INTO tblTPopKontrZaehl (Anzahl, Zaehleinheit, Methode, MutWann, MutWer, TPopKontrId)';
-        sql += ' SELECT tblTPopKontrZaehl.Anzahl, tblTPopKontrZaehl.Zaehleinheit, tblTPopKontrZaehl.Methode, ' + date + ', ' + user + ', ' + tpopkontridNeu;
+        sql += ' SELECT tblTPopKontrZaehl.Anzahl, tblTPopKontrZaehl.Zaehleinheit, tblTPopKontrZaehl.Methode, "' + date + '", "' + user + '", ' + tpopkontridNeu;
         sql += ' FROM tblTPopKontrZaehl';
         sql += ' WHERE tblTPopKontrZaehl.TPopKontrId=' + tpopKontrId;
+        console.log('sql: ', sql);
         connection.query(
             sql,
             function (err, data) {

@@ -19,15 +19,15 @@ module.exports = function (request, callback) {
         sql   = '';
 
     // Zählungen der herkunfts-Kontrolle holen und der neuen Kontrolle anfügen
-    sql += 'INSERT INTO tblTPop (ApArtId, PopNr, PopName, PopHerkunft, PopHerkunftUnklar, PopHerkunftUnklarBegruendung, PopBekanntSeit, PopXKoord, PopYKoord, PopGuid, MutWann, MutWer, PopId)';
-    sql += ' SELECT tblPop.ApArtId, tblPop.PopNr, tblPop.PopName, tblPop.PopHerkunft, tblPop.PopHerkunftUnklar, tblPop.PopHerkunftUnklarBegruendung, tblPop.PopBekanntSeit, tblPop.PopXKoord, tblPop.PopYKoord, tblPop.PopGuid, ' + date + ', ' + user + ', ' + apId;
-    sql += ' FROM tblTPop';
+    sql += 'INSERT INTO tblPop (PopNr, PopName, PopHerkunft, PopHerkunftUnklar, PopHerkunftUnklarBegruendung, PopBekanntSeit, PopXKoord, PopYKoord, PopGuid, MutWann, MutWer, ApArtId)';
+    sql += ' SELECT tblPop.PopNr, tblPop.PopName, tblPop.PopHerkunft, tblPop.PopHerkunftUnklar, tblPop.PopHerkunftUnklarBegruendung, tblPop.PopBekanntSeit, tblPop.PopXKoord, tblPop.PopYKoord, tblPop.PopGuid, "' + date + '", "' + user + '", ' + apId;
+    sql += ' FROM tblPop';
     sql += ' WHERE tblPop.PopId=' + popId;
     connection.query(
         sql,
-        function (err, id) {
+        function (err, data) {
             // neue Id zurück liefern
-            callback(err, id);
+            callback(err, data.insertId);
         }
     );
 };

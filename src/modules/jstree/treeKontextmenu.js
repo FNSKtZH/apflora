@@ -23,6 +23,8 @@ var _                                         = require('underscore'),
     schneideTpopAus                           = require('./schneideTpopAus'),
     kopiereTpop                               = require('./kopiereTpop'),
     insertKopierteTpop                        = require('./insertKopierteTpop'),
+    kopierePop                                = require('./kopierePop'),
+    insertKopiertePop                         = require('./insertKopiertePop'),
     insertNeueFeldkontrolle                   = require('./insertNeueFeldkontrolle'),
     loescheFeldkontrolle                      = require('./loescheFeldkontrolle'),
     kopiereFeldkontrBiotop                    = require('./kopiereFeldkontrBiotop'),
@@ -126,6 +128,21 @@ module.exports = function (node) {
                 }
             }
         };
+        if (window.apf.popNodeKopiert) {
+            label = window.apf.popObjektKopiert.PopNr || "(keine Nr.)";
+            label += ": ";
+            label += (window.apf.popObjektKopiert.PopName || "(kein Name)");
+            label += " einfügen";
+            items.einfuegen = {
+                //"label": $.jstree._reference(window.apf.tpopNodeKopiert).get_text(window.apf.tpopNodeKopiert) + " einfügen",
+                "label":            label,
+                "separator_before": true,
+                "icon":             "style/images/einfuegen.png",
+                "action": function () {
+                    insertKopiertePop(aktiverNode, parentNode, $(aktiverNode).attr("id"));
+                }
+            };
+        }
         if (window.apf.popZumVerschiebenGemerkt) {
             items.einfuegen = {
                 "label":            "'" + window.apf.popBezeichnung + "' einfügen",
@@ -411,6 +428,30 @@ module.exports = function (node) {
                 "icon":             "style/images/einfuegen.png",
                 "action": function () {
                     insertAusgeschnittenePop($(parentNode).attr("id"));
+                }
+            };
+        }
+        if (!window.apf.popNodeAusgeschnitten) {
+            items.kopieren = {
+                "label":            "kopieren",
+                "separator_before": true,
+                "icon":             "style/images/kopieren.png",
+                "action": function () {
+                    kopierePop(aktiverNode);
+                }
+            };
+        }
+        if (window.apf.popNodeKopiert) {
+            label = window.apf.popObjektKopiert.PopNr || "(keine Nr.)";
+            label += ": ";
+            label += (window.apf.popObjektKopiert.PopName || "(kein Name)");
+            label += " einfügen";
+            items.einfuegen = {
+                "label":            label,
+                "separator_before": true,
+                "icon":             "style/images/einfuegen.png",
+                "action": function () {
+                    insertKopiertePop(aktiverNode, parentNode, $(parentNode).attr("id"));
                 }
             };
         }
