@@ -32,6 +32,10 @@ module.exports = function (tpopListeMarkiert) {
                 erstelleTPopLayer(tpopListe, markierteTpop.tpopidMarkiert, true),
                 // Pop holen, aber ausgeblendet
                 zeigePopInTPop(overlayPopVisible)
+                // zugeordnete beob holen
+                zeigeBeobZugeordnet();
+                // nicht beurteilte beob holen
+                zeigeBeobNichtBeurteiltZumZuordnen();
             ).then(function () {
                 // layertree neu aufbauen
                 initiiereLayertree();

@@ -1,3 +1,12 @@
+/*
+ * Karte zeigt an:
+ * - alle tpop, die gewählte ist markiert / anderst dargestellt
+ * - alle der markierten tpop zugeordneten beob
+ * - alle übrigen zugeordneten beob, beschriftet mit popnr / tpopnr, der sie zugeordnet sind
+ * - alle nicht zugeordenten beob. nicht beschriftet?
+ */
+
+
 /*jslint node: true, browser: true, nomen: true, todo: true */
 'use strict';
 
