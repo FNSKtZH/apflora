@@ -10,14 +10,12 @@ var $                                   = require('jquery'),
     melde                               = require('../melde'),
     istLayerSichtbarNachName            = require('./istLayerSichtbarNachName');
 
-module.exports = function (TPopListeMarkiert) {
+module.exports = function (tpopListeMarkiert) {
     var markierteTpop,
         // wenn layer "Populationen" sichtbar ist, sichtbar behalten
-        overlayPopVisible   = istLayerSichtbarNachName("Populationen"),
-        // wenn layer "Populationen Namen" sichtbar ist, sichtbar behalten
-        overlayPopnrVisible = istLayerSichtbarNachName("Populationen Nummern");
+        overlayPopVisible   = istLayerSichtbarNachName("Populationen");
 
-    markierteTpop = waehleAusschnittFuerUebergebeneTPop(TPopListeMarkiert);
+    markierteTpop = waehleAusschnittFuerUebergebeneTPop(tpopListeMarkiert);
 
     // Grundkarte aufbauen
     $.when(zeigeFormular("olMap")).then(function () {
@@ -34,7 +32,7 @@ module.exports = function (TPopListeMarkiert) {
                 // Layer für Symbole und Beschriftung erstellen
                 erstelleTPopLayer(tpopListe, markierteTpop.tpopidMarkiert, true),
                 // alle Pop holen
-                zeigePopInTPop(overlayPopVisible, overlayPopnrVisible)
+                zeigePopInTPop(overlayPopVisible)
             ).then(function () {
                 // layertree neu aufbauen
                 initiiereLayertree();

@@ -7,7 +7,7 @@ var $                  = require('jquery'),
     initiiereLayertree = require('./initiiereLayertree'),
     erstellePopLayer   = require('./erstellePopLayer');
 
-module.exports = function (overlayPopVisible, overlayPopnrVisible, popidMarkiert) {
+module.exports = function (overlayPopVisible, popidMarkiert) {
     var popGezeigt = $.Deferred();
 
     $.ajax({
