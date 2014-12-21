@@ -124,7 +124,7 @@ module.exports = function (that) {
         if (!tabelleId) {
             $.ajax({
                 type: 'post',
-                url: 'api/v1/insert/apflora/tabelle=tblTPopKontrZaehl/feld=TPopKontrId/wert=' + localStorage.tpopfeldkontrId + '/user=' + encodeURIComponent(sessionStorage.user)
+                url: 'api/v1/insert/apflora/tabelle=tpopkontrzaehl/feld=TPopKontrId/wert=' + localStorage.tpopfeldkontrId + '/user=' + encodeURIComponent(sessionStorage.user)
             }).done(function (TPopKontrZaehlId) {
                 // die Felder dieser Zählung mit der neuen id aktualisieren
                 tabelleId = TPopKontrZaehlId;
@@ -137,7 +137,7 @@ module.exports = function (that) {
             // Zählung enthält keine Daten > löschen
             $.ajax({
                 type: 'delete',
-                url: '/api/v1/apflora/tabelle=tblTPopKontrZaehl/tabelleIdFeld=TPopKontrZaehlId/tabelleId=' + tabelleId
+                url: '/api/v1/apflora/tabelle=tpopkontrzaehl/tabelleIdFeld=TPopKontrZaehlId/tabelleId=' + tabelleId
             }).done(function () {
                 // die Felder dieser Zählung mit der neuen id aktualisieren
                 $(that).closest('table').find('[name="TPopKontrZaehlId"]').val('');

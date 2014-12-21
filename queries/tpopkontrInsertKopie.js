@@ -33,7 +33,7 @@ module.exports = function (request, callback) {
         function (callback) {
             // Temporäre Tabelle erstellen mit dem zu kopierenden Datensatz
             connection.query(
-                'CREATE TEMPORARY TABLE tmp SELECT * FROM tblTPopKontr WHERE TPopKontrId = ' + tpopKontrId,
+                'CREATE TEMPORARY TABLE tmp SELECT * FROM tpopkontr WHERE TPopKontrId = ' + tpopKontrId,
                 function (err) {
                     // nur allfällige Fehler weiterleiten
                     callback(err, null);
@@ -52,7 +52,7 @@ module.exports = function (request, callback) {
         },
         function (callback) {
             connection.query(
-                'INSERT INTO tblTPopKontr SELECT * FROM tmp',
+                'INSERT INTO tpopkontr SELECT * FROM tmp',
                 function (err, data) {
                     callback(err, data.insertId);
                 }
@@ -64,10 +64,10 @@ module.exports = function (request, callback) {
 
         if (err) { return callback(err, null); }
         // Zählungen der herkunfts-Kontrolle holen und der neuen Kontrolle anfügen
-        sql += 'INSERT INTO tblTPopKontrZaehl (Anzahl, Zaehleinheit, Methode, MutWann, MutWer, TPopKontrId)';
-        sql += ' SELECT tblTPopKontrZaehl.Anzahl, tblTPopKontrZaehl.Zaehleinheit, tblTPopKontrZaehl.Methode, "' + date + '", "' + user + '", ' + tpopkontridNeu;
-        sql += ' FROM tblTPopKontrZaehl';
-        sql += ' WHERE tblTPopKontrZaehl.TPopKontrId=' + tpopKontrId;
+        sql += 'INSERT INTO tpopkontrzaehl (Anzahl, Zaehleinheit, Methode, MutWann, MutWer, TPopKontrId)';
+        sql += ' SELECT tpopkontrzaehl.Anzahl, tpopkontrzaehl.Zaehleinheit, tpopkontrzaehl.Methode, "' + date + '", "' + user + '", ' + tpopkontridNeu;
+        sql += ' FROM tpopkontrzaehl';
+        sql += ' WHERE tpopkontrzaehl.TPopKontrId=' + tpopKontrId;
         console.log('sql: ', sql);
         connection.query(
             sql,

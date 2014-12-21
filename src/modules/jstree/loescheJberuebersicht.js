@@ -32,7 +32,7 @@ module.exports = function (aktiverNode) {
                 window.apf.deleted.typ = "jberUebersicht";
                 $.ajax({
                     type: 'delete',
-                    url: 'api/v1/apflora/tabelle=tblJBerUebersicht/tabelleIdFeld=JbuJahr/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr("id"))
+                    url: 'api/v1/apflora/tabelle=apberuebersicht/tabelleIdFeld=JbuJahr/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr("id"))
                 }).done(function () {
                     delete localStorage.jberUebersichtId;
                     delete window.apf.jberUebersicht;

@@ -22,10 +22,10 @@ module.exports = function (request, callback) {
     // sql schreiben
     if (tpopKontrtyp === 'tpopfreiwkontr') {
         // Die Freiwilligen-Erfolgskontrolle erhält direkt einen Typ
-        sql = 'INSERT INTO tblTPopKontr (TPopId, TPopKontrTyp, MutWann, MutWer) VALUES (' + tpopId + ', "Freiwilligen-Erfolgskontrolle", "' + date + '", "' + user + '")';
+        sql = 'INSERT INTO tpopkontr (TPopId, TPopKontrTyp, MutWann, MutWer) VALUES (' + tpopId + ', "Freiwilligen-Erfolgskontrolle", "' + date + '", "' + user + '")';
     } else {
         // die feldkontrolle erhält erst später einen Typ
-        sql = 'INSERT INTO tblTPopKontr (TPopId, MutWann, MutWer) VALUES (' + tpopId + ', "' + date + '", "' + user + '")';
+        sql = 'INSERT INTO tpopkontr (TPopId, MutWann, MutWer) VALUES (' + tpopId + ', "' + date + '", "' + user + '")';
     }
 
     connection.query(

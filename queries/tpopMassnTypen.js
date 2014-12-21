@@ -13,7 +13,7 @@ var mysql      = require('mysql'),
 
 module.exports = function (request, callback) {
     connection.query(
-        'SELECT MassnTypCode as id, MassnTypTxt FROM domTPopMassnTyp ORDER BY MassnTypOrd',
+        'SELECT MassnTypCode as id, MassnTypTxt FROM tpopmassn_typ_werte ORDER BY MassnTypOrd',
         function (err, data) {
             callback(err, data);
         }

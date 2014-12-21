@@ -15,7 +15,7 @@ var mysql              = require('mysql'),
         host:     'localhost',
         user:      config.db.userName,
         password:  config.db.passWord,
-        database: 'apfloraBeob'
+        database: 'apflora_beob'
     });
 
 module.exports = function (request, callback) {

@@ -67,7 +67,7 @@ module.exports = function (request, reply) {
     async.parallel({
         jberListe: function (callback) {
             connection.query(
-                'SELECT JBerId, ApArtId, JBerJahr FROM tblJBer where ApArtId = ' + apId + ' ORDER BY JBerJahr',
+                'SELECT JBerId, ApArtId, JBerJahr FROM apber where ApArtId = ' + apId + ' ORDER BY JBerJahr',
                 function (err, jber) {
                     callback(err, jber);
                 }
@@ -75,7 +75,7 @@ module.exports = function (request, reply) {
         },
         jberUebersichtListe: function (callback) {
             connection.query(
-                'SELECT JbuJahr FROM tblJBerUebersicht',
+                'SELECT JbuJahr FROM apberuebersicht',
                 function (err, jberUebersicht) {
                     callback(err, jberUebersicht);
                 }

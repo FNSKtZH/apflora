@@ -118,7 +118,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
                 // Zählung enthält keine Daten > löschen
                 $.ajax({
                     type: 'delete',
-                    url: '/api/v1/apflora/tabelle=tblTPopKontrZaehl/tabelleIdFeld=TPopKontrZaehlId/tabelleId=' + tabelleId
+                    url: '/api/v1/apflora/tabelle=tpopkontrzaehl/tabelleIdFeld=TPopKontrZaehlId/tabelleId=' + tabelleId
                 }).done(function () {
                     // die Felder dieser Zählung mit der neuen id aktualisieren
                     $(that).closest('table').find('[name="TPopKontrZaehlId"]').val('');

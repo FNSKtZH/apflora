@@ -47,7 +47,7 @@ module.exports = function (request, reply) {
     async.waterfall([
         function (callback) {
             connection.query(
-                'SELECT PopNr, PopName, PopId, ApArtId FROM tblPop where ApArtId = ' + apId + ' ORDER BY PopNr, PopName',
+                'SELECT PopNr, PopName, PopId, ApArtId FROM pop where ApArtId = ' + apId + ' ORDER BY PopNr, PopName',
                 function (err, result) {
                     var popListe = result,
                         popIds   = _.pluck(popListe, 'PopId');
@@ -58,7 +58,7 @@ module.exports = function (request, reply) {
         function (popIds, popListe, callback) {
             if (popIds.length > 0) {
                 connection.query(
-                    'SELECT TPopNr, TPopFlurname, TPopId, PopId FROM tblTPop where PopId in (' + popIds.join() + ') ORDER BY TPopNr, TPopFlurname',
+                    'SELECT TPopNr, TPopFlurname, TPopId, PopId FROM tpop where PopId in (' + popIds.join() + ') ORDER BY TPopNr, TPopFlurname',
                     function (err, result) {
                         var tpopListe = result,
                             tpopIds   = _.pluck(tpopListe, 'TPopId');
@@ -79,7 +79,7 @@ module.exports = function (request, reply) {
         async.parallel({
             tpopMassnListe: function (callback) {
                 connection.query(
-                    'SELECT TPopMassnId, TPopId, TPopMassnJahr, TPopMassnDatum, MassnTypTxt FROM tblTPopMassn LEFT JOIN domTPopMassnTyp ON TPopMassnTyp = MassnTypCode where TPopId in (' + tpopIds.join() + ') ORDER BY TPopMassnJahr, TPopMassnDatum, MassnTypTxt',
+                    'SELECT TPopMassnId, TPopId, TPopMassnJahr, TPopMassnDatum, MassnTypTxt FROM tpopmassn LEFT JOIN tpopmassn_typ_werte ON TPopMassnTyp = MassnTypCode where TPopId in (' + tpopIds.join() + ') ORDER BY TPopMassnJahr, TPopMassnDatum, MassnTypTxt',
                     function (err, data) {
                         callback(err, data);
                     }
@@ -87,7 +87,7 @@ module.exports = function (request, reply) {
             },
             tpopMassnBerListe: function (callback) {
                 connection.query(
-                    'SELECT TPopMassnBerId, TPopId, TPopMassnBerJahr, BeurteilTxt FROM tblTPopMassnBer LEFT JOIN domTPopMassnErfolgsbeurteilung ON TPopMassnBerErfolgsbeurteilung = BeurteilId where TPopId in (' + tpopIds.join() + ') ORDER BY TPopMassnBerJahr, BeurteilTxt',
+                    'SELECT TPopMassnBerId, TPopId, TPopMassnBerJahr, BeurteilTxt FROM tpopmassnber LEFT JOIN tpopmassn_erfbeurt_werte ON TPopMassnBerErfolgsbeurteilung = BeurteilId where TPopId in (' + tpopIds.join() + ') ORDER BY TPopMassnBerJahr, BeurteilTxt',
                     function (err, data) {
                         callback(err, data);
                     }
@@ -95,7 +95,7 @@ module.exports = function (request, reply) {
             },
             tpopFeldkontrListe: function (callback) {
                 connection.query(
-                    'SELECT TPopKontrId, TPopId, TPopKontrJahr, TPopKontrTyp FROM tblTPopKontr where (TPopId in (' + tpopIds.join() + ')) AND (TPopKontrTyp<>"Freiwilligen-Erfolgskontrolle" OR TPopKontrTyp IS NULL) ORDER BY TPopKontrJahr, TPopKontrTyp',
+                    'SELECT TPopKontrId, TPopId, TPopKontrJahr, TPopKontrTyp FROM tpopkontr where (TPopId in (' + tpopIds.join() + ')) AND (TPopKontrTyp<>"Freiwilligen-Erfolgskontrolle" OR TPopKontrTyp IS NULL) ORDER BY TPopKontrJahr, TPopKontrTyp',
                     function (err, data) {
                         callback(err, data);
                     }
@@ -103,7 +103,7 @@ module.exports = function (request, reply) {
             },
             tpopFreiwkontrListe : function (callback) {
                 connection.query(
-                    'SELECT TPopKontrId, TPopId, TPopKontrJahr, TPopKontrTyp FROM tblTPopKontr where (TPopId in (' + tpopIds.join() + ')) AND (TPopKontrTyp="Freiwilligen-Erfolgskontrolle") ORDER BY TPopKontrJahr, TPopKontrTyp',
+                    'SELECT TPopKontrId, TPopId, TPopKontrJahr, TPopKontrTyp FROM tpopkontr where (TPopId in (' + tpopIds.join() + ')) AND (TPopKontrTyp="Freiwilligen-Erfolgskontrolle") ORDER BY TPopKontrJahr, TPopKontrTyp',
                     function (err, data) {
                         callback(err, data);
                     }
@@ -111,7 +111,7 @@ module.exports = function (request, reply) {
             },
             tpopBerListe: function (callback) {
                 connection.query(
-                    'SELECT TPopBerId, TPopId, TPopBerJahr, EntwicklungTxt, EntwicklungOrd FROM tblTPopBer LEFT JOIN domTPopEntwicklung ON TPopBerEntwicklung = EntwicklungCode where TPopId in (' + tpopIds.join() + ') ORDER BY TPopBerJahr, EntwicklungOrd',
+                    'SELECT TPopBerId, TPopId, TPopBerJahr, EntwicklungTxt, EntwicklungOrd FROM tpopber LEFT JOIN tpop_entwicklung_werte ON TPopBerEntwicklung = EntwicklungCode where TPopId in (' + tpopIds.join() + ') ORDER BY TPopBerJahr, EntwicklungOrd',
                     function (err, data) {
                         callback(err, data);
                     }
@@ -119,7 +119,7 @@ module.exports = function (request, reply) {
             },
             tpopBeobZugeordnetListe: function (callback) {
                 connection.query(
-                    'SELECT apflora.tblBeobZuordnung.NO_NOTE, apflora.tblBeobZuordnung.TPopId, apflora.tblBeobZuordnung.beobNichtZuordnen, apflora.tblBeobZuordnung.BeobBemerkungen, apflora.tblBeobZuordnung.BeobMutWann, apflora.tblBeobZuordnung.BeobMutWer, apfloraBeob.tblBeobBereitgestellt.Datum, apfloraBeob.tblBeobBereitgestellt.Autor, "evab" AS beobtyp FROM apflora.tblBeobZuordnung INNER JOIN apfloraBeob.tblBeobBereitgestellt ON apflora.tblBeobZuordnung.NO_NOTE = apfloraBeob.tblBeobBereitgestellt.NO_NOTE_PROJET WHERE apflora.tblBeobZuordnung.TPopId in (' + tpopIds.join() + ') AND (apflora.tblBeobZuordnung.beobNichtZuordnen=0 OR apflora.tblBeobZuordnung.beobNichtZuordnen IS NULL) UNION SELECT apflora.tblBeobZuordnung.NO_NOTE, apflora.tblBeobZuordnung.TPopId, apflora.tblBeobZuordnung.beobNichtZuordnen, apflora.tblBeobZuordnung.BeobBemerkungen, apflora.tblBeobZuordnung.BeobMutWann, apflora.tblBeobZuordnung.BeobMutWer, apfloraBeob.tblBeobBereitgestellt.Datum, apfloraBeob.tblBeobBereitgestellt.Autor, "infospezies" AS beobtyp FROM apflora.tblBeobZuordnung INNER JOIN apfloraBeob.tblBeobBereitgestellt ON apflora.tblBeobZuordnung.NO_NOTE = apfloraBeob.tblBeobBereitgestellt.NO_NOTE WHERE apflora.tblBeobZuordnung.TPopId in (' + tpopIds.join() + ') AND (apflora.tblBeobZuordnung.beobNichtZuordnen=0 OR apflora.tblBeobZuordnung.beobNichtZuordnen IS NULL) ORDER BY Datum',
+                    'SELECT apflora.beobzuordnung.NO_NOTE, apflora.beobzuordnung.TPopId, apflora.beobzuordnung.beobNichtZuordnen, apflora.beobzuordnung.BeobBemerkungen, apflora.beobzuordnung.BeobMutWann, apflora.beobzuordnung.BeobMutWer, apflora_beob.beob_bereitgestellt.Datum, apflora_beob.beob_bereitgestellt.Autor, "evab" AS beobtyp FROM apflora.beobzuordnung INNER JOIN apflora_beob.beob_bereitgestellt ON apflora.beobzuordnung.NO_NOTE = apflora_beob.beob_bereitgestellt.NO_NOTE_PROJET WHERE apflora.beobzuordnung.TPopId in (' + tpopIds.join() + ') AND (apflora.beobzuordnung.beobNichtZuordnen=0 OR apflora.beobzuordnung.beobNichtZuordnen IS NULL) UNION SELECT apflora.beobzuordnung.NO_NOTE, apflora.beobzuordnung.TPopId, apflora.beobzuordnung.beobNichtZuordnen, apflora.beobzuordnung.BeobBemerkungen, apflora.beobzuordnung.BeobMutWann, apflora.beobzuordnung.BeobMutWer, apflora_beob.beob_bereitgestellt.Datum, apflora_beob.beob_bereitgestellt.Autor, "infospezies" AS beobtyp FROM apflora.beobzuordnung INNER JOIN apflora_beob.beob_bereitgestellt ON apflora.beobzuordnung.NO_NOTE = apflora_beob.beob_bereitgestellt.NO_NOTE WHERE apflora.beobzuordnung.TPopId in (' + tpopIds.join() + ') AND (apflora.beobzuordnung.beobNichtZuordnen=0 OR apflora.beobzuordnung.beobNichtZuordnen IS NULL) ORDER BY Datum',
                     function (err, data) {
                         callback(err, data);
                     }
@@ -127,7 +127,7 @@ module.exports = function (request, reply) {
             },
             popBerListe: function (callback) {
                 connection.query(
-                    'SELECT PopBerId, PopId, PopBerJahr, EntwicklungTxt, EntwicklungOrd FROM tblPopBer LEFT JOIN domPopEntwicklung ON PopBerEntwicklung = EntwicklungId where PopId in (' + popIds.join() + ') ORDER BY PopBerJahr, EntwicklungOrd',
+                    'SELECT PopBerId, PopId, PopBerJahr, EntwicklungTxt, EntwicklungOrd FROM popber LEFT JOIN pop_entwicklung_werte ON PopBerEntwicklung = EntwicklungId where PopId in (' + popIds.join() + ') ORDER BY PopBerJahr, EntwicklungOrd',
                     function (err, data) {
                         callback(err, data);
                     }
@@ -135,7 +135,7 @@ module.exports = function (request, reply) {
             },
             popMassnBerListe: function (callback) {
                 connection.query(
-                    'SELECT PopMassnBerId, PopId, PopMassnBerJahr, BeurteilTxt, BeurteilOrd FROM tblPopMassnBer LEFT JOIN domTPopMassnErfolgsbeurteilung ON PopMassnBerErfolgsbeurteilung = BeurteilId where PopId in (' + popIds.join() + ') ORDER BY PopMassnBerJahr, BeurteilOrd',
+                    'SELECT PopMassnBerId, PopId, PopMassnBerJahr, BeurteilTxt, BeurteilOrd FROM popmassnber LEFT JOIN tpopmassn_erfbeurt_werte ON PopMassnBerErfolgsbeurteilung = BeurteilId where PopId in (' + popIds.join() + ') ORDER BY PopMassnBerJahr, BeurteilOrd',
                     function (err, data) {
                         callback(err, data);
                     }

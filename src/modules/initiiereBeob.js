@@ -50,10 +50,10 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
     // EvAB oder Infospezies? > entsprechende url zusammensetzen
     if (beobTyp === 'evab') {
         idFeld = 'NO_NOTE_PROJET';
-        url = 'api/v1/beob/tabelle=tblBeobEvab/feld=' + idFeld + '/wertString=' + beobId;
+        url = 'api/v1/beob/tabelle=beob_evab/feld=' + idFeld + '/wertString=' + beobId;
     } else {
         idFeld = 'NO_NOTE';
-        url = 'api/v1/beob/tabelle=tblBeobInfospezies/feld=' + idFeld + '/wertNumber=' + beobId;
+        url = 'api/v1/beob/tabelle=beob_infospezies/feld=' + idFeld + '/wertNumber=' + beobId;
     }
 
     // Daten für die beob aus der DB holen
@@ -120,9 +120,9 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
                     if (beobStatus !== "nicht_beurteilt") {
                         // Daten der Zuordnung holen
                         if (beobTyp === 'evab') {
-                            urlZuordnung = 'api/v1/apflora/tabelle=tblBeobZuordnung/feld=NO_NOTE/wertString=' + beobId;
+                            urlZuordnung = 'api/v1/apflora/tabelle=beobzuordnung/feld=NO_NOTE/wertString=' + beobId;
                         } else {
-                            urlZuordnung = 'api/v1/apflora/tabelle=tblBeobZuordnung/feld=NO_NOTE/wertNumber=' + beobId;
+                            urlZuordnung = 'api/v1/apflora/tabelle=beobzuordnung/feld=NO_NOTE/wertNumber=' + beobId;
                         }
                         $.ajax({
                             type: 'get',

@@ -33,7 +33,7 @@ module.exports = function (request, callback) {
         function (callback) {
             // Temporäre Tabelle erstellen mit dem zu kopierenden Datensatz
             connection.query(
-                'CREATE TEMPORARY TABLE tmp SELECT * FROM tblTPop WHERE TPopId = ' + tpopId,
+                'CREATE TEMPORARY TABLE tmp SELECT * FROM tpop WHERE TPopId = ' + tpopId,
                 function (err) {
                     // nur allfällige Fehler weiterleiten
                     callback(err, null);
@@ -52,7 +52,7 @@ module.exports = function (request, callback) {
         },
         function (callback) {
             connection.query(
-                'INSERT INTO tblTPop SELECT * FROM tmp',
+                'INSERT INTO tpop SELECT * FROM tmp',
                 function (err, data) {
                     callback(err, data.insertId);
                 }

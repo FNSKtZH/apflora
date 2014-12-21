@@ -41,7 +41,7 @@ module.exports = function (request, reply) {
     var apId = escapeStringForSql(request.params.apId);
 
     connection.query(
-        "SELECT BerId, ApArtId, BerJahr, BerTitel FROM tblBer where ApArtId =" + apId + " ORDER BY BerJahr DESC, BerTitel",
+        "SELECT BerId, ApArtId, BerJahr, BerTitel FROM ber where ApArtId =" + apId + " ORDER BY BerJahr DESC, BerTitel",
         function (err, data) {
             var node;
 

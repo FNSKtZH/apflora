@@ -16,7 +16,7 @@ module.exports = function (request, callback) {
     var apId = escapeStringForSql(request.params.apId);
 
     connection.query(
-        'SELECT apflora.tblAp.ApArtId, apfloraBeob.ArtenDb_Arteigenschaften.Artname, apflora.tblAp.ApStatus, apflora.tblAp.ApJahr, apflora.tblAp.ApUmsetzung, apflora.tblAp.ApBearb, apflora.tblAp.ApArtwert, apflora.tblAp.MutWann, apflora.tblAp.MutWer FROM apflora.tblAp INNER JOIN apfloraBeob.ArtenDb_Arteigenschaften ON apflora.tblAp.ApArtId = apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId WHERE ApArtId = ' + apId,
+        'SELECT apflora.ap.ApArtId, apflora_beob.adb_eigenschaften.Artname, apflora.ap.ApStatus, apflora.ap.ApJahr, apflora.ap.ApUmsetzung, apflora.ap.ApBearb, apflora.ap.ApArtwert, apflora.ap.MutWann, apflora.ap.MutWer FROM apflora.ap INNER JOIN apflora_beob.adb_eigenschaften ON apflora.ap.ApArtId = apflora_beob.adb_eigenschaften.TaxonomieId WHERE ApArtId = ' + apId,
         function (err, data) {
             callback(err, data);
         }

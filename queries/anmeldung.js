@@ -17,7 +17,7 @@ module.exports = function (request, callback) {
         password = escapeStringForSql(request.params.pwd);
 
     connection.query(
-        'SELECT NurLesen FROM tblUser WHERE UserName = "' + userName + '" AND Passwort = "' + password + '"',
+        'SELECT NurLesen FROM user WHERE UserName = "' + userName + '" AND Passwort = "' + password + '"',
         function (err, data) {
             callback(err, data);
         }

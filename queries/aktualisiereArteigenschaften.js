@@ -13,7 +13,7 @@ var mysql              = require('mysql'),
         host:     'localhost',
         user:     config.db.userName,
         password: config.db.passWord,
-        database: 'apfloraBeob'
+        database: 'apflora_beob'
     });
 
 // teilt einen Array in gleiche Teile
@@ -40,7 +40,7 @@ module.exports = function (req, reply) {
         if (!error && response.statusCode == 200) {
             // empty table
             connection.query(
-                'TRUNCATE TABLE apfloraBeob.ArtenDb_Arteigenschaften',
+                'TRUNCATE TABLE apflora_beob.adb_eigenschaften',
                 function (err) {
                     if (err) { throw err; }
                     // Daten müssen in mehrere Teile aufgeteilt werden
@@ -52,7 +52,7 @@ module.exports = function (req, reply) {
                         eigenschaftenString2 = createInsertSqlFromObjectArray(artenArray[2]),
                         eigenschaftenString3 = createInsertSqlFromObjectArray(artenArray[3]),
                         eigenschaftenString4 = createInsertSqlFromObjectArray(artenArray[4]),
-                        sqlBase = 'INSERT INTO apfloraBeob.ArtenDb_Arteigenschaften (GUID, TaxonomieId, Familie, Artname, NameDeutsch, Status, Artwert, KefArt, KefKontrolljahr, FnsJahresartJahr) VALUES ',
+                        sqlBase = 'INSERT INTO apflora_beob.adb_eigenschaften (GUID, TaxonomieId, Familie, Artname, NameDeutsch, Status, Artwert, KefArt, KefKontrolljahr, FnsJahresartJahr) VALUES ',
                         sql;
 
                     // add new values

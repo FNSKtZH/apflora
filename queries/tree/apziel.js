@@ -22,7 +22,7 @@ module.exports = function (request, reply) {
     async.waterfall([
         function (callback) {
             connection.query(
-                'SELECT ZielId, ZielTyp, ZielJahr, ZielBezeichnung FROM tblZiel WHERE ApArtId = ' + apId + ' ORDER BY ZielTyp, ZielBezeichnung',
+                'SELECT ZielId, ZielTyp, ZielJahr, ZielBezeichnung FROM ziel WHERE ApArtId = ' + apId + ' ORDER BY ZielTyp, ZielBezeichnung',
                 function (err, apzielListe) {
                     if (err) { callback(err); }
                     callback(null, apzielListe);
@@ -35,7 +35,7 @@ module.exports = function (request, reply) {
             // Liste aller ZielId erstellen
             zielIds = _.pluck(apzielListe, 'ZielId');
             connection.query(
-                'SELECT ZielBerId, ZielId, ZielBerJahr, ZielBerErreichung FROM tblZielBer where ZielId in (' + zielIds.join() + ') ORDER BY ZielBerJahr, ZielBerErreichung',
+                'SELECT ZielBerId, ZielId, ZielBerJahr, ZielBerErreichung FROM zielber where ZielId in (' + zielIds.join() + ') ORDER BY ZielBerJahr, ZielBerErreichung',
                 function (err, zielberListe) {
                     if (err) { callback(err); }
                     // das Ergebnis der vorigen Abfrage anfügen
