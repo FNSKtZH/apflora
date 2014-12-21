@@ -13,7 +13,7 @@ var mysql      = require('mysql'),
 
 module.exports = function (request, callback) {
     connection.query(
-        'SELECT ZaehleinheitCode as value, ZaehleinheitTxt as label FROM domTPopKontrZaehleinheit ORDER BY ZaehleinheitOrd',
+        'SELECT ZaehleinheitCode as value, ZaehleinheitTxt as label FROM tpopkontrzaehl_einheit_werte ORDER BY ZaehleinheitOrd',
         function (err, data) {
             callback(err, data);
         }

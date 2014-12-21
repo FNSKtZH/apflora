@@ -16,7 +16,7 @@ var mysql              = require('mysql'),
         host: 'localhost',
         user: config.db.userName,
         password: config.db.passWord,
-        database: 'apfloraBeob'
+        database: 'apflora_beob'
     });
 
 module.exports = function (request, callback) {
@@ -26,19 +26,19 @@ module.exports = function (request, callback) {
 
     // neuen AP einfügen
     connection.query(
-        'INSERT INTO apflora.tblAp (ApArtId, MutWann, MutWer) VALUES (' + apId + ', "' + date + '", "' + user + '")',
+        'INSERT INTO apflora.ap (ApArtId, MutWann, MutWer) VALUES (' + apId + ', "' + date + '", "' + user + '")',
         function (err, data) {
             if (err) { callback(err, null); }
             // Artwert holen
             connection2.query(
-                'SELECT Artwert FROM apfloraBeob.ArtenDb_Arteigenschaften WHERE TaxonomieId=' + apId,
+                'SELECT Artwert FROM apflora_beob.adb_eigenschaften WHERE TaxonomieId=' + apId,
                 function (err, data) {
                     // keine Fehler melden, wenn bloss der Artwert nicht geholt wurde
                     if (data && data[0]) {
                         var artwert = data[0];
                         if (artwert) {
                             connection.query(
-                                'UPDATE apflora.tblAp SET ApArtwert="' + artwert + '" WHERE ApArtId = ' + apId,
+                                'UPDATE apflora.ap SET ApArtwert="' + artwert + '" WHERE ApArtId = ' + apId,
                                 function (err, data) {
                                     callback(err, apId);
                                 }

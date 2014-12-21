@@ -19,7 +19,7 @@ config.db.passWord = dbPassfile.pass;
 config.tables = [
     {
         database:          'apflora',
-        tabelleInDb:       'tblAp',
+        tabelleInDb:       'ap',
         tabelleIdFeld:     'ApArtId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -29,7 +29,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblPop',
+        tabelleInDb:       'pop',
         tabelleIdFeld:     'PopId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -39,7 +39,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblTPop',
+        tabelleInDb:       'tpop',
         tabelleIdFeld:     'TPopId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -49,7 +49,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblTPopKontr',
+        tabelleInDb:       'tpopkontr',
         tabelleIdFeld:     'TPopKontrId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -59,7 +59,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblTPopKontrZaehl',
+        tabelleInDb:       'tpopkontrzaehl',
         tabelleIdFeld:     'TPopKontrZaehlId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -69,7 +69,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblTPopMassn',
+        tabelleInDb:       'tpopmassn',
         tabelleIdFeld:     'TPopMassnId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -79,7 +79,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblZiel',
+        tabelleInDb:       'ziel',
         tabelleIdFeld:     'ZielId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -89,7 +89,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblZielBer',
+        tabelleInDb:       'zielber',
         tabelleIdFeld:     'ZielBerId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -99,7 +99,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblErfKrit',
+        tabelleInDb:       'erfkrit',
         tabelleIdFeld:     'ErfkritId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -109,7 +109,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblJBer',
+        tabelleInDb:       'apber',
         tabelleIdFeld:     'JBerId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -119,7 +119,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblJBerUebersicht',
+        tabelleInDb:       'apberuebersicht',
         tabelleIdFeld:     'JbuJahr',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -129,7 +129,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblBer',
+        tabelleInDb:       'ber',
         tabelleIdFeld:     'BerId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -139,7 +139,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblIdealbiotop',
+        tabelleInDb:       'idealbiotop',
         tabelleIdFeld:     'IbApArtId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -149,7 +149,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblAssozArten',
+        tabelleInDb:       'assozart',
         tabelleIdFeld:     'AaId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -159,7 +159,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblPopBer',
+        tabelleInDb:       'popber',
         tabelleIdFeld:     'PopBerId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -169,7 +169,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblPopMassnBer',
+        tabelleInDb:       'popmassnber',
         tabelleIdFeld:     'PopMassnBerId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -179,7 +179,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblTPopBer',
+        tabelleInDb:       'tpopber',
         tabelleIdFeld:     'TPopBerId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -189,7 +189,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblTPopMassnBer',
+        tabelleInDb:       'tpopmassnber',
         tabelleIdFeld:     'TPopMassnBerId',
         mutWannFeld:       'MutWann',
         mutWerFeld:        'MutWer',
@@ -199,7 +199,7 @@ config.tables = [
     },
     {
         database:          'apflora',
-        tabelleInDb:       'tblBeobZuordnung',
+        tabelleInDb:       'beobzuordnung',
         tabelleIdFeld:     'NO_NOTE',
         mutWannFeld:       'BeobMutWann',
         mutWerFeld:        'BeobMutWer',

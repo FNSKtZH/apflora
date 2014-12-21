@@ -36,7 +36,7 @@ module.exports = function (aktiverNode, parentNode) {
                 window.apf.deleted.typ = "erfkrit";
                 $.ajax({
                     type: 'delete',
-                    url: 'api/v1/apflora/tabelle=tblErfKrit/tabelleIdFeld=ErfkritId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr("id"))
+                    url: 'api/v1/apflora/tabelle=erfkrit/tabelleIdFeld=ErfkritId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr("id"))
                 }).done(function () {
                     delete localStorage.erfkritId;
                     delete window.apf.erfkrit;

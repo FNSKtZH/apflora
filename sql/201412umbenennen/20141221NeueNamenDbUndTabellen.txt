@@ -46,7 +46,7 @@ tblZielBer                      >   zielber
 apfloraBeob                 >   apflora_beob
 ArtenDb_Arteigenschaften    >   adb_eigenschaften
 ArtenDb_LR                  >   adb_lr
-DomainFloraStatus           >   dom_flora_status
+DomainFloraStatus           >   flora_status_werte
 tblBeobBereitgestellt       >   beob_bereitgestellt
 tblBeobEvab                 >   beob_evab
 tblBeobInfospezies          >   beob_infospezies
@@ -116,6 +116,11 @@ vJbA3rTPop                          >   v_apber_a3rtpop
 vJbA4lPop                           >   v_apber_a4lpop
 vJbA4lTPop                          >   v_apber_a4ltpop
 vJbA5lPop                           >   v_apber_a5lpop
+
+
+
+
+
 vJbA5lTPop                          >   v_apber_a5ltpop
 vJbA8lPop                           >   v_apber_a8lpop
 vJbA8lTPop                          >   v_apber_a8ltpop

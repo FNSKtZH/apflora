@@ -42,70 +42,70 @@ module.exports = function () {
 
     switch (typ) {
     case "ap":
-        tabelle = "tblAp";
+        tabelle = "ap";
         id = window.apf.deleted.ApArtId;
         //Artname wurde für die Anzeige in undeleteDiv gespeichert - entfernen, da kein Feld in Tabelle
         delete window.apf.deleted.Artname;
         break;
     case "apziel":
-        tabelle = "tblZiel";
+        tabelle = "ziel";
         id = window.apf.deleted.ZielId;
         break;
     case "zielber":
-        tabelle = "tblZielBer";
+        tabelle = "zielber";
         id = window.apf.deleted.ZielBerId;
         break;
     case "erfkrit":
-        tabelle = "tblErfKrit";
+        tabelle = "erfkrit";
         id = window.apf.deleted.ErfkritId;
         break;
     case "pop":
-        tabelle = "tblPop";
+        tabelle = "pop";
         id = window.apf.deleted.PopId;
         break;
     case "popber":
-        tabelle = "tblPopBer";
+        tabelle = "popber";
         id = window.apf.deleted.PopBerId;
         break;
     case "popmassnber":
-        tabelle = "tblPopMassnBer";
+        tabelle = "popmassnber";
         id = window.apf.deleted.PopMassnBerId;
         break;
     case "tpop":
-        tabelle = "tblTPop";
+        tabelle = "tpop";
         id = window.apf.deleted.TPopId;
         break;
     case "tpopmassn":
-        tabelle = "tblTPopMassn";
+        tabelle = "tpopmassn";
         id = window.apf.deleted.TPopMassnId;
         break;
     case "tpopmassnber":
-        tabelle = "tblTPopMassnBer";
+        tabelle = "tpopmassnber";
         id = window.apf.deleted.TPopMassnBerId;
         break;
     case "tpopber":
-        tabelle = "tblTPopBer";
+        tabelle = "tpopber";
         id = window.apf.deleted.TPopBerId;
         break;
     case "tpopfeldkontr":
     case "tpopfreiwkontr":
-        tabelle = "tblTPopKontr";
+        tabelle = "tpopkontr";
         id = window.apf.deleted.TPopKontrId;
         break;
     case "jber":
-        tabelle = "tblJBer";
+        tabelle = "apber";
         id = window.apf.deleted.JBerId;
         break;
     case "jberUebersicht":
-        tabelle = "tblJBerUebersicht";
+        tabelle = "apberuebersicht";
         id = window.apf.deleted.JbuJahr;
         break;
     case "ber":
-        tabelle = "tblBer";
+        tabelle = "ber";
         id = window.apf.deleted.BerId;
         break;
     case "assozarten":
-        tabelle = "tblAssozArten";
+        tabelle = "assozart";
         id = window.apf.deleted.AaId;
         break;
     default:

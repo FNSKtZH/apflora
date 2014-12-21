@@ -19,14 +19,14 @@ module.exports = function (request, callback) {
     // url setzen
     switch (programm) {
     case 'programmAp':
-        sql = "SELECT apfloraBeob.ArtenDb_Arteigenschaften.Artname AS label, apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId AS id FROM apfloraBeob.ArtenDb_Arteigenschaften INNER JOIN apflora.tblAp ON apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId=apflora.tblAp.ApArtId WHERE apflora.tblAp.ApStatus BETWEEN 1 AND 3 ORDER BY label";
+        sql = "SELECT apflora_beob.adb_eigenschaften.Artname AS label, apflora_beob.adb_eigenschaften.TaxonomieId AS id FROM apflora_beob.adb_eigenschaften INNER JOIN apflora.ap ON apflora_beob.adb_eigenschaften.TaxonomieId=apflora.ap.ApArtId WHERE apflora.ap.ApStatus BETWEEN 1 AND 3 ORDER BY label";
         break;
     case 'programmNeu':
-        sql = "SELECT IF(apfloraBeob.ArtenDb_Arteigenschaften.Status NOT LIKE 'akzeptierter Name', CONCAT(apfloraBeob.ArtenDb_Arteigenschaften.Artname, ' (', apfloraBeob.ArtenDb_Arteigenschaften.Status, ')'), apfloraBeob.ArtenDb_Arteigenschaften.Artname) AS label, apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId AS id FROM apfloraBeob.ArtenDb_Arteigenschaften WHERE apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId not in (SELECT apflora.tblAp.ApArtId FROM apflora.tblAp) ORDER BY label";
+        sql = "SELECT IF(apflora_beob.adb_eigenschaften.Status NOT LIKE 'akzeptierter Name', CONCAT(apflora_beob.adb_eigenschaften.Artname, ' (', apflora_beob.adb_eigenschaften.Status, ')'), apflora_beob.adb_eigenschaften.Artname) AS label, apflora_beob.adb_eigenschaften.TaxonomieId AS id FROM apflora_beob.adb_eigenschaften WHERE apflora_beob.adb_eigenschaften.TaxonomieId not in (SELECT apflora.ap.ApArtId FROM apflora.ap) ORDER BY label";
         break;
     // 'programmAlle' ist auch default
     default:
-        sql = "SELECT apfloraBeob.ArtenDb_Arteigenschaften.Artname AS label, apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId AS id FROM apfloraBeob.ArtenDb_Arteigenschaften INNER JOIN apflora.tblAp ON apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId=apflora.tblAp.ApArtId ORDER BY label";
+        sql = "SELECT apflora_beob.adb_eigenschaften.Artname AS label, apflora_beob.adb_eigenschaften.TaxonomieId AS id FROM apflora_beob.adb_eigenschaften INNER JOIN apflora.ap ON apflora_beob.adb_eigenschaften.TaxonomieId=apflora.ap.ApArtId ORDER BY label";
         break;
     }
 

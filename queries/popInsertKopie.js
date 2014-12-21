@@ -19,10 +19,10 @@ module.exports = function (request, callback) {
         sql   = '';
 
     // Zählungen der herkunfts-Kontrolle holen und der neuen Kontrolle anfügen
-    sql += 'INSERT INTO tblPop (PopNr, PopName, PopHerkunft, PopHerkunftUnklar, PopHerkunftUnklarBegruendung, PopBekanntSeit, PopXKoord, PopYKoord, PopGuid, MutWann, MutWer, ApArtId)';
-    sql += ' SELECT tblPop.PopNr, tblPop.PopName, tblPop.PopHerkunft, tblPop.PopHerkunftUnklar, tblPop.PopHerkunftUnklarBegruendung, tblPop.PopBekanntSeit, tblPop.PopXKoord, tblPop.PopYKoord, tblPop.PopGuid, "' + date + '", "' + user + '", ' + apId;
-    sql += ' FROM tblPop';
-    sql += ' WHERE tblPop.PopId=' + popId;
+    sql += 'INSERT INTO pop (PopNr, PopName, PopHerkunft, PopHerkunftUnklar, PopHerkunftUnklarBegruendung, PopBekanntSeit, PopXKoord, PopYKoord, PopGuid, MutWann, MutWer, ApArtId)';
+    sql += ' SELECT pop.PopNr, pop.PopName, pop.PopHerkunft, pop.PopHerkunftUnklar, pop.PopHerkunftUnklarBegruendung, pop.PopBekanntSeit, pop.PopXKoord, pop.PopYKoord, pop.PopGuid, "' + date + '", "' + user + '", ' + apId;
+    sql += ' FROM pop';
+    sql += ' WHERE pop.PopId=' + popId;
     connection.query(
         sql,
         function (err, data) {

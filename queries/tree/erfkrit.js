@@ -43,7 +43,7 @@ module.exports = function (request, reply) {
     var apId = escapeStringForSql(request.params.apId);
 
     connection.query(
-        'SELECT ErfkritId, ApArtId, BeurteilTxt, ErfkritTxt, BeurteilOrd FROM tblErfKrit LEFT JOIN domApErfKrit ON ErfkritErreichungsgrad = BeurteilId where ApArtId = ' + apId + ' ORDER BY BeurteilOrd',
+        'SELECT ErfkritId, ApArtId, BeurteilTxt, ErfkritTxt, BeurteilOrd FROM erfkrit LEFT JOIN ap_erfkrit_werte ON ErfkritErreichungsgrad = BeurteilId where ApArtId = ' + apId + ' ORDER BY BeurteilOrd',
         function (err, data) {
             var node = {};
 

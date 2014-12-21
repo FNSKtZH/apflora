@@ -13,7 +13,7 @@ var mysql      = require('mysql'),
 
 module.exports = function (request, callback) {
     connection.query(
-        'SELECT AdrId AS id, AdrName FROM tblAdresse ORDER BY AdrName',
+        'SELECT AdrId AS id, AdrName FROM adresse ORDER BY AdrName',
         function (err, data) {
             callback(err, data);
         }

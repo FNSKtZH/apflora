@@ -42,7 +42,7 @@ module.exports = function (apId, apBerId) {
     // Daten für die jber aus der DB holen
     $.ajax({
         type: 'get',
-        url: '/api/v1/apflora/tabelle=tblJBer/feld=JBerId/wertNumber=' + localStorage.jberId
+        url: '/api/v1/apflora/tabelle=apber/feld=JBerId/wertNumber=' + localStorage.jberId
     }).done(function (data) {
         // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
         if (data && data[0]) {

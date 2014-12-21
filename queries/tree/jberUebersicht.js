@@ -14,7 +14,7 @@ var _      = require('underscore'),
 
 module.exports = function (JBerJahr) {
     connection.query(
-        'SELECT JbuJahr FROM tblJBerUebersicht WHERE JbuJahr=' + JBerJahr,
+        'SELECT JbuJahr FROM apberuebersicht WHERE JbuJahr=' + JBerJahr,
         function (err, data) {
             var node      = {},
                 nodeArray = [];

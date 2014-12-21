@@ -18,7 +18,7 @@ module.exports = function (request, callback) {
         Y    = escapeStringForSql(request.params.Y);
 
     connection.query(
-        'SELECT TPopId, TPopFlurname, SQRT((' + X + '-TPopXKoord)*(' + X + '-TPopXKoord)+(' + Y + '-TPopYKoord)*(' + Y + '-TPopYKoord)) AS DistZuTPop FROM tblPop INNER JOIN tblTPop ON tblPop.PopId = tblTPop.PopId WHERE ApArtId = ' + apId + ' AND TPopXKoord IS NOT NULL AND TPopYKoord IS NOT NULL ORDER BY DistzuTPop LIMIT 1',
+        'SELECT TPopId, TPopFlurname, SQRT((' + X + '-TPopXKoord)*(' + X + '-TPopXKoord)+(' + Y + '-TPopYKoord)*(' + Y + '-TPopYKoord)) AS DistZuTPop FROM pop INNER JOIN tpop ON pop.PopId = tpop.PopId WHERE ApArtId = ' + apId + ' AND TPopXKoord IS NOT NULL AND TPopYKoord IS NOT NULL ORDER BY DistzuTPop LIMIT 1',
         function (err, data) {
             callback(err, data);
         }

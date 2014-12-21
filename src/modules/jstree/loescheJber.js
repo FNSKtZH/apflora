@@ -36,7 +36,7 @@ module.exports = function (aktiverNode, parentNode) {
                 window.apf.deleted.typ = "jber";
                 $.ajax({
                     type: 'delete',
-                    url: 'api/v1/apflora/tabelle=tblJBer/tabelleIdFeld=JBerId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr("id"))
+                    url: 'api/v1/apflora/tabelle=apber/tabelleIdFeld=JBerId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr("id"))
                 }).done(function () {
                     delete localStorage.jberId;
                     delete window.apf.jber;

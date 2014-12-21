@@ -8,13 +8,13 @@ var mysql      = require('mysql'),
         host:     'localhost',
         user:     config.db.userName,
         password: config.db.passWord,
-        database: 'apfloraBeob'
+        database: 'apflora_beob'
     });
 
 module.exports = function (request, callback) {
     // Artname muss 'label' heissen, sonst funktioniert jquery ui autocomplete nicht
     connection.query(
-        "SELECT TaxonomieId AS id, IF(Status NOT LIKE 'akzeptierter Name', CONCAT(Artname, ' (', Status, ')'), Artname) AS label FROM apfloraBeob.ArtenDb_Arteigenschaften ORDER BY Artname",
+        "SELECT TaxonomieId AS id, IF(Status NOT LIKE 'akzeptierter Name', CONCAT(Artname, ' (', Status, ')'), Artname) AS label FROM apflora_beob.adb_eigenschaften ORDER BY Artname",
         function (err, data) {
             callback(err, data);
         }

@@ -13,7 +13,7 @@ var mysql      = require('mysql'),
 
 module.exports = function (request, callback) {
     connection.query(
-        'SELECT DomainCode, DomainTxt FROM domTPopKontrIdBiotUebereinst ORDER BY DomainOrd',
+        'SELECT DomainCode, DomainTxt FROM tpopkontr_idbiotuebereinst_werte ORDER BY DomainOrd',
         function (err, data) {
             callback(err, data);
         }
