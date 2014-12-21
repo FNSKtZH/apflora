@@ -1,17 +1,16 @@
 DROP TRIGGER IF EXISTS newguidtpf;
-CREATE TRIGGER newguidtpf
-  BEFORE INSERT
-  ON tblTPopKontr
-  FOR EACH ROW
-  set new.TPopKontrGuid = UUID();
+DROP TRIGGER IF EXISTS newguid;
 
-/*geht nicht, weil mySql pro Tabelle in dieser Version nur einen Trigger zulässt
-DROP TRIGGER IF EXISTS newguidtpfkzeitguid;
-CREATE TRIGGER newguidtpfkzeitguid
+DELIMITER $$
+CREATE TRIGGER newguid
   BEFORE INSERT
   ON tblTPopKontr
-  FOR EACH ROW
-  set new.ZeitGuid = UUID();*/
+FOR EACH ROW
+BEGIN
+  set new.TPopKontrGuid = UUID();
+  set new.ZeitGuid = UUID();
+END $$
+DELIMITER ;
   
 DROP TRIGGER IF EXISTS newguidtpm;
 CREATE TRIGGER newguidtpm
