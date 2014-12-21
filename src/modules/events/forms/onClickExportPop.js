@@ -15,9 +15,9 @@ module.exports = function () {
                 popIdListe += ',';
             }
         });
-        downloadFileFromViewWehreIdIn('vPop', 'PopId', popIdListe, 'Populationen', 'csv');
+        downloadFileFromViewWehreIdIn('v_pop', 'PopId', popIdListe, 'Populationen', 'csv');
     } else {
-        downloadFileFromView('vPop', 'Populationen');
+        downloadFileFromView('v_pop', 'Populationen');
     }
     return false; // this is critical to stop the click event which will trigger a normal file download!
 };

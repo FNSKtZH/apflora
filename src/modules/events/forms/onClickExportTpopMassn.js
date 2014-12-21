@@ -15,9 +15,9 @@ module.exports = function () {
                 tpopIdListe += ',';
             }
         });
-        downloadFileFromViewWehreIdIn('vMassn', 'TPop ID', tpopIdListe, 'Massnahmen', 'csv');
+        downloadFileFromViewWehreIdIn('v_massn', 'TPop ID', tpopIdListe, 'Massnahmen', 'csv');
     } else {
-        downloadFileFromView('vMassn', 'Massnahmen');
+        downloadFileFromView('v_massn', 'Massnahmen');
     }
     return false; // this is critical to stop the click event which will trigger a normal file download!
 };

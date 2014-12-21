@@ -522,12 +522,12 @@ server.route({
 
         exportView(request, function (err, data) {
             switch (view) {
-            case 'vPopFuerKml':
-            case 'vPopFuerKmlNamen':
+            case 'v_pop_kml':
+            case 'v_pop_kmlnamen':
                 kml = getKmlForPop(data);
                 break;
-            case 'vTPopFuerKml':
-            case 'vTPopFuerKmlNamen':
+            case 'v_tpop_kml':
+            case 'v_tpop_kmlnamen':
                 kml = getKmlForTpop(data);
                 break;
             }

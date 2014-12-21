@@ -2052,7 +2052,7 @@
                         <a name="ProgrammArt"></a>
                         <h2 class="borderTop">Programm / Art</h2>
                         <div class="exportAbschnittExporte">
-                            <button id="exportAp" class="export" view="vProgramme" filename="Programme">Programme</button><br>
+                            <button id="exportAp" class="export" view="v_ap" filename="Programme">Programme</button><br>
                             <button id="exportApOhnePop" class="export" view="v_ap_ohnepop" filename="ProgrammeOhnePopulationen">Programme ohne Populationen</button><br><br>
 
                             <button id="exportApAnzMassn" class="export" view="v_ap_anzmassn" filename="ProgrammeAnzahlMassnahmen">Anzahl Massnahmen pro Programm</button><br>
@@ -2063,7 +2063,7 @@
 
                             <button id="exportApziel" class="export" view="v_ziel" filename="ApZiele">Ziele</button><br><br>
 
-                            <button id="exportZielber" class="export" view="vZielBer" filename="Zielberichte">Ziel-Berichte</button><br><br>
+                            <button id="exportZielber" class="export" view="v_zielber" filename="Zielberichte">Ziel-Berichte</button><br><br>
 
                             <button id="exportBer" class="export" view="v_ber" filename="Berichte">Berichte</button><br><br>
 
@@ -2079,18 +2079,18 @@
                         <a name="Populationen"></a>
                         <h2 class="borderTop">Populationen</h2>
                         <div class="exportAbschnittExporte">
-                            <button id="exportPop" class="exportPop export" view="vPop" filename="Populationen">Populationen</button><br>
-                            <button id="exportPopFuerKml" class="GoogleEarthButton export" view="vPopFuerKml" filename="ApFloraPopulationen" format="kml">Populationen für Google Earth<br>(beschriftet mit PopNr)</button><br>
-                            <button id="exportPopFuerKmlNamen" class="GoogleEarthButton export" view="vPopFuerKmlNamen" filename="PopulationenNachNamen" format="kml">Populationen für Google Earth<br>(beschriftet mit Artname, PopNr)</button><br>
-                            <button id="exportPopOhneTpop" class="export" view="vPopOhneTPop" filename="PopulationenOhneTeilpopulationen">Populationen ohne Teilpopulationen</button><br>
-                            <button id="exportPopVonApOhneStatus" class="export" view="vPopVonApOhneStatus" filename="PopulationenVonApArtenOhneStatus">Populationen von AP-Arten ohne "Status"</button><br>
-                            <button id="exportPopOhneKoord" class="export" view="vPopOhneKoord" filename="PopulationenOhneKoordinaten">Populationen ohne Koordinaten</button><br><br>
+                            <button id="exportPop" class="exportPop export" view="v_pop" filename="Populationen">Populationen</button><br>
+                            <button id="exportPopFuerKml" class="GoogleEarthButton export" view="v_pop_kml" filename="ApFloraPopulationen" format="kml">Populationen für Google Earth<br>(beschriftet mit PopNr)</button><br>
+                            <button id="exportPopFuerKmlNamen" class="GoogleEarthButton export" view="v_pop_kmlnamen" filename="PopulationenNachNamen" format="kml">Populationen für Google Earth<br>(beschriftet mit Artname, PopNr)</button><br>
+                            <button id="exportPopOhneTpop" class="export" view="v_pop_ohnetpop" filename="PopulationenOhneTeilpopulationen">Populationen ohne Teilpopulationen</button><br>
+                            <button id="exportPopVonApOhneStatus" class="export" view="v_pop_vonapohnestatus" filename="PopulationenVonApArtenOhneStatus">Populationen von AP-Arten ohne "Status"</button><br>
+                            <button id="exportPopOhneKoord" class="export" view="v_pop_ohnekoord" filename="PopulationenOhneKoordinaten">Populationen ohne Koordinaten</button><br><br>
 
-                            <button id="exportPopMitMassnberAnzMassn" class="export" view="vPopMassnberAnzMassn" filename="PopulationenAnzMassnProMassnber">Populationen mit Massnahmen-Berichten:<br>Anzahl Massnahmen im Berichtsjahr</button><br>
-                            <button id="exportPopAnzMassn" class="export" view="vPopAnzMassn" filename="PopulationenAnzahlMassnahmen">Anzahl Massnahmen pro Population</button><br>
-                            <button id="exportPopAnzKontr" class="export" view="vPopAnzKontr" filename="PopulationenAnzahlKontrollen">Anzahl Kontrollen pro Population</button><br><br>
+                            <button id="exportPopMitMassnberAnzMassn" class="export" view="v_popmassnber_anzmassn" filename="PopulationenAnzMassnProMassnber">Populationen mit Massnahmen-Berichten:<br>Anzahl Massnahmen im Berichtsjahr</button><br>
+                            <button id="exportPopAnzMassn" class="export" view="v_pop_anzmassn" filename="PopulationenAnzahlMassnahmen">Anzahl Massnahmen pro Population</button><br>
+                            <button id="exportPopAnzKontr" class="export" view="v_pop_anzkontr" filename="PopulationenAnzahlKontrollen">Anzahl Kontrollen pro Population</button><br><br>
 
-                            <button id="exportPopberMassnber" class="export" view="vPop_BerUndMassnBer" filename="PopulationenPopUndMassnBerichte">Populationen inkl. Populations- und Massnahmen-Berichte</button><br>
+                            <button id="exportPopberMassnber" class="export" view="v_pop_popberundmassnber" filename="PopulationenPopUndMassnBerichte">Populationen inkl. Populations- und Massnahmen-Berichte</button><br>
                         </div>
                         <br><a href="#top">&uArr;&nbsp;top</a>
                     </div>
@@ -2098,16 +2098,16 @@
                         <a name="Teilpopulationen"></a>
                         <h2 class="borderTop">Teilpopulationen</h2>
                         <div class="exportAbschnittExporte">
-                            <button id="exportTpop" class="exportTpop export" view="vTPop" filename="Teilpopulationen">Teilpopulationen</button><br>
-                            <button id="exportTpopFuerKml" class="export" view="vTPopFuerKml" filename="Teilpopulationen" format="kml">Teilpopulationen für Google Earth<br>(beschriftet mit PopNr/TPopNr)</button><br>
-                            <button id="exportTpopFuerKmlNamen" class="export" view="vTPopFuerKmlNamen" filename="TeilpopulationenNachNamen" format="kml">Teilpopulationen für Google Earth<br>(beschriftet mit Artname, PopNr/TPopNr)</button><br>
-                            <button id="exportTpopOhneBekanntSeit" class="export" view="vTPopOhneBekanntSeit" filename="TeilpopulationenVonApArtenOhneBekanntSeit">Teilpopulationen von AP-Arten<br>ohne "Bekannt seit"</button><br><br>
+                            <button id="exportTpop" class="exportTpop export" view="v_tpop" filename="Teilpopulationen">Teilpopulationen</button><br>
+                            <button id="exportTpopFuerKml" class="export" view="v_tpop_kml" filename="Teilpopulationen" format="kml">Teilpopulationen für Google Earth<br>(beschriftet mit PopNr/TPopNr)</button><br>
+                            <button id="exportTpopFuerKmlNamen" class="export" view="v_tpop_kmlnamen" filename="TeilpopulationenNachNamen" format="kml">Teilpopulationen für Google Earth<br>(beschriftet mit Artname, PopNr/TPopNr)</button><br>
+                            <button id="exportTpopOhneBekanntSeit" class="export" view="v_tpop_ohnebekanntseit" filename="TeilpopulationenVonApArtenOhneBekanntSeit">Teilpopulationen von AP-Arten<br>ohne "Bekannt seit"</button><br><br>
 
-                            <button id="exportTpopAnzMassn" class="export" view="vTPopAnzMassn" filename="TeilpopulationenAnzahlMassnahmen">Anzahl Massnahmen pro Teilpopulation</button><br>
-                            <button id="exportTpopAnzKontrInklLetzte" class="export" view="vTPopAnzKontrInklLetzteKontr" filename="TeilpopulationenAnzahlKontrollenInklusiveLetzteKontrolle">Anzahl Kontrollen pro Teilpopulation<br>inklusive der letzten Kontrolle</button><br>
-                            <button id="exportTpopAnzKontrInklLetzteInklLetzteTPopBer" class="export" view="vTPopAnzKontrInklLetzteKontrUndLetzterTPopBer" filename="TeilpopulationenAnzKontrInklusiveLetzteKontrUndLetztenTPopBericht">Anzahl Kontrollen pro Teilpopulation<br>inklusive der letzten Kontrolle<br>und dem letzten Teilpopulationsbericht</button><br><br>
+                            <button id="exportTpopAnzMassn" class="export" view="v_tpop_anzmassn" filename="TeilpopulationenAnzahlMassnahmen">Anzahl Massnahmen pro Teilpopulation</button><br>
+                            <button id="exportTpopAnzKontrInklLetzte" class="export" view="v_tpop_anzkontrinklletzter" filename="TeilpopulationenAnzahlKontrollenInklusiveLetzteKontrolle">Anzahl Kontrollen pro Teilpopulation<br>inklusive der letzten Kontrolle</button><br>
+                            <button id="exportTpopAnzKontrInklLetzteInklLetzteTPopBer" class="export" view="v_tpop_anzkontrinklletzterundletztertpopber" filename="TeilpopulationenAnzKontrInklusiveLetzteKontrUndLetztenTPopBericht">Anzahl Kontrollen pro Teilpopulation<br>inklusive der letzten Kontrolle<br>und dem letzten Teilpopulationsbericht</button><br><br>
 
-                            <button id="exportTpopberMassnber" class="export" view="vTPop_BerUndMassnBer" filename="TeilpopulationenTPopUndMassnBerichte">Teilpopulationen inklusive Teilpopulations- und Massnahmen-Berichten</button><br>
+                            <button id="exportTpopberMassnber" class="export" view="v_tpop_popberundmassnber" filename="TeilpopulationenTPopUndMassnBerichte">Teilpopulationen inklusive Teilpopulations- und Massnahmen-Berichten</button><br>
                         </div>
                         <br><a href="#top">&uArr;&nbsp;top</a>
                     </div>
@@ -2115,8 +2115,8 @@
                         <a name="Kontrollen"></a>
                         <h2 class="borderTop">Kontrollen</h2>
                         <div class="exportAbschnittExporte">
-                            <button id="exportKontr" class="exportKontr export" view="vKontr" filename="Kontrollen">Kontrollen</button><br>
-                            <button id="exportKontrAnzProZaehleinheit" class="export" title="Die Abfrage fasst pro Kontrolle die Informationen über Zähleinheiten zusammen.<br><br>Was in 1 bis drei Trippel-Spalten (Zähleinheiten) erfasst war, wird in nur noch einer Trippel-Spalte in 1 bis 3 Zeilen dargestellt.<br><br>Das Praktische ist: Einheit, Methode und Anzahl sind nun immer in derselben Spalte.<br><br>So lassen sich diese drei Informationen einfach auswerten (z.B. Summen pro Zähleinheit ermitteln)" view="vKontrAnzProZaehleinheit" filename="KontrollenAnzahlProZaehleinheit">Kontrollen: Anzahl pro Zähleinheit</button><br>
+                            <button id="exportKontr" class="exportKontr export" view="v_tpopkontr" filename="Kontrollen">Kontrollen</button><br>
+                            <button id="exportKontrAnzProZaehleinheit" class="export" title="Die Abfrage fasst pro Kontrolle die Informationen über Zähleinheiten zusammen.<br><br>Was in 1 bis drei Trippel-Spalten (Zähleinheiten) erfasst war, wird in nur noch einer Trippel-Spalte in 1 bis 3 Zeilen dargestellt.<br><br>Das Praktische ist: Einheit, Methode und Anzahl sind nun immer in derselben Spalte.<br><br>So lassen sich diese drei Informationen einfach auswerten (z.B. Summen pro Zähleinheit ermitteln)" view="v_kontrzaehl_anzproeinheit" filename="KontrollenAnzahlProZaehleinheit">Kontrollen: Anzahl pro Zähleinheit</button><br>
                         </div>
                         <br><a href="#top">&uArr;&nbsp;top</a>
                     </div>
@@ -2124,7 +2124,7 @@
                         <a name="Massnahmen"></a>
                         <h2 class="borderTop">Massnahmen</h2>
                         <div class="exportAbschnittExporte">
-                            <button id="exportMassn" class="exportMassn export" view="vMassn" filename="Massnahmen">Massnahmen</button><br>
+                            <button id="exportMassn" class="exportMassn export" view="v_massn" filename="Massnahmen">Massnahmen</button><br>
                         </div>
                         <br><a href="#top">&uArr;&nbsp;top</a>
                     </div>
