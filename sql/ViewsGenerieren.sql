@@ -156,7 +156,7 @@ ORDER BY apfloraBeob.ArtenDb_Arteigenschaften.Artname, apflora.tblPop.PopNr, apf
 CREATE OR REPLACE VIEW vPopVonApOhneStatus AS 
 SELECT apfloraBeob.ArtenDb_Arteigenschaften.Artname AS Art, apflora.tblAp.ApStatus AS "Bearbeitungsstand AP", apflora.tblPop.PopNr, apflora.tblPop.PopName, apflora.tblPop.PopHerkunft AS Status
 FROM apfloraBeob.ArtenDb_Arteigenschaften INNER JOIN (apflora.tblAp INNER JOIN apflora.tblPop ON apflora.tblAp.ApArtId = apflora.tblPop.ApArtId) ON apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId = apflora.tblAp.ApArtId
-WHERE ((apflora.tblAp.ApStatus=3) AND (apflora.tblPop.PopHerkunft Is Null))
+WHERE apflora.tblAp.ApStatus=3 AND apflora.tblPop.PopHerkunft Is Null
 ORDER BY apfloraBeob.ArtenDb_Arteigenschaften.Artname, apflora.tblPop.PopNr;
 
 CREATE OR REPLACE VIEW vBerJbZielBer AS 
@@ -308,19 +308,19 @@ ORDER BY apflora.domApErfKrit.BeurteilTxt, apflora.tblErfKrit.ErfkritTxt;
 CREATE OR REPLACE VIEW vAuswApArtenAnzMassnInJahr0 AS
 SELECT apflora.tblAp.ApArtId, apfloraBeob.ArtenDb_Arteigenschaften.Artname, apflora.tblTPopMassn.TPopMassnId, apflora.tblTPopMassn.TPopMassnJahr
 FROM (apflora.tblAp INNER JOIN apfloraBeob.ArtenDb_Arteigenschaften ON apflora.tblAp.ApArtId = apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId) INNER JOIN ((apflora.tblPop INNER JOIN apflora.tblTPop ON apflora.tblPop.PopId = apflora.tblTPop.PopId) INNER JOIN apflora.tblTPopMassn ON apflora.tblTPop.TPopId = apflora.tblTPopMassn.TPopId) ON apflora.tblAp.ApArtId = apflora.tblPop.ApArtId
-WHERE (((apflora.tblAp.ApStatus) Between 1 And 3))
+WHERE apflora.tblAp.ApStatus Between 1 And 3
 GROUP BY apflora.tblAp.ApArtId, apfloraBeob.ArtenDb_Arteigenschaften.Artname, apflora.tblTPopMassn.TPopMassnId, apflora.tblTPopMassn.TPopMassnJahr;
 
 CREATE OR REPLACE VIEW vAuswApArtenBearbMassnInJahr0 AS 
 SELECT apflora.tblAdresse.AdrName, apfloraBeob.ArtenDb_Arteigenschaften.Artname AS Art, apflora.tblPop.PopNr, apflora.tblPop.PopName, apflora.tblTPop.TPopNr, apflora.tblTPop.TPopGemeinde, apflora.tblTPop.TPopFlurname, apflora.tblTPopMassn.TPopMassnJahr, domTPopMassnTyp.MassnTypTxt AS TPopMassnTyp, apflora.tblTPopMassn.TPopMassnTxt, apflora.tblTPopMassn.TPopMassnDatum, apflora.tblTPopMassn.TPopMassnBemTxt, apflora.tblTPopMassn.TPopMassnPlan, apflora.tblTPopMassn.TPopMassnPlanBez, apflora.tblTPopMassn.TPopMassnFlaeche, apflora.tblTPopMassn.TPopMassnMarkierung, apflora.tblTPopMassn.TPopMassnAnsiedAnzTriebe, apflora.tblTPopMassn.TPopMassnAnsiedAnzPfl, apflora.tblTPopMassn.TPopMassnAnzPflanzstellen, apflora.tblTPopMassn.TPopMassnAnsiedWirtspfl, apflora.tblTPopMassn.TPopMassnAnsiedHerkunftPop, apflora.tblTPopMassn.TPopMassnAnsiedDatSamm, apflora.tblTPopMassn.TPopMassnAnsiedForm, apflora.tblTPopMassn.TPopMassnAnsiedPflanzanordnung
 FROM (apfloraBeob.ArtenDb_Arteigenschaften INNER JOIN apflora.tblAp ON apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId = apflora.tblAp.ApArtId) INNER JOIN ((apflora.tblPop INNER JOIN apflora.tblTPop ON apflora.tblPop.PopId = apflora.tblTPop.PopId) INNER JOIN ((apflora.tblTPopMassn LEFT JOIN apflora.tblAdresse ON apflora.tblTPopMassn.TPopMassnBearb = apflora.tblAdresse.AdrId) INNER JOIN apflora.domTPopMassnTyp ON apflora.tblTPopMassn.TPopMassnTyp = domTPopMassnTyp.MassnTypCode) ON apflora.tblTPop.TPopId = apflora.tblTPopMassn.TPopId) ON apflora.tblAp.ApArtId = apflora.tblPop.ApArtId
-WHERE (((apflora.tblAp.ApStatus) Between 1 And 3))
+WHERE apflora.tblAp.ApStatus Between 1 And 3
 ORDER BY apflora.tblAdresse.AdrName, apfloraBeob.ArtenDb_Arteigenschaften.Artname, apflora.tblPop.PopNr, apflora.tblPop.PopName, apflora.tblTPop.TPopNr, apflora.tblTPop.TPopGemeinde, apflora.tblTPop.TPopFlurname;
 
 CREATE OR REPLACE VIEW vAuswApArtenMitMassnInJahr0 AS 
 SELECT apfloraBeob.ArtenDb_Arteigenschaften.Artname AS Art, apflora.tblPop.PopNr, apflora.tblPop.PopName, apflora.tblTPop.TPopNr, apflora.tblTPop.TPopGemeinde, apflora.tblTPop.TPopFlurname, apflora.tblTPopMassn.TPopMassnJahr, domTPopMassnTyp.MassnTypTxt AS TPopMassnTyp, apflora.tblTPopMassn.TPopMassnTxt, apflora.tblTPopMassn.TPopMassnDatum, apflora.tblAdresse.AdrName AS TPopMassnBearb, apflora.tblTPopMassn.TPopMassnBemTxt, apflora.tblTPopMassn.TPopMassnPlan, apflora.tblTPopMassn.TPopMassnPlanBez, apflora.tblTPopMassn.TPopMassnFlaeche, apflora.tblTPopMassn.TPopMassnMarkierung, apflora.tblTPopMassn.TPopMassnAnsiedAnzTriebe, apflora.tblTPopMassn.TPopMassnAnsiedAnzPfl, apflora.tblTPopMassn.TPopMassnAnzPflanzstellen, apflora.tblTPopMassn.TPopMassnAnsiedWirtspfl, apflora.tblTPopMassn.TPopMassnAnsiedHerkunftPop, apflora.tblTPopMassn.TPopMassnAnsiedDatSamm, apflora.tblTPopMassn.TPopMassnAnsiedForm, apflora.tblTPopMassn.TPopMassnAnsiedPflanzanordnung
 FROM (apfloraBeob.ArtenDb_Arteigenschaften INNER JOIN apflora.tblAp ON apfloraBeob.ArtenDb_Arteigenschaften.TaxonomieId = apflora.tblAp.ApArtId) INNER JOIN ((apflora.tblPop INNER JOIN apflora.tblTPop ON apflora.tblPop.PopId = apflora.tblTPop.PopId) INNER JOIN ((apflora.tblTPopMassn INNER JOIN apflora.domTPopMassnTyp ON apflora.tblTPopMassn.TPopMassnTyp = domTPopMassnTyp.MassnTypCode) LEFT JOIN apflora.tblAdresse ON apflora.tblTPopMassn.TPopMassnBearb = apflora.tblAdresse.AdrId) ON apflora.tblTPop.TPopId = apflora.tblTPopMassn.TPopId) ON apflora.tblAp.ApArtId = apflora.tblPop.ApArtId
-WHERE (((apflora.tblAp.ApStatus) Between 1 And 3))
+WHERE apflora.tblAp.ApStatus Between 1 And 3
 ORDER BY apfloraBeob.ArtenDb_Arteigenschaften.Artname, apflora.tblPop.PopNr, apflora.tblPop.PopName, apflora.tblTPop.TPopNr, apflora.tblTPop.TPopGemeinde, apflora.tblTPop.TPopFlurname;
 
 CREATE OR REPLACE VIEW vAuswArtPopTPopMassnBerFuerAktArt0 AS
