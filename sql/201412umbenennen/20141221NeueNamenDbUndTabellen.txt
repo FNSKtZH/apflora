@@ -116,11 +116,6 @@ vJbA3rTPop                          >   v_apber_a3rtpop
 vJbA4lPop                           >   v_apber_a4lpop
 vJbA4lTPop                          >   v_apber_a4ltpop
 vJbA5lPop                           >   v_apber_a5lpop
-
-
-
-
-
 vJbA5lTPop                          >   v_apber_a5ltpop
 vJbA8lPop                           >   v_apber_a8lpop
 vJbA8lTPop                          >   v_apber_a8ltpop
@@ -173,6 +168,9 @@ vJbUebMa                            >   v_apber_uebma
 vJbUebMe                            >   v_apber_uebme
 vJbUebNe                            >   v_apber_uebne
 vJbUebNichtBeurteilt                >   v_apber_uebnb
+
+
+
 vJbUebNichtBeurteilt0               >   v_apber_uebnb0
 vJbUebNichtBeurteilt00              >   v_apber_uebnb00
 vJbUebNichtBeurteilt000             >   v_apber_uebnb000
