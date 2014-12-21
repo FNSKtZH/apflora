@@ -168,15 +168,15 @@ vJbUebMa                            >   v_apber_uebma
 vJbUebMe                            >   v_apber_uebme
 vJbUebNe                            >   v_apber_uebne
 vJbUebNichtBeurteilt                >   v_apber_uebnb
-
-
-
 vJbUebNichtBeurteilt0               >   v_apber_uebnb0
 vJbUebNichtBeurteilt00              >   v_apber_uebnb00
 vJbUebNichtBeurteilt000             >   v_apber_uebnb000
 vJbUebSe                            >   v_apber_uebse
 vJbUebUn                            >   v_apber_uebun
 vJbUebWe                            >   v_apber_uebwe
+
+
+
 vKontr                              >   v_tpopkontr
 vKontrAnzProZaehleinheit            >   v_kontrzaehl_anzproeinheit
 vKontrApArtTPopOhneStatus           >   v_tpop_mitapaberohnestatus
