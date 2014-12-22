@@ -81,7 +81,7 @@ vAuswPopBerAngezArtBestJahr0        >   v_popber_angezapbestjahr0
 vBeob                               >   v_beob
 vBeobZuordnungInfospeziesArtAnzMut  >   v_beobzuordnung_infospeziesapanzmut
 vBer                                >   v_ber
-vBerJb                              >   v_apber
+vBerJb                              >   v_apber_injahr
 vBerJbArtD                          >   v_apber_artd
 vBerJbZiel                          >   v_abper_ziel
 vBerJbZielBer                       >   v_apber_zielber
