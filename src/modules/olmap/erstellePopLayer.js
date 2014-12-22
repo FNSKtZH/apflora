@@ -9,7 +9,6 @@ var $                                   = require('jquery'),
     _                                   = require('underscore'),
     ol                                  = require('ol'),
     stylePop                            = require('./stylePop'),
-    erstelleContentFuerPop              = require('./erstelleContentFuerPop'),
     popContent                          = require('../../templates/olmapPopupPop'),
     addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers'),
     pruefeObPopTpopGewaehltWurden       = require('./pruefeObPopTpopGewaehltWurden');
