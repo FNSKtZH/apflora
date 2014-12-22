@@ -7,9 +7,10 @@
 
 var $ = require('jquery');
 
-module.exports = function (formularname, id) {
+module.exports = function (formularname, id, statusZuordnung) {
     var $formularname = $('#' + formularname),
-        title;
+        title,
+        beobTyp;
 
     // id setzen
     localStorage[formularname + 'Id'] = id;
@@ -28,8 +29,12 @@ module.exports = function (formularname, id) {
         break;
     case 'beob':
         title = 'Beobachtung';
+        beobTyp = (isNaN(id) ? 'evab' : 'infospezies');
+        console.log('beobTyp: ', beobTyp);
+        console.log('id: ', id);
+        console.log('statusZuordnung: ', statusZuordnung);
         // formular initiieren, ohne anzuzeigen
-        require('./initiiereBeob')('beobNichtBeurteilt', id, 'nicht_beurteilt', true);
+        require('./initiiereBeob')(beobTyp, id, statusZuordnung, true);
         break;
     default:
         title = '';

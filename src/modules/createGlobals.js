@@ -49,6 +49,11 @@ module.exports = function () {
     };
 
     // wird in index.html benutzt
+    window.apf.oeffneBeob = function (beob) {
+        require('./oeffneBeob')(beob);
+    };
+
+    // wird in index.html benutzt
     window.apf.oeffneTPopBeobInNeuemTab = function (beobId) {
         require('./oeffneTPopBeobInNeuemTab')(beobId);
     };

@@ -8,7 +8,7 @@
 var $                                   = require('jquery'),
     _                                   = require('underscore'),
     ol                                  = require('ol'),
-    stylePop                            = require('./stylePop'),
+    styleBeob                           = require('./styleBeob'),
     beobContent                         = require('../../templates/olmapPopupBeob'),
     addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers'),
     pruefeObPopTpopGewaehltWurden       = require('./pruefeObPopTpopGewaehltWurden');
@@ -34,17 +34,22 @@ module.exports = function (beobArray, beobidMarkiert, visible) {
 
     _.each(beobArray, function (beob) {
         myName       = beob.DESC_LOCALITE || '(kein Name)';
+        if (beob.TPopId) {
+            beob.statusZuordnung = 'zugeordnet';
+        } else if (beob.beobNichtZuzuordnen) {
+            beob.statusZuordnung = 'nicht_zuzuordnen';
+        } else {
+            beob.statusZuordnung = 'nicht_beurteilt';
+        }
         popupContent = beobContent(beob);
 
         // tooltip bzw. label vorbereiten: nullwerte ausblenden
-        myLabel = (beob.Datum ? beob.Datum.toString() : '?');
+        beob.Datum = (beob.Datum ? beob.Datum.toString() : beob.A_NOTE.toString());
 
         // marker erstellen...
         marker = new ol.Feature({
             geometry: new ol.geom.Point([beob.X, beob.Y]),
-            popNr:        myLabel,
             popName:      myName,
-            name:         myLabel, // noch benötigt? TODO: entfernen
             popupContent: popupContent,
             popupTitle:   myName,
             // Koordinaten werden gebraucht, damit das popup richtig platziert werden kann
@@ -71,7 +76,7 @@ module.exports = function (beobArray, beobidMarkiert, visible) {
             features: markers
         }),
         style: function (feature, resolution) {
-            return stylePop(feature, resolution);
+            return styleBeob(feature, resolution);
         }
     });
     beobLayer.set('visible', visible);

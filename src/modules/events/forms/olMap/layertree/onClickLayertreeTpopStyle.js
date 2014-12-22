@@ -6,10 +6,7 @@ var $         = require('jquery'),
 
 module.exports = function () {
     var layers = window.apf.olMap.map.getLayers().getArray(),
-        layer  = $('#olMapLayertreeTeilpopulationen').val(),
-        that   = this;
-
-    console.log('onClickLayertreeTpopStyle');
+        layer  = $('#olMapLayertreeTeilpopulationen').val();
 
     // style setzen
     layers[layer].setStyle(styleTPop);
