@@ -75,7 +75,8 @@ var _                                         = require('underscore'),
     zeigeBeobNichtBeurteiltUndTpopAufGmap     = require('./zeigeBeobNichtBeurteiltUndTpopAufGmap'),
     schneideBeobAus                           = require('./schneideBeobAus'),
     zeigeBeobNichtZuzuordnenAufGmap           = require('./zeigeBeobNichtZuzuordnenAufGmap'),
-    uebertrageKoordBeobZugeordnetAufTpop      = require('./uebertrageKoordBeobZugeordnetAufTpop');
+    uebertrageKoordBeobZugeordnetAufTpop      = require('./uebertrageKoordBeobZugeordnetAufTpop'),
+    beurteileBeobAufOlmap                     = require('./beurteileBeobAufOlmap');
 
 module.exports = function (node) {
     var items,
@@ -573,8 +574,8 @@ module.exports = function (node) {
                 "separator_before": true,
                 "icon":             "style/images/flora_icon_violett.png",
                 "action": function () {
-                    //zeigeBeobNichtBeurteiltUndTpopAufOlmap($(aktiverNode).attr("id"));
-                    melde('oops, dieses Feature wird noch entwickelt');
+                    beurteileBeobAufOlmap($(aktiverNode).attr("id"));
+                    //melde('oops, dieses Feature wird noch entwickelt');
                 }
             },
             "GoogleMaps": {

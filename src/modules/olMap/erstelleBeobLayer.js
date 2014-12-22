@@ -1,5 +1,5 @@
 // übernimmt drei Variablen: beobliste ist das Objekt mit den zugeordneten Beobachtungen
-// popidMarkiert der Array mit den ausgewählten Pop
+// beobidMarkiert der Array mit den ausgewählten Pop
 // visible: Ob die Ebene sichtbar geschaltet wird (oder bloss im Layertree verfügbar ist)
 
 /*jslint node: true, browser: true, nomen: true, todo: true */
@@ -9,12 +9,12 @@ var $                                   = require('jquery'),
     _                                   = require('underscore'),
     ol                                  = require('ol'),
     stylePop                            = require('./stylePop'),
-    erstelleContentFuerPop              = require('./erstelleContentFuerPop'),
+    beobContent                         = require('../../templates/olmapPopupBeob'),
     addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers'),
     pruefeObPopTpopGewaehltWurden       = require('./pruefeObPopTpopGewaehltWurden');
 
-module.exports = function (popliste, popidMarkiert, visible) {
-    var popLayerErstellt = $.Deferred(),
+module.exports = function (beobArray, beobidMarkiert, visible) {
+    var beobLayerErstellt = $.Deferred(),
         markers = [],
         marker,
         myLabel,
@@ -23,42 +23,44 @@ module.exports = function (popliste, popidMarkiert, visible) {
         popMitNrLayer,
         selectedFeatures;
 
-    if (window.apf.olMap.map && window.apf.olMap.map.olmapSelectInteraction && popidMarkiert) {
+    if (window.apf.olMap.map && window.apf.olMap.map.olmapSelectInteraction && beobidMarkiert) {
         selectedFeatures = window.apf.olMap.map.olmapSelectInteraction.getFeatures().getArray();
-    } else if (popidMarkiert) {
+    } else if (beobidMarkiert) {
         addSelectFeaturesInSelectableLayers();
         selectedFeatures = window.apf.olMap.map.olmapSelectInteraction.getFeatures().getArray();
     }
 
     visible = (visible === true);
 
-    _.each(popliste, function (pop) {
-        myName       = pop.PopName || '(kein Name)';
-        popupContent = erstelleContentFuerPop(pop);
+    console.log('beobArray: ', beobArray);
+
+    _.each(beobArray, function (beob) {
+        myName       = beob.PopName || '(kein Name)';
+        popupContent = beobContent(beob);
 
         // tooltip bzw. label vorbereiten: nullwerte ausblenden
-        myLabel = (pop.PopNr ? pop.PopNr.toString() : '?');
+        myLabel = (beob.PopNr ? beob.PopNr.toString() : '?');
 
         // marker erstellen...
         marker = new ol.Feature({
-            geometry: new ol.geom.Point([pop.PopXKoord, pop.PopYKoord]),
+            geometry: new ol.geom.Point([beob.PopXKoord, beob.PopYKoord]),
             popNr:        myLabel,
             popName:      myName,
             name:         myLabel, // noch benötigt? TODO: entfernen
             popupContent: popupContent,
             popupTitle:   myName,
             // Koordinaten werden gebraucht, damit das popup richtig platziert werden kann
-            xkoord:       pop.PopXKoord,
-            ykoord:       pop.PopYKoord,
-            myTyp:        'pop',
-            myId:         pop.PopId
+            xkoord:       beob.PopXKoord,
+            ykoord:       beob.PopYKoord,
+            myTyp:        'beob',
+            myId:         beob.PopId
         });
 
         // marker in Array speichern
         markers.push(marker);
 
         // markierte in window.apf.olMap.map.olmapSelectInteraction ergänzen
-        if (popidMarkiert && popidMarkiert.indexOf(pop.PopId) !== -1) {
+        if (beobidMarkiert && beobidMarkiert.indexOf(beob.PopId) !== -1) {
             selectedFeatures.push(marker);
         }
     });
@@ -89,6 +91,6 @@ module.exports = function (popliste, popidMarkiert, visible) {
             .button("refresh");
     }
 
-    popLayerErstellt.resolve();
-    return popLayerErstellt.promise();
+    beobLayerErstellt.resolve();
+    return beobLayerErstellt.promise();
 };

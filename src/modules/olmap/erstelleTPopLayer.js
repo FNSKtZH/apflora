@@ -14,7 +14,7 @@ var $                                   = require('jquery'),
     addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers'),
     pruefeObPopTpopGewaehltWurden       = require('./pruefeObPopTpopGewaehltWurden');
 
-module.exports = function (tpopListe, tpopidMarkiert, visible) {
+module.exports = function (tpopListe, tpopidMarkiert, visible, beobZuordnen) {
     var tpopLayerErstellt = $.Deferred(),
         tpopLayer,
         markers = [],
@@ -59,7 +59,7 @@ module.exports = function (tpopListe, tpopidMarkiert, visible) {
     // ...und der Karte hinzufügen
     window.apf.olMap.map.addLayer(tpopLayer);
 
-    if (selectedFeatures && selectedFeatures.length > 0) {
+    if (selectedFeatures && selectedFeatures.length > 0 && !beobZuordnen) {
         setTimeout(function () {
             pruefeObPopTpopGewaehltWurden();
         }, 100);

@@ -70,6 +70,7 @@ var _                                 = require('underscore'),
     queryBeobNaechsteTpop             = require('./queries/beobNaechsteTpop'),
     queryBeobDistzutpopInfospezies    = require('./queries/beobDistzutpopInfospezies'),
     queryBeobKarte                    = require('./queries/beobKarte'),
+    queryBeobZuordnen                 = require('./queries/beobZuordnen'),
     queryApKarte                      = require('./queries/apKarte'),
     queryPopKarte                     = require('./queries/popKarte'),
     queryPopKarteAlle                 = require('./queries/popKarteAlle'),
@@ -400,6 +401,12 @@ server.route({
     method: 'GET',
     path: '/api/v1/beobKarte/apId={apId?}/tpopId={tpopId?}/beobId={beobId?}/nichtZuzuordnen={nichtZuzuordnen?}',
     handler: queryBeobKarte
+});
+
+server.route({
+    method: 'GET',
+    path: '/api/v1/beobZuordnen/apId={apId}',
+    handler: queryBeobZuordnen
 });
 
 server.route({

@@ -10,6 +10,7 @@ var $                                   = require('jquery'),
     ol                                  = require('ol'),
     stylePop                            = require('./stylePop'),
     erstelleContentFuerPop              = require('./erstelleContentFuerPop'),
+    popContent                          = require('../../templates/olmapPopupPop'),
     addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers'),
     pruefeObPopTpopGewaehltWurden       = require('./pruefeObPopTpopGewaehltWurden');
 
@@ -34,7 +35,7 @@ module.exports = function (popliste, popidMarkiert, visible) {
 
     _.each(popliste, function (pop) {
         myName       = pop.PopName || '(kein Name)';
-        popupContent = erstelleContentFuerPop(pop);
+        popupContent = popContent(pop);
 
         // tooltip bzw. label vorbereiten: nullwerte ausblenden
         myLabel = (pop.PopNr ? pop.PopNr.toString() : '?');
