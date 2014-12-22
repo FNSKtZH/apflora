@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = function () {
-    window.open('etc/Beziehungen.pdf');
+    window.open('etc/beziehungen.png');
 };
