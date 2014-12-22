@@ -6,7 +6,7 @@ var $                                 = require('jquery'),
     ol                                = require('ol'),
     styleTPop                         = require('./styleTPop'),
     aktualisiereKoordinatenVonTPop    = require('../aktualisiereKoordinatenVonTPop'),
-    erstelleContentFuerTPop           = require('./erstelleContentFuerTPop'),
+    tpopContent                       = require('../../templates/olmapPopupTpop'),
     entferneModifyInteractionFuerTpop = require('./entferneModifyInteractionFuerTpop');
 
 module.exports = function (modifySource) {
@@ -63,7 +63,7 @@ module.exports = function (modifySource) {
                     // abhängige Eigenschaften aktualisieren
                     aktuellesFeature.set('xkoord', window.apf.tpop.TPopXKoord);
                     aktuellesFeature.set('ykoord', window.apf.tpop.TPopYKoord);
-                    aktuellesFeature.set('popupContent', erstelleContentFuerTPop(window.apf.tpop));
+                    aktuellesFeature.set('popupContent', tpopContent(window.apf.tpop));
                 });
             }
         }, 200);

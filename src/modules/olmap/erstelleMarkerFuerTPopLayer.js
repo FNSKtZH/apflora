@@ -2,7 +2,7 @@
 'use strict';
 
 var ol                      = require('ol'),
-    erstelleContentFuerTPop = require('./erstelleContentFuerTPop'),
+    tpopContent             = require('../../templates/olmapPopupTpop'),
     erstelleTPopNrLabel     = require('../erstelleTPopNrLabel');
 
 module.exports = function (tpop) {
@@ -10,10 +10,10 @@ module.exports = function (tpop) {
         geometry:      new ol.geom.Point([tpop.TPopXKoord, tpop.TPopYKoord]),
         tpopNr:        tpop.TPopNr,
         popNr:         tpop.PopNr,
-        tpopNrLabel: erstelleTPopNrLabel(tpop.PopNr, tpop.TPopNr),
-        tpopName:     tpop.TPopFlurname || '(kein Name)',
+        tpopNrLabel:   erstelleTPopNrLabel(tpop.PopNr, tpop.TPopNr),
+        tpopName:      tpop.TPopFlurname || '(kein Name)',
         name:          erstelleTPopNrLabel(tpop.PopNr, tpop.TPopNr),  // brauchts das noch? TODO: entfernen
-        popupContent:  erstelleContentFuerTPop(tpop),
+        popupContent:  tpopContent(tpop),
         popupTitle:    tpop.Artname,
         // koordinaten werden benötigt damit das popup am richtigen Ort verankert wird
         xkoord:        tpop.TPopXKoord,
