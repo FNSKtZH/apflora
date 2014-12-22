@@ -19,18 +19,75 @@
 -- Current Database: `apflora`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `apflora` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `apflora` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `apflora`;
 
 --
--- Table structure for table `domApBearbeitungsstand`
+-- Table structure for table `_variable`
 --
 
-DROP TABLE IF EXISTS `domApBearbeitungsstand`;
+DROP TABLE IF EXISTS `_variable`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domApBearbeitungsstand` (
+CREATE TABLE `_variable` (
+  `KonstId` int(10) NOT NULL AUTO_INCREMENT,
+  `JBerJahr` smallint(5) DEFAULT NULL COMMENT 'Von Access aus ein Berichtsjahr wählen, um die Erstellung des Jahresberichts zu beschleunigen',
+  `ApArtId` int(10) DEFAULT NULL COMMENT 'Von Access aus eine Art wählen, um views zu beschleunigen',
+  PRIMARY KEY (`KonstId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Hilfstabelle, um Werte von Access an Views zu übergeben';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `adresse`
+--
+
+DROP TABLE IF EXISTS `adresse`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `adresse` (
+  `AdrId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblAdresse"',
+  `AdrName` varchar(255) DEFAULT NULL COMMENT 'Vor- und Nachname',
+  `AdrAdresse` varchar(255) DEFAULT NULL COMMENT 'Strasse, PLZ und Ort',
+  `AdrTel` varchar(255) DEFAULT NULL COMMENT 'Telefonnummer',
+  `AdrEmail` varchar(255) DEFAULT NULL COMMENT 'Email',
+  `freiwErfko` int(10) DEFAULT NULL COMMENT '-1 = freiwillige(r) Kontrolleur(in)',
+  `MutWann` date DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geändert?',
+  `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
+  PRIMARY KEY (`AdrId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2130770352 DEFAULT CHARSET=utf8 COMMENT='Adressdaten';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ap`
+--
+
+DROP TABLE IF EXISTS `ap`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ap` (
+  `ApArtId` int(10) NOT NULL DEFAULT '0' COMMENT 'Primärschlüssel der Tabelle "tblAktionsplan". = SISF-Nr',
+  `ApStatus` int(10) DEFAULT NULL COMMENT 'In welchem Bearbeitungsstand befindet sich der AP?',
+  `ApJahr` smallint(5) DEFAULT NULL COMMENT 'Wann wurde mit der Umsetzung des Aktionsplans begonnen?',
+  `ApUmsetzung` int(10) DEFAULT NULL COMMENT 'In welchem Umsetzungsstand befindet sich der AP?',
+  `ApBearb` int(10) DEFAULT NULL COMMENT 'Verantwortliche(r) für die Art',
+  `ApArtwert` int(11) DEFAULT NULL COMMENT 'redundant aber erspart viele Abfragen. Wird aktualisiert, wenn alexande_beob.ArtenDb_Arteigenschaften aktualisiert wird',
+  `MutWann` date DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geändert?',
+  `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
+  PRIMARY KEY (`ApArtId`),
+  KEY `ApStatus` (`ApStatus`),
+  KEY `ApUmsetzung` (`ApUmsetzung`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Angaben zu Aktionsplänen';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ap_bearbstand_werte`
+--
+
+DROP TABLE IF EXISTS `ap_bearbstand_werte`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ap_bearbstand_werte` (
   `DomainCode` int(10) NOT NULL DEFAULT '0',
   `DomainTxt` varchar(50) DEFAULT NULL,
   `DomainOrd` smallint(5) DEFAULT NULL,
@@ -41,13 +98,30 @@ CREATE TABLE `domApBearbeitungsstand` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `domApErfKrit`
+-- Table structure for table `ap_erfbeurtkrit_werte`
 --
 
-DROP TABLE IF EXISTS `domApErfKrit`;
+DROP TABLE IF EXISTS `ap_erfbeurtkrit_werte`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domApErfKrit` (
+CREATE TABLE `ap_erfbeurtkrit_werte` (
+  `DomainCode` int(10) NOT NULL,
+  `DomainTxt` varchar(50) DEFAULT NULL,
+  `DomainOrd` smallint(5) DEFAULT NULL,
+  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
+  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
+  PRIMARY KEY (`DomainCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain: Kriterien fuer die Beurteilung des Erfolgs des APs';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ap_erfkrit_werte`
+--
+
+DROP TABLE IF EXISTS `ap_erfkrit_werte`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ap_erfkrit_werte` (
   `BeurteilId` int(10) NOT NULL AUTO_INCREMENT,
   `BeurteilTxt` varchar(50) DEFAULT NULL COMMENT 'Wie werden die durchgefuehrten Massnahmen beurteilt?',
   `BeurteilOrd` smallint(5) DEFAULT NULL,
@@ -58,13 +132,13 @@ CREATE TABLE `domApErfKrit` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `domApUmsetzung`
+-- Table structure for table `ap_umsetzung_werte`
 --
 
-DROP TABLE IF EXISTS `domApUmsetzung`;
+DROP TABLE IF EXISTS `ap_umsetzung_werte`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domApUmsetzung` (
+CREATE TABLE `ap_umsetzung_werte` (
   `DomainCode` int(10) NOT NULL,
   `DomainTxt` varchar(50) DEFAULT NULL,
   `DomainOrd` smallint(5) DEFAULT NULL,
@@ -75,295 +149,83 @@ CREATE TABLE `domApUmsetzung` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `domErfBeurtKrit`
+-- Table structure for table `apber`
 --
 
-DROP TABLE IF EXISTS `domErfBeurtKrit`;
+DROP TABLE IF EXISTS `apber`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domErfBeurtKrit` (
-  `DomainCode` int(10) NOT NULL,
-  `DomainTxt` varchar(50) DEFAULT NULL,
-  `DomainOrd` smallint(5) DEFAULT NULL,
-  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
-  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
-  PRIMARY KEY (`DomainCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain: Kriterien fuer die Beurteilung des Erfolgs des APs';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `domGemeinden`
---
-
-DROP TABLE IF EXISTS `domGemeinden`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domGemeinden` (
-  `BfsNr` int(11) NOT NULL DEFAULT '0',
-  `GmdName` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`BfsNr`),
-  KEY `GmdName` (`GmdName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain: Liste der Gemeinden des Kt. ZH';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `domPopEntwicklung`
---
-
-DROP TABLE IF EXISTS `domPopEntwicklung`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domPopEntwicklung` (
-  `EntwicklungId` int(10) NOT NULL AUTO_INCREMENT,
-  `EntwicklungTxt` varchar(60) DEFAULT NULL,
-  `EntwicklungOrd` smallint(5) DEFAULT NULL,
-  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
-  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
-  PRIMARY KEY (`EntwicklungId`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='Domain fuer die Populationsentwicklung';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `domPopHerkunft`
---
-
-DROP TABLE IF EXISTS `domPopHerkunft`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domPopHerkunft` (
-  `HerkunftId` int(10) NOT NULL AUTO_INCREMENT,
-  `HerkunftTxt` varchar(60) DEFAULT NULL COMMENT 'Beschreibung der Herkunft',
-  `HerkunftOrd` smallint(5) DEFAULT NULL,
-  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
-  `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
-  `ZdsfVorhanden` text NOT NULL COMMENT 'Wert im Feld Vorhandensein beim ZDSF',
-  `ZdsfHerkunft` text NOT NULL COMMENT 'Wert im Feld Herkunft beim ZDSF',
-  PRIMARY KEY (`HerkunftId`)
-) ENGINE=InnoDB AUTO_INCREMENT=301 DEFAULT CHARSET=utf8 COMMENT='Domain fuer die Charakterisierung der Population';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `domTPopApBerichtRelevant`
---
-
-DROP TABLE IF EXISTS `domTPopApBerichtRelevant`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domTPopApBerichtRelevant` (
-  `DomainCode` int(10) NOT NULL AUTO_INCREMENT,
-  `DomainTxt` text,
-  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
-  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
-  PRIMARY KEY (`DomainCode`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Domain für TPopApBerichtRelevant';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `domTPopEntwicklung`
---
-
-DROP TABLE IF EXISTS `domTPopEntwicklung`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domTPopEntwicklung` (
-  `EntwicklungCode` int(10) NOT NULL,
-  `EntwicklungTxt` varchar(50) DEFAULT NULL,
-  `EntwicklungOrd` smallint(5) DEFAULT NULL,
-  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
-  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
-  PRIMARY KEY (`EntwicklungCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain fuer die Entwicklung einer Teilpopulation';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `domTPopFeldkontrTyp`
---
-
-DROP TABLE IF EXISTS `domTPopFeldkontrTyp`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domTPopFeldkontrTyp` (
-  `DomainCode` int(10) NOT NULL,
-  `DomainTxt` varchar(50) DEFAULT NULL,
-  `DomainOrd` smallint(5) DEFAULT NULL,
-  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
-  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
-  PRIMARY KEY (`DomainCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain fuer die Typisierung der Feldkontrolle einer Teilpop';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `domTPopKontrIdBiotUebereinst`
---
-
-DROP TABLE IF EXISTS `domTPopKontrIdBiotUebereinst`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domTPopKontrIdBiotUebereinst` (
-  `DomainCode` int(10) NOT NULL,
-  `DomainTxt` varchar(50) DEFAULT NULL,
-  `DomainOrd` smallint(5) DEFAULT NULL,
-  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
-  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
-  PRIMARY KEY (`DomainCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain: Kriterien fuer die Beurteilung des Erfolgs des APs';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `domTPopKontrMethode`
---
-
-DROP TABLE IF EXISTS `domTPopKontrMethode`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domTPopKontrMethode` (
-  `BeurteilCode` int(10) NOT NULL,
-  `BeurteilTxt` varchar(50) DEFAULT NULL,
-  `BeurteilOrd` smallint(5) DEFAULT NULL,
-  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
-  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
-  PRIMARY KEY (`BeurteilCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain fuer die Methode der Feldkontrolle einer Teilpop.';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `domTPopKontrZaehleinheit`
---
-
-DROP TABLE IF EXISTS `domTPopKontrZaehleinheit`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domTPopKontrZaehleinheit` (
-  `ZaehleinheitCode` int(10) NOT NULL,
-  `ZaehleinheitTxt` varchar(50) DEFAULT NULL,
-  `ZaehleinheitOrd` smallint(5) DEFAULT NULL,
-  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
-  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
-  PRIMARY KEY (`ZaehleinheitCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain fuer Zähleinheiten einer Teilpopulation';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `domTPopMassnErfolgsbeurteilung`
---
-
-DROP TABLE IF EXISTS `domTPopMassnErfolgsbeurteilung`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domTPopMassnErfolgsbeurteilung` (
-  `BeurteilId` int(10) NOT NULL AUTO_INCREMENT,
-  `BeurteilTxt` varchar(50) DEFAULT NULL COMMENT 'Wie werden die durchgefuehrten Massnahmen beurteilt?',
-  `BeurteilOrd` smallint(5) DEFAULT NULL,
-  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
-  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
-  PRIMARY KEY (`BeurteilId`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Domain fur die Erfolgsbeurteilung von Massnahmen einer TPop';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `domTPopMassnTyp`
---
-
-DROP TABLE IF EXISTS `domTPopMassnTyp`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domTPopMassnTyp` (
-  `MassnTypCode` int(10) NOT NULL,
-  `MassnTypTxt` varchar(50) DEFAULT NULL,
-  `MassnTypOrd` smallint(5) DEFAULT NULL,
-  `MassnAnsiedlung` tinyint(1) NOT NULL COMMENT 'Handelt es sich um eine Ansiedlung?',
-  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
-  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
-  PRIMARY KEY (`MassnTypCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain fuer die Typisierung von Massnahmen einer Teilpop';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `domZielTyp`
---
-
-DROP TABLE IF EXISTS `domZielTyp`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `domZielTyp` (
-  `ZieltypId` int(10) NOT NULL AUTO_INCREMENT,
-  `ZieltypTxt` varchar(50) DEFAULT NULL COMMENT 'Beschreibung des Ziels',
-  `ZieltypOrd` smallint(5) DEFAULT NULL,
-  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
-  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
-  PRIMARY KEY (`ZieltypId`)
-) ENGINE=InnoDB AUTO_INCREMENT=1170775557 DEFAULT CHARSET=utf8 COMMENT='Domain fuer den Typ von Zielen eines APs';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `tblAdresse`
---
-
-DROP TABLE IF EXISTS `tblAdresse`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblAdresse` (
-  `AdrId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblAdresse"',
-  `AdrName` varchar(255) DEFAULT NULL COMMENT 'Vor- und Nachname',
-  `AdrAdresse` varchar(255) DEFAULT NULL COMMENT 'Strasse, PLZ und Ort',
-  `AdrTel` varchar(255) DEFAULT NULL COMMENT 'Telefonnummer',
-  `AdrEmail` varchar(255) DEFAULT NULL COMMENT 'Email',
-  `freiwErfko` int(10) DEFAULT NULL COMMENT '-1 = freiwillige(r) Kontrolleur(in)',
+CREATE TABLE `apber` (
+  `JBerId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblJBer"',
+  `ApArtId` int(10) NOT NULL,
+  `JBerJahr` smallint(5) DEFAULT NULL COMMENT 'Für welches Jahr gilt der Bericht?',
+  `JBerSituation` longtext COMMENT 'Beschreibung der Situation im Berichtjahr',
+  `JBerVergleichVorjahrGesamtziel` longtext COMMENT 'Vergleich zu Vorjahr und Ausblick auf das Gesamtziel',
+  `JBerBeurteilung` int(10) DEFAULT NULL COMMENT 'Beurteilung des Erfolgs des Aktionsplans bisher',
+  `JBerVeraenGegenVorjahr` varchar(2) DEFAULT NULL COMMENT 'Veränderung gegenüber dem Vorjahr: plus heisst aufgestiegen, minus heisst abgestiegen',
+  `JBerAnalyse` varchar(255) DEFAULT NULL COMMENT 'Was sind die Ursachen fuer die beobachtete Entwicklung?',
+  `JBerUmsetzung` longtext COMMENT 'Konsequenzen für die Umsetzung',
+  `JBerErfko` longtext COMMENT 'Konsequenzen für die Erfolgskontrolle',
+  `JBerATxt` longtext COMMENT 'Bemerkungen zum Aussagebereich A: Grundmengen und getroffene Massnahmen',
+  `JBerBTxt` longtext COMMENT 'Bemerkungen zum Aussagebereich B: Bestandeskontrolle',
+  `JBerCTxt` longtext COMMENT 'Bemerkungen zum Aussagebereich C: Zwischenbilanz zur Wirkung von Massnahmen',
+  `JBerDTxt` longtext COMMENT 'Bemerkungen zum Aussagebereich D: Einschätzung der Wirkung des AP insgesamt pro Art',
+  `JBerDatum` date DEFAULT NULL COMMENT 'Datum der Nachführung',
+  `JBerBearb` int(10) DEFAULT NULL COMMENT 'BerichtsverfasserIn: Auswahl aus der Tabelle "tblAdresse"',
   `MutWann` date DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geändert?',
   `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
-  PRIMARY KEY (`AdrId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2130770350 DEFAULT CHARSET=utf8 COMMENT='Adressdaten';
+  PRIMARY KEY (`JBerId`),
+  KEY `ApArtId` (`ApArtId`),
+  KEY `ApBerBeurteilung` (`JBerBeurteilung`),
+  KEY `ApBerBearb` (`JBerBearb`),
+  CONSTRAINT `tbljber_apartid` FOREIGN KEY (`ApArtId`) REFERENCES `ap` (`ApArtId`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2143994711 DEFAULT CHARSET=utf8 COMMENT='Jahresberichte zu den APs';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tblAp`
+-- Table structure for table `apberuebersicht`
 --
 
-DROP TABLE IF EXISTS `tblAp`;
+DROP TABLE IF EXISTS `apberuebersicht`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblAp` (
-  `ApArtId` int(10) NOT NULL COMMENT 'Primärschlüssel der Tabelle "tblAktionsplan". = SISF-Nr',
-  `ApStatus` int(10) DEFAULT NULL COMMENT 'In welchem Bearbeitungsstand befindet sich der AP?',
-  `ApJahr` smallint(5) DEFAULT NULL COMMENT 'Wann wurde mit der Umsetzung des Aktionsplans begonnen?',
-  `ApUmsetzung` int(10) DEFAULT NULL COMMENT 'In welchem Umsetzungsstand befindet sich der AP?',
-  `ApBearb` int(10) DEFAULT NULL COMMENT 'Verantwortliche(r) für die Art',
-  `ApArtwert` int(11) DEFAULT NULL COMMENT 'redundant aber erspart viele Abfragen. Wird aktualisiert, wenn apfloraBeob.ArtenDb_Arteigenschaften aktualisiert wird',
+CREATE TABLE `apberuebersicht` (
+  `JbuJahr` smallint(5) NOT NULL COMMENT 'Berichtsjahr. Primärschlüssel der Tabelle "tblJBerUebersicht"',
+  `JbuBemerkungen` longtext COMMENT 'Bemerkungen zur Artübersicht',
   `MutWann` date DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geändert?',
   `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
-  PRIMARY KEY (`ApArtId`),
-  KEY `ApStatus` (`ApStatus`),
-  KEY `ApUmsetzung` (`ApUmsetzung`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Angaben zu Aktionsplänen';
+  PRIMARY KEY (`JbuJahr`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Bemerkungen zur Artübersicht im Jahresbericht';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tblAssozArten`
+-- Table structure for table `assozart`
 --
 
-DROP TABLE IF EXISTS `tblAssozArten`;
+DROP TABLE IF EXISTS `assozart`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblAssozArten` (
+CREATE TABLE `assozart` (
   `AaId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblIbArtenAssoz"',
-  `AaApArtId` int(11) NOT NULL COMMENT 'Zugehöriger Aktionsplan. Fremdschlüssel aus der Tabelle "tblAktionsplan"',
+  `AaApArtId` int(10) DEFAULT NULL COMMENT 'Zugehöriger Aktionsplan. Fremdschlüssel aus der Tabelle "tblAktionsplan"',
   `AaSisfNr` int(11) NOT NULL COMMENT 'SisfNr der assoziierten Art',
   `AaBem` text COMMENT 'Bemerkungen zur Assoziation',
   `MutWann` date DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geändert?',
   `MutWer` varchar(20) DEFAULT NULL COMMENT 'Wer hat den Datensatz zuletzt geändert?',
   PRIMARY KEY (`AaId`),
-  KEY `IbaassApArtId` (`AaApArtId`)
+  KEY `IbaassApArtId` (`AaApArtId`),
+  CONSTRAINT `tblassozarten_apartid` FOREIGN KEY (`AaApArtId`) REFERENCES `ap` (`ApArtId`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='Assoziierte Arten';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tblBeobZuordnung`
+-- Table structure for table `beobzuordnung`
 --
 
-DROP TABLE IF EXISTS `tblBeobZuordnung`;
+DROP TABLE IF EXISTS `beobzuordnung`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblBeobZuordnung` (
+CREATE TABLE `beobzuordnung` (
   `NO_NOTE` varchar(38) DEFAULT NULL COMMENT 'Primärschlüssel: ID aus Info Spezies oder aus EvAB',
   `TPopId` int(10) DEFAULT NULL COMMENT 'Dieser Teilpopulation wurde die Beobachtung zugeordnet. Fremdschlüssel aus der Tabelle "tblTeilpopulation"',
   `BeobNichtZuordnen` tinyint(1) DEFAULT NULL COMMENT 'Ja oder nein. Wird ja gesetzt, wenn eine Beobachtung keiner Teilpopulation zugeordnet werden kann. Sollte im Bemerkungsfeld begründet werden. In der Regel ist die Artbestimmung zweifelhaft. Oder die Beobachtung ist nicht (genau genug) lokalisierbar',
@@ -372,18 +234,19 @@ CREATE TABLE `tblBeobZuordnung` (
   `BeobMutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
   KEY `no_note` (`NO_NOTE`),
   KEY `tpopid` (`TPopId`),
-  KEY `beobnichtzuordnen` (`BeobNichtZuordnen`)
+  KEY `beobnichtzuordnen` (`BeobNichtZuordnen`),
+  CONSTRAINT `tblbeobzuordnung_tpopid` FOREIGN KEY (`TPopId`) REFERENCES `tpop` (`TPopId`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Zuordnung von Beobachtungen zu Teilpopulationen';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tblBer`
+-- Table structure for table `ber`
 --
 
-DROP TABLE IF EXISTS `tblBer`;
+DROP TABLE IF EXISTS `ber`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblBer` (
+CREATE TABLE `ber` (
   `BerId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblBer"',
   `ApArtId` int(10) DEFAULT NULL COMMENT 'Zugehöriger Aktionsplan. Fremdschlüssel aus der Tabelle "tblAktionsplan"',
   `BerAutor` varchar(150) DEFAULT NULL COMMENT 'Autor des Berichts',
@@ -393,39 +256,56 @@ CREATE TABLE `tblBer` (
   `MutWann` date DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geändert?',
   `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
   PRIMARY KEY (`BerId`),
-  KEY `ApArtId` (`ApArtId`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='Berichte zu AP-Arten';
+  KEY `ApArtId` (`ApArtId`),
+  CONSTRAINT `tblber_apartid` FOREIGN KEY (`ApArtId`) REFERENCES `ap` (`ApArtId`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='Berichte zu AP-Arten';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tblErfKrit`
+-- Table structure for table `erfkrit`
 --
 
-DROP TABLE IF EXISTS `tblErfKrit`;
+DROP TABLE IF EXISTS `erfkrit`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblErfKrit` (
+CREATE TABLE `erfkrit` (
   `ErfkritId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblErfKrit"',
-  `ApArtId` int(10) DEFAULT NULL COMMENT 'Zugehöriger Aktionsplan. Fremdschlüssel aus der Tabelle "tblAktionsplan"',
+  `ApArtId` int(10) NOT NULL DEFAULT '0' COMMENT 'Zugehöriger Aktionsplan. Fremdschlüssel aus der Tabelle "tblAktionsplan"',
   `ErfkritErreichungsgrad` int(10) DEFAULT NULL COMMENT 'Wie gut wurden die Ziele erreicht? Auswahl aus der Tabelle "DomainApErfKrit"',
   `ErfkritTxt` varchar(255) DEFAULT NULL COMMENT 'Beschreibung der Kriterien für den Erreichungsgrad',
   `MutWann` date DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geändert?',
   `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
   PRIMARY KEY (`ErfkritId`),
   KEY `ApArtId` (`ApArtId`),
-  KEY `ErfBeurtZielSkalaErreichungsgrad` (`ErfkritErreichungsgrad`)
+  KEY `ErfBeurtZielSkalaErreichungsgrad` (`ErfkritErreichungsgrad`),
+  CONSTRAINT `tblerfkrit_apartid` FOREIGN KEY (`ApArtId`) REFERENCES `ap` (`ApArtId`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1980375832 DEFAULT CHARSET=utf8 COMMENT='Kriterien, um den Erfolg eines AP zu beurteilen';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tblIdealbiotop`
+-- Table structure for table `gemeinde`
 --
 
-DROP TABLE IF EXISTS `tblIdealbiotop`;
+DROP TABLE IF EXISTS `gemeinde`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblIdealbiotop` (
-  `IbApArtId` int(11) NOT NULL COMMENT 'Primärschlüssel der Tabelle "tblIdealbiotop". Gleichzeitig Fremdschlüssel aus der Tabelle "tblAktionsplan" (1:1-Beziehung)',
+CREATE TABLE `gemeinde` (
+  `BfsNr` int(11) NOT NULL DEFAULT '0',
+  `GmdName` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`BfsNr`),
+  KEY `GmdName` (`GmdName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain: Liste der Gemeinden des Kt. ZH';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `idealbiotop`
+--
+
+DROP TABLE IF EXISTS `idealbiotop`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `idealbiotop` (
+  `IbApArtId` int(10) DEFAULT '0' COMMENT 'Primärschlüssel der Tabelle "tblIdealbiotop". Gleichzeitig Fremdschlüssel aus der Tabelle "tblAktionsplan" (1:1-Beziehung)',
   `IbErstelldatum` date DEFAULT NULL COMMENT 'Erstelldatum',
   `IbHoehenlage` text COMMENT 'Höhenlage',
   `IbRegion` text COMMENT 'Region',
@@ -446,82 +326,19 @@ CREATE TABLE `tblIdealbiotop` (
   `IbBemerkungen` text NOT NULL COMMENT 'Bemerkungen',
   `MutWann` date DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt verändert?',
   `MutWer` varchar(20) DEFAULT NULL COMMENT 'Wer hat den Datensatz zuletzt verändert?',
-  PRIMARY KEY (`IbApArtId`)
+  UNIQUE KEY `IbApArtId` (`IbApArtId`),
+  CONSTRAINT `tblidealbiotop_apartid` FOREIGN KEY (`IbApArtId`) REFERENCES `ap` (`ApArtId`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Ideale Umweltfaktoren';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tblJBer`
+-- Table structure for table `pop`
 --
 
-DROP TABLE IF EXISTS `tblJBer`;
+DROP TABLE IF EXISTS `pop`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblJBer` (
-  `JBerId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblJBer"',
-  `ApArtId` int(10) DEFAULT NULL COMMENT 'Zugehöriger Aktionsplan. Fremdschlüssel aus der Tabellle "tblAktionsplan"',
-  `JBerJahr` smallint(5) DEFAULT NULL COMMENT 'Für welches Jahr gilt der Bericht?',
-  `JBerSituation` longtext COMMENT 'Beschreibung der Situation im Berichtjahr',
-  `JBerVergleichVorjahrGesamtziel` longtext COMMENT 'Vergleich zu Vorjahr und Ausblick auf das Gesamtziel',
-  `JBerBeurteilung` int(10) DEFAULT NULL COMMENT 'Beurteilung des Erfolgs des Aktionsplans bisher',
-  `JBerVeraenGegenVorjahr` varchar(2) DEFAULT NULL COMMENT 'Veränderung gegenüber dem Vorjahr: plus heisst aufgestiegen, minus heisst abgestiegen',
-  `JBerAnalyse` varchar(255) DEFAULT NULL COMMENT 'Was sind die Ursachen fuer die beobachtete Entwicklung?',
-  `JBerUmsetzung` longtext COMMENT 'Konsequenzen für die Umsetzung',
-  `JBerErfko` longtext COMMENT 'Konsequenzen für die Erfolgskontrolle',
-  `JBerATxt` longtext COMMENT 'Bemerkungen zum Aussagebereich A: Grundmengen und getroffene Massnahmen',
-  `JBerBTxt` longtext COMMENT 'Bemerkungen zum Aussagebereich B: Bestandeskontrolle',
-  `JBerCTxt` longtext COMMENT 'Bemerkungen zum Aussagebereich C: Zwischenbilanz zur Wirkung von Massnahmen',
-  `JBerDTxt` longtext COMMENT 'Bemerkungen zum Aussagebereich D: Einschätzung der Wirkung des AP insgesamt pro Art',
-  `JBerDatum` date DEFAULT NULL COMMENT 'Datum der Nachführung',
-  `JBerBearb` int(10) DEFAULT NULL COMMENT 'BerichtsverfasserIn: Auswahl aus der Tabelle "tblAdresse"',
-  `MutWann` date DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geändert?',
-  `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
-  PRIMARY KEY (`JBerId`),
-  KEY `ApArtId` (`ApArtId`),
-  KEY `ApBerBeurteilung` (`JBerBeurteilung`),
-  KEY `ApBerBearb` (`JBerBearb`)
-) ENGINE=InnoDB AUTO_INCREMENT=2143994711 DEFAULT CHARSET=utf8 COMMENT='Jahresberichte zu den APs';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `tblJBerUebersicht`
---
-
-DROP TABLE IF EXISTS `tblJBerUebersicht`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblJBerUebersicht` (
-  `JbuJahr` smallint(5) NOT NULL COMMENT 'Berichtsjahr. Primärschlüssel der Tabelle "tblJBerUebersicht"',
-  `JbuBemerkungen` longtext COMMENT 'Bemerkungen zur Artübersicht',
-  `MutWann` date DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geändert?',
-  `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
-  PRIMARY KEY (`JbuJahr`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Bemerkungen zur Artübersicht im Jahresbericht';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `tblKonstanten`
---
-
-DROP TABLE IF EXISTS `tblKonstanten`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblKonstanten` (
-  `KonstId` int(10) NOT NULL AUTO_INCREMENT,
-  `JBerJahr` smallint(5) DEFAULT NULL COMMENT 'Von Access aus ein Berichtsjahr wählen, um die Erstellung des Jahresberichts zu beschleunigen',
-  `ApArtId` int(10) DEFAULT NULL COMMENT 'Von Access aus eine Art wählen, um views zu beschleunigen',
-  PRIMARY KEY (`KonstId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Hilfstabelle, um Werte von Access an Views zu übergeben';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `tblPop`
---
-
-DROP TABLE IF EXISTS `tblPop`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblPop` (
+CREATE TABLE `pop` (
   `PopId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblPopulation"',
   `ApArtId` int(10) DEFAULT NULL COMMENT 'Zugehöriger Aktionsplan. Fremdschlüssel aus der Tabelle "tblAktionsplan"',
   `PopNr` int(10) DEFAULT NULL COMMENT 'Nummer der Population',
@@ -540,8 +357,9 @@ CREATE TABLE `tblPop` (
   KEY `PopGuid` (`PopGuid`),
   KEY `PopHerkunft` (`PopHerkunft`),
   KEY `PopXKoord` (`PopXKoord`,`PopYKoord`),
-  KEY `popykoord` (`PopYKoord`)
-) ENGINE=InnoDB AUTO_INCREMENT=2146169907 DEFAULT CHARSET=utf8 COMMENT='Informationen zu Populationen';
+  KEY `popykoord` (`PopYKoord`),
+  CONSTRAINT `tblpop_popid` FOREIGN KEY (`ApArtId`) REFERENCES `ap` (`ApArtId`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2146169939 DEFAULT CHARSET=utf8 COMMENT='Informationen zu Populationen';
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -554,7 +372,7 @@ CREATE TABLE `tblPop` (
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER newguidp
   BEFORE INSERT
-  ON tblPop
+  ON pop
   FOR EACH ROW
   set new.PopGuid = UUID() */;;
 DELIMITER ;
@@ -564,13 +382,49 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
--- Table structure for table `tblPopBer`
+-- Table structure for table `pop_entwicklung_werte`
 --
 
-DROP TABLE IF EXISTS `tblPopBer`;
+DROP TABLE IF EXISTS `pop_entwicklung_werte`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblPopBer` (
+CREATE TABLE `pop_entwicklung_werte` (
+  `EntwicklungId` int(10) NOT NULL AUTO_INCREMENT,
+  `EntwicklungTxt` varchar(60) DEFAULT NULL,
+  `EntwicklungOrd` smallint(5) DEFAULT NULL,
+  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
+  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
+  PRIMARY KEY (`EntwicklungId`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='Domain fuer die Populationsentwicklung';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `pop_status_werte`
+--
+
+DROP TABLE IF EXISTS `pop_status_werte`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pop_status_werte` (
+  `HerkunftId` int(10) NOT NULL AUTO_INCREMENT,
+  `HerkunftTxt` varchar(60) DEFAULT NULL COMMENT 'Beschreibung der Herkunft',
+  `HerkunftOrd` smallint(5) DEFAULT NULL,
+  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
+  `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
+  `ZdsfVorhanden` text NOT NULL COMMENT 'Wert im Feld Vorhandensein beim ZDSF',
+  `ZdsfHerkunft` text NOT NULL COMMENT 'Wert im Feld Herkunft beim ZDSF',
+  PRIMARY KEY (`HerkunftId`)
+) ENGINE=InnoDB AUTO_INCREMENT=301 DEFAULT CHARSET=utf8 COMMENT='Domain fuer die Charakterisierung der Population';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `popber`
+--
+
+DROP TABLE IF EXISTS `popber`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `popber` (
   `PopBerId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblPopBericht"',
   `PopId` int(10) DEFAULT NULL COMMENT 'Zugehörige Population. Fremdschlüssel aus der Tabelle "tblPopulation"',
   `PopBerJahr` smallint(5) DEFAULT NULL COMMENT 'Für welches Jahr gilt der Bericht?',
@@ -580,18 +434,19 @@ CREATE TABLE `tblPopBer` (
   `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
   PRIMARY KEY (`PopBerId`),
   KEY `PopId` (`PopId`),
-  KEY `PopBerEntwicklung` (`PopBerEntwicklung`)
-) ENGINE=InnoDB AUTO_INCREMENT=2146903839 DEFAULT CHARSET=utf8 COMMENT='Berichte über die Entwicklung von Populationen';
+  KEY `PopBerEntwicklung` (`PopBerEntwicklung`),
+  CONSTRAINT `tblpopber_apartid` FOREIGN KEY (`PopId`) REFERENCES `pop` (`PopId`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2146903897 DEFAULT CHARSET=utf8 COMMENT='Berichte über die Entwicklung von Populationen';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tblPopMassnBer`
+-- Table structure for table `popmassnber`
 --
 
-DROP TABLE IF EXISTS `tblPopMassnBer`;
+DROP TABLE IF EXISTS `popmassnber`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblPopMassnBer` (
+CREATE TABLE `popmassnber` (
   `PopMassnBerId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblPopMassnBericht"',
   `PopId` int(10) DEFAULT NULL COMMENT 'Zugehörige Population. Fremdschlüssel aus der Tabelle "tblPopulation"',
   `PopMassnBerJahr` smallint(5) DEFAULT NULL COMMENT 'Für welches Jahr gilt der Bericht?',
@@ -601,18 +456,19 @@ CREATE TABLE `tblPopMassnBer` (
   `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
   PRIMARY KEY (`PopMassnBerId`),
   KEY `PopId` (`PopId`),
-  KEY `PopMassnBerErfolgsbeurteilung` (`PopMassnBerErfolgsbeurteilung`)
-) ENGINE=InnoDB AUTO_INCREMENT=2143137343 DEFAULT CHARSET=utf8 COMMENT='Berichte über den Erfolg von Massnahmen';
+  KEY `PopMassnBerErfolgsbeurteilung` (`PopMassnBerErfolgsbeurteilung`),
+  CONSTRAINT `tblpopmassnber_popid` FOREIGN KEY (`PopId`) REFERENCES `pop` (`PopId`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2143137401 DEFAULT CHARSET=utf8 COMMENT='Berichte über den Erfolg von Massnahmen';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tblTPop`
+-- Table structure for table `tpop`
 --
 
-DROP TABLE IF EXISTS `tblTPop`;
+DROP TABLE IF EXISTS `tpop`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblTPop` (
+CREATE TABLE `tpop` (
   `TPopId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblTeilpopulation"',
   `PopId` int(10) DEFAULT NULL COMMENT 'Zugehörige Population. Fremdschlüssel aus der Tabelle "tblPopulation"',
   `TPopNr` int(10) DEFAULT NULL COMMENT 'Nummer der Teilpopulation',
@@ -647,8 +503,9 @@ CREATE TABLE `tblTPop` (
   KEY `TPopHerkunft` (`TPopHerkunft`),
   KEY `TPopApBerichtRelevant` (`TPopApBerichtRelevant`),
   KEY `xkoord` (`TPopXKoord`),
-  KEY `ykoord` (`TPopYKoord`)
-) ENGINE=InnoDB AUTO_INCREMENT=2146452918 DEFAULT CHARSET=utf8 COMMENT='Angaben zu Teilpopulationen';
+  KEY `ykoord` (`TPopYKoord`),
+  CONSTRAINT `tbltpop_popid` FOREIGN KEY (`PopId`) REFERENCES `pop` (`PopId`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2146452996 DEFAULT CHARSET=utf8 COMMENT='Angaben zu Teilpopulationen';
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -661,7 +518,7 @@ CREATE TABLE `tblTPop` (
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER newguidtp
   BEFORE INSERT
-  ON tblTPop
+  ON tpop
   FOR EACH ROW
   set new.TPopGuid = UUID() */;;
 DELIMITER ;
@@ -671,13 +528,46 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
--- Table structure for table `tblTPopBer`
+-- Table structure for table `tpop_apberrelevant_werte`
 --
 
-DROP TABLE IF EXISTS `tblTPopBer`;
+DROP TABLE IF EXISTS `tpop_apberrelevant_werte`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblTPopBer` (
+CREATE TABLE `tpop_apberrelevant_werte` (
+  `DomainCode` int(10) NOT NULL AUTO_INCREMENT,
+  `DomainTxt` text,
+  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
+  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
+  PRIMARY KEY (`DomainCode`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Domain für TPopApBerichtRelevant';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tpop_entwicklung_werte`
+--
+
+DROP TABLE IF EXISTS `tpop_entwicklung_werte`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tpop_entwicklung_werte` (
+  `EntwicklungCode` int(10) NOT NULL,
+  `EntwicklungTxt` varchar(50) DEFAULT NULL,
+  `EntwicklungOrd` smallint(5) DEFAULT NULL,
+  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
+  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
+  PRIMARY KEY (`EntwicklungCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain fuer die Entwicklung einer Teilpopulation';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tpopber`
+--
+
+DROP TABLE IF EXISTS `tpopber`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tpopber` (
   `TPopBerId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblTeilPopBericht"',
   `TPopId` int(10) DEFAULT NULL COMMENT 'Zugehörige Teilpopulation. Fremdschlüssel der Tabelle "tblTeilpopulation"',
   `TPopBerJahr` smallint(5) DEFAULT NULL COMMENT 'Für welches Jahr gilt der Bericht?',
@@ -687,18 +577,19 @@ CREATE TABLE `tblTPopBer` (
   `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
   PRIMARY KEY (`TPopBerId`),
   KEY `TPopId` (`TPopId`),
-  KEY `TPopBerEntwicklung` (`TPopBerEntwicklung`)
-) ENGINE=InnoDB AUTO_INCREMENT=2143683943 DEFAULT CHARSET=utf8 COMMENT='Berichte zu Teilpopulationen';
+  KEY `TPopBerEntwicklung` (`TPopBerEntwicklung`),
+  CONSTRAINT `tbltpopber_tpopid` FOREIGN KEY (`TPopId`) REFERENCES `tpop` (`TPopId`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2143684080 DEFAULT CHARSET=utf8 COMMENT='Berichte zu Teilpopulationen';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tblTPopKontr`
+-- Table structure for table `tpopkontr`
 --
 
-DROP TABLE IF EXISTS `tblTPopKontr`;
+DROP TABLE IF EXISTS `tpopkontr`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblTPopKontr` (
+CREATE TABLE `tpopkontr` (
   `TPopKontrId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblTeilPopFeldkontrolle"',
   `TPopId` int(10) DEFAULT NULL COMMENT 'Zugehörige Teilpopulation. Fremdschlüssel aus der Tabelle "tblTeilpopulation"',
   `TPopKontrTyp` varchar(50) DEFAULT NULL COMMENT 'Typ der Kontrolle. Auswahl aus Tabelle "DomainTPopFeldkontrTyp"',
@@ -750,8 +641,9 @@ CREATE TABLE `tblTPopKontr` (
   KEY `TPopId` (`TPopId`),
   KEY `TPopKontrBearb` (`TPopKontrBearb`),
   KEY `TPopKontrEntwicklung` (`TPopKontrEntwicklung`),
-  KEY `DomainTPopKontrIdBiotUebereinst` (`TPopKontrIdealBiotopUebereinst`)
-) ENGINE=InnoDB AUTO_INCREMENT=7916 DEFAULT CHARSET=utf8 COMMENT='Feldkontrollen von Teilpopulationen';
+  KEY `DomainTPopKontrIdBiotUebereinst` (`TPopKontrIdealBiotopUebereinst`),
+  CONSTRAINT `tbltpopkontr_tpopid` FOREIGN KEY (`TPopId`) REFERENCES `tpop` (`TPopId`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=8034 DEFAULT CHARSET=utf8 COMMENT='Feldkontrollen von Teilpopulationen';
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -762,11 +654,14 @@ CREATE TABLE `tblTPopKontr` (
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER newguidtpf
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER newguid
   BEFORE INSERT
-  ON tblTPopKontr
-  FOR EACH ROW
-  set new.TPopKontrGuid = UUID() */;;
+  ON tpopkontr
+FOR EACH ROW
+BEGIN
+  set new.TPopKontrGuid = UUID();
+  set new.ZeitGuid = UUID();
+END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -774,13 +669,47 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
--- Table structure for table `tblTPopKontrZaehl`
+-- Table structure for table `tpopkontr_idbiotuebereinst_werte`
 --
 
-DROP TABLE IF EXISTS `tblTPopKontrZaehl`;
+DROP TABLE IF EXISTS `tpopkontr_idbiotuebereinst_werte`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblTPopKontrZaehl` (
+CREATE TABLE `tpopkontr_idbiotuebereinst_werte` (
+  `DomainCode` int(10) NOT NULL,
+  `DomainTxt` varchar(50) DEFAULT NULL,
+  `DomainOrd` smallint(5) DEFAULT NULL,
+  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
+  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
+  PRIMARY KEY (`DomainCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain: Kriterien fuer die Beurteilung des Erfolgs des APs';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tpopkontr_typ_werte`
+--
+
+DROP TABLE IF EXISTS `tpopkontr_typ_werte`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tpopkontr_typ_werte` (
+  `DomainCode` int(10) NOT NULL,
+  `DomainTxt` varchar(50) DEFAULT NULL,
+  `DomainOrd` smallint(5) DEFAULT NULL,
+  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
+  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
+  PRIMARY KEY (`DomainCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain fuer die Typisierung der Feldkontrolle einer Teilpop';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tpopkontrzaehl`
+--
+
+DROP TABLE IF EXISTS `tpopkontrzaehl`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tpopkontrzaehl` (
   `TPopKontrZaehlId` int(11) NOT NULL AUTO_INCREMENT,
   `TPopKontrId` int(10) DEFAULT NULL,
   `Anzahl` int(10) DEFAULT NULL COMMENT 'Anzahl Zaehleinheiten',
@@ -792,18 +721,53 @@ CREATE TABLE `tblTPopKontrZaehl` (
   KEY `TPopKontrId` (`TPopKontrId`),
   KEY `Anzahl` (`Anzahl`),
   KEY `Zaehleinheit` (`Zaehleinheit`),
-  KEY `Methode` (`Methode`)
-) ENGINE=InnoDB AUTO_INCREMENT=13348 DEFAULT CHARSET=utf8 COMMENT='Zaehlungen fuer Kontrollen';
+  KEY `Methode` (`Methode`),
+  CONSTRAINT `tpopkontrzaehl_tpopkontrid` FOREIGN KEY (`TPopKontrId`) REFERENCES `tpopkontr` (`TPopKontrId`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=13545 DEFAULT CHARSET=utf8 COMMENT='Zaehlungen fuer Kontrollen';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tblTPopMassn`
+-- Table structure for table `tpopkontrzaehl_einheit_werte`
 --
 
-DROP TABLE IF EXISTS `tblTPopMassn`;
+DROP TABLE IF EXISTS `tpopkontrzaehl_einheit_werte`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblTPopMassn` (
+CREATE TABLE `tpopkontrzaehl_einheit_werte` (
+  `ZaehleinheitCode` int(10) NOT NULL,
+  `ZaehleinheitTxt` varchar(50) DEFAULT NULL,
+  `ZaehleinheitOrd` smallint(5) DEFAULT NULL,
+  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
+  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
+  PRIMARY KEY (`ZaehleinheitCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain fuer Zähleinheiten einer Teilpopulation';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tpopkontrzaehl_methode_werte`
+--
+
+DROP TABLE IF EXISTS `tpopkontrzaehl_methode_werte`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tpopkontrzaehl_methode_werte` (
+  `BeurteilCode` int(10) NOT NULL,
+  `BeurteilTxt` varchar(50) DEFAULT NULL,
+  `BeurteilOrd` smallint(5) DEFAULT NULL,
+  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
+  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
+  PRIMARY KEY (`BeurteilCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain fuer die Methode der Feldkontrolle einer Teilpop.';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tpopmassn`
+--
+
+DROP TABLE IF EXISTS `tpopmassn`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tpopmassn` (
   `TPopMassnId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblTeilPopMassnahme"',
   `TPopId` int(10) DEFAULT NULL COMMENT 'Zugehörige Teilpopulation. Fremdschlüssel aus der Tabelle "tblTeilpopulation"',
   `TPopMassnTyp` int(10) DEFAULT NULL COMMENT 'Typ der Massnahme. Auswahl aus Tabelle "DomainTPopMassnTyp"',
@@ -831,8 +795,9 @@ CREATE TABLE `tblTPopMassn` (
   UNIQUE KEY `guid` (`TPopMassnGuid`),
   KEY `TPopId` (`TPopId`),
   KEY `TPopMassnBearb` (`TPopMassnBearb`),
-  KEY `TPopMassnTyp` (`TPopMassnTyp`)
-) ENGINE=InnoDB AUTO_INCREMENT=2145293818 DEFAULT CHARSET=utf8 COMMENT='Massnahmen in Teilpopulationen';
+  KEY `TPopMassnTyp` (`TPopMassnTyp`),
+  CONSTRAINT `tbltpopmassn_tpopid` FOREIGN KEY (`TPopId`) REFERENCES `tpop` (`TPopId`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2145293980 DEFAULT CHARSET=utf8 COMMENT='Massnahmen in Teilpopulationen';
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -845,7 +810,7 @@ CREATE TABLE `tblTPopMassn` (
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER newguidtpm
   BEFORE INSERT
-  ON tblTPopMassn
+  ON tpopmassn
   FOR EACH ROW
   set new.TPopMassnGuid = UUID() */;;
 DELIMITER ;
@@ -855,13 +820,48 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
--- Table structure for table `tblTPopMassnBer`
+-- Table structure for table `tpopmassn_erfbeurt_werte`
 --
 
-DROP TABLE IF EXISTS `tblTPopMassnBer`;
+DROP TABLE IF EXISTS `tpopmassn_erfbeurt_werte`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblTPopMassnBer` (
+CREATE TABLE `tpopmassn_erfbeurt_werte` (
+  `BeurteilId` int(10) NOT NULL AUTO_INCREMENT,
+  `BeurteilTxt` varchar(50) DEFAULT NULL COMMENT 'Wie werden die durchgefuehrten Massnahmen beurteilt?',
+  `BeurteilOrd` smallint(5) DEFAULT NULL,
+  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
+  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
+  PRIMARY KEY (`BeurteilId`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Domain fur die Erfolgsbeurteilung von Massnahmen einer TPop';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tpopmassn_typ_werte`
+--
+
+DROP TABLE IF EXISTS `tpopmassn_typ_werte`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tpopmassn_typ_werte` (
+  `MassnTypCode` int(10) NOT NULL,
+  `MassnTypTxt` varchar(50) DEFAULT NULL,
+  `MassnTypOrd` smallint(5) DEFAULT NULL,
+  `MassnAnsiedlung` tinyint(1) NOT NULL COMMENT 'Handelt es sich um eine Ansiedlung?',
+  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
+  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
+  PRIMARY KEY (`MassnTypCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Domain fuer die Typisierung von Massnahmen einer Teilpop';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tpopmassnber`
+--
+
+DROP TABLE IF EXISTS `tpopmassnber`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tpopmassnber` (
   `TPopMassnBerId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblTeilPopMassnBericht"',
   `TPopId` int(10) DEFAULT NULL COMMENT 'Zugehörige Teilpopulation. Fremdschlüssel aus Tabelle "tblTeilpopulation"',
   `TPopMassnBerJahr` smallint(5) DEFAULT NULL COMMENT 'Jahr, für den der Bericht gilt',
@@ -871,18 +871,19 @@ CREATE TABLE `tblTPopMassnBer` (
   `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
   PRIMARY KEY (`TPopMassnBerId`),
   KEY `TPopId` (`TPopId`),
-  KEY `TPopMassnBerErfolgsbeurteilung` (`TPopMassnBerErfolgsbeurteilung`)
-) ENGINE=InnoDB AUTO_INCREMENT=2139936280 DEFAULT CHARSET=utf8 COMMENT='Berichte zu Teilpopulations-Massnahmen';
+  KEY `TPopMassnBerErfolgsbeurteilung` (`TPopMassnBerErfolgsbeurteilung`),
+  CONSTRAINT `tbltpopmassnber_tpopid` FOREIGN KEY (`TPopId`) REFERENCES `tpop` (`TPopId`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2139936432 DEFAULT CHARSET=utf8 COMMENT='Berichte zu Teilpopulations-Massnahmen';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tblUser`
+-- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `tblUser`;
+DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblUser` (
+CREATE TABLE `user` (
   `UserId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblUser"',
   `UserName` varchar(30) NOT NULL COMMENT 'Username',
   `Passwort` text NOT NULL COMMENT 'Passwort',
@@ -892,15 +893,15 @@ CREATE TABLE `tblUser` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tblZiel`
+-- Table structure for table `ziel`
 --
 
-DROP TABLE IF EXISTS `tblZiel`;
+DROP TABLE IF EXISTS `ziel`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblZiel` (
+CREATE TABLE `ziel` (
   `ZielId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblZiel"',
-  `ApArtId` int(10) DEFAULT NULL COMMENT 'Zugehöriger Aktionsplan. Fremdschluessel aus der Tabelle "tblAktionsplan"',
+  `ApArtId` int(10) NOT NULL COMMENT 'Zugehöriger Aktionsplan. Fremdschluessel aus der Tabelle "tblAktionsplan"',
   `ZielTyp` int(10) DEFAULT NULL COMMENT 'Typ des Ziels. Z.B. Zwischenziel, Gesamtziel. Auswahl aus Tabelle "DomainZielTyp"',
   `ZielJahr` smallint(5) DEFAULT NULL COMMENT 'In welchem Jahr soll das Ziel erreicht werden?',
   `ZielBezeichnung` longtext COMMENT 'Textliche Beschreibung des Ziels',
@@ -908,18 +909,36 @@ CREATE TABLE `tblZiel` (
   `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
   PRIMARY KEY (`ZielId`),
   KEY `ApArtId` (`ApArtId`),
-  KEY `ZielTyp` (`ZielTyp`)
+  KEY `ZielTyp` (`ZielTyp`),
+  CONSTRAINT `tblziel_apartid` FOREIGN KEY (`ApArtId`) REFERENCES `ap` (`ApArtId`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2125273586 DEFAULT CHARSET=utf8 COMMENT='AP-Ziele';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tblZielBer`
+-- Table structure for table `ziel_typ_werte`
 --
 
-DROP TABLE IF EXISTS `tblZielBer`;
+DROP TABLE IF EXISTS `ziel_typ_werte`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblZielBer` (
+CREATE TABLE `ziel_typ_werte` (
+  `ZieltypId` int(10) NOT NULL AUTO_INCREMENT,
+  `ZieltypTxt` varchar(50) DEFAULT NULL COMMENT 'Beschreibung des Ziels',
+  `ZieltypOrd` smallint(5) DEFAULT NULL,
+  `MutWann` datetime DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geaendert?',
+  `MutWer` varchar(20) NOT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geaendert?',
+  PRIMARY KEY (`ZieltypId`)
+) ENGINE=InnoDB AUTO_INCREMENT=1170775557 DEFAULT CHARSET=utf8 COMMENT='Domain fuer den Typ von Zielen eines APs';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `zielber`
+--
+
+DROP TABLE IF EXISTS `zielber`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `zielber` (
   `ZielBerId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblZielBericht"',
   `ZielId` int(10) DEFAULT NULL COMMENT 'Zugehöriges Ziel. Fremdschlüssel aus der Tabelle "tblZiel"',
   `ZielBerJahr` smallint(5) DEFAULT NULL COMMENT 'Für welches Jahr gilt der Bericht?',
@@ -928,7 +947,8 @@ CREATE TABLE `tblZielBer` (
   `MutWann` date DEFAULT NULL COMMENT 'Wann wurde der Datensatz zuletzt geändert?',
   `MutWer` varchar(20) DEFAULT NULL COMMENT 'Von wem wurde der Datensatz zuletzt geändert?',
   PRIMARY KEY (`ZielBerId`),
-  KEY `ZielId` (`ZielId`)
+  KEY `ZielId` (`ZielId`),
+  CONSTRAINT `tblzielber_zielid` FOREIGN KEY (`ZielId`) REFERENCES `ziel` (`ZielId`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2137503166 DEFAULT CHARSET=utf8 COMMENT='Berichte über AP-Ziele';
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -941,4 +961,4 @@ CREATE TABLE `tblZielBer` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-15 12:48:31
+-- Dump completed on 2014-12-22  8:51:16

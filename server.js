@@ -134,9 +134,9 @@ server.route({
 
 /*server.route({
     method: 'GET',
-    path: '/etc/Beziehungen.pdf',
+    path: '/etc/beziehungen.png',
     handler: function (request, reply) {
-        reply.file('etc/Beziehungen.pdf');
+        reply.file('etc/beziehungen.png');
     }
 });*/
 
