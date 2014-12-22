@@ -32,7 +32,7 @@ FROM apflora.ap INNER JOIN (apflora.pop INNER JOIN apflora.tpop ON apflora.pop.P
 WHERE apflora.tpop.TPopApBerichtRelevant=1 AND apflora.pop.PopHerkunft <> 300
 GROUP BY apflora.ap.ApArtId;
 
-#wird von v_apber benutzt. Dieses Wiederum in Access:
+#wird von v_apber_injahr benutzt. Dieses Wiederum in Access:
 CREATE OR REPLACE VIEW v_erstemassnproap AS 
 SELECT apflora.ap.ApArtId, Min(apflora.tpopmassn.TPopMassnJahr) AS MinvonTPopMassnJahr
 FROM ((apflora.ap INNER JOIN apflora.pop ON apflora.ap.ApArtId = apflora.pop.ApArtId) INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) INNER JOIN apflora.tpopmassn ON apflora.tpop.TPopId = apflora.tpopmassn.TPopId

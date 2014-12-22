@@ -133,7 +133,7 @@ WHERE ((apflora.ap.ApStatus Between 1 And 3) AND (apflora.tpop.TPopHerkunft=101 
 ORDER BY apflora_beob.adb_eigenschaften.Artname, apflora.pop.PopNr, apflora.pop.PopName, apflora.tpop.TPopNr, apflora.tpop.TPopGemeinde, apflora.tpop.TPopFlurname;
 
 #im Gebrauch (Access):
-CREATE OR REPLACE VIEW v_apber AS 
+CREATE OR REPLACE VIEW v_apber_injahr AS 
 SELECT apflora.ap.*, apflora_beob.adb_eigenschaften.Artname AS Art, apflora.apber.JBerId, apflora.apber.JBerJahr, apflora.apber.JBerSituation, apflora.apber.JBerVergleichVorjahrGesamtziel, apflora.apber.JBerBeurteilung, apflora.apber.JBerAnalyse, apflora.apber.JBerUmsetzung, apflora.apber.JBerErfko, apflora.apber.JBerATxt, apflora.apber.JBerBTxt, apflora.apber.JBerCTxt, apflora.apber.JBerDTxt, apflora.apber.JBerDatum, apflora.apber.JBerBearb, apflora.adresse.AdrName & ", " & apflora.adresse.AdrAdresse AS Bearbeiter, apflora.apberuebersicht.JbuJahr, apflora.apberuebersicht.JbuBemerkungen, apflora_views.v_erstemassnproap.MinvonTPopMassnJahr AS ErsteMassnahmeImJahr
 FROM (apflora_beob.adb_eigenschaften INNER JOIN (apflora.ap LEFT JOIN apflora_views.v_erstemassnproap ON apflora.ap.ApArtId=apflora_views.v_erstemassnproap.ApArtId) ON apflora_beob.adb_eigenschaften.TaxonomieId=apflora.ap.ApArtId) INNER JOIN (((apflora.apber LEFT JOIN apflora.adresse ON apflora.apber.JBerBearb=apflora.adresse.AdrId) LEFT JOIN apflora.apberuebersicht ON apflora.apber.JBerJahr=apflora.apberuebersicht.JbuJahr) INNER JOIN apflora._variable ON apflora.apber.JBerJahr=apflora._variable.JBerJahr) ON apflora.ap.ApArtId=apflora.apber.ApArtId
 WHERE apflora.ap.ApStatus Between 1 And 3 AND apflora.ap.ApArtId NOT IN (100, 150)
