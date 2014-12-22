@@ -9,7 +9,7 @@ var $                                   = require('jquery'),
     _                                   = require('underscore'),
     ol                                  = require('ol'),
     stylePop                            = require('./stylePop'),
-    //beobContent                         = require('../../templates/olmapPopupBeob'),
+    beobContent                         = require('../../templates/olmapPopupBeob'),
     addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers'),
     pruefeObPopTpopGewaehltWurden       = require('./pruefeObPopTpopGewaehltWurden');
 
@@ -20,7 +20,7 @@ module.exports = function (beobArray, beobidMarkiert, visible) {
         myLabel,
         myName,
         popupContent,
-        popMitNrLayer,
+        beobLayer,
         selectedFeatures;
 
     if (window.apf.olMap.map && window.apf.olMap.map.olmapSelectInteraction && beobidMarkiert) {
@@ -32,28 +32,26 @@ module.exports = function (beobArray, beobidMarkiert, visible) {
 
     visible = (visible === true);
 
-    console.log('beobArray: ', beobArray);
-
     _.each(beobArray, function (beob) {
-        myName       = beob.PopName || '(kein Name)';
+        myName       = beob.DESC_LOCALITE || '(kein Name)';
         popupContent = beobContent(beob);
 
         // tooltip bzw. label vorbereiten: nullwerte ausblenden
-        myLabel = (beob.PopNr ? beob.PopNr.toString() : '?');
+        myLabel = (beob.Datum ? beob.Datum.toString() : '?');
 
         // marker erstellen...
         marker = new ol.Feature({
-            geometry: new ol.geom.Point([beob.PopXKoord, beob.PopYKoord]),
+            geometry: new ol.geom.Point([beob.X, beob.Y]),
             popNr:        myLabel,
             popName:      myName,
             name:         myLabel, // noch benötigt? TODO: entfernen
             popupContent: popupContent,
             popupTitle:   myName,
             // Koordinaten werden gebraucht, damit das popup richtig platziert werden kann
-            xkoord:       beob.PopXKoord,
-            ykoord:       beob.PopYKoord,
+            xkoord:       beob.X,
+            ykoord:       beob.Y,
             myTyp:        'beob',
-            myId:         beob.PopId
+            myId:         beob.NO_NOTE
         });
 
         // marker in Array speichern
@@ -66,8 +64,8 @@ module.exports = function (beobArray, beobidMarkiert, visible) {
     });
 
     // layer für Marker erstellen
-    popMitNrLayer = new ol.layer.Vector({
-        title:      'Populationen',
+    beobLayer = new ol.layer.Vector({
+        title:      'Beobachtungen',
         selectable: true,
         source: new ol.source.Vector({
             features: markers
@@ -76,20 +74,9 @@ module.exports = function (beobArray, beobidMarkiert, visible) {
             return stylePop(feature, resolution);
         }
     });
-    popMitNrLayer.set('visible', visible);
-    popMitNrLayer.set('kategorie', 'AP Flora');
-    window.apf.olMap.map.addLayer(popMitNrLayer);
-
-    if (selectedFeatures && selectedFeatures.length > 0) {
-        setTimeout(function () {
-            pruefeObPopTpopGewaehltWurden();
-        }, 100);
-        // Schaltfläche olMapAuswaehlen aktivieren
-        $('#olMapAuswaehlen')
-            .prop('checked', true)
-            .button()
-            .button("refresh");
-    }
+    beobLayer.set('visible', visible);
+    beobLayer.set('kategorie', 'AP Flora');
+    window.apf.olMap.map.addLayer(beobLayer);
 
     beobLayerErstellt.resolve();
     return beobLayerErstellt.promise();

@@ -11,10 +11,4 @@ module.exports = function () {
 
     // style setzen
     layers[layer].setStyle(stylePop);
-    // jeweils andere box unchecken
-    if ($(that).hasClass('popNr') && that.checked) {
-        $('#layertreePopName').prop('checked', false);
-    } else if ($(that).hasClass('popName') && that.checked) {
-        $('#layertreePopNr').prop('checked', false);
-    }
 };

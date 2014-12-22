@@ -9,14 +9,8 @@ module.exports = function () {
         layer  = $('#olMapLayertreeTeilpopulationen').val(),
         that   = this;
 
+    console.log('onClickLayertreeTpopStyle');
+
     // style setzen
     layers[layer].setStyle(styleTPop);
-    // jeweils andere box unchecken
-    if ($(that).hasClass('tpopNr') && that.checked) {
-        // andere box unchecken
-        $('#layertreeTpopName').prop('checked', false);
-    } else if ($(that).hasClass('tpopName') && that.checked) {
-        // andere box unchecken
-        $('#layertreeTpopNr').prop('checked', false);
-    }
 };
