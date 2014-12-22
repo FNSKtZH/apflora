@@ -19,7 +19,7 @@ module.exports = function (tpopListeMarkiert, zuordnen) {
         dist,
         tpopidMarkiert = [];
 
-    dist = zuordnen ? 1500 : 70;
+    dist = zuordnen ? 500 : 70;
 
     // bounds der anzuzeigenden bestimmen
     if (tpopListeMarkiert && tpopListeMarkiert.length > 0) {

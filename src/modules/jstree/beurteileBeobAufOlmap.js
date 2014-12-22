@@ -94,10 +94,10 @@ module.exports = function (nodeTpopId) {
         // o.k., wir haben nun alle benötigten Daten
 
         tpopListeMarkiert = _.filter(tpopArray, function (tpop) {
-            return tpop.TPopId === tpopId;
+            return tpop.TPopId == tpopId;
         });
 
-        markierteTpop = waehleAusschnittFuerUebergebeneTPop(tpopListeMarkiert, 'zuordnen');
+        markierteTpop = waehleAusschnittFuerUebergebeneTPop(tpopListeMarkiert, true);
 
         // Grundkarte aufbauen
         $.when(zeigeFormular("olMap")).then(function () {
@@ -107,7 +107,8 @@ module.exports = function (nodeTpopId) {
             // tpop ergänzen
             $.when(
                 // Layer für Symbole und Beschriftung erstellen
-                erstelleTPopLayer(tpopArray, markierteTpop.tpopidMarkiert, true, true),
+                //erstelleTPopLayer(tpopArray, markierteTpop.tpopidMarkiert, true, true),
+                erstelleTPopLayer(tpopArray, null, true, true),
                 // Pop holen, aber ausgeblendet
                 zeigePopInTPop(false),
                 // layer für beob erstellen

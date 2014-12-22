@@ -17,5 +17,9 @@ module.exports = function (domAttributId) {
         console.log('window.apf.erstelleIdAusDomAttributId meldet: erhalten ' + domAttributId + ', zurückgegeben: ' + returnWert + '. Die Regel in der function muss wohl angepasst werden');
     }
 
-    return parseInt(returnWert, 10);
+    if (typeof returnWert === 'number') {
+        returnWert = parseInt(returnWert, 10);
+    }
+
+    return returnWert;
 };
