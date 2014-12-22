@@ -19,7 +19,8 @@ var $                            = require('jquery'),
     zeigeFormular                = require('./zeigeFormular'),
     melde                        = require('./melde'),
     leereFelderVonFormular       = require('./leereFelderVonFormular'),
-    tPopKontrZaehl               = require('../templates/tPopKontrZaehl');
+    tPopKontrZaehl               = require('../templates/tPopKontrZaehl'),
+    initializeTooltipsInElement  = require('./initializeTooltipsInElement');
 
 module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
     // prüfen, ob voraussetzungen gegeben sind
@@ -323,6 +324,11 @@ module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
                         htmlZaehlungen += tPopKontrZaehl(leereZaehleinheit);
                     }
                     $('#tPopKontrZaehlungen').html(htmlZaehlungen);
+                    // darf erst starten, wenn die letzte Aktion fertig ist
+                    // darum timeout
+                    setTimeout(function () {
+                        initializeTooltipsInElement($('#tPopKontrZaehlungen'));
+                    }, 0);
                 });
             });
         }

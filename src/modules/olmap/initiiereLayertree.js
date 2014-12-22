@@ -6,10 +6,12 @@
 /*jslint node: true, browser: true, nomen: true, todo: true, plusplus: true */
 'use strict';
 
-var _                         = require('underscore'),
-    $                         = require('jquery'),
-    berechneLayertreeMaxhoehe = require('./berechneLayertreeMaxhoehe'),
-    contentLayertreeTpop      = require('../../templates/olmapLayertreeTpop');
+var _                           = require('underscore'),
+    $                           = require('jquery'),
+    berechneLayertreeMaxhoehe   = require('./berechneLayertreeMaxhoehe'),
+    contentLayertreePop         = require('../../templates/olmapLayertreePop'),
+    contentLayertreeTpop        = require('../../templates/olmapLayertreeTpop'),
+    contentLayertreeEigeneEbene = require('../../templates/olmapLayertreeEigeneEbene');
 
 module.exports = function (activeKategorie) {
     var layertitel,
@@ -77,24 +79,13 @@ module.exports = function (activeKategorie) {
             htmlProv += '<label for="olMapLayertree' + layertitel + '">' + layertitel + '</label>';
             // bei pop und tpop muss style gewählt werden können
             if (layertitel === 'Populationen') {
-                htmlProv += '<div class="layeroptionen">';
-                htmlProv += '<label for="layertreePopNr" class="layertreePopStyle popNr">Nr.</label>';
-                htmlProv += '<input type="radio" id="layertreePopNr" name="layertreePopLabel" class="layertreePopStyle popNr" checked="checked"> ';
-                htmlProv += '<label for="layertreePopName" class="layertreePopStyle popName">Namen</label>';
-                htmlProv += '<input type="radio" id="layertreePopName" name="layertreePopLabel" class="layertreePopStyle popName">';
-                htmlProv += '</div>';
+                htmlProv += contentLayertreePop();
             }
             if (layertitel === 'Teilpopulationen') {
-                htmlProv += '<div class="layeroptionen">';
-                htmlProv += '<label for="layertreeTpopNr" class="layertreeTpopStyle tpopNr">Nr.</label>';
-                htmlProv += '<input type="radio" id="layertreeTpopNr" name="layertreeTpopLabel" class="layertreeTpopStyle tpopNr" checked="checked"> ';
-                htmlProv += '<label for="layertreeTpopName" class="layertreeTpopStyle tpopName">Namen</label>';
-                htmlProv += '<input type="radio" id="layertreeTpopName" name="layertreeTpopLabel" class="layertreeTpopStyle tpopName">';
-                htmlProv += '</div>';
-                //htmlProv += contentLayertreeTpop();
+                htmlProv += contentLayertreeTpop();
             }
             if (kategorie === 'Eigene Ebenen') {
-                htmlProv += '<div class="layeroptionen">';
+                /*htmlProv += '<div class="layeroptionen">';
                 htmlProv += '<input type="checkbox" class="modifyLayer" id="modifyLayer' + layertitel.replace(" ", "_") + '">';
                 htmlProv += '<label for="modifyLayer' + layertitel.replace(" ", "_") + '" title="Ebene bearbeiten" class="modifyLayerLabel"></label>';
                 htmlProv += '<select id="modifyLayerGeomType' + layertitel.replace(" ", "_") + '" class="modifyLayerGeomType apfTooltip" title="Neue Objekte zeichnen oder<br>bestehende Objekte auswählen, um sie zu verändern"><option id="modify_layer_geom_type_leerwert" value="leerwert" selected>Objekt auswählen</option><option value="Point">Punkt zeichnen</option><option value="LineString">Linie zeichnen</option><option value="Polygon">Polygon zeichnen</option></select>';
@@ -106,7 +97,8 @@ module.exports = function (activeKategorie) {
                 htmlProv += '<label for="entferneLayer' + layertitel.replace(" ", "_") + '" title="Ebene entfernen" class="entferneLayerLabel"></label>';
                 htmlProv += '</div>';
                 htmlProv += '<div id="eigene_layer_meldung_' + layertitel.replace(" ", "_") + '" class="eigene_layer_meldung"></div>';
-                htmlProv += '</div>';
+                htmlProv += '</div>';*/
+                htmlProv += contentLayertreeEigeneEbene({'layertitel': layertitel.replace(" ", "_")});
                 initializeModifyLayer = true;
                 // diese ids werden gebraucht, um tooltips zu erstellen
                 exportLayerSelectIds.push('export2_layer_geom_type_' + layertitel.replace(" ", "_"));
@@ -233,38 +225,41 @@ module.exports = function (activeKategorie) {
         });
     });
     if (initializeModifyLayer) {
-        $('.modifyLayer')
-            .button({
-                icons: { primary: 'ui-icon-locked' },
-                text: false
-            })
-            .button('refresh');
-        $('.modifyLayerLabel, .exportLayerSelectLabel, .renameLayerLabel, .entferneLayerLabel, .apfTooltip')
-            .tooltip({
-                tooltipClass: "tooltip-styling-hinterlegt",
-                content: function () {
-                    return $(this).attr('title');
-                }
-            });
-        $('#modify_layer_geom_type_test-button')
-            .tooltip({
-                position: {
-                    my: 'left bottom-5',
-                    at: 'left top'
-                }
-            });
-        $('.renameLayer')
-            .button({
-                icons: { primary: 'ui-icon-tag' },
-                text: false
-            })
-            .button('refresh');
-        $('.entferneLayer')
-            .button({
-                icons: { primary: 'ui-icon-closethick' },
-                text: false
-            })
-            .button('refresh');
+        // darf erst beginnen, wenn das template fertig gerendert ist. Daher timeout
+        setTimeout(function () {
+            $('.modifyLayer')
+                .button({
+                    icons: { primary: 'ui-icon-locked' },
+                    text: false
+                })
+                .button('refresh');
+            $('.modifyLayerLabel, .exportLayerSelectLabel, .renameLayerLabel, .entferneLayerLabel, .apfTooltip')
+                .tooltip({
+                    tooltipClass: "tooltip-styling-hinterlegt",
+                    content: function () {
+                        return $(this).attr('title');
+                    }
+                });
+            $('#modify_layer_geom_type_test-button')
+                .tooltip({
+                    position: {
+                        my: 'left bottom-5',
+                        at: 'left top'
+                    }
+                });
+            $('.renameLayer')
+                .button({
+                    icons: { primary: 'ui-icon-tag' },
+                    text: false
+                })
+                .button('refresh');
+            $('.entferneLayer')
+                .button({
+                    icons: { primary: 'ui-icon-closethick' },
+                    text: false
+                })
+                .button('refresh');
+        }, 0);
     }
     if (initializeLegende) {
         $(".olmapLayertreeLegende").tooltip({

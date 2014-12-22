@@ -1,0 +1,23 @@
+<div class="layeroptionen">
+    <input type="checkbox" class="modifyLayer" id="modifyLayer{{{layertitel}}}">
+    <label for="modifyLayer{{{layertitel}}}" title="Ebene bearbeiten" class="modifyLayerLabel"></label>
+    <select id="modifyLayerGeomType{{{layertitel}}}" class="modifyLayerGeomType apfTooltip" title="Neue Objekte zeichnen oder<br>bestehende Objekte auswählen, um sie zu verändern">
+        <option id="modify_layer_geom_type_leerwert" value="leerwert" selected>Objekt auswählen</option>
+        <option value="Point">Punkt zeichnen</option>
+        <option value="LineString">Linie zeichnen</option>
+        <option value="Polygon">Polygon zeichnen</option>
+    </select>
+    <div class="nonModifyOptions">
+        <select id="export2_layer_geom_type_{{{layertitel}}}" class="exportLayerSelect apfTooltip" title="Ebene exportieren<br>Wählen Sie ein Format">
+            <option value="leerwert" selected>exportieren</option>
+            <option value="GeoJSON">GeoJSON</option>
+            <option value="KML">KML</option>
+            <option value="GPX">GPX</option>
+        </select>
+        <input type="checkbox" class="renameLayer" id="renameLayer{{{layertitel}}}">
+        <label for="renameLayer{{{layertitel}}}" title="Ebene umbenennen" class="renameLayerLabel"></label>
+        <input type="checkbox" class="entferneLayer" id="entferneLayer{{{layertitel}}}">
+        <label for="entferneLayer{{{layertitel}}}" title="Ebene entfernen" class="entferneLayerLabel"></label>
+    </div>
+    <div id="eigene_layer_meldung_{{{layertitel}}}" class="eigene_layer_meldung"></div>
+</div>

@@ -5,8 +5,9 @@
 /*jslint node: true, browser: true, nomen: true, todo: true */
 'use strict';
 
-var $         = require('jquery'),
-    speichern = require('./speichern');
+var $                           = require('jquery'),
+    speichern                   = require('./speichern'),
+    initializeTooltipsInElement = require('./initializeTooltipsInElement');
 
 module.exports = function () {
     // jQuery ui widgets initiieren
@@ -71,33 +72,5 @@ module.exports = function () {
         $("#TPopKontrDatum, #TPopMassnDatum, #JBerDatum, #IbErstelldatum").datepicker();
     }
 
-    $('.apf-with-tooltip')
-        .each(function () {
-            $(this).qtip({
-                content: {
-                    text:  $(this).next('.tooltiptext'),
-                    title: 'Legende'
-                },
-                style: {
-                    // Use the jQuery UI widget classes
-                    widget: true,
-                    // Remove the default styling
-                    def: false,
-                    tip: false
-                },
-                position: {
-                    my:       'top right',
-                    at:       'bottom right',
-                    target:   $(this),
-                    viewport: $(window)
-                }
-            });
-        })
-        .qtip({
-            events: {
-                render: function (event, api) {
-                    api.elements.wrapper.addClass('ui-corner-all');
-                }
-            }
-        });
+    initializeTooltipsInElement($('body'));
 };
