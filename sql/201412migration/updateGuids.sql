@@ -4,6 +4,10 @@
  * die übrigen Aktualisierungen sind nicht nötig, da keine GUIS fehlen
  */
 UPDATE tpopkontr
+SET ZeitGuid = UUID()
+WHERE ZeitGuid IS NULL;
+
+UPDATE tpopkontr
 SET TPopKontrGuid = UUID()
 WHERE TPopKontrGuid IS NULL;
 
