@@ -8,7 +8,7 @@
 var _  = require('underscore'),
     ol = require('ol');
 
-module.exports = function (tpopListeMarkiert) {
+module.exports = function (tpopListeMarkiert, zuordnen) {
     var bounds,
         xArray = [],
         yArray = [],
@@ -16,7 +16,10 @@ module.exports = function (tpopListeMarkiert) {
         yMax,
         xMin,
         yMin,
+        dist,
         tpopidMarkiert = [];
+
+    dist = zuordnen ? 1500 : 70;
 
     // bounds der anzuzeigenden bestimmen
     if (tpopListeMarkiert && tpopListeMarkiert.length > 0) {
@@ -28,10 +31,10 @@ module.exports = function (tpopListeMarkiert) {
         // extent berechnen
         // puffern, damit immer alles sichtbar ist
         // underscore retourniert strings, also in Zahlen umwandeln
-        xMax   = parseInt(_.max(xArray), 10) + 70;
-        xMin   = parseInt(_.min(xArray), 10) - 70;
-        yMax   = parseInt(_.max(yArray), 10) + 70;
-        yMin   = parseInt(_.min(yArray), 10) - 70;
+        xMax   = parseInt(_.max(xArray), 10) + dist;
+        xMin   = parseInt(_.min(xArray), 10) - dist;
+        yMax   = parseInt(_.max(yArray), 10) + dist;
+        yMin   = parseInt(_.min(yArray), 10) - dist;
         bounds = [xMin, yMin, xMax, yMax];
     } else {
         // keine tpop übergeben, Kanton anzeigen
