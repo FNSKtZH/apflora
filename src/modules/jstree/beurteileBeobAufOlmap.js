@@ -6,10 +6,12 @@
  * - alle beobArray
  *   - zugeordnete sind beschriftet mit PopNr/TPopNr der TPop, der sie zugeordnet sind?
  *   - nicht zugeordnete sind nicht beschriftet
+ *   - beobachtungen liegen UNTER den tpop, um sie nicht zu verdecken
  * - Zuordnungen von Beob zu TPop:
  *   - jede zugeordnete Beob ist durch eine Linie mit ihrer TPop verbunden
  *   - wahlweise können auch Beschriftungen (PopNr/TPopNr) eingeblendet werden
  *   - Zuordnungen können im Layertool geblendet werden
+ *   - Zuordnungen liegen zunterst
  *
  * Funktionalität:
  * - Kartenausschnitt soll praktisch sein

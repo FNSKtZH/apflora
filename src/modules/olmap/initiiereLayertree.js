@@ -8,7 +8,8 @@
 
 var _                         = require('underscore'),
     $                         = require('jquery'),
-    berechneLayertreeMaxhoehe = require('./berechneLayertreeMaxhoehe');
+    berechneLayertreeMaxhoehe = require('./berechneLayertreeMaxhoehe'),
+    contentLayertreeTpop      = require('../../templates/olmapLayertreeTpop');
 
 module.exports = function (activeKategorie) {
     var layertitel,
@@ -78,18 +79,19 @@ module.exports = function (activeKategorie) {
             if (layertitel === 'Populationen') {
                 htmlProv += '<div class="layeroptionen">';
                 htmlProv += '<label for="layertreePopNr" class="layertreePopStyle popNr">Nr.</label>';
-                htmlProv += '<input type="checkbox" id="layertreePopNr" class="layertreePopStyle popNr" checked="checked"> ';
+                htmlProv += '<input type="radio" id="layertreePopNr" name="layertreePopLabel" class="layertreePopStyle popNr" checked="checked"> ';
                 htmlProv += '<label for="layertreePopName" class="layertreePopStyle popName">Namen</label>';
-                htmlProv += '<input type="checkbox" id="layertreePopName" class="layertreePopStyle popName">';
+                htmlProv += '<input type="radio" id="layertreePopName" name="layertreePopLabel" class="layertreePopStyle popName">';
                 htmlProv += '</div>';
             }
             if (layertitel === 'Teilpopulationen') {
                 htmlProv += '<div class="layeroptionen">';
                 htmlProv += '<label for="layertreeTpopNr" class="layertreeTpopStyle tpopNr">Nr.</label>';
-                htmlProv += '<input type="checkbox" id="layertreeTpopNr" class="layertreeTpopStyle tpopNr" checked="checked"> ';
+                htmlProv += '<input type="radio" id="layertreeTpopNr" name="layertreeTpopLabel" class="layertreeTpopStyle tpopNr" checked="checked"> ';
                 htmlProv += '<label for="layertreeTpopName" class="layertreeTpopStyle tpopName">Namen</label>';
-                htmlProv += '<input type="checkbox" id="layertreeTpopName" class="layertreeTpopStyle tpopName">';
+                htmlProv += '<input type="radio" id="layertreeTpopName" name="layertreeTpopLabel" class="layertreeTpopStyle tpopName">';
                 htmlProv += '</div>';
+                //htmlProv += contentLayertreeTpop();
             }
             if (kategorie === 'Eigene Ebenen') {
                 htmlProv += '<div class="layeroptionen">';
