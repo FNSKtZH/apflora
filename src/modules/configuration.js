@@ -203,6 +203,7 @@ config.tables = [
         tabelleIdFeld:     'NO_NOTE',
         mutWannFeld:       'BeobMutWann',
         mutWerFeld:        'BeobMutWer',
+        form:              'beob',
         initiiereFunktion: '',
         treeTyp:           'drei verschiedene!'
     }
