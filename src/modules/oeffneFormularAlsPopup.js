@@ -5,7 +5,8 @@
 /*jslint node: true, browser: true, nomen: true, todo: true */
 'use strict';
 
-var $ = require('jquery');
+var $             = require('jquery'),
+    initiiereBeob = require('./initiiereBeob');
 
 module.exports = function (formularname, id, statusZuordnung) {
     var $formularname = $('#' + formularname),
@@ -31,11 +32,8 @@ module.exports = function (formularname, id, statusZuordnung) {
     case 'beob':
         title = 'Beobachtung';
         beobTyp = (isNaN(id) ? 'evab' : 'infospezies');
-        //console.log('beobTyp: ', beobTyp);
-        //console.log('id: ', id);
-        //console.log('statusZuordnung: ', statusZuordnung);
         // formular initiieren, ohne anzuzeigen
-        require('./initiiereBeob')(beobTyp, id, statusZuordnung, true);
+        initiiereBeob(beobTyp, id, statusZuordnung, true);
         formWidth = 700;
         break;
     default:
@@ -47,7 +45,6 @@ module.exports = function (formularname, id, statusZuordnung) {
         close: function () {
             $formularname.dialog("destroy");
         },
-          //height: 600,
         width: formWidth,
         maxHeight: $('#menu').height(),
         resizable: true,

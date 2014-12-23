@@ -190,9 +190,25 @@ form table .label {
  * in Beob sollen Felder in ganzer Breite sichtbar sein,
  * da hier lange und zusammenhängende Namen vorkommen, die nicht umgebrochen werden
  */
+#DistZuTPop_Felder {
+    overflow-y: auto;
+    max-height: 300px;
+}
+#DistZuTPop_Felder input {
+    float:      left;
+    margin-top: 2px !important;
+}
+#beob label,
+#tpopbeob label {
+    display:     block;
+    margin-left: 18px;
+}
+.radio-wrapper {
+    margin-top: 5px;
+}
 #beob .label,
 #tpopbeob .label {
-    width:          215px;
+    width:     215px;
     word-wrap: break-word;
 }
 

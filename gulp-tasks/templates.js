@@ -6,7 +6,7 @@ var gulp         = require('gulp'),
     defineModule = require('gulp-define-module');
 
 gulp.task('templates', function () {
-    return gulp.src('src/templatesDev/*.hbs')
+    return gulp.src('src/templatesDev/**/*')
         .pipe(handlebars())
         .pipe(defineModule('node'))
         .pipe(gulp.dest('./src/templates'));

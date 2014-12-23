@@ -3,6 +3,7 @@
 
 var $                      = require('jquery'),
     _                      = require('underscore'),
+    dateFormat             = require('dateformat'),
     capitaliseFirstLetter  = require('../lib/capitaliseFirstLetter'),
     initiiereAp            = require('./initiiereAp'),
     zeigeFormular          = require('./zeigeFormular'),
@@ -79,9 +80,10 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
                 htmlDistzutpop = '<tr class="fieldcontain distZuTPop"><td class="label"><label for="distZuTPop">Einer Teilpopulation zuordnen:</label></td><td class="Datenfelder"><div class="Datenfelder" id="DistZuTPop_Felder">';
                 if (data) {
                     _.each(data, function (beob, index) {
-                        if (index > 0) {
+                        /*if (index > 0) {
                             htmlDistzutpop += "<br>";
-                        }
+                        }*/
+                        htmlDistzutpop += '<div class="radio-wrapper">';
                         htmlDistzutpop += '<input type="radio" name="distZuTPop" id="distZuTPop';
                         htmlDistzutpop += beob.TPopId;
                         htmlDistzutpop += '" class="distZuTPop" formular="beob" value="';
@@ -107,6 +109,7 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
                         }
                         // Label abschliessen
                         htmlDistzutpop += '</label>';
+                        htmlDistzutpop += '</div>';
                     });
 
                     // Tabellenzeile abschliessen
@@ -139,7 +142,7 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
                                 }
                                 $("#distZuTPop" + data.TPopId).prop("checked", true);
                                 $("#BeobBemerkungen").val(data.BeobBemerkungen);
-                                $("#BeobMutWann").val(data.BeobMutWann);
+                                $("#BeobMutWann").val(dateFormat(data.BeobMutWann, 'dd.mm.yyyy'));
                                 $("#BeobMutWer").val(data.BeobMutWer);
 
                                 // Formulare blenden
