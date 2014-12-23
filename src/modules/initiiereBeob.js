@@ -40,8 +40,6 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
 
     $BeobBemerkungen = $("#BeobBemerkungen");
 
-    console.log('beobId: ', beobId);
-
     // beobid hat meist 'beob' vorangestellt - entfernen!
     if (beobId.indexOf('beob') > -1) {
         beobId = beobId.replace('beob', '');

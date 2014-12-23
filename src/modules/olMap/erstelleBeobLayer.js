@@ -32,8 +32,6 @@ module.exports = function (beobArray, beobidMarkiert, visible) {
 
     visible = (visible === true);
 
-    console.log('beobArray: ', beobArray);
-
     _.each(beobArray, function (beob) {
         myName = 'Beobachtung ' + (beob.DESC_LOCALITE || '(kein Ort)');
         if (beob.TPopId) {

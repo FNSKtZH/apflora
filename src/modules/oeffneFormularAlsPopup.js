@@ -31,9 +31,9 @@ module.exports = function (formularname, id, statusZuordnung) {
     case 'beob':
         title = 'Beobachtung';
         beobTyp = (isNaN(id) ? 'evab' : 'infospezies');
-        console.log('beobTyp: ', beobTyp);
-        console.log('id: ', id);
-        console.log('statusZuordnung: ', statusZuordnung);
+        //console.log('beobTyp: ', beobTyp);
+        //console.log('id: ', id);
+        //console.log('statusZuordnung: ', statusZuordnung);
         // formular initiieren, ohne anzuzeigen
         require('./initiiereBeob')(beobTyp, id, statusZuordnung, true);
         formWidth = 700;
