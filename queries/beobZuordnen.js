@@ -23,7 +23,7 @@ module.exports = function (request, callback) {
         'UNION SELECT apflora_beob.beob_infospezies.NO_NOTE, apflora_beob.beob_infospezies.NO_ISFS, apflora_beob.beob_infospezies.FNS_XGIS AS X, apflora_beob.beob_infospezies.FNS_YGIS AS Y, apflora_beob.beob_infospezies.A_NOTE, apflora_beob.beob_bereitgestellt.Datum AS Datum, apflora_beob.beob_bereitgestellt.Autor, apflora_beob.beob_infospezies.PROJET, apflora_beob.beob_infospezies.DESC_LOCALITE, apflora.beobzuordnung.TPopId, CONCAT(apflora.tpop.TPopNr, "/", apflora.pop.PopNr) AS popTpopNr',
         'FROM (((apflora_beob.beob_infospezies INNER JOIN apflora_beob.beob_bereitgestellt ON apflora_beob.beob_infospezies.NO_NOTE = apflora_beob.beob_bereitgestellt.NO_NOTE) LEFT JOIN apflora.beobzuordnung ON apflora_beob.beob_infospezies.NO_NOTE = apflora.beobzuordnung.NO_NOTE) LEFT JOIN apflora.tpop ON apflora.beobzuordnung.TPopId = apflora.tpop.TPopId) LEFT JOIN apflora.pop ON apflora.tpop.PopId = apflora.pop.PopId',
         'WHERE apflora_beob.beob_infospezies.FNS_XGIS>0 AND apflora_beob.beob_infospezies.FNS_YGIS>0 AND apflora.beobzuordnung.beobNichtZuordnen Is Null AND apflora_beob.beob_infospezies.NO_ISFS=' + apId,
-        'ORDER BY Datum DESC LIMIT 100'
+        'ORDER BY Datum DESC'
     ];
 
     // Daten abfragen

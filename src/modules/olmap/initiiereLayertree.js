@@ -9,9 +9,9 @@
 var _                           = require('underscore'),
     $                           = require('jquery'),
     berechneLayertreeMaxhoehe   = require('./berechneLayertreeMaxhoehe'),
-    contentLayertreePop         = require('../../templates/olmapLayertreePop'),
-    contentLayertreeTpop        = require('../../templates/olmapLayertreeTpop'),
-    contentLayertreeEigeneEbene = require('../../templates/olmapLayertreeEigeneEbene');
+    contentLayertreePop         = require('../../templates/olMap/layertreePop'),
+    contentLayertreeTpop        = require('../../templates/olMap/layertreeTpop'),
+    contentLayertreeEigeneEbene = require('../../templates/olMap/layertreeEigeneEbene');
 
 module.exports = function (activeKategorie) {
     var layertitel,

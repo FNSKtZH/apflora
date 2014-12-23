@@ -6,7 +6,7 @@ var $                                 = require('jquery'),
     ol                                = require('ol'),
     styleTPop                         = require('./styleTPop'),
     aktualisiereKoordinatenVonTPop    = require('../aktualisiereKoordinatenVonTPop'),
-    tpopContent                       = require('../../templates/olmapPopupTpop'),
+    tpopContent                       = require('../../templates/olMap/popupTpop'),
     entferneModifyInteractionFuerTpop = require('./entferneModifyInteractionFuerTpop');
 
 module.exports = function (modifySource) {

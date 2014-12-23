@@ -2,7 +2,7 @@
 'use strict';
 
 var ol                      = require('ol'),
-    tpopContent             = require('../../templates/olmapPopupTpop'),
+    tpopContent             = require('../../templates/olMap/popupTpop'),
     erstelleTPopNrLabel     = require('../erstelleTPopNrLabel');
 
 module.exports = function (tpop) {

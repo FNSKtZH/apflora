@@ -9,7 +9,7 @@ var $                                   = require('jquery'),
     _                                   = require('underscore'),
     ol                                  = require('ol'),
     styleBeob                           = require('./styleBeob'),
-    beobContent                         = require('../../templates/olmapPopupBeob'),
+    beobContent                         = require('../../templates/olMap/popupBeob'),
     addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers'),
     pruefeObPopTpopGewaehltWurden       = require('./pruefeObPopTpopGewaehltWurden');
 
