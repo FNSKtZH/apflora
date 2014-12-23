@@ -3,13 +3,11 @@
 
 var gulp         = require('gulp'),
     handlebars   = require('gulp-handlebars'),
-    defineModule = require('gulp-define-module'),
-    notify       = require('gulp-notify');
+    defineModule = require('gulp-define-module');
 
 gulp.task('templates', function () {
     return gulp.src('src/templatesDev/*.hbs')
         .pipe(handlebars())
         .pipe(defineModule('node'))
-        .pipe(gulp.dest('./src/templates'))
-        .pipe(notify({ message: 'task templates beendet' }));
+        .pipe(gulp.dest('./src/templates'));
 });

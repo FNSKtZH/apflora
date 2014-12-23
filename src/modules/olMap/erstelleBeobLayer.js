@@ -32,8 +32,10 @@ module.exports = function (beobArray, beobidMarkiert, visible) {
 
     visible = (visible === true);
 
+    console.log('beobArray: ', beobArray);
+
     _.each(beobArray, function (beob) {
-        myName       = beob.DESC_LOCALITE || '(kein Name)';
+        myName = 'Beobachtung ' + (beob.DESC_LOCALITE || '(kein Ort)');
         if (beob.TPopId) {
             beob.statusZuordnung = 'zugeordnet';
         } else if (beob.beobNichtZuzuordnen) {

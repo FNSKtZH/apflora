@@ -10,7 +10,8 @@ var $ = require('jquery');
 module.exports = function (formularname, id, statusZuordnung) {
     var $formularname = $('#' + formularname),
         title,
-        beobTyp;
+        beobTyp,
+        formWidth = 600;
 
     // id setzen
     localStorage[formularname + 'Id'] = id;
@@ -35,6 +36,7 @@ module.exports = function (formularname, id, statusZuordnung) {
         console.log('statusZuordnung: ', statusZuordnung);
         // formular initiieren, ohne anzuzeigen
         require('./initiiereBeob')(beobTyp, id, statusZuordnung, true);
+        formWidth = 700;
         break;
     default:
         title = '';
@@ -46,7 +48,7 @@ module.exports = function (formularname, id, statusZuordnung) {
             $formularname.dialog("destroy");
         },
           //height: 600,
-        width: 600,
+        width: formWidth,
         maxHeight: $('#menu').height(),
         resizable: true,
         position: {
