@@ -45,7 +45,8 @@ var $                                   = require('jquery'),
     erstelleTPopLayer                   = require('../olMap/erstelleTPopLayer'),
     zeigePopInTPop                      = require('../olMap/zeigePopInTPop'),
     erstelleBeobLayer                   = require('../olMap/erstelleBeobLayer'),
-    initiiereLayertree                  = require('../olMap/initiiereLayertree');
+    initiiereLayertree                  = require('../olMap/initiiereLayertree'),
+    stapleLayerEineEbeneTiefer          = require('../olMap/stapleLayerEineEbeneTiefer');
 
 module.exports = function (nodeTpopId) {
     var tpopId = erstelleIdAusDomAttributId(nodeTpopId);
@@ -114,6 +115,7 @@ module.exports = function (nodeTpopId) {
                 // layer für beob erstellen
                 erstelleBeobLayer(beobArray, null, true)
             ).then(function () {
+                stapleLayerEineEbeneTiefer('Beobachtungen');
                 // layertree neu aufbauen
                 initiiereLayertree();
             });

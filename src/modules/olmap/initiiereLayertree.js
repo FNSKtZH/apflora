@@ -85,19 +85,6 @@ module.exports = function (activeKategorie) {
                 htmlProv += contentLayertreeTpop();
             }
             if (kategorie === 'Eigene Ebenen') {
-                /*htmlProv += '<div class="layeroptionen">';
-                htmlProv += '<input type="checkbox" class="modifyLayer" id="modifyLayer' + layertitel.replace(" ", "_") + '">';
-                htmlProv += '<label for="modifyLayer' + layertitel.replace(" ", "_") + '" title="Ebene bearbeiten" class="modifyLayerLabel"></label>';
-                htmlProv += '<select id="modifyLayerGeomType' + layertitel.replace(" ", "_") + '" class="modifyLayerGeomType apfTooltip" title="Neue Objekte zeichnen oder<br>bestehende Objekte auswählen, um sie zu verändern"><option id="modify_layer_geom_type_leerwert" value="leerwert" selected>Objekt auswählen</option><option value="Point">Punkt zeichnen</option><option value="LineString">Linie zeichnen</option><option value="Polygon">Polygon zeichnen</option></select>';
-                htmlProv += '<div class="nonModifyOptions">';
-                htmlProv += '<select id="export2_layer_geom_type_' + layertitel.replace(" ", "_") + '" class="exportLayerSelect apfTooltip" title="Ebene exportieren<br>Wählen Sie ein Format"><option value="leerwert" selected>exportieren</option><option value="GeoJSON">GeoJSON</option><option value="KML">KML</option><option value="GPX">GPX</option></select>';
-                htmlProv += '<input type="checkbox" class="renameLayer" id="renameLayer' + layertitel.replace(" ", "_") + '">';
-                htmlProv += '<label for="renameLayer' + layertitel.replace(" ", "_") + '" title="Ebene umbenennen" class="renameLayerLabel"></label>';
-                htmlProv += '<input type="checkbox" class="entferneLayer" id="entferneLayer' + layertitel.replace(" ", "_") + '">';
-                htmlProv += '<label for="entferneLayer' + layertitel.replace(" ", "_") + '" title="Ebene entfernen" class="entferneLayerLabel"></label>';
-                htmlProv += '</div>';
-                htmlProv += '<div id="eigene_layer_meldung_' + layertitel.replace(" ", "_") + '" class="eigene_layer_meldung"></div>';
-                htmlProv += '</div>';*/
                 htmlProv += contentLayertreeEigeneEbene({'layertitel': layertitel.replace(" ", "_")});
                 initializeModifyLayer = true;
                 // diese ids werden gebraucht, um tooltips zu erstellen
