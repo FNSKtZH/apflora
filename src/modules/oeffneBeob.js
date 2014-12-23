@@ -2,8 +2,7 @@
 'use strict';
 
 module.exports = function (beob) {
-    var $              = require('jquery'),
-        initiiereBeob  = require('./initiiereBeob'),
+    var initiiereBeob  = require('./initiiereBeob'),
         oeffneTPopBeob = require('./oeffneTPopBeob'),
         beobStatus,
         beobTyp;
