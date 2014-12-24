@@ -3,8 +3,7 @@
 
 
 var gulp = require('gulp'),
-    concat = require('gulp-concat-sourcemap'),
-    notify = require('gulp-notify');
+    concat = require('gulp-concat-sourcemap');
 
 gulp.task('dev_style', function () {
     return gulp.src([
@@ -12,6 +11,5 @@ gulp.task('dev_style', function () {
         'style/apflora.css'
     ])
         .pipe(concat('apflora_built.css'))
-        .pipe(gulp.dest('style'))
-        .pipe(notify({message: 'task dev_style beendet'}));
+        .pipe(gulp.dest('style'));
 });

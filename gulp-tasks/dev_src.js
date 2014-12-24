@@ -2,8 +2,7 @@
 'use strict';
 
 var gulp   = require('gulp'),
-    concat = require('gulp-concat-sourcemap'),
-    notify = require('gulp-notify');
+    concat = require('gulp-concat-sourcemap');
 
 gulp.task('dev_src', function () {
     return gulp.src([
@@ -29,6 +28,5 @@ gulp.task('dev_src', function () {
         'src/handlebars.js'
     ])
         .pipe(concat('apflora_built.js'))
-        .pipe(gulp.dest('./src'))
-        .pipe(notify({ message: 'task dev_src beendet' }));
+        .pipe(gulp.dest('./src'));
 });
