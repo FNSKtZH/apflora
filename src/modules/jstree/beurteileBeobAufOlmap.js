@@ -29,6 +29,12 @@
  *    - Benutzer kann z.B. nicht zuzuordnen setzen - oder hier zuordnen
  *    - Zuordnungen werden in der Karte nachgeführt
  *  - nice to have: die Liste der 100 neusten nicht beurteilten Beob wird ergänzt (jsTree und Karte)
+ *
+ * Lösungsansatz Linien zeichnen:
+ * - vectorLayer machen: var vector = new ol.layer.Vector()
+ * - in source für jede Beob mit TPopId:
+ *   - var featureX = new ol.Feature({'foo':'bar'})
+ *   - featureX.setGeometry(new ol.geom.Point([x, y]))
  */
 
 
@@ -43,10 +49,12 @@ var $                                   = require('jquery'),
     zeigeFormular                       = require('../zeigeFormular'),
     waehleAusschnittFuerUebergebeneTPop = require('../olMap/waehleAusschnittFuerUebergebeneTPop'),
     erstelleTPopLayer                   = require('../olMap/erstelleTPopLayer'),
+    erstelleBeobZuordnungsLayer         = require('../olMap/erstelleBeobZuordnungsLayer'),
     zeigePopInTPop                      = require('../olMap/zeigePopInTPop'),
     erstelleBeobLayer                   = require('../olMap/erstelleBeobLayer'),
     initiiereLayertree                  = require('../olMap/initiiereLayertree'),
-    stapleLayerEineEbeneTiefer          = require('../olMap/stapleLayerEineEbeneTiefer');
+    stapleLayerEineEbeneTiefer          = require('../olMap/stapleLayerEineEbeneTiefer'),
+    stapleLayerXTiefer                  = require('../olMap/stapleLayerXTiefer');
 
 module.exports = function (nodeTpopId) {
     var tpopId = erstelleIdAusDomAttributId(nodeTpopId);
@@ -107,15 +115,16 @@ module.exports = function (nodeTpopId) {
             window.apf.olMap.map.getView().fitExtent(markierteTpop.bounds, window.apf.olMap.map.getSize());
             // tpop ergänzen
             $.when(
-                // Layer für Symbole und Beschriftung erstellen
-                //erstelleTPopLayer(tpopArray, markierteTpop.tpopidMarkiert, true, true),
+                // Layer für tpop-Symbole und Beschriftung erstellen
                 erstelleTPopLayer(tpopArray, null, true, true),
                 // Pop holen, aber ausgeblendet
                 zeigePopInTPop(false),
                 // layer für beob erstellen
-                erstelleBeobLayer(beobArray, null, true)
+                erstelleBeobLayer(beobArray, null, true),
+                erstelleBeobZuordnungsLayer(beobArray, tpopArray, true)
             ).then(function () {
                 stapleLayerEineEbeneTiefer('Beobachtungen');
+                stapleLayerXTiefer('BeobZuordnungen', 2);
                 // layertree neu aufbauen
                 initiiereLayertree();
             });

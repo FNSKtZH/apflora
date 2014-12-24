@@ -31,8 +31,6 @@ module.exports = function (that) {
 
     formular = $(that).attr("formular") || $(that).data('formular');
 
-    console.log('formular: ', formular);
-
     // infos über die betroffene Tabelle holen
     table         = _.findWhere(configuration.tables, {form: formular});
     tabelleInDb   = table.tabelleInDb;
