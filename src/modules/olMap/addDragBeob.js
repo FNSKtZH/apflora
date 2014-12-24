@@ -5,7 +5,12 @@ var $                             = require('jquery'),
     ol                            = require('ol');
 
 module.exports = function () {
-    var olMap = window.apf.olMap;
+    console.log('window.apf.olMap: ', window.apf.olMap);
+    var olMap = window.apf.olMap,
+        pointFeature,
+        lineFeature,
+        polygonFeature;
+
     // interaction erstellen
     /**
      * @constructor
@@ -53,9 +58,10 @@ module.exports = function () {
      * @return {boolean} `true` to start the drag sequence.
      */
     olMap.DragBeob.prototype.handleDownEvent = function (evt) {
-        var map = evt.map;
+        var map = evt.map,
+            feature;
 
-        var feature = map.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
+        feature = map.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
             return feature;
         });
 
@@ -72,16 +78,20 @@ module.exports = function () {
      * @param {ol.MapBrowserEvent} evt Map browser event.
      */
     olMap.DragBeob.prototype.handleDragEvent = function (evt) {
-        var map = evt.map;
+        var map = evt.map,
+            feature,
+            deltaX,
+            deltaY,
+            geometry;
 
-        var feature = map.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
+        feature = map.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
             return feature;
         });
 
-        var deltaX = evt.coordinate[0] - this.coordinate_[0];
-        var deltaY = evt.coordinate[1] - this.coordinate_[1];
+        deltaX = evt.coordinate[0] - this.coordinate_[0];
+        deltaY = evt.coordinate[1] - this.coordinate_[1];
 
-        var geometry = /** @type {ol.geom.SimpleGeometry} */
+        geometry = /** @type {ol.geom.SimpleGeometry} */
             (this.feature_.getGeometry());
         ol.geom.translate(geometry, deltaX, deltaY);
 
@@ -95,12 +105,14 @@ module.exports = function () {
      */
     olMap.DragBeob.prototype.handleMoveEvent = function(evt) {
         if (this.cursor_) {
-            var map = evt.map;
-            var feature = map.forEachFeatureAtPixel(evt.pixel,
-                function(feature, layer) {
-                  return feature;
-                });
-            var element = evt.map.getTargetElement();
+            var map = evt.map,
+                feature,
+                element;
+
+            feature = map.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
+                return feature;
+            });
+            element = evt.map.getTargetElement();
             if (feature) {
                 if (element.style.cursor != this.cursor_) {
                     this.previousCursor_ = element.style.cursor;
@@ -125,11 +137,11 @@ module.exports = function () {
     };
 
 
-    var pointFeature   = new ol.Feature(new ol.geom.Point([0, 0]));
+    pointFeature   = new ol.Feature(new ol.geom.Point([0, 0]));
 
-    var lineFeature    = new ol.Feature(new ol.geom.LineString([[-1e7, 1e6], [-1e6, 3e6]]));
+    lineFeature    = new ol.Feature(new ol.geom.LineString([[-1e7, 1e6], [-1e6, 3e6]]));
 
-    var polygonFeature = new ol.Feature(new ol.geom.Polygon([[[-3e6, -1e6], [-3e6, 1e6], [-1e6, 1e6], [-1e6, -1e6], [-3e6, -1e6]]]));
+    polygonFeature = new ol.Feature(new ol.geom.Polygon([[[-3e6, -1e6], [-3e6, 1e6], [-1e6, 1e6], [-1e6, -1e6], [-3e6, -1e6]]]));
 
     olMap.dragBeobInteraction = new ol.interaction.defaults().extend([new olMap.DragBeob()]);
     olMap.map.addInteraction(olMap.dragBeobInteraction);
