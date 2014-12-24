@@ -1,15 +1,15 @@
 /*
  * Karte zeigt an:
  * - alle tpopArray
- *   - die gewählte ist markiert
- *   - das Fenster, das die markierten Objekte auflistet, wird NICHT angezeigt
+ *   - (die gewählte ist markiert)
+ *   - "infos abfragen" ist aktiv
  * - alle beobArray
  *   - zugeordnete sind beschriftet mit PopNr/TPopNr der TPop, der sie zugeordnet sind?
  *   - nicht zugeordnete sind nicht beschriftet
- *   - beobachtungen liegen UNTER den tpop, um sie nicht zu verdecken
+ *   - beobachtungen liegen unter den tpop, um sie nicht zu verdecken
  * - Zuordnungen von Beob zu TPop:
  *   - jede zugeordnete Beob ist durch eine Linie mit ihrer TPop verbunden
- *   - wahlweise können auch Beschriftungen (PopNr/TPopNr) eingeblendet werden
+ *   - (wahlweise können auch Beschriftungen (PopNr/TPopNr) eingeblendet werden)
  *   - Zuordnungen können im Layertool geblendet werden
  *   - Zuordnungen liegen zunterst
  *
@@ -29,12 +29,6 @@
  *    - Benutzer kann z.B. nicht zuzuordnen setzen - oder hier zuordnen
  *    - Zuordnungen werden in der Karte nachgeführt
  *  - nice to have: die Liste der 100 neusten nicht beurteilten Beob wird ergänzt (jsTree und Karte)
- *
- * Lösungsansatz Linien zeichnen:
- * - vectorLayer machen: var vector = new ol.layer.Vector()
- * - in source für jede Beob mit TPopId:
- *   - var featureX = new ol.Feature({'foo':'bar'})
- *   - featureX.setGeometry(new ol.geom.Point([x, y]))
  */
 
 
