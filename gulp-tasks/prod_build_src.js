@@ -3,8 +3,7 @@
 
 var gulp   = require('gulp'),
     uglify = require('gulp-uglify'),
-    concat = require('gulp-concat'),
-    notify = require('gulp-notify');
+    concat = require('gulp-concat');
 
 gulp.task('prod_build_src', function () {
     return gulp.src([
@@ -32,6 +31,5 @@ gulp.task('prod_build_src', function () {
         .pipe(concat('apflora_built.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./src'))
-        .pipe(gulp.dest('./dist/src'))
-        .pipe(notify({ message: 'prod_build_src task beendet' }));
+        .pipe(gulp.dest('./dist/src'));
 });

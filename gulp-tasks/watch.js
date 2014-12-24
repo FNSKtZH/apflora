@@ -1,8 +1,8 @@
 /*jslint node: true, browser: true, nomen: true, todo: true */
 'use strict';
 
-
-var gulp = require('gulp');
+var gulp     = require('gulp'),
+    notifier = require('node-notifier');
 
 return gulp.task('watch', function () {
     gulp.watch(
@@ -22,4 +22,8 @@ return gulp.task('watch', function () {
     );
     gulp.watch(['style/apflora.css'], ['dev_style']);
     gulp.watch(['src/templatesDev//**/*'], ['templates_when_watch']);
+    notifier.notify({
+        'title': 'dev code built',
+        'message': 'watching now'
+    });
 });
