@@ -4,7 +4,7 @@
  *   - (die gewählte ist markiert)
  *   - "infos abfragen" ist aktiv
  * - alle beobArray
- *   - zugeordnete sind beschriftet mit PopNr/TPopNr der TPop, der sie zugeordnet sind?
+ *   - (zugeordnete sind beschriftet mit PopNr/TPopNr der TPop, der sie zugeordnet sind?)
  *   - nicht zugeordnete sind nicht beschriftet
  *   - beobachtungen liegen unter den tpop, um sie nicht zu verdecken
  * - Zuordnungen von Beob zu TPop:
@@ -48,7 +48,8 @@ var $                                   = require('jquery'),
     erstelleBeobLayer                   = require('../olMap/erstelleBeobLayer'),
     initiiereLayertree                  = require('../olMap/initiiereLayertree'),
     stapleLayerEineEbeneTiefer          = require('../olMap/stapleLayerEineEbeneTiefer'),
-    stapleLayerXTiefer                  = require('../olMap/stapleLayerXTiefer');
+    stapleLayerXTiefer                  = require('../olMap/stapleLayerXTiefer'),
+    addDragBeob                         = require('../olMap/addDragBeob');
 
 module.exports = function (nodeTpopId) {
     var tpopId = erstelleIdAusDomAttributId(nodeTpopId);
@@ -121,6 +122,8 @@ module.exports = function (nodeTpopId) {
                 stapleLayerXTiefer('BeobZuordnungen', 2);
                 // layertree neu aufbauen
                 initiiereLayertree();
+                // beob zuordbar machen
+                addDragBeob();
             });
         }).fail(function () {
             melde("Fehler: Es konnten keine Teilpopulationen aus der Datenbank abgerufen werden");
