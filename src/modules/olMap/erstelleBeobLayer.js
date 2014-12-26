@@ -59,6 +59,34 @@ module.exports = function (beobArray, beobidMarkiert, visible) {
             myId:         beob.NO_NOTE
         });
 
+        // zählt, wieviele male .on('change') ausgelöst wurde
+        window.apf.olMap.modifyBeobFeatureZaehler = 0;
+
+        marker.on('change', function (event) {
+            var zaehler,
+                coordinates = this.getGeometry().getCoordinates(),
+                pixel       = window.apf.olMap.map.getPixelFromCoordinate(coordinates);
+
+            window.apf.olMap.modifyBeobFeatureZaehler++;
+            // speichert, wieviele male .on('change') ausgelöst wurde, bis setTimout aufgerufen wurde
+            zaehler = window.apf.olMap.modifyBeobFeatureZaehler;
+            setTimeout(function () {
+                if (zaehler === window.apf.olMap.modifyBeobFeatureZaehler) {
+                    // in den letzten 200 Millisekunden hat sich nichts geändert > reagieren
+                    // suche nach Teilpopulation, auf welche die Beob gezogen wurde
+                    var feature = window.apf.olMap.map.forEachFeatureAtPixel(pixel, function (feature, layer) {
+                        if (layer.get('title') === 'Teilpopulationen') {
+                            console.log('feature found: ', feature);
+                            console.log('tpopid: ', feature.get('myId'));
+                            // TODO: jetzt zuordnen und Formular öffnen
+
+                        }
+                        return feature;
+                    });
+                }
+            }, 200);
+        });
+
         // marker in Array speichern
         markers.push(marker);
 
@@ -83,20 +111,6 @@ module.exports = function (beobArray, beobidMarkiert, visible) {
     beobLayer.set('kategorie', 'AP Flora');
     window.apf.olMap.map.addLayer(beobLayer);
 
-    var style = new ol.style.Style({
-        image: new ol.style.Circle({
-            radius: 7,
-            fill: new ol.style.Fill({
-                color: [0, 153, 255, 1]
-            }),
-            stroke: new ol.style.Stroke({
-                color: [255, 255, 255, 0.75],
-                width: 1.5
-            })
-        }),
-        zIndex: 100000
-    });
-
     var select = new ol.interaction.Select({
         style: styleBeob,
         layers: function (layer) {
@@ -107,6 +121,7 @@ module.exports = function (beobArray, beobidMarkiert, visible) {
     var modify = new ol.interaction.Modify({
         features: select.getFeatures()
     });
+
     window.apf.olMap.map.addInteraction(select);
     window.apf.olMap.map.addInteraction(modify);
 
