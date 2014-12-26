@@ -30,8 +30,8 @@ module.exports = function (beobArray, tpopArray, visible) {
                 // line erstellen...
                 line = new ol.Feature({
                     geometry: new ol.geom.LineString([[beob.X, beob.Y], [tpop.TPopXKoord, tpop.TPopYKoord]]),
-                    myTyp:        'beobZuordnung',
-                    myId:         'beobZuordnung' + beob.NO_NOTE
+                    myTyp:    'beobZuordnung',
+                    myId:     'beobZuordnung' + beob.NO_NOTE
                 });
 
                 // line in Array speichern
