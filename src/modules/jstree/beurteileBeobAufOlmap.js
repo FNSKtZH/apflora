@@ -48,8 +48,7 @@ var $                                   = require('jquery'),
     erstelleBeobLayer                   = require('../olMap/erstelleBeobLayer'),
     initiiereLayertree                  = require('../olMap/initiiereLayertree'),
     stapleLayerEineEbeneTiefer          = require('../olMap/stapleLayerEineEbeneTiefer'),
-    stapleLayerXTiefer                  = require('../olMap/stapleLayerXTiefer'),
-    addDragBeob                         = require('../olMap/addDragBeob');
+    stapleLayerXTiefer                  = require('../olMap/stapleLayerXTiefer');
 
 module.exports = function (nodeTpopId) {
     var tpopId = erstelleIdAusDomAttributId(nodeTpopId);
@@ -122,8 +121,6 @@ module.exports = function (nodeTpopId) {
                 stapleLayerXTiefer('BeobZuordnungen', 2);
                 // layertree neu aufbauen
                 initiiereLayertree();
-                // beob zuordbar machen
-                //addDragBeob();
             });
         }).fail(function () {
             melde("Fehler: Es konnten keine Teilpopulationen aus der Datenbank abgerufen werden");

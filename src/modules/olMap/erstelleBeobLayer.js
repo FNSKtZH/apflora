@@ -97,7 +97,13 @@ module.exports = function (beobArray, beobidMarkiert, visible) {
         zIndex: 100000
     });
 
-    var select = new ol.interaction.Select({style: style});
+    var select = new ol.interaction.Select({
+        style: styleBeob,
+        layers: function (layer) {
+            // selectable sind nur features aus dem gewählten layer
+            return layer.get('title') === 'Beobachtungen';
+        }
+    });
     var modify = new ol.interaction.Modify({
         features: select.getFeatures()
     });
