@@ -123,7 +123,7 @@ module.exports = function (nodeTpopId) {
                 // layertree neu aufbauen
                 initiiereLayertree();
                 // beob zuordbar machen
-                addDragBeob();
+                //addDragBeob();
             });
         }).fail(function () {
             melde("Fehler: Es konnten keine Teilpopulationen aus der Datenbank abgerufen werden");

@@ -83,6 +83,27 @@ module.exports = function (beobArray, beobidMarkiert, visible) {
     beobLayer.set('kategorie', 'AP Flora');
     window.apf.olMap.map.addLayer(beobLayer);
 
+    var style = new ol.style.Style({
+        image: new ol.style.Circle({
+            radius: 7,
+            fill: new ol.style.Fill({
+                color: [0, 153, 255, 1]
+            }),
+            stroke: new ol.style.Stroke({
+                color: [255, 255, 255, 0.75],
+                width: 1.5
+            })
+        }),
+        zIndex: 100000
+    });
+
+    var select = new ol.interaction.Select({style: style});
+    var modify = new ol.interaction.Modify({
+        features: select.getFeatures()
+    });
+    window.apf.olMap.map.addInteraction(select);
+    window.apf.olMap.map.addInteraction(modify);
+
     beobLayerErstellt.resolve();
     return beobLayerErstellt.promise();
 };
