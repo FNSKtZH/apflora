@@ -22,10 +22,13 @@ module.exports = function () {
     entferneModifyInteractionFuerTpop();
 
     // Karte nur aufbauen, wenn dies nicht schon passiert ist
+    // TODO: ol.View2D wird ol:View
+    // hat aber im Test Fehler provoziert
     if (!window.apf.olMap.map) {
         window.apf.olMap.map = new ga.Map({
             target: 'olMapDiv',
-            layers: createLayers(),
+            layers: ga.layer.create('ch.swisstopo.pixelkarte-farbe'),
+            //layers: createLayers(),
             view: new ol.View2D({
                 resolution: 4,
                 center: [693000, 253000]

@@ -63,7 +63,7 @@ module.exports = function (pixel, coordinate) {
             }
         }
 
-        // zuerst mit gtip einen popup erzeugen
+        // zuerst mit qtip2 einen popup erzeugen
         $('.olMapPopup').each(function () {
             $(this).qtip({
                 content: {
