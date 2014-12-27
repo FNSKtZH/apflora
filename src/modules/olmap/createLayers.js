@@ -417,7 +417,6 @@ module.exports = function () {
     layers = layersProv;
 
     // prüfen, ob in localStorage eigene Layer existieren
-    // ausgeschaltet, weil die LayerObjekte von OL3 rekursiv sind und nicht für die localStorage stringified werden können
     if (localStorage.olmapEigeneEbenen) {
         // drag and drop geo-files
         styleFunction = function (feature, resolution) {
