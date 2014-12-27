@@ -27,8 +27,8 @@ module.exports = function () {
     if (!window.apf.olMap.map) {
         window.apf.olMap.map = new ga.Map({
             target: 'olMapDiv',
-            layers: ga.layer.create('ch.swisstopo.pixelkarte-farbe'),
-            //layers: createLayers(),
+            //layers: [ga.layer.create('ch.swisstopo.pixelkarte-farbe')],
+            layers: createLayers(),
             view: new ol.View2D({
                 resolution: 4,
                 center: [693000, 253000]
