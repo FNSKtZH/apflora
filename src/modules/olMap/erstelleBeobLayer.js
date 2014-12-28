@@ -65,26 +65,32 @@ module.exports = function (beobArray, beobidMarkiert, visible) {
         marker.on('change', function (event) {
             var zaehler,
                 coordinates = this.getGeometry().getCoordinates(),
-                pixel       = window.apf.olMap.map.getPixelFromCoordinate(coordinates);
+                pixel       = window.apf.olMap.map.getPixelFromCoordinate(coordinates),
+                myId        = this.get('myId');
 
             window.apf.olMap.modifyBeobFeatureZaehler++;
             // speichert, wieviele male .on('change') ausgelöst wurde, bis setTimout aufgerufen wurde
             zaehler = window.apf.olMap.modifyBeobFeatureZaehler;
             setTimeout(function () {
                 if (zaehler === window.apf.olMap.modifyBeobFeatureZaehler) {
-                    // in den letzten 200 Millisekunden hat sich nichts geändert > reagieren
+                    // in den letzten 400 Millisekunden hat sich nichts geändert > reagieren
                     // suche nach Teilpopulation, auf welche die Beob gezogen wurde
                     var feature = window.apf.olMap.map.forEachFeatureAtPixel(pixel, function (feature, layer) {
                         if (layer.get('title') === 'Teilpopulationen') {
                             console.log('feature found: ', feature);
                             console.log('tpopid: ', feature.get('myId'));
                             // TODO: jetzt zuordnen und Formular öffnen
-
+                            $.ajax({
+                                type: 'post',
+                                url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + myId + '/feld=TPopId/wert=' + feature.get('myId') + '/user=' + encodeURIComponent(sessionStorage.user)
+                            }).done(function () {
+                                
+                            });
                         }
                         return feature;
                     });
                 }
-            }, 200);
+            }, 400);
         });
 
         // marker in Array speichern
