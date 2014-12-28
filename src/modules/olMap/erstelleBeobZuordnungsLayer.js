@@ -54,6 +54,7 @@ module.exports = function (beobArray, tpopArray, visible) {
     beobZuordnungLayer.set('visible', visible);
     beobZuordnungLayer.set('kategorie', 'AP Flora');
     window.apf.olMap.map.addLayer(beobZuordnungLayer);
+    window.apf.olMap.beobZuordnungLayer = beobZuordnungLayer;
 
     beobZuordnungsLayerErstellt.resolve();
     return beobZuordnungsLayerErstellt.promise();

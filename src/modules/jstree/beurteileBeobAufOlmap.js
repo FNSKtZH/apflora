@@ -114,7 +114,7 @@ module.exports = function (nodeTpopId) {
                 // Pop holen, aber ausgeblendet
                 zeigePopInTPop(false),
                 // layer für beob erstellen
-                erstelleBeobLayer(beobArray, null, true),
+                erstelleBeobLayer(beobArray, tpopArray, null, true),
                 erstelleBeobZuordnungsLayer(beobArray, tpopArray, true)
             ).then(function () {
                 stapleLayerEineEbeneTiefer('Beobachtungen');
