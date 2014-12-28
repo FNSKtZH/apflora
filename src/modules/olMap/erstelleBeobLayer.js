@@ -11,9 +11,10 @@ var $                                   = require('jquery'),
     styleBeob                           = require('./styleBeob'),
     beobContent                         = require('../../templates/olMap/popupBeob'),
     addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers'),
-    pruefeObPopTpopGewaehltWurden       = require('./pruefeObPopTpopGewaehltWurden');
+    pruefeObPopTpopGewaehltWurden       = require('./pruefeObPopTpopGewaehltWurden'),
+    erstelleBeobZuordnungsLayer         = require('./erstelleBeobZuordnungsLayer');
 
-module.exports = function (beobArray, beobidMarkiert, visible) {
+module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
     var beobLayerErstellt = $.Deferred(),
         markers = [],
         marker,
@@ -84,7 +85,15 @@ module.exports = function (beobArray, beobidMarkiert, visible) {
                                 type: 'post',
                                 url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + myId + '/feld=TPopId/wert=' + feature.get('myId') + '/user=' + encodeURIComponent(sessionStorage.user)
                             }).done(function () {
-                                
+                                // den Wert im beobArray anpassen
+                                _.each(beobArray, function (beob, index) {
+                                    if (beob.NO_NOTE == myId) {
+                                        beobArray[index].TPopId = feature.get('myId');
+                                    }
+                                });
+                                // beobZuordnungsLayer neu erstellen
+                                window.apf.olMap.map.removeLayer(window.apf.olMap.beobZuordnungLayer);
+                                erstelleBeobZuordnungsLayer(beobArray, tpopArray, true);
                             });
                         }
                         return feature;
