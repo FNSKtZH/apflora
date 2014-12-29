@@ -80,33 +80,40 @@ module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
                 window.apf.olMap.modifyBeobFeatureZaehler++;
                 // speichert, wieviele male .on('change') ausgelöst wurde, bis setTimout aufgerufen wurde
                 zaehler = window.apf.olMap.modifyBeobFeatureZaehler;
+                // Ausführung verzögern, damit nicht bei jedem Pixel ausgeführt wird
                 setTimeout(function () {
                     if (zaehler === window.apf.olMap.modifyBeobFeatureZaehler) {
                         // in den letzten 400 Millisekunden hat sich nichts geändert > reagieren
                         // suche nach Teilpopulation, auf welche die Beob gezogen wurde
-                        var feature = window.apf.olMap.map.forEachFeatureAtPixel(pixel, function (feature, layer) {
+                        window.apf.olMap.map.forEachFeatureAtPixel(pixel, function (feature, layer) {
                             if (layer.get('title') === 'Teilpopulationen') {
                                 var tpopFeature = feature,
                                     tpopId      = tpopFeature.get('myId'),
                                     tpopX       = tpopFeature.get('xkoord'),
                                     tpopY       = tpopFeature.get('ykoord'),
-                                    newBeobZuordGeometry = new ol.geom.LineString([[beobX, beobY], [tpopX, tpopY]]),
+                                    newBeobZuordGeometry,
                                     beobZuordnungFeature;
 
+                                // TODO: ab hier in separate Funktion auslagern
+                                // die wird dannn aufgerufen, wenn im Formular zugeordnet wird und diese Karte offen ist
+                                newBeobZuordGeometry = new ol.geom.LineString([[beobX, beobY], [tpopX, tpopY]]);
                                 // beob zuordnen
-                                // TODO: Prüfen, ob die Beob noch keine Zuordnung hat
-                                // wenn ja: insert
                                 beobZuordnungFeature = _.find(window.apf.olMap.beobZuordnungsLayerFeatures, function(feature) {
                                     return feature.get('myId') == beobId;
                                 });
+                                // Prüfen, ob die Beob noch keine Zuordnung hat
                                 if (beobTPopId) {
                                     $.ajax({
                                         type: 'post',
                                         url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(sessionStorage.user)
+                                    }).done(function () {
+                                        // beobZuordnung anpassen
+                                        beobZuordnungFeature.setGeometry(newBeobZuordGeometry);
+                                    }).fail(function () {
+                                        melde('Fehler: die Beobachtung konnte nicht zugeordnet werden');
                                     });
-                                    // bestehende beobZuordnung anpassen
-                                    beobZuordnungFeature.setGeometry(newBeobZuordGeometry);
                                 } else {
+                                    // noch keine Zuordnung > insert
                                     $.ajax({
                                         type: 'post',
                                         url: 'api/v1/insert/apflora/tabelle=beobzuordnung/feld=NO_NOTE/wert=' + beobId + '/user=' + encodeURIComponent(sessionStorage.user)
@@ -116,18 +123,20 @@ module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
                                             type: 'post',
                                             url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(sessionStorage.user)
                                         }).done(function () {
-                                            // bestehende beobZuordnung anpassen
+                                            // beobZuordnung anpassen
                                             beobZuordnungFeature.setGeometry(newBeobZuordGeometry);
+                                        }).fail(function () {
+                                            melde('Fehler: die Beobachtung konnte nicht zugeordnet werden');
                                         });
+                                    }).fail(function () {
+                                        melde('Fehler: die Beobachtung konnte nicht zugeordnet werden');
                                     });
                                 }
-                                    
                                 // Lage der Beob zurücksetzen
                                 beob.setGeometry(beobGeometryBefore);
-                                // TODO: Formular öffnen
+                                // TODO: Formular öffnen?
 
                             }
-                            return feature;
                         });
                     }
                 }, 400);
