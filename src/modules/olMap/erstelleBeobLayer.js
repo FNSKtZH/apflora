@@ -12,7 +12,8 @@ var $                                   = require('jquery'),
     beobContent                         = require('../../templates/olMap/popupBeob'),
     addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers'),
     pruefeObPopTpopGewaehltWurden       = require('./pruefeObPopTpopGewaehltWurden'),
-    erstelleBeobZuordnungsLayer         = require('./erstelleBeobZuordnungsLayer');
+    erstelleBeobZuordnungsLayer         = require('./erstelleBeobZuordnungsLayer'),
+    erstelleTPopLayer                   = require('./erstelleTPopLayer');
 
 module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
     var beobLayerErstellt = $.Deferred(),
@@ -34,76 +35,107 @@ module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
     visible = (visible === true);
 
     _.each(beobArray, function (beob) {
-        myName = 'Beobachtung ' + (beob.DESC_LOCALITE || '(kein Ort)');
-        if (beob.TPopId) {
-            beob.statusZuordnung = 'zugeordnet';
-        } else if (beob.beobNichtZuzuordnen) {
-            beob.statusZuordnung = 'nicht_zuzuordnen';
-        } else {
-            beob.statusZuordnung = 'nicht_beurteilt';
-        }
-        popupContent = beobContent(beob);
+        if (beob.X && beob.Y) {
+            myName = 'Beobachtung ' + (beob.DESC_LOCALITE || '(kein Ort)');
+            if (beob.TPopId) {
+                beob.statusZuordnung = 'zugeordnet';
+            } else if (beob.beobNichtZuzuordnen) {
+                beob.statusZuordnung = 'nicht_zuzuordnen';
+            } else {
+                beob.statusZuordnung = 'nicht_beurteilt';
+            }
+            popupContent = beobContent(beob);
 
-        // tooltip bzw. label vorbereiten: nullwerte ausblenden
-        beob.Datum = (beob.Datum ? beob.Datum.toString() : beob.A_NOTE.toString());
+            // tooltip bzw. label vorbereiten: nullwerte ausblenden
+            beob.Datum = (beob.Datum ? beob.Datum.toString() : beob.A_NOTE.toString());
 
-        // marker erstellen...
-        marker = new ol.Feature({
-            geometry: new ol.geom.Point([beob.X, beob.Y]),
-            popName:      myName,
-            popupContent: popupContent,
-            popupTitle:   myName,
-            // Koordinaten werden gebraucht, damit das popup richtig platziert werden kann
-            xkoord:       beob.X,
-            ykoord:       beob.Y,
-            myTyp:        'beob',
-            myId:         beob.NO_NOTE
-        });
+            // marker erstellen...
+            marker = new ol.Feature({
+                geometry: new ol.geom.Point([beob.X, beob.Y]),
+                popName:      myName,
+                popupContent: popupContent,
+                popupTitle:   myName,
+                // Koordinaten werden gebraucht, damit das popup richtig platziert werden kann
+                xkoord:       beob.X,
+                ykoord:       beob.Y,
+                myTyp:        'beob',
+                myId:         beob.NO_NOTE,
+                TPopId:       beob.TPopId
+            });
 
-        // zählt, wieviele male .on('change') ausgelöst wurde
-        window.apf.olMap.modifyBeobFeatureZaehler = 0;
+            // zählt, wieviele male .on('change') ausgelöst wurde
+            window.apf.olMap.modifyBeobFeatureZaehler = 0;
 
-        marker.on('change', function (event) {
-            var zaehler,
-                coordinates = this.getGeometry().getCoordinates(),
-                pixel       = window.apf.olMap.map.getPixelFromCoordinate(coordinates),
-                myId        = this.get('myId');
+            marker.on('change', function (event) {
+                var zaehler,
+                    coordinates = this.getGeometry().getCoordinates(),
+                    pixel       = window.apf.olMap.map.getPixelFromCoordinate(coordinates),
+                    beob        = this,
+                    beobId      = this.get('myId'),
+                    beobX       = this.get('xkoord'),
+                    beobY       = this.get('ykoord'),
+                    beobTPopId  = this.get('TPopId'),
+                    beobGeometryBefore = new ol.geom.Point([beobX, beobY]);
 
-            window.apf.olMap.modifyBeobFeatureZaehler++;
-            // speichert, wieviele male .on('change') ausgelöst wurde, bis setTimout aufgerufen wurde
-            zaehler = window.apf.olMap.modifyBeobFeatureZaehler;
-            setTimeout(function () {
-                if (zaehler === window.apf.olMap.modifyBeobFeatureZaehler) {
-                    // in den letzten 400 Millisekunden hat sich nichts geändert > reagieren
-                    // suche nach Teilpopulation, auf welche die Beob gezogen wurde
-                    var feature = window.apf.olMap.map.forEachFeatureAtPixel(pixel, function (feature, layer) {
-                        if (layer.get('title') === 'Teilpopulationen') {
-                            console.log('feature found: ', feature);
-                            console.log('tpopid: ', feature.get('myId'));
-                            // TODO: jetzt zuordnen und Formular öffnen
-                            $.ajax({
-                                type: 'post',
-                                url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + myId + '/feld=TPopId/wert=' + feature.get('myId') + '/user=' + encodeURIComponent(sessionStorage.user)
-                            }).done(function () {
-                                // den Wert im beobArray anpassen
-                                _.each(beobArray, function (beob, index) {
-                                    if (beob.NO_NOTE == myId) {
-                                        beobArray[index].TPopId = feature.get('myId');
-                                    }
+                window.apf.olMap.modifyBeobFeatureZaehler++;
+                // speichert, wieviele male .on('change') ausgelöst wurde, bis setTimout aufgerufen wurde
+                zaehler = window.apf.olMap.modifyBeobFeatureZaehler;
+                setTimeout(function () {
+                    if (zaehler === window.apf.olMap.modifyBeobFeatureZaehler) {
+                        // in den letzten 400 Millisekunden hat sich nichts geändert > reagieren
+                        // suche nach Teilpopulation, auf welche die Beob gezogen wurde
+                        var feature = window.apf.olMap.map.forEachFeatureAtPixel(pixel, function (feature, layer) {
+                            if (layer.get('title') === 'Teilpopulationen') {
+                                var tpopFeature = feature,
+                                    tpopId      = tpopFeature.get('myId'),
+                                    tpopX       = tpopFeature.get('xkoord'),
+                                    tpopY       = tpopFeature.get('ykoord'),
+                                    newBeobZuordGeometry = new ol.geom.LineString([[beobX, beobY], [tpopX, tpopY]]),
+                                    beobZuordnungFeature;
+
+                                // beob zuordnen
+                                // TODO: Prüfen, ob die Beob noch keine Zuordnung hat
+                                // wenn ja: insert
+                                beobZuordnungFeature = _.find(window.apf.olMap.beobZuordnungsLayerFeatures, function(feature) {
+                                    return feature.get('myId') == beobId;
                                 });
-                                // beobZuordnungsLayer neu erstellen
-                                window.apf.olMap.map.removeLayer(window.apf.olMap.beobZuordnungLayer);
-                                erstelleBeobZuordnungsLayer(beobArray, tpopArray, true);
-                            });
-                        }
-                        return feature;
-                    });
-                }
-            }, 400);
-        });
+                                if (beobTPopId) {
+                                    $.ajax({
+                                        type: 'post',
+                                        url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(sessionStorage.user)
+                                    });
+                                    // bestehende beobZuordnung anpassen
+                                    beobZuordnungFeature.setGeometry(newBeobZuordGeometry);
+                                } else {
+                                    $.ajax({
+                                        type: 'post',
+                                        url: 'api/v1/insert/apflora/tabelle=beobzuordnung/feld=NO_NOTE/wert=' + beobId + '/user=' + encodeURIComponent(sessionStorage.user)
+                                    }).done(function () {
+                                        // jetzt aktualisieren
+                                        $.ajax({
+                                            type: 'post',
+                                            url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(sessionStorage.user)
+                                        }).done(function () {
+                                            // bestehende beobZuordnung anpassen
+                                            beobZuordnungFeature.setGeometry(newBeobZuordGeometry);
+                                        });
+                                    });
+                                }
+                                    
+                                // Lage der Beob zurücksetzen
+                                beob.setGeometry(beobGeometryBefore);
+                                // TODO: Formular öffnen
 
-        // marker in Array speichern
-        markers.push(marker);
+                            }
+                            return feature;
+                        });
+                    }
+                }, 400);
+            });
+
+            // marker in Array speichern
+            markers.push(marker);
+        }
 
         // markierte in window.apf.olMap.map.olmapSelectInteraction ergänzen
         if (beobidMarkiert && beobidMarkiert.indexOf(beob.PopId) !== -1) {

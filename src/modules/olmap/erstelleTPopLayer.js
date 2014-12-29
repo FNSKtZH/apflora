@@ -58,6 +58,8 @@ module.exports = function (tpopListe, tpopidMarkiert, visible, beobZuordnen) {
 
     // ...und der Karte hinzufügen
     window.apf.olMap.map.addLayer(tpopLayer);
+    // globale Variable erstellen, dasmit das Layer direkt entfernt werden kann
+    window.apf.olMap.tpopLayer = tpopLayer;
 
     if (selectedFeatures && selectedFeatures.length > 0 && !beobZuordnen) {
         setTimeout(function () {
