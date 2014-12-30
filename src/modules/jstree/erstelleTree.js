@@ -109,7 +109,13 @@ module.exports = function (ApArtId) {
             zielNodeId,
             zielNodeTyp,
             zielParentNode,
-            zielParentNodeId;
+            zielParentNodeId,
+            beobId,
+            beobStatus,
+            tpopId,
+            beobTpopId,
+            olmapCallback,
+            jstreeCallback;
 
         // nur aktualisieren, wenn Schreibrechte bestehen
         if (!pruefeSchreibvoraussetzungen()) {
@@ -373,10 +379,12 @@ module.exports = function (ApArtId) {
             // zugeordnet
             if (zielNodeTyp === "beobNichtBeurteilt" || zielNodeTyp === "apOrdnerBeobNichtBeurteilt") {
                 // zugeordnet > nicht beurteilt
-                $.ajax({
-                    type: 'delete',
-                    url: 'api/v1/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + herkunftNodeId
-                }).done(function () {
+                beobId         = herkunftNodeId;
+                beobStatus     = 'nicht_beurteilt';
+                tpopId         = null;
+                beobTpopId     = null;
+                olmapCallback  = null;
+                jstreeCallback = function () {
                     // Zuordnung entfernen
                     $('[name="distZuTPop"]').each(function () {
                         if ($(this).prop('checked') === true) $(this).prop('checked', false);
@@ -397,36 +405,36 @@ module.exports = function (ApArtId) {
                     // Variablen aufräumen
                     delete window.apf.beobNodeAusgeschnitten;
                     delete window.apf.herkunftParentNode;
-                }).fail(function () {
-                    melde("Fehler: Die Beobachtung wurde nicht auf 'nicht beurteilt' gesetzt");
-                });
+                };
+                ordneBeobEinerTpopZu(beobId, beobStatus, tpopId, beobTpopId, olmapCallback, jstreeCallback);
             }
             if (zielNodeTyp === "beobZugeordnet" || zielNodeTyp === "tpopOrdnerBeobZugeordnet") {
                 // zugeordnet > zugeordnet
-                var beobId = localStorage.beobId,
-                    tpopId = zielNodeTyp === "tpopOrdnerBeobZugeordnet" ? zielNodeId : zielParentNodeId,
-                    beobTpopId = 1,  // wird nur benutzt, um zu wissen, ob ein insert nötig ist
-                    olmapCallback = null,
-                    jstreeCallback = function () {
-                        // Anzahlen anpassen der parent-nodes am Herkunfts- und Zielort
-                        if (zielNodeTyp === "tpopOrdnerBeobZugeordnet") {
-                            beschrifteOrdner(zielNode);
-                        } else {
-                            beschrifteOrdner(zielParentNode);
-                        }
-                        beschrifteOrdner(window.apf.herkunftParentNode);
+                beobId         = localStorage.beobId;
+                beobStatus     = 'zugeordnet';
+                tpopId         = zielNodeTyp === "tpopOrdnerBeobZugeordnet" ? zielNodeId : zielParentNodeId;
+                beobTpopId     = 1;  // wird nur benutzt, um zu wissen, ob ein insert nötig ist
+                olmapCallback  = null;
+                jstreeCallback = function () {
+                    // Anzahlen anpassen der parent-nodes am Herkunfts- und Zielort
+                    if (zielNodeTyp === "tpopOrdnerBeobZugeordnet") {
+                        beschrifteOrdner(zielNode);
+                    } else {
+                        beschrifteOrdner(zielParentNode);
+                    }
+                    beschrifteOrdner(window.apf.herkunftParentNode);
 
-                        // selection steuern
-                        if (localStorage.karteFokussieren) {
-                            delete localStorage.karteFokussieren;
-                        }
+                    // selection steuern
+                    if (localStorage.karteFokussieren) {
+                        delete localStorage.karteFokussieren;
+                    }
 
-                        // Variablen aufräumen
-                        delete window.apf.beobNodeAusgeschnitten;
-                        delete window.apf.herkunftParentNode;
-                    };
+                    // Variablen aufräumen
+                    delete window.apf.beobNodeAusgeschnitten;
+                    delete window.apf.herkunftParentNode;
+                };
 
-                ordneBeobEinerTpopZu(beobId, tpopId, beobTpopId, olmapCallback, jstreeCallback);
+                ordneBeobEinerTpopZu(beobId, beobStatus, tpopId, beobTpopId, olmapCallback, jstreeCallback);
             }
             if (zielNodeTyp === "beobNichtZuzuordnen" || zielNodeTyp === "apOrdnerBeobNichtZuzuordnen") {
                 // zugeordnet > nicht zuzuordnen
@@ -471,37 +479,38 @@ module.exports = function (ApArtId) {
             // nicht beurteilt
             if (zielNodeTyp === "beobZugeordnet" || zielNodeTyp === "tpopOrdnerBeobZugeordnet") {
                 // nicht beurteilt > zugeordnet
-                var beobId = herkunftNodeId,
-                    tpopId = (zielNodeTyp === "tpopOrdnerBeobZugeordnet" ? zielNodeId : zielParentNodeId),
-                    beobTpopId = null,
-                    olmapCallback = null,
-                    jstreeCallback = function () {
-                        // typ des nodes anpassen
-                        herkunftNode.attr("typ", "beobZugeordnet");
-                        localStorage.beobtyp = "beobZugeordnet";
+                beobId         = herkunftNodeId;
+                beobStatus     = 'zugeordnet';
+                tpopId         = zielNodeTyp === "tpopOrdnerBeobZugeordnet" ? zielNodeId : zielParentNodeId;
+                beobTpopId     = null;
+                olmapCallback  = null;
+                jstreeCallback = function () {
+                    // typ des nodes anpassen
+                    herkunftNode.attr("typ", "beobZugeordnet");
+                    localStorage.beobtyp = "beobZugeordnet";
 
-                        // Parent Node-Beschriftung am Herkunft- und Zielort: Anzahl anpassen
-                        beschrifteOrdner(window.apf.herkunftParentNode);
-                        if (zielNodeTyp === "tpopOrdnerBeobZugeordnet") {
-                            beschrifteOrdner(zielNode);
-                        } else {
-                            beschrifteOrdner(zielParentNode);
-                        }
+                    // Parent Node-Beschriftung am Herkunft- und Zielort: Anzahl anpassen
+                    beschrifteOrdner(window.apf.herkunftParentNode);
+                    if (zielNodeTyp === "tpopOrdnerBeobZugeordnet") {
+                        beschrifteOrdner(zielNode);
+                    } else {
+                        beschrifteOrdner(zielParentNode);
+                    }
 
-                        // Nicht beurteilt: Deaktivieren
-                        $('#beobNichtBeurteilt').prop('checked', false);
+                    // Nicht beurteilt: Deaktivieren
+                    $('#beobNichtBeurteilt').prop('checked', false);
 
-                        // selection steuern
-                        if (localStorage.karteFokussieren) {
-                            delete localStorage.karteFokussieren;
-                        }
+                    // selection steuern
+                    if (localStorage.karteFokussieren) {
+                        delete localStorage.karteFokussieren;
+                    }
 
-                        // Variablen aufräumen
-                        delete window.apf.beobNodeAusgeschnitten;
-                        delete window.apf.herkunftParentNode;
-                    };
+                    // Variablen aufräumen
+                    delete window.apf.beobNodeAusgeschnitten;
+                    delete window.apf.herkunftParentNode;
+                };
 
-                ordneBeobEinerTpopZu(beobId, tpopId, beobTpopId, olmapCallback, jstreeCallback);
+                ordneBeobEinerTpopZu(beobId, beobStatus, tpopId, beobTpopId, olmapCallback, jstreeCallback);
             }
             if (zielNodeTyp === "beobNichtZuzuordnen" || zielNodeTyp === "apOrdnerBeobNichtZuzuordnen") {
                 // nicht beurteilt > nicht zuordnen

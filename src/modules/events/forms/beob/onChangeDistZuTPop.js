@@ -11,5 +11,5 @@ module.exports = function () {
 
     beobTpopId = window.apf.beob.zuordnung && window.apf.beob.zuordnung.TPopId ? window.apf.beob.zuordnung.TPopId : null;
 
-    ordneBeobEinerTpopZu(beobId, tpopId, beobTpopId);
+    ordneBeobEinerTpopZu(beobId, 'zugeordnet', tpopId, beobTpopId);
 };
