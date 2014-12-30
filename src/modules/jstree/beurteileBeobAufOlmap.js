@@ -16,8 +16,8 @@
  * Funktionalität:
  * - Kartenausschnitt soll praktisch sein
  * - Beob können per drag and drop einer TPop zugeordnet werden:
- *   - das Symbol der Beob kehrt in die ursprüngliche Lage zurück (Ebene bearbeitbar machen!)
- *   - die Symbole und Zuordnungen werden neu aufgebaut oder anders aktualisiert
+ *   - das Symbol der Beob kehrt in die ursprüngliche Lage zurück
+ *   - die Symbole und Zuordnungen werden aktualisiert
  *     auch, wenn der Benutzer die Zuordnung im Formular geändert hat!
  *   - das Formular der Beob wird neben der Karte geöffnet
  *     - Optionenliste in der Höhe begrenzt, mit scrollbar

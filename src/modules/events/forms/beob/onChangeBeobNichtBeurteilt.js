@@ -13,4 +13,8 @@ module.exports = function () {
         // stattdessen soll ein anderer Wert gewählt werden
         $beobNichtBeurteilt.prop('checked', true);
     }
+    // globale Variable anpassen, falls nötig
+    if (window.apf.beob && window.apf.beob.zuordnung && window.apf.beob.zuordnung.TPopId) {
+        delete window.apf.beob.zuordnung.TPopId;
+    }
 };
