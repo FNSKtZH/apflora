@@ -433,46 +433,38 @@ module.exports = function (ApArtId) {
                     delete window.apf.beobNodeAusgeschnitten;
                     delete window.apf.herkunftParentNode;
                 };
-
                 ordneBeobEinerTpopZu(beobId, beobStatus, tpopId, beobTpopId, olmapCallback, jstreeCallback);
             }
             if (zielNodeTyp === "beobNichtZuzuordnen" || zielNodeTyp === "apOrdnerBeobNichtZuzuordnen") {
                 // zugeordnet > nicht zuzuordnen
-                $.ajax({
-                    type: 'post',
-                    url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + herkunftNodeId + '/feld=beobNichtZuordnen/wert=1/user=' + encodeURIComponent(sessionStorage.user)
-                }).done(function () {
-                    // TPopId null setzen
-                    $.ajax({
-                        type: 'post',
-                        url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + herkunftNodeId + '/feld=TPopId/wert=/user=' + encodeURIComponent(sessionStorage.user)
-                    }).done(function () {
-                        // Zuordnung entfernen
-                        $('[name="distZuTPop"]').each(function () {
-                            if ($(this).prop('checked') === true) $(this).prop('checked', false);
-                        });
-
-                        // typ des nodes anpassen
-                        herkunftNode.attr("typ", "beobNichtZuzuordnen");
-                        localStorage.beobtyp = "beobNichtZuzuordnen";
-
-                        // Anzahlen anpassen der parent-nodes am Herkunfts- und Zielort
-                        if (zielNodeTyp === "apOrdnerBeobNichtZuzuordnen") {
-                            beschrifteOrdner(zielNode);
-                        } else {
-                            beschrifteOrdner(zielParentNode);
-                        }
-                        beschrifteOrdner(window.apf.herkunftParentNode);
-
-                        // Variablen aufräumen
-                        delete window.apf.beobNodeAusgeschnitten;
-                        delete window.apf.herkunftParentNode;
-                    }).fail(function () {
-                        console.log("fehler beim Leeren von TPopId");
+                beobId         = herkunftNodeId;
+                beobStatus     = 'nicht_zuordnen';
+                tpopId         = null;
+                beobTpopId     = null;
+                olmapCallback  = null;
+                jstreeCallback = function () {
+                    // Zuordnung entfernen
+                    $('[name="distZuTPop"]').each(function () {
+                        if ($(this).prop('checked') === true) $(this).prop('checked', false);
                     });
-                }).fail(function () {
-                    melde("Fehler: Die Beobachtung wurde nicht verschoben");
-                });
+
+                    // typ des nodes anpassen
+                    herkunftNode.attr("typ", "beobNichtZuzuordnen");
+                    localStorage.beobtyp = "beobNichtZuzuordnen";
+
+                    // Anzahlen anpassen der parent-nodes am Herkunfts- und Zielort
+                    if (zielNodeTyp === "apOrdnerBeobNichtZuzuordnen") {
+                        beschrifteOrdner(zielNode);
+                    } else {
+                        beschrifteOrdner(zielParentNode);
+                    }
+                    beschrifteOrdner(window.apf.herkunftParentNode);
+
+                    // Variablen aufräumen
+                    delete window.apf.beobNodeAusgeschnitten;
+                    delete window.apf.herkunftParentNode;
+                };
+                ordneBeobEinerTpopZu(beobId, beobStatus, tpopId, beobTpopId, olmapCallback, jstreeCallback);
             }
         }
         if (herkunftNodeTyp === "beobNichtBeurteilt") {
@@ -509,54 +501,48 @@ module.exports = function (ApArtId) {
                     delete window.apf.beobNodeAusgeschnitten;
                     delete window.apf.herkunftParentNode;
                 };
-
                 ordneBeobEinerTpopZu(beobId, beobStatus, tpopId, beobTpopId, olmapCallback, jstreeCallback);
             }
             if (zielNodeTyp === "beobNichtZuzuordnen" || zielNodeTyp === "apOrdnerBeobNichtZuzuordnen") {
                 // nicht beurteilt > nicht zuordnen
-                $.ajax({
-                    type: 'post',
-                    url: 'api/v1/insert/apflora/tabelle=beobzuordnung/feld=NO_NOTE/wert=' + herkunftNodeId + '/user=' + encodeURIComponent(sessionStorage.user)
-                }).done(function () {
-                    // jetzt aktualisieren
-                    $.ajax({
-                        type: 'post',
-                        url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + herkunftNodeId + '/feld=beobNichtZuordnen/wert=1/user=' + encodeURIComponent(sessionStorage.user)
-                    }).done(function () {
-                        // typ des nodes anpassen
-                        $(herkunftNode).attr("typ", "beobNichtZuzuordnen");
-                        localStorage.beobtyp = "beobNichtZuzuordnen";
+                beobId         = herkunftNodeId;
+                beobStatus     = 'nicht_zuordnen';
+                tpopId         = null;
+                beobTpopId     = null;
+                olmapCallback  = null;
+                jstreeCallback = function () {
+                    // typ des nodes anpassen
+                    $(herkunftNode).attr("typ", "beobNichtZuzuordnen");
+                    localStorage.beobtyp = "beobNichtZuzuordnen";
 
-                        // Parent Node-Beschriftung am Herkunft- und Zielort: Anzahl anpassen
-                        beschrifteOrdner(window.apf.herkunftParentNode);
-                        if (zielNodeTyp === "apOrdnerBeobNichtZuzuordnen") {
-                            beschrifteOrdner(zielNode);
-                        } else {
-                            beschrifteOrdner(zielParentNode);
-                        }
+                    // Parent Node-Beschriftung am Herkunft- und Zielort: Anzahl anpassen
+                    beschrifteOrdner(window.apf.herkunftParentNode);
+                    if (zielNodeTyp === "apOrdnerBeobNichtZuzuordnen") {
+                        beschrifteOrdner(zielNode);
+                    } else {
+                        beschrifteOrdner(zielParentNode);
+                    }
 
-                        // Nicht beurteilt: Deaktivieren
-                        $('#beobNichtBeurteilt').prop('checked', false);
+                    // Nicht beurteilt: Deaktivieren
+                    $('#beobNichtBeurteilt').prop('checked', false);
 
-                        // Variablen aufräumen
-                        delete window.apf.beobNodeAusgeschnitten;
-                        delete window.apf.herkunftParentNode;
-                    }).fail(function () {
-                        console.log("Fehler: Die Beobachtung wurde nicht zugeordnet");
-                    });
-                }).fail(function () {
-                    melde("Fehler: Die Beobachtung wurde nicht zugeordnet");
-                });
+                    // Variablen aufräumen
+                    delete window.apf.beobNodeAusgeschnitten;
+                    delete window.apf.herkunftParentNode;
+                };
+                ordneBeobEinerTpopZu(beobId, beobStatus, tpopId, beobTpopId, olmapCallback, jstreeCallback);
             }
         }
         if (herkunftNodeTyp === "beobNichtZuzuordnen") {
             // nicht zuzuordnen
             if (zielNodeTyp === "beobNichtBeurteilt" || zielNodeTyp === "apOrdnerBeobNichtBeurteilt") {
                 // nicht zuzuordnen > nicht beurteilt
-                $.ajax({
-                    type: 'delete',
-                    url: 'api/v1/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + herkunftNodeId
-                }).done(function () {
+                beobId         = herkunftNodeId;
+                beobStatus     = 'nicht_beurteilt';
+                tpopId         = null;
+                beobTpopId     = null;
+                olmapCallback  = null;
+                jstreeCallback = function () {
                     // typ des nodes anpassen
                     $(herkunftNode).attr("typ", "beobNichtBeurteilt");
                     localStorage.beobtyp = "beobNichtBeurteilt";
@@ -575,45 +561,37 @@ module.exports = function (ApArtId) {
                     // Variablen aufräumen
                     delete window.apf.beobNodeAusgeschnitten;
                     delete window.apf.herkunftParentNode;
-                }).fail(function () {
-                    melde("Fehler: Die Zuordnung der Beobachtung wurde nicht entfernt");
-                });
+                };
+                ordneBeobEinerTpopZu(beobId, beobStatus, tpopId, beobTpopId, olmapCallback, jstreeCallback);
             }
             if (zielNodeTyp === "beobZugeordnet" || zielNodeTyp === "tpopOrdnerBeobZugeordnet") {
                 // nicht zuzuordnen > zugeordnet
-                neueTpopId = (zielNodeTyp === "tpopOrdnerBeobZugeordnet" ? zielNodeId : zielParentNodeId);
-                $.ajax({
-                    type: 'post',
-                    url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + herkunftNodeId + '/feld=beobNichtZuordnen/wert=/user=' + encodeURIComponent(sessionStorage.user)
-                }).done(function () {
-                    $.ajax({
-                        type: 'post',
-                        url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + herkunftNodeId + '/feld=TPopId/wert=' + neueTpopId + '/user=' + encodeURIComponent(sessionStorage.user)
-                    }).done(function () {
-                        // typ des nodes anpassen
-                        $(herkunftNode).attr("typ", "beobZugeordnet");
-                        localStorage.beobtyp = "beobZugeordnet";
+                beobId         = herkunftNodeId;
+                beobStatus     = 'zugeordnet';
+                tpopId         = zielNodeTyp === "tpopOrdnerBeobZugeordnet" ? zielNodeId : zielParentNodeId;
+                beobTpopId     = null;
+                olmapCallback  = null;
+                jstreeCallback = function () {
+                    // typ des nodes anpassen
+                    $(herkunftNode).attr("typ", "beobZugeordnet");
+                    localStorage.beobtyp = "beobZugeordnet";
 
-                        // Parent Node-Beschriftung am Herkunft- und Zielort: Anzahl anpassen
-                        beschrifteOrdner(window.apf.herkunftParentNode);
-                        if (zielNodeTyp === "tpopOrdnerBeobZugeordnet") {
-                            beschrifteOrdner(zielNode);
-                        } else {
-                            beschrifteOrdner(zielParentNode);
-                        }
+                    // Parent Node-Beschriftung am Herkunft- und Zielort: Anzahl anpassen
+                    beschrifteOrdner(window.apf.herkunftParentNode);
+                    if (zielNodeTyp === "tpopOrdnerBeobZugeordnet") {
+                        beschrifteOrdner(zielNode);
+                    } else {
+                        beschrifteOrdner(zielParentNode);
+                    }
 
-                        // nicht zuzuordnen deaktivieren
-                        $('#beobNichtZuordnen').prop('checked', false);
+                    // nicht zuzuordnen deaktivieren
+                    $('#beobNichtZuordnen').prop('checked', false);
 
-                        // Variablen aufräumen
-                        delete window.apf.beobNodeAusgeschnitten;
-                        delete window.apf.herkunftParentNode;
-                    }).fail(function () {
-                        melde("Fehler: Die Beobachtung wurde nicht zugeordnet");
-                    });
-                }).fail(function () {
-                    melde("Fehler: Die Beobachtung wurde nicht zugeordnet");
-                });
+                    // Variablen aufräumen
+                    delete window.apf.beobNodeAusgeschnitten;
+                    delete window.apf.herkunftParentNode;
+                };
+                ordneBeobEinerTpopZu(beobId, beobStatus, tpopId, beobTpopId, olmapCallback, jstreeCallback);
             }
         }
     });
