@@ -13,7 +13,8 @@ var $                                   = require('jquery'),
     addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers'),
     pruefeObPopTpopGewaehltWurden       = require('./pruefeObPopTpopGewaehltWurden'),
     erstelleBeobZuordnungsLayer         = require('./erstelleBeobZuordnungsLayer'),
-    erstelleTPopLayer                   = require('./erstelleTPopLayer');
+    erstelleTPopLayer                   = require('./erstelleTPopLayer'),
+    ordneBeobEinerTpopZu                = require('../ordneBeobEinerTpopZu');
 
 module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
     var beobLayerErstellt = $.Deferred(),
@@ -92,46 +93,22 @@ module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
                                     tpopX       = tpopFeature.get('xkoord'),
                                     tpopY       = tpopFeature.get('ykoord'),
                                     newBeobZuordGeometry,
-                                    beobZuordnungFeature;
+                                    beobZuordnungFeature,
+                                    olmapCallback,
+                                    jstreeCallback = null;
 
-                                // TODO: ab hier in separate Funktion auslagern
-                                // die wird dannn aufgerufen, wenn im Formular zugeordnet wird und diese Karte offen ist
                                 newBeobZuordGeometry = new ol.geom.LineString([[beobX, beobY], [tpopX, tpopY]]);
                                 // beob zuordnen
                                 beobZuordnungFeature = _.find(window.apf.olMap.beobZuordnungsLayerFeatures, function(feature) {
                                     return feature.get('myId') == beobId;
                                 });
-                                // Prüfen, ob die Beob noch keine Zuordnung hat
-                                if (beobTPopId) {
-                                    $.ajax({
-                                        type: 'post',
-                                        url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(sessionStorage.user)
-                                    }).done(function () {
-                                        // beobZuordnung anpassen
-                                        beobZuordnungFeature.setGeometry(newBeobZuordGeometry);
-                                    }).fail(function () {
-                                        melde('Fehler: die Beobachtung konnte nicht zugeordnet werden');
-                                    });
-                                } else {
-                                    // noch keine Zuordnung > insert
-                                    $.ajax({
-                                        type: 'post',
-                                        url: 'api/v1/insert/apflora/tabelle=beobzuordnung/feld=NO_NOTE/wert=' + beobId + '/user=' + encodeURIComponent(sessionStorage.user)
-                                    }).done(function () {
-                                        // jetzt aktualisieren
-                                        $.ajax({
-                                            type: 'post',
-                                            url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(sessionStorage.user)
-                                        }).done(function () {
-                                            // beobZuordnung anpassen
-                                            beobZuordnungFeature.setGeometry(newBeobZuordGeometry);
-                                        }).fail(function () {
-                                            melde('Fehler: die Beobachtung konnte nicht zugeordnet werden');
-                                        });
-                                    }).fail(function () {
-                                        melde('Fehler: die Beobachtung konnte nicht zugeordnet werden');
-                                    });
-                                }
+
+                                olmapCallback = function () {
+                                    // beobZuordnung anpassen
+                                    beobZuordnungFeature.setGeometry(newBeobZuordGeometry);
+                                };
+
+                                ordneBeobEinerTpopZu(beobId, tpopId, beobTPopId, olmapCallback, jstreeCallback);
                                 // Lage der Beob zurücksetzen
                                 beob.setGeometry(beobGeometryBefore);
                                 // TODO: Formular öffnen?

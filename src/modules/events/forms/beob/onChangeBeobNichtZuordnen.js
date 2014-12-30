@@ -11,4 +11,8 @@ module.exports = function () {
         // node verschieben. Den Rest macht der callback zu jstree.move_node
         $('#tree').jstree('move_node', '#beob' + localStorage.beobId, '#apOrdnerBeobNichtBeurteilt' + localStorage.apId, 'first');
     }
+    // globale Variable anpassen, falls nötig
+    if (window.apf.beob && window.apf.beob.zuordnung && window.apf.beob.zuordnung.TPopId) {
+        delete window.apf.beob.zuordnung.TPopId;
+    }
 };

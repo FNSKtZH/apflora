@@ -1,11 +1,15 @@
 /*jslint node: true, browser: true, nomen: true, todo: true */
 'use strict';
 
-var $ = require('jquery');
+var $                    = require('jquery'),
+    ordneBeobEinerTpopZu = require('../../../ordneBeobEinerTpopZu');
 
 module.exports = function () {
-    // TODO: prüfen, ob ein node existiert
-    // wenn nein: anders aktualisieren (ausgelöst in olmap)
-    var tpopId = $(this).val();
-    $('#tree').jstree('move_node', '#beob' + localStorage.beobId, '#tpopOrdnerBeobZugeordnet' + tpopId, 'first');
+    var beobId = localStorage.beobId,
+        tpopId = $(this).val(),
+        beobTpopId;
+
+    beobTpopId = window.apf.beob.zuordnung && window.apf.beob.zuordnung.TPopId ? window.apf.beob.zuordnung.TPopId : null;
+
+    ordneBeobEinerTpopZu(beobId, tpopId, beobTpopId);
 };

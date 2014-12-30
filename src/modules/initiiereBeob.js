@@ -66,6 +66,8 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
         if (dataBeob && dataBeob.length > 0) {
             dataBeob = dataBeob[0];
 
+            window.apf.beob = dataBeob;
+
             // boebfelder bereitstellen
             htmlBeobfelder = erstelleFelderFuerBeob(dataBeob, beobTyp);
             $("#beob_table").html(htmlBeobfelder);
@@ -133,6 +135,7 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
                         }).done(function (data) {
                             if (data && data[0]) {
                                 data = data[0];
+                                window.apf.beob.zuordnung = data;
                                 // Felder mit Daten beliefern
                                 $("#beobNichtBeurteilt").prop("checked", false);
                                 if (data.BeobNichtZuordnen === 1) {
