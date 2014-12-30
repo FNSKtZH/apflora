@@ -108,7 +108,7 @@ module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
                                     beobZuordnungFeature.setGeometry(newBeobZuordGeometry);
                                 };
 
-                                ordneBeobEinerTpopZu(beobId, tpopId, beobTPopId, olmapCallback, jstreeCallback);
+                                ordneBeobEinerTpopZu(beobId, 'zugeordnet', tpopId, beobTPopId, olmapCallback, jstreeCallback);
                                 // Lage der Beob zurücksetzen
                                 beob.setGeometry(beobGeometryBefore);
                                 // TODO: Formular öffnen?
