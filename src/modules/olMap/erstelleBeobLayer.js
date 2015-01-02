@@ -58,7 +58,7 @@ module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
                 popupTitle:   myName,
                 // Koordinaten werden gebraucht, damit das popup richtig platziert werden kann
                 xkoord:       beob.X,
-                ykoord:       beob.Y,
+                ykoord:       parseInt(beob.Y, 10) - 10,
                 myTyp:        'beob',
                 myId:         beob.NO_NOTE,
                 TPopId:       beob.TPopId

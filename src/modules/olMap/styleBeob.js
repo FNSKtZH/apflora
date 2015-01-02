@@ -19,10 +19,10 @@ module.exports = function (feature, resolution, selected) {
     }
 
     imageStyle = new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
-        anchor:       [0.5, 36],
+        anchor:       [0.5, 35],
         anchorXUnits: 'fraction',
         anchorYUnits: 'pixels',
-        opacity:      1,
+        opacity:      0.8,
         src:          icon
     }));
 
