@@ -34,7 +34,7 @@ module.exports = function (formularname, id, statusZuordnung) {
         beobTyp = (isNaN(id) ? 'evab' : 'infospezies');
         // formular initiieren, ohne anzuzeigen
         initiiereBeob(beobTyp, id, statusZuordnung, true);
-        formWidth = 700;
+        //formWidth = 650;
         break;
     default:
         title = '';

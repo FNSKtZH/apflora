@@ -1,4 +1,4 @@
-// steuert den style von pop
+// steuert den style von Beob
 // selected: mit der Maus oder drag_box markierte
 
 /*jslint node: true, browser: true, nomen: true, todo: true */
@@ -7,16 +7,10 @@
 var ol = require('ol');
 
 module.exports = function (feature, resolution, selected) {
-    var icon = 'img/flora_icon_violett.png',
+    var icon = selected ? 'img/flora_icon_blau.png' : 'img/flora_icon_violett.png',
         imageStyle,
-        strokeColor = 'white',
+        strokeColor = selected ? 'red' : 'white',
         style;
-
-    // markierte: icon ist orange und Text hat roten Hintergrund
-    if (selected) {
-        icon        = 'img/flora_icon_blau.png';
-        strokeColor = 'red';
-    }
 
     imageStyle = new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
         anchor:       [0.5, 35],
