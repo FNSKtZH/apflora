@@ -14,7 +14,8 @@ var $                                   = require('jquery'),
     pruefeObPopTpopGewaehltWurden       = require('./pruefeObPopTpopGewaehltWurden'),
     erstelleBeobZuordnungsLayer         = require('./erstelleBeobZuordnungsLayer'),
     erstelleTPopLayer                   = require('./erstelleTPopLayer'),
-    ordneBeobEinerTpopZu                = require('../ordneBeobEinerTpopZu');
+    ordneBeobEinerTpopZu                = require('../ordneBeobEinerTpopZu'),
+    entfernePopupOverlays               = require('./entfernePopupOverlays');
 
 module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
     var beobLayerErstellt = $.Deferred(),
@@ -78,6 +79,9 @@ module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
                     beobTPopId  = this.get('TPopId'),
                     beobGeometryBefore = new ol.geom.Point([beobX, beobY]);
 
+                // allfällige Popups entfernen
+                entfernePopupOverlays();
+
                 window.apf.olMap.modifyBeobFeatureZaehler++;
                 // speichert, wieviele male .on('change') ausgelöst wurde, bis setTimout aufgerufen wurde
                 zaehler = window.apf.olMap.modifyBeobFeatureZaehler;
@@ -111,8 +115,8 @@ module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
                                 ordneBeobEinerTpopZu(beobId, 'zugeordnet', tpopId, beobTPopId, olmapCallback, jstreeCallback);
                                 // Lage der Beob zurücksetzen
                                 beob.setGeometry(beobGeometryBefore);
-                                // TODO: Formular öffnen?
-
+                                // TODO: Formular öffnen
+                                
                             }
                         });
                     }
