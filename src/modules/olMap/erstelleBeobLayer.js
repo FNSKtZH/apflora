@@ -15,7 +15,8 @@ var $                                   = require('jquery'),
     erstelleBeobZuordnungsLayer         = require('./erstelleBeobZuordnungsLayer'),
     erstelleTPopLayer                   = require('./erstelleTPopLayer'),
     ordneBeobEinerTpopZu                = require('../ordneBeobEinerTpopZu'),
-    entfernePopupOverlays               = require('./entfernePopupOverlays');
+    entfernePopupOverlays               = require('./entfernePopupOverlays'),
+    oeffneFormularAlsPopup              = require('../oeffneFormularAlsPopup');
 
 module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
     var beobLayerErstellt = $.Deferred(),
@@ -115,8 +116,8 @@ module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
                                 ordneBeobEinerTpopZu(beobId, 'zugeordnet', tpopId, beobTPopId, olmapCallback, jstreeCallback);
                                 // Lage der Beob zurücksetzen
                                 beob.setGeometry(beobGeometryBefore);
-                                // TODO: Formular öffnen
-                                
+                                // Formular öffnen
+                                oeffneFormularAlsPopup('beob', beobId);
                             }
                         });
                     }

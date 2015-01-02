@@ -39,9 +39,7 @@ module.exports = function () {
     });
 
     $('#olMapExportieren').button({
-        icons: {
-            primary: "ui-icon-circle-arrow-s"
-        },
+        icons: { primary: "ui-icon-circle-arrow-s" },
         text: false,
         disabled: true
     });

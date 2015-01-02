@@ -39,10 +39,10 @@ function aktualisiereZuordnungInOlmap (beobId, tpopId) {
     // koordinaten der tpop holen
     $.ajax({
         type: 'get',
-        url: 'api/v1/insert/apflora/tabelle=tpop/feld=TPopId/wertNumber=' + tpopId
+        url: 'api/v1/apflora/tabelle=tpop/feld=TPopId/wertNumber=' + tpopId
     }).done(function (data) {
         if (data && data[0]) {
-            data = data[0];
+            data  = data[0];
             tpopX = data.TPopXKoord;
             tpopY = data.TPopYKoord;
 
