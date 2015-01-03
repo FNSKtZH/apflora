@@ -654,12 +654,12 @@ label.erforderlich span {
 }*/
 
 #olMapLayertree {
-    width: 302px;
+    width:    302px;
     overflow: hidden;
     position: absolute;
-    right: 50px;
-    top:    8px;
-    z-index: 1009;
+    right:    9px;
+    top:      8px;
+    z-index:  1009;
     border-radius: 6px;
 }
 
@@ -857,7 +857,8 @@ label.erforderlich span {
 }
 
 #olMap .ol-full-screen {
-    top: 0.55em;
+    top:   0.53em;
+    z-index: 1010;
 }
 
 #olMapErgebnisMessung {
