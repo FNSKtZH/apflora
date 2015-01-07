@@ -25,7 +25,7 @@ ALTER TABLE `tpopber` ADD CONSTRAINT `tbltpopber_tpopid` FOREIGN KEY (`TPopId`) 
 ALTER TABLE `tpopkontr` ADD  CONSTRAINT `tbltpopkontr_tpopid` FOREIGN KEY (`TPopId`) REFERENCES `apflora`.`tpop`(`TPopId`) ON DELETE NO ACTION ON UPDATE CASCADE;
 ALTER TABLE `tpop` ADD  CONSTRAINT `tbltpop_popid` FOREIGN KEY (`PopId`) REFERENCES `apflora`.`pop`(`PopId`) ON DELETE NO ACTION ON UPDATE CASCADE;
 ALTER TABLE `beobzuordnung` ADD  CONSTRAINT `tblbeobzuordnung_tpopid` FOREIGN KEY (`TPopId`) REFERENCES `apflora`.`tpop`(`TPopId`) ON DELETE NO ACTION ON UPDATE CASCADE;
-ALTER TABLE `tpopkontrzaehl` ADD  CONSTRAINT `tpopkontrzaehl_tpopkontrid` FOREIGN KEY (`TPopKontrId`) REFERENCES `apflora`.`tpopkontr`(`TPopKontrId`) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE `tpopkontrzaehl` ADD  CONSTRAINT `tpopkontrzaehl_tpopkontrid` FOREIGN KEY (`TPopKontrId`) REFERENCES `apflora`.`tpopkontr`(`TPopKontrId`) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE `tpopmassn` ADD  CONSTRAINT `tbltpopmassn_tpopid` FOREIGN KEY (`TPopId`) REFERENCES `apflora`.`tpop`(`TPopId`) ON DELETE NO ACTION ON UPDATE CASCADE;
 ALTER TABLE `tpopmassnber` ADD  CONSTRAINT `tbltpopmassnber_tpopid` FOREIGN KEY (`TPopId`) REFERENCES `apflora`.`tpop`(`TPopId`) ON DELETE NO ACTION ON UPDATE CASCADE;
 ALTER TABLE `zielber` ADD  CONSTRAINT `tblzielber_zielid` FOREIGN KEY (`ZielId`) REFERENCES `apflora`.`ziel`(`ZielId`) ON DELETE NO ACTION ON UPDATE CASCADE;
