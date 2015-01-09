@@ -1,7 +1,9 @@
-var gulp   = require('gulp'),
-    clean  = require('gulp-clean');
+/*jslint node: true, browser: true, nomen: true, todo: true */
+'use strict';
 
-gulp.task('prod_clean_dist', function () {
-    return gulp.src('dist', {read: false})
-        .pipe(clean());
+var gulp = require('gulp'),
+    del  = require('del');
+
+gulp.task('prod_clean_dist', function (cb) {
+    del(['dist'], cb);
 });
