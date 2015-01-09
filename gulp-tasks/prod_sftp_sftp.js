@@ -13,7 +13,24 @@ var gulp       = require('gulp'),
 requireDir('../gulp-tasks', {recurse: true});
 
 gulp.task('prod_sftp_sftp', function () {
-    return gulp.src('dist/**/*')
+    //return gulp.src('dist/**/*')
+    return gulp.src([
+        'dist/*',
+        'dist/etc/*',
+        'dist/geojson/*',
+        'dist/img/*.png',
+        'dist/img/*.ico',
+        'dist/kml/*',
+        'dist/queries/*.js',
+        'dist/queries/tree/*.js',
+        'dist/src/**/*.js',
+        'dist/src/themes/apple/*',
+        'dist/src/themes/classic/*',
+        'dist/src/themes/default/*',
+        'dist/src/themes/default-rtl/*',
+        'dist/style/*',
+        'dist/style/images/*'
+    ])
         .pipe(sftp({
             host: 'apflora.ch',
             port: 31234,

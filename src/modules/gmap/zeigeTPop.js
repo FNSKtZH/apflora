@@ -117,11 +117,11 @@ module.exports = function (tpopListe) {
 
     // globale Variable verwenden, damit ein Klick auf die Checkbox die Ebene einblenden kann
     window.apf.googleKarteDetailplaene = new google.maps.KmlLayer({
-        url: 'kml/rueteren.kmz',
+        url: 'http://apflora.ch/kml/rueteren.kml',
         preserveViewport: true
     });
-
     window.apf.googleKarteDetailplaene.setMap(null);
+
     markerCluster = new MarkerClusterer(map, markers, markerOptions);
     if (anzTpop === 1) {
         // map.fitbounds setzt zu hohen zoom, wenn nur eine Beobachtung erfasst wurde > verhindern

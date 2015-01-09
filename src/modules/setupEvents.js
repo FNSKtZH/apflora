@@ -36,6 +36,7 @@ var $                                   = require('jquery'),
     onClickOeffneBeobInNeuemTab         = require('./events/forms/gMap/onClickOeffneBeobInNeuemTab'),
     onClickGMapDistanzMessen            = require('./events/forms/gMap/onClickGMapDistanzMessen'),
     onClickGMapDistanzMessenEntfernen   = require('./events/forms/gMap/onClickGMapDistanzMessenEntfernen'),
+    onClickDetailplaeneCheckbox         = require('./events/forms/gMap/onClickDetailplaeneCheckbox'),
     onChangeBeobNichtBeurteilt          = require('./events/forms/beob/onChangeBeobNichtBeurteilt'),
     onChangeBeobNichtZuordnen           = require('./events/forms/beob/onChangeBeobNichtZuordnen'),
     onChangeDistZuTPop                  = require('./events/forms/beob/onChangeDistZuTPop'),
@@ -90,6 +91,8 @@ module.exports = function () {
     $('#gMap')
         .on('click',            '.oeffneBeob',                 onClickOeffneBeob)
         .on('click',            '.oeffneBeobInNeuemTab',       onClickOeffneBeobInNeuemTab);
+    $('#gMapDetailplaeneCheckbox')
+        .on('click',                                           onClickDetailplaeneCheckbox);
     $('#gMapDistanzMessen')
         .on('click',                                           onClickGMapDistanzMessen);
     $('#gMapDistanzMessenEntfernen')
