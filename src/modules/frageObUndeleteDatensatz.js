@@ -8,7 +8,7 @@ var $ = require('jquery');
 
 module.exports = function (wasIstPassiert) {
     // Hinweis zum rückgängig machen anzeigen
-    $("#undeleteDiv").html(wasIstPassiert + " <a href='#' id='undelete'>Rückgängig machen?</a>");
+    $("#undeleteDiv").html(wasIstPassiert + " <a href='#' class='undeleteLink'>Rückgängig machen?</a>");
     $(".undelete").show();
     if ($(window).width() > 1000) {
         $("#forms").css("top", "37px");
