@@ -3,10 +3,10 @@
 // Stellt einen Datensatz aus window.apf.deleted wieder her
 /*
 ** TODO
-** Idee: $.data() auf #undelete nutzen
+** Idee: $.data() auf .undeleteLink nutzen
 ** in einen Schlüssel "undelete" einen Array von Objekten verstauen
 ** dann können ALLE Änderungen rückgängig gemacht werden:
-** Formular zeigt Inhalt von $("#undelete").data("undelete") an
+** Formular zeigt Inhalt von $(".undeleteLink").data("undelete") an
 ** jeder Datensatz hat Schaltfläche
 ** bei Klick: Ja nach Typ der Daten Wiederherstellung starten und Erfolg melden
 */

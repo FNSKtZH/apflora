@@ -44,8 +44,8 @@ var $                                   = require('jquery'),
 module.exports = function () {
 
     $(window).resize(                                          onWindowResize);
-    $('#undelete')
-        .on('click',                                           onClickUndelete);
+    $('#undeleteDiv')
+        .on('click',            '.undeleteLink',               onClickUndelete);
 
     $('#menu')
         .on('click',            '.exportieren',                onClickExportieren)
