@@ -15,7 +15,7 @@ requireDir('../gulp-tasks', {recurse: true});
 
 gulp.task('prod_sftp_sftp', function () {
     return gulp.src('dist/**/*')
-        .pipe(changed('./dist/'))
+        //.pipe(changed('dist'))   // no files uploaded!
         .pipe(sftp({
             host: 'apflora.ch',
             port: 31234,
