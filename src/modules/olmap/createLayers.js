@@ -51,7 +51,7 @@ module.exports = function () {
     // bing-maps wäre schön
     // ol3 can't reproject raster tiles yet though
     // daher werden die Layer noch nicht angezeigt
-    bingStylesObject = {
+    /*bingStylesObject = {
         'Aerial':           'Bing Luftbild',
         'AerialWithLabels': 'Bing Luftbild beschriftet',
         'Road':             'Bing Strassenkarte'
@@ -73,7 +73,7 @@ module.exports = function () {
                 imagerySet: bing_style
             })
         }));
-    });
+    });*/
 
     chOrtholuftbildLayer = ga.layer.create('ch.swisstopo.swissimage');
     chOrtholuftbildLayer.set('title', 'Luftbild CH');

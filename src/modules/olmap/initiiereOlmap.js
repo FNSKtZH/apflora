@@ -47,7 +47,7 @@ module.exports = function () {
         addShowFeatureInfoOnClick();
         changeCursorOverFeature();
         initiiereLayertree();
-        addMousePositionControl();    // assertion failed
+        //addMousePositionControl();    // assertion failed
         addFullScreenControl();
 
         window.apf.olMap.map.on('change:size', function () {
