@@ -1,17 +1,16 @@
 /*jslint node: true, browser: true, nomen: true, todo: true */
 'use strict';
 
-var _ = require('underscore');
+var _  = require('underscore'),
+    ol = require('ol');
 
 module.exports = function () {
     var layersArray,
         layers;
 
     layersArray = window.apf.olMap.map.getLayers().getArray();
-    layers = _.map(layersArray, function (layer) {
-        if (layer.get('title')) {
-            return layer;
-        }
+    layers = _.filter(layersArray, function (layer) {
+        return layer.get('title');
     });
     return layers || [];
 };

@@ -182,7 +182,8 @@ module.exports = function () {
     });
 
     // OL3 hat noch Probleme und bereinigt die Methoden für WFS - zuwarten
-    zhKartierungenLayerSource = new ol.source.ServerVector({
+    // 14.1.2015: abgeschaltet, weil es mit der neuen ol-Version Fehler produzierte
+    /*zhKartierungenLayerSource = new ol.source.ServerVector({
         //format: new ol.format.GeoJSON(),    // holt nicht mal die Daten
         format: new ol.format.WFS({    // holt die Daten - sollte aber bald die Attrribute nicht mehr benötigen
             featureNS:   '//maps.zh.ch',
@@ -227,7 +228,7 @@ module.exports = function () {
                 width: 2
             })
         })
-    });
+    });*/
 
     zhSvoFarbigLayer = new ol.layer.Tile({
         title:      'SVO farbig',

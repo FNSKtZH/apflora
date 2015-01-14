@@ -16,6 +16,8 @@ var $                                 = require('jquery'),
     entferneModifyInteractionFuerTpop = require('./entferneModifyInteractionFuerTpop');
 
 module.exports = function () {
+    console.log('initiiereOlmap');
+
     // allfällige Apflora-Ebenen entfernen
     entferneAlleApfloraLayer();
     // allfällige Modify-Interaktion entfernen
@@ -25,18 +27,23 @@ module.exports = function () {
     // TODO: ol.View2D wird ol:View
     // hat aber im Test Fehler provoziert
     if (!window.apf.olMap.map) {
-        window.apf.olMap.map = new ga.Map({
+        //window.apf.olMap.map = new ga.Map({
+        window.apf.olMap.map = new ol.Map({
             target: 'olMapDiv',
-            //layers: [ga.layer.create('ch.swisstopo.pixelkarte-farbe')],
-            layers: createLayers(),
-            view: new ol.View2D({
-                resolution: 4,
+            layers: [ga.layer.create('ch.swisstopo.pixelkarte-farbe')],
+            // 14.1.2015: provisorisch ausgeschaltet, wegen Fehler
+            //layers: createLayers(),
+            view: new ol.View({
+                //resolution: 4,
                 center: [693000, 253000]
             })
         });
 
+        console.log('initiiereOlmap 2');
+
         // diverse features und Fähigkeiten ergänzen
-        addDragAndDropGeofiles();
+        // provisorisch ausgeschaltet wegen Fehler, 14.1.2014
+        /*addDragAndDropGeofiles();
         addShowFeatureInfoOnClick();
         changeCursorOverFeature();
         initiiereLayertree();
@@ -47,6 +54,6 @@ module.exports = function () {
             // steuern, ob das Export-Tool sichtbar ist
             // wenn es bei hoher Pixelzahl sichtbar ist, gibt es Probleme
             blendeOlmapExportieren();
-        });
+        });*/
     }
 };

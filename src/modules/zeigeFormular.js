@@ -39,8 +39,6 @@ module.exports = function (Formularname) {
     $formsTitelzeile.hide();
     // Bei Testarten Hinweis anzeigen
     if ($apWaehlen.val()) {
-        // titelzeile inline, sonst gibt es einen unschönen Abstand nach oben
-        //$("#formsTitelzeile").css("display", "inline");
         $formsTitelzeile.css("display", "none");
         if ($apWaehlen.val() <= 150 && Formularname !== "jberUebersicht" && Formularname !== "exporte" && Formularname !== "olMap") {
             // titelzeile inline-block, sonst werden Tabs nach rechts verschoben
