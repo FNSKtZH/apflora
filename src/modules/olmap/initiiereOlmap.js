@@ -43,17 +43,17 @@ module.exports = function () {
 
         // diverse features und Fähigkeiten ergänzen
         // provisorisch ausgeschaltet wegen Fehler, 14.1.2014
-        /*addDragAndDropGeofiles();
+        addDragAndDropGeofiles();
         addShowFeatureInfoOnClick();
         changeCursorOverFeature();
         initiiereLayertree();
-        addMousePositionControl();
+        addMousePositionControl();    // assertion failed
         addFullScreenControl();
 
         window.apf.olMap.map.on('change:size', function () {
             // steuern, ob das Export-Tool sichtbar ist
             // wenn es bei hoher Pixelzahl sichtbar ist, gibt es Probleme
             blendeOlmapExportieren();
-        });*/
+        });
     }
 };
