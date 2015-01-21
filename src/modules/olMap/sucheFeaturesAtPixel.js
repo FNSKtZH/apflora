@@ -6,6 +6,8 @@
 module.exports = function (pixel) {
     var features = [];
 
+    console.log('es folgt forEachFeatureAtPixel');
+
     window.apf.olMap.map.forEachFeatureAtPixel(pixel, function (feature, layer) {
         features.push(feature);
     });

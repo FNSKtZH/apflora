@@ -92,7 +92,7 @@ module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
                         // in den letzten 400 Millisekunden hat sich nichts geändert > reagieren
                         // suche nach Teilpopulation, auf welche die Beob gezogen wurde
                         window.apf.olMap.map.forEachFeatureAtPixel(pixel, function (feature, layer) {
-                            if (layer.get('title') === 'Teilpopulationen') {
+                            if (layer && layer.get('title') === 'Teilpopulationen') {
                                 var tpopFeature = feature,
                                     tpopId      = tpopFeature.get('myId'),
                                     tpopX       = tpopFeature.get('xkoord'),
@@ -104,7 +104,7 @@ module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
 
                                 newBeobZuordGeometry = new ol.geom.LineString([[beobX, beobY], [tpopX, tpopY]]);
                                 // beob zuordnen
-                                beobZuordnungFeature = _.find(window.apf.olMap.beobZuordnungsLayerFeatures, function(feature) {
+                                beobZuordnungFeature = _.find(window.apf.olMap.beobZuordnungsLayerFeatures, function (feature) {
                                     return feature.get('myId') == beobId;
                                 });
 
