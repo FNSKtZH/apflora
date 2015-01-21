@@ -17,7 +17,6 @@ gulp.task('dev_src', function () {
         'src/ruler.js',
         'src/jsuri.js',
         'src/jquery.qtip.js',
-        'src/proj4.js',
         'src/jquery.fileDownload.js',
         'src/xlsx.js',
         'src/FileSaver.js',
