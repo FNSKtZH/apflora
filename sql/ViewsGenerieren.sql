@@ -343,43 +343,6 @@ FROM ((((((apflora_beob.adb_eigenschaften INNER JOIN apflora.ap ON apflora_beob.
 WHERE apflora.tpopkontr.TPopKontrTyp Not Like "Ziel"
 ORDER BY apflora.tpop.TPopGemeinde, apflora.tpop.TPopFlurname, apflora_beob.adb_eigenschaften.Artname, apflora.pop.PopNr, apflora.tpop.TPopNr, apflora.tpopkontr.TPopKontrJahr, apflora.tpopkontr.TPopKontrTyp;
 
-
-CREATE OR REPLACE VIEW v_apber_a1rpop AS 
-SELECT apflora.pop.ApArtId, apflora.pop.PopId
-FROM apflora.ap INNER JOIN (apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) ON apflora.ap.ApArtId = apflora.pop.ApArtId
-WHERE (apflora.pop.PopHerkunft=100 Or apflora.pop.PopHerkunft=101 Or apflora.pop.PopHerkunft=210) AND apflora.tpop.TPopApBerichtRelevant=1 AND apflora.pop.PopHerkunft <> 300
-GROUP BY apflora.pop.ApArtId, apflora.pop.PopId;
-
-CREATE OR REPLACE VIEW v_apber_a2rpop AS 
-SELECT apflora.pop.ApArtId, apflora.pop.PopId
-FROM apflora.ap INNER JOIN (apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) ON apflora.ap.ApArtId = apflora.pop.ApArtId
-WHERE (apflora.pop.PopHerkunft=100 Or apflora.pop.PopHerkunft=101) AND apflora.tpop.TPopApBerichtRelevant=1 AND apflora.pop.PopHerkunft <> 300
-GROUP BY apflora.pop.ApArtId, apflora.pop.PopId;
-
-CREATE OR REPLACE VIEW v_apber_a3rpop AS 
-SELECT apflora.pop.ApArtId, apflora.pop.PopId
-FROM apflora.ap INNER JOIN (apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) ON apflora.ap.ApArtId = apflora.pop.ApArtId
-WHERE apflora.pop.PopHerkunft In (200, 210) AND apflora.tpop.TPopApBerichtRelevant=1 AND apflora.pop.PopHerkunft <> 300 AND (apflora.pop.PopBekanntSeit<apflora.ap.ApJahr Or apflora.pop.PopBekanntSeit Is Null Or apflora.ap.ApJahr Is Null)
-GROUP BY apflora.pop.ApArtId, apflora.pop.PopId;
-
-CREATE OR REPLACE VIEW v_apber_a1rtpop AS
-SELECT apflora.pop.ApArtId, apflora.tpop.TPopId
-FROM apflora.ap INNER JOIN (apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) ON apflora.ap.ApArtId = apflora.pop.ApArtId
-WHERE (apflora.tpop.TPopHerkunft=100 Or apflora.tpop.TPopHerkunft=101 Or apflora.tpop.TPopHerkunft=210) AND apflora.tpop.TPopApBerichtRelevant=1 AND apflora.tpop.TPopHerkunft <> 300
-GROUP BY apflora.pop.ApArtId, apflora.tpop.TPopId;
-
-CREATE OR REPLACE VIEW v_apber_a2rtpop AS 
-SELECT apflora.pop.ApArtId, apflora.tpop.TPopId
-FROM apflora.ap INNER JOIN (apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) ON apflora.ap.ApArtId = apflora.pop.ApArtId
-WHERE (apflora.tpop.TPopHerkunft=100 Or apflora.tpop.TPopHerkunft=101) AND apflora.tpop.TPopApBerichtRelevant=1 AND apflora.tpop.TPopHerkunft <> 300
-GROUP BY apflora.pop.ApArtId, apflora.tpop.TPopId;
-
-CREATE OR REPLACE VIEW v_apber_a3rtpop AS 
-SELECT apflora.pop.ApArtId, apflora.tpop.TPopId
-FROM apflora.ap INNER JOIN (apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) ON apflora.ap.ApArtId = apflora.pop.ApArtId
-WHERE apflora.tpop.TPopHerkunft In (200, 210) AND apflora.tpop.TPopApBerichtRelevant=1 AND apflora.tpop.TPopHerkunft <> 300 AND (apflora.tpop.TPopBekanntSeit<apflora.ap.ApJahr Or apflora.tpop.TPopBekanntSeit Is Null Or apflora.ap.ApJahr Is Null)
-GROUP BY apflora.pop.ApArtId, apflora.tpop.TPopId;
-
 CREATE OR REPLACE VIEW v_apber_b1rpop AS 
 SELECT apflora.pop.ApArtId, apflora.pop.PopId
 FROM apflora._variable, (apflora.pop INNER JOIN apflora.popber ON apflora.pop.PopId = apflora.popber.PopId) INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId
@@ -744,3 +707,15 @@ GROUP BY apflora_beob.adb_eigenschaften.Artname, apflora.beobzuordnung.BeobMutWe
 
 CREATE OR REPLACE VIEW v_datenstruktur AS
 SELECT TABLES.TABLE_NAME AS "Tabelle: Name", TABLES.TABLE_ROWS AS "Tabelle: Anzahl Datensaetze", TABLES.TABLE_COMMENT AS "Tabelle: Bemerkungen", COLUMNS.COLUMN_NAME AS "Feld: Name",  COLUMNS.COLUMN_TYPE AS "Feld: Datentyp", COLUMNS.IS_NULLABLE AS "Feld: Nullwerte", COLUMNS.COLUMN_COMMENT AS "Feld: Bemerkungen" FROM information_schema.COLUMNS INNER JOIN information_schema.TABLES ON information_schema.TABLES.TABLE_NAME = information_schema.COLUMNS.TABLE_NAME WHERE information_schema.COLUMNS.TABLE_NAME IN (SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA='apflora');
+
+CREATE OR REPLACE VIEW v_apbera1lpop AS 
+SELECT apflora.pop.ApArtId, apflora.pop.PopId
+FROM apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId
+WHERE apflora.tpop.TPopApBerichtRelevant=1 AND apflora.pop.PopHerkunft <> 300
+GROUP BY apflora.pop.ApArtId, apflora.pop.PopId;
+
+CREATE OR REPLACE VIEW v_apber_a2lpop AS
+SELECT apflora.pop.ApArtId, apflora.pop.PopId
+FROM apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId
+WHERE apflora.pop.PopHerkunft=100 AND apflora.tpop.TPopApBerichtRelevant=1
+GROUP BY apflora.pop.ApArtId, apflora.pop.PopId;
