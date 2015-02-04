@@ -39,7 +39,7 @@
     "json2csv":    "2.2.1",
     "json2xls":    "0.0.5",
     "mysql":       "2.5.4",
-    "request":     "2.51.0",
+    "request":     "2.53.0",
     "require-dir": "0.1.0",
     "templatizer": "1.0.1",
     "underscore":  "1.7.0"
