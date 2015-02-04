@@ -9,20 +9,7 @@ var _                                 = require('underscore'),
     json2xls                          = require('json2xls'),
     json2csv                          = require('json2csv'),
     Hapi                              = require('hapi'),
-    fs                                = require('fs'),
-    server                            = new Hapi.Server(
-        '0.0.0.0',
-        4000,
-        {
-            debug: {
-                request: ['error']
-            }/*,        ausgeschaltet, da es lokal nicht funktioniert
-            tls: {
-                key: fs.readFileSync('./ssl/ssl.key'),
-                cert: fs.readFileSync('./ssl/ssl.crt'),
-            }*/
-        }
-    ),
+    server                            = new Hapi.Server(),
     mysql                             = require('mysql'),
     config                            = require('./src/modules/configuration'),
     connectionApflora                 = mysql.createConnection({
@@ -86,6 +73,11 @@ var _                                 = require('underscore'),
     aktualisiereArteigenschaften      = require('./queries/aktualisiereArteigenschaften');
 
 connectionApflora.connect();
+
+server.connection({
+    host: '0.0.0.0',
+    port: 4000
+});
 
 server.start(function (err) {
     if (err) {
