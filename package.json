@@ -47,7 +47,7 @@
   "devDependencies": {
     "browserify-shim": "3.8.2",
     "del": "1.1.1",
-    "gulp": "3.8.9",
+    "gulp": "3.8.10",
     "gulp-autoprefixer": "1.0.1",
     "gulp-changed": "1.1.0",
     "gulp-concat": "2.x.x",
