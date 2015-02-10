@@ -49,7 +49,7 @@ module.exports = function (request, reply) {
         function (err, data) {
             var node = {};
 
-            if (err) { reply(err); }
+            if (err) { return reply(err); }
 
             if (data.length < 100) {
                 node.data = 'nicht beurteilte Beobachtungen (' + data.length + ')';
