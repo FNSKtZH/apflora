@@ -86,6 +86,8 @@ module.exports = function (request, reply) {
             nodeChildren,
             node = {};
 
+        if (err) { return reply(err); }
+
         node.data = 'AP-Berichte (' + jberListe.length + ')';
         node.attr = {
             id:  'apOrdnerJber' + apId,

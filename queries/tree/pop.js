@@ -148,6 +148,8 @@ module.exports = function (request, reply) {
                 popOrdnerNodeChildren,
                 popNrMax;
 
+            if (err) { return reply(err); }
+
             // node für apOrdnerPop aufbauen
             popOrdnerNode.data     = 'Populationen (' + popListe.length + ')';
             popOrdnerNode.attr     = {
