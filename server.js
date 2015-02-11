@@ -8,8 +8,14 @@
 var _                                 = require('underscore'),
     json2xls                          = require('json2xls'),
     json2csv                          = require('json2csv'),
+    serverOptionsDevelopment          = {
+        debug: {
+            log: ['error'],
+            request: ['error']
+        }
+    },
     Hapi                              = require('hapi'),
-    server                            = new Hapi.Server(),
+    server                            = new Hapi.Server(serverOptionsDevelopment),
     mysql                             = require('mysql'),
     config                            = require('./src/modules/configuration'),
     connectionApflora                 = mysql.createConnection({
