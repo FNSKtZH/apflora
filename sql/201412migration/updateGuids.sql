@@ -22,3 +22,6 @@ WHERE TPopGuid IS NULL;
 UPDATE pop
 SET PopGuid = UUID()
 WHERE PopGuid IS NULL;
+
+UPDATE ap
+SET ApGuid = UUID();

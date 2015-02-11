@@ -32,3 +32,10 @@ CREATE TRIGGER newguidp
   ON pop
   FOR EACH ROW
   set new.PopGuid = UUID();
+
+DROP TRIGGER IF EXISTS newguidap;
+CREATE TRIGGER newguidap
+  BEFORE INSERT
+  ON ap
+  FOR EACH ROW
+  set new.ApGuid = UUID();
