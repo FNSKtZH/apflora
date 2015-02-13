@@ -9,7 +9,7 @@
 
 var mysql              = require('mysql'),
     _                  = require('underscore'),
-    config             = require('../src/modules/configuration'),
+    config             = require('../configuration'),
     escapeStringForSql = require('./escapeStringForSql'),
     connection = mysql.createConnection({
         host:     'localhost',

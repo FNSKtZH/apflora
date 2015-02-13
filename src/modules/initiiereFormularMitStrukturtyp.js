@@ -8,7 +8,7 @@
  */
 
 var _                      = require('underscore'),
-    conf                   = require('./configuration'),
+    conf                   = require('../../configuration'),
     fn                     = {},
     fnInitiiereFunktion;
 

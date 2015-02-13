@@ -5,7 +5,7 @@
 var mysql              = require('mysql'),
     _                  = require('underscore'),
     async              = require('async'),
-    config             = require('../src/modules/configuration'),
+    config             = require('../configuration'),
     escapeStringForSql = require('./escapeStringForSql'),
     request            = require('request'),
     createInsertSqlFromObjectArray = require('./createInsertSqlFromObjectArray'),
