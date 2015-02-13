@@ -10,7 +10,8 @@ module.exports = function () {
     if ($(this).attr('view') === 'v_tpop_anzkontrinklletzterundletztertpopber') {
         // sind wir auf dem Server?
         if (location.hostname !== 'localhost') {
-            return melde('Sie haben die eierlegende Wollmilchsau gewählt.<br><br>Leider überfordert sie den Server.<br><br>Bitten Sie Alex (alex@gabriel-software.ch), die Abfrage auf seinem PC auszuführen und Ihnen die Daten zu schicken', 'oh je');
+            event.preventDefault();
+            return melde('Sie haben die eierlegende Wollmilchsau gewählt.<br><br>Leider überfordert sie den Server.<br><br>Bitten Sie <a href="mailto:alex@gabriel-software.ch">Alex</a>, die Abfrage auf seinem PC auszuführen und Ihnen die Daten zu schicken', 'oh je');
         }
 
     }
