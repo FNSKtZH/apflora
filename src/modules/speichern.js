@@ -8,7 +8,7 @@
 
 var $                            = require('jquery'),
     _                            = require('underscore'),
-    configuration                = require('./configuration'),
+    configuration                = require('../../configuration'),
     melde                        = require('./melde'),
     pruefeSchreibvoraussetzungen = require('./pruefeSchreibvoraussetzungen'),
     speichern2                   = require('./speichern2');

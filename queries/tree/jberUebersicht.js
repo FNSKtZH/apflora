@@ -4,7 +4,7 @@
 
 var _      = require('underscore'),
     mysql  = require('mysql'),
-    config = require('../../src/modules/configuration'),
+    config = require('../../configuration'),
     connection = mysql.createConnection({
         host:     'localhost',
         user:     config.db.userName,

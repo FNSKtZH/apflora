@@ -18,7 +18,7 @@ var _                                 = require('underscore'),
     Hapi                              = require('hapi'),
     server                            = new Hapi.Server(),
     mysql                             = require('mysql'),
-    config                            = require('./src/modules/configuration'),
+    config                            = require('./configuration'),
     connectionApflora                 = mysql.createConnection({
         host: 'localhost',
         user: config.db.userName,

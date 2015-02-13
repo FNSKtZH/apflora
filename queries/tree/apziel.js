@@ -5,7 +5,7 @@
 var _                  = require('underscore'),
     mysql              = require('mysql'),
     async              = require('async'),
-    config             = require('../../src/modules/configuration'),
+    config             = require('../../configuration'),
     escapeStringForSql = require('../escapeStringForSql'),
     connection = mysql.createConnection({
         host:     'localhost',

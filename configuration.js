@@ -7,7 +7,7 @@
 
 
 var config         = {},
-    dbPassfile     = require('../../dbPass.json');
+    dbPassfile     = require('./dbPass.json');
 
 config.db          = {};
 config.db.userName = dbPassfile.user;
