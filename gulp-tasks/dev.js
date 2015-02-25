@@ -1,19 +1,21 @@
 /**
- * Baut das Projekt für die Entwicklung:
- * zuerst jsx templates bauen
- * dann style und src_1 und src_2 (hinter Body)
- * dann watch
+ * Baut das Projekt für die Entwicklung
  */
 
 /*jslint node: true, browser: true, nomen: true, todo: true */
 'use strict';
 
-
-var gulp       = require('gulp');
-var requireDir = require('require-dir');
+var gulp        = require('gulp'),
+    requireDir  = require('require-dir'),
+    runSequence = require('run-sequence');
 
 requireDir('../gulp-tasks', {recurse: true});
 
-return gulp.task('dev', ['templates'], function () {
-    gulp.start('dev_2');
+return gulp.task('dev', function () {
+    runSequence(
+        'templates',
+        'browserify',
+        ['dev_style', 'dev_src'],
+        'watch'
+    );
 });

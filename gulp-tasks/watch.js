@@ -22,8 +22,4 @@ return gulp.task('watch', function () {
     );
     gulp.watch(['style/apflora.css'], ['dev_style']);
     gulp.watch(['src/templatesDev//**/*'], ['templates_when_watch']);
-    notifier.notify({
-        'title': 'dev code built',
-        'message': 'watching now'
-    });
 });

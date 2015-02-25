@@ -5,7 +5,9 @@ var gulp       = require('gulp'),
     requireDir = require('require-dir'),
     notifier   = require('node-notifier');
 
-return gulp.task('prod_3', ['prod_copy'], function () {
+requireDir('../gulp-tasks', {recurse: true});
+
+return gulp.task('prod_notify', function () {
     notifier.notify({
         'title': 'finished',
         'message': 'prod code built and copied to ./dist'

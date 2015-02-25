@@ -1,19 +1,16 @@
-/**
- * Baut das Projekt für die Entwicklung:
- * zuerst mit browserify Module einbinden
- * dann style und src_1 und src_2 (hinter Body)
- * dann watch
- */
-
 /*jslint node: true, browser: true, nomen: true, todo: true */
 'use strict';
 
-
-var gulp       = require('gulp');
-var requireDir = require('require-dir');
+var gulp        = require('gulp'),
+    requireDir  = require('require-dir'),
+    runSequence = require('run-sequence');
 
 requireDir('../gulp-tasks', {recurse: true});
 
-return gulp.task('templates_when_watch', ['templates'], function () {
-    gulp.start('browserify');
+return gulp.task('templates_when_watch', function () {
+    runSequence(
+        'templates',
+        'browserify',
+        'dev_notify'
+    );
 });
