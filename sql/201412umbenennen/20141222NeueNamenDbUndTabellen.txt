@@ -187,8 +187,8 @@ vLetzterPopBericht                  >   v_pop_letzterpopber
 vLetzterPopBericht0                 >   v_pop_letzterpopber0
 vLetzterPopMassnBericht             >   v_pop_letztermassnber
 vLetzterPopMassnBericht0            >   v_pop_letztermassnber0
-vLetzterTPopBericht                 >   v_tpop_letzterpopber
-vLetzterTPopBericht0                >   v_tpop_letzterpopber0
+vLetzterTPopBericht                 >   v_tpop_letztertpopber
+vLetzterTPopBericht0                >   v_tpop_letztertpopber0
 vLetzterTPopMassnBericht            >   v_tpop_letztermassnber
 vLetzterTPopMassnBericht0           >   v_tpop_letztermassnber0
 vMassn                              >   v_massn
