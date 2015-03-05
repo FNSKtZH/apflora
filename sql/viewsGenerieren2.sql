@@ -237,31 +237,31 @@ GROUP BY apflora.pop.ApArtId, apflora.pop.PopId;
 
 CREATE OR REPLACE VIEW v_apber_c3rtpop AS 
 SELECT apflora.pop.ApArtId, apflora.tpop.TPopId
-FROM ((apflora_views.v_tpop_letztermassnber INNER JOIN apflora.pop ON apflora_views.v_tpop_letztermassnber.ApArtId = apflora.pop.ApArtId) INNER JOIN apflora.tpopmassnber ON (apflora_views.v_tpop_letztermassnber.MaxvonTPopMassnBerJahr = apflora.tpopmassnber.TPopMassnBerJahr) AND (apflora_views.v_tpop_letztermassnber.TPopId = apflora.tpopmassnber.TPopId)) INNER JOIN apflora.tpop ON (apflora.tpopmassnber.TPopId = apflora.tpop.TPopId) AND (apflora.pop.PopId = apflora.tpop.PopId)
+FROM apflora.pop INNER JOIN ((apflora_views.v_tpop_letztermassnber INNER JOIN apflora.tpopmassnber ON (apflora_views.v_tpop_letztermassnber.TPopId = apflora.tpopmassnber.TPopId) AND (apflora_views.v_tpop_letztermassnber.MaxvonTPopMassnBerJahr = apflora.tpopmassnber.TPopMassnBerJahr)) INNER JOIN apflora.tpop ON apflora.tpopmassnber.TPopId = apflora.tpop.TPopId) ON apflora.pop.PopId = apflora.tpop.PopId
 WHERE apflora.tpopmassnber.TPopMassnBerErfolgsbeurteilung=1
 GROUP BY apflora.pop.ApArtId, apflora.tpop.TPopId;
 
 CREATE OR REPLACE VIEW v_apber_c4rtpop AS 
 SELECT apflora.pop.ApArtId, apflora.tpop.TPopId
-FROM ((apflora_views.v_tpop_letztermassnber INNER JOIN apflora.pop ON apflora_views.v_tpop_letztermassnber.ApArtId = apflora.pop.ApArtId) INNER JOIN apflora.tpopmassnber ON (apflora_views.v_tpop_letztermassnber.MaxvonTPopMassnBerJahr = apflora.tpopmassnber.TPopMassnBerJahr) AND (apflora_views.v_tpop_letztermassnber.TPopId = apflora.tpopmassnber.TPopId)) INNER JOIN apflora.tpop ON (apflora.tpopmassnber.TPopId = apflora.tpop.TPopId) AND (apflora.pop.PopId = apflora.tpop.PopId)
+FROM apflora.pop INNER JOIN ((apflora_views.v_tpop_letztermassnber INNER JOIN apflora.tpopmassnber ON (apflora_views.v_tpop_letztermassnber.TPopId = apflora.tpopmassnber.TPopId) AND (apflora_views.v_tpop_letztermassnber.MaxvonTPopMassnBerJahr = apflora.tpopmassnber.TPopMassnBerJahr)) INNER JOIN apflora.tpop ON apflora.tpopmassnber.TPopId = apflora.tpop.TPopId) ON apflora.pop.PopId = apflora.tpop.PopId
 WHERE (apflora.tpopmassnber.TPopMassnBerErfolgsbeurteilung=2)
 GROUP BY apflora.pop.ApArtId, apflora.tpop.TPopId;
 
 CREATE OR REPLACE VIEW v_apber_c5rtpop AS 
 SELECT apflora.pop.ApArtId, apflora.tpop.TPopId
-FROM ((apflora_views.v_tpop_letztermassnber INNER JOIN apflora.pop ON apflora_views.v_tpop_letztermassnber.ApArtId = apflora.pop.ApArtId) INNER JOIN apflora.tpopmassnber ON (apflora_views.v_tpop_letztermassnber.MaxvonTPopMassnBerJahr = apflora.tpopmassnber.TPopMassnBerJahr) AND (apflora_views.v_tpop_letztermassnber.TPopId = apflora.tpopmassnber.TPopId)) INNER JOIN apflora.tpop ON (apflora.tpopmassnber.TPopId = apflora.tpop.TPopId) AND (apflora.pop.PopId = apflora.tpop.PopId)
+FROM apflora.pop INNER JOIN ((apflora_views.v_tpop_letztermassnber INNER JOIN apflora.tpopmassnber ON (apflora_views.v_tpop_letztermassnber.TPopId = apflora.tpopmassnber.TPopId) AND (apflora_views.v_tpop_letztermassnber.MaxvonTPopMassnBerJahr = apflora.tpopmassnber.TPopMassnBerJahr)) INNER JOIN apflora.tpop ON apflora.tpopmassnber.TPopId = apflora.tpop.TPopId) ON apflora.pop.PopId = apflora.tpop.PopId
 WHERE apflora.tpopmassnber.TPopMassnBerErfolgsbeurteilung=3
 GROUP BY apflora.pop.ApArtId, apflora.tpop.TPopId;
 
 CREATE OR REPLACE VIEW v_apber_c6rtpop AS 
 SELECT apflora.pop.ApArtId, apflora.tpop.TPopId
-FROM ((apflora_views.v_tpop_letztermassnber INNER JOIN apflora.pop ON apflora_views.v_tpop_letztermassnber.ApArtId = apflora.pop.ApArtId) INNER JOIN apflora.tpopmassnber ON (apflora_views.v_tpop_letztermassnber.MaxvonTPopMassnBerJahr = apflora.tpopmassnber.TPopMassnBerJahr) AND (apflora_views.v_tpop_letztermassnber.TPopId = apflora.tpopmassnber.TPopId)) INNER JOIN apflora.tpop ON (apflora.tpopmassnber.TPopId = apflora.tpop.TPopId) AND (apflora.pop.PopId = apflora.tpop.PopId)
+FROM apflora.pop INNER JOIN ((apflora_views.v_tpop_letztermassnber INNER JOIN apflora.tpopmassnber ON (apflora_views.v_tpop_letztermassnber.TPopId = apflora.tpopmassnber.TPopId) AND (apflora_views.v_tpop_letztermassnber.MaxvonTPopMassnBerJahr = apflora.tpopmassnber.TPopMassnBerJahr)) INNER JOIN apflora.tpop ON apflora.tpopmassnber.TPopId = apflora.tpop.TPopId) ON apflora.pop.PopId = apflora.tpop.PopId
 WHERE apflora.tpopmassnber.TPopMassnBerErfolgsbeurteilung=4
 GROUP BY apflora.pop.ApArtId, apflora.tpop.TPopId;
 
 CREATE OR REPLACE VIEW v_apber_c7rtpop AS 
 SELECT apflora.pop.ApArtId, apflora.tpop.TPopId
-FROM ((apflora_views.v_tpop_letztermassnber INNER JOIN apflora.pop ON apflora_views.v_tpop_letztermassnber.ApArtId = apflora.pop.ApArtId) INNER JOIN apflora.tpopmassnber ON (apflora_views.v_tpop_letztermassnber.TPopId = apflora.tpopmassnber.TPopId) AND (apflora_views.v_tpop_letztermassnber.MaxvonTPopMassnBerJahr = apflora.tpopmassnber.TPopMassnBerJahr)) INNER JOIN apflora.tpop ON (apflora.tpopmassnber.TPopId = apflora.tpop.TPopId) AND (apflora.pop.PopId = apflora.tpop.PopId)
+FROM apflora.pop INNER JOIN ((apflora_views.v_tpop_letztermassnber INNER JOIN apflora.tpopmassnber ON (apflora_views.v_tpop_letztermassnber.TPopId = apflora.tpopmassnber.TPopId) AND (apflora_views.v_tpop_letztermassnber.MaxvonTPopMassnBerJahr = apflora.tpopmassnber.TPopMassnBerJahr)) INNER JOIN apflora.tpop ON apflora.tpopmassnber.TPopId = apflora.tpop.TPopId) ON apflora.pop.PopId = apflora.tpop.PopId
 WHERE apflora.tpopmassnber.TPopMassnBerErfolgsbeurteilung=5
 GROUP BY apflora.pop.ApArtId, apflora.tpop.TPopId;
 
