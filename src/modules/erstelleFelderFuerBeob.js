@@ -4,13 +4,14 @@
 /*jslint node: true, browser: true, nomen: true, todo: true */
 'use strict';
 
-var $ = require('jquery');
+var $                 = require('jquery'),
+    beobFeldInputText = require('../templates/beobFeldInputText'),
+    beobFeldTextarea  = require('../templates/beobFeldTextarea');
 
 module.exports = function (data, beobtyp) {
     // Titel für Beob im Formular erstellen
     var beobtitel = "<h1>Informationen aus ",
         htmlBeobfelder,
-        htmlBeobfeld,
         nichtAnzuzeigendeFelder = ["NO_ISFS", "ESPECE", "CUSTOM_TEXT_5_", "OBJECTID", "FNS_GISLAYER", "FNS_ISFS", "ID", "FNS_JAHR", "NOM_COMPLET", "FAMILLE"];
 
     if (beobtyp === "infospezies") {
@@ -23,19 +24,12 @@ module.exports = function (data, beobtyp) {
     htmlBeobfelder = "<table>";
     $.each(data, function (index, value) {
         if ((value || value === 0) && nichtAnzuzeigendeFelder.indexOf(index) === -1) {
-            // TODO: Zahlen, text und Memofelder unterscheiden
-            // TODO: Felder durch externe Funktion erstellen lassen
-            // ID: beobfelder_ voranstellen, um Namens-Kollisionen zu vermeiden
-            htmlBeobfeld  = '<tr class="fieldcontain"><td class="label" style="padding-bottom:3px;"><label for="beobfelder_';
-            htmlBeobfeld += index;
-            htmlBeobfeld += '">';
-            htmlBeobfeld += index;
-            htmlBeobfeld += ':</label></td><td class="Datenfelder" style="padding-bottom:3px;"><input id="beobfelder_';
-            htmlBeobfeld += index;
-            htmlBeobfeld += '" class="Datenfelder" type="text" readonly="readonly" value="';
-            htmlBeobfeld += value;
-            htmlBeobfeld += '""></td></tr>';
-            htmlBeobfelder += htmlBeobfeld;
+            if (value.toString().length < 70) {
+                htmlBeobfelder += beobFeldInputText({index: index, value: value});
+            } else {
+                console.log('value.length', value.length);
+                htmlBeobfelder += beobFeldTextarea({index: index, value: value});
+            }
         }
     });
     htmlBeobfelder += "</table>";
