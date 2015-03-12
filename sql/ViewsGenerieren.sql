@@ -723,3 +723,17 @@ SELECT apflora.pop.ApArtId, apflora.pop.PopId
 FROM apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId
 WHERE apflora.pop.PopHerkunft=100 AND apflora.tpop.TPopApBerichtRelevant=1
 GROUP BY apflora.pop.ApArtId, apflora.pop.PopId;
+
+CREATE OR REPLACE VIEW v_tpop_ohneapberichtrelevant AS
+SELECT apflora_beob.adb_eigenschaften.Artname, apflora.pop.PopNr, apflora.pop.PopName, apflora.tpop.TPopId, apflora.tpop.TPopNr, apflora.tpop.TPopGemeinde, apflora.tpop.TPopFlurname, apflora.tpop.TPopApBerichtRelevant
+FROM apflora_beob.adb_eigenschaften INNER JOIN ((apflora.tpop INNER JOIN apflora.pop ON apflora.tpop.PopId = apflora.pop.PopId) INNER JOIN apflora.ap ON apflora.pop.ApArtId = apflora.ap.ApArtId) ON apflora_beob.adb_eigenschaften.TaxonomieId = apflora.ap.ApArtId
+WHERE apflora.tpop.TPopApBerichtRelevant Is Null AND apflora.ap.ApArtId Not In (100,150)
+ORDER BY apflora_beob.adb_eigenschaften.Artname, apflora.pop.PopNr, apflora.tpop.TPopNr;
+
+CREATE OR REPLACE VIEW v_tpop_popnrtpopnrmehrdeutig AS
+SELECT apflora_beob.adb_eigenschaften.Artname, apflora.pop.PopNr, apflora.tpop.TPopNr, Count(apflora.tpop.TPopId) AS AnzahlvonTPopId, GROUP_CONCAT(DISTINCT TPopId ORDER BY TPopId SEPARATOR ', ') AS TPopIds, GROUP_CONCAT(DISTINCT CONCAT('http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.tpop.PopId, '&tpop=', apflora.tpop.TPopId) ORDER BY apflora.tpop.TPopId SEPARATOR ', ') AS TPopUrls
+FROM apflora_beob.adb_eigenschaften INNER JOIN ((apflora.tpop INNER JOIN apflora.pop ON apflora.tpop.PopId = apflora.pop.PopId) INNER JOIN apflora.ap ON apflora.pop.ApArtId = apflora.ap.ApArtId) ON apflora_beob.adb_eigenschaften.TaxonomieId = apflora.ap.ApArtId
+WHERE apflora.ap.ApArtId Not In (100,150)
+GROUP BY apflora_beob.adb_eigenschaften.Artname, apflora.pop.PopNr, apflora.tpop.TPopNr
+HAVING Count(apflora.tpop.TPopId)>1
+ORDER BY apflora_beob.adb_eigenschaften.Artname, apflora.pop.PopNr, apflora.tpop.TPopNr;

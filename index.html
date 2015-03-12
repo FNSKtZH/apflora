@@ -436,8 +436,6 @@
                                 <label for="TPopApBerichtRelevant2">nein (historisch)</label><br>
                                 <input type="radio" name="TPopApBerichtRelevant" id="TPopApBerichtRelevant3" class="speichern" formular="tpop" value="3">
                                 <label for="TPopApBerichtRelevant3">nein (ausserkantonal)</label><br>
-                                <input type="radio" name="TPopApBerichtRelevant" id="TPopApBerichtRelevant4" class="speichern" formular="tpop" value="4">
-                                <label for="TPopApBerichtRelevant4">nein (Status unklar)</label><br>
                                 <input type="radio" name="TPopApBerichtRelevant" id="TPopApBerichtRelevant5" class="speichern" formular="tpop" value="5">
                                 <label for="TPopApBerichtRelevant5">nein (kein Vorkommen)</label>
                             </td>
@@ -2100,7 +2098,9 @@
                             <button id="exportTpop" class="exportTpop export" view="v_tpop" filename="Teilpopulationen">Teilpopulationen</button><br>
                             <button id="exportTpopFuerKml" class="export" view="v_tpop_kml" filename="Teilpopulationen" format="kml">Teilpopulationen für Google Earth<br>(beschriftet mit PopNr/TPopNr)</button><br>
                             <button id="exportTpopFuerKmlNamen" class="export" view="v_tpop_kmlnamen" filename="TeilpopulationenNachNamen" format="kml">Teilpopulationen für Google Earth<br>(beschriftet mit Artname, PopNr/TPopNr)</button><br>
-                            <button id="exportTpopOhneBekanntSeit" class="export" view="v_tpop_ohnebekanntseit" filename="TeilpopulationenVonApArtenOhneBekanntSeit">Teilpopulationen von AP-Arten<br>ohne "Bekannt seit"</button><br><br>
+                            <button id="exportTpopOhneBekanntSeit" class="export" view="v_tpop_ohnebekanntseit" filename="TeilpopulationenVonApArtenOhneBekanntSeit">Teilpopulationen von AP-Arten<br>ohne "Bekannt seit"</button><br>
+                            <button id="exportTpopOhneApBerichtRelevant" class="export" view="v_tpop_ohneapberichtrelevant" filename="TeilpopulationenOhneApBerichtRelevant">Teilpopulationen ohne Eintrag<br>im Feld "Für AP-Bericht relevant"</button><br>
+                            <button id="exportTpopPopnrTpopnrMehrdeutig" class="export" view="v_tpop_popnrtpopnrmehrdeutig" filename="TeilpopulationenPopnrTpopnrMehrdeutig">Teilpopulationen mit mehrdeutiger<br>Kombination von PopNr und TPopNr</button><br><br>
 
                             <button id="exportTpopAnzMassn" class="export" view="v_tpop_anzmassn" filename="TeilpopulationenAnzahlMassnahmen">Anzahl Massnahmen pro Teilpopulation</button><br>
                             <button id="exportTpopAnzKontrInklLetzteInklLetzteTPopBer" class="export" view="v_tpop_anzkontrinklletzterundletztertpopber" filename="TeilpopulationenAnzKontrInklusiveLetzteKontrUndLetztenTPopBericht">Anzahl Kontrollen pro Teilpopulation<br>inklusive der letzten Kontrolle,<br>dem letzten Teilpopulationsbericht<br>und der letzten Zählung</button><br><br>
