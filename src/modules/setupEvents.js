@@ -75,9 +75,13 @@ module.exports = function () {
         .on('click',                                           onClickKopiereKoordinatenInPop);
 
     $('#qualitaetskontrollen')
-        .on('click',             '.list', function (event) {
+        .on('click',             '.sort', function (event) {
             console.log('clicked sort');
             event.preventDefault();
+        })
+        .on('click',             '#qkSearchEmpty', function (event) {
+            $(this).prev('input').val('').focus();
+            window.apf.qsList.search();
         });
 
     $('#olMapExportieren')
