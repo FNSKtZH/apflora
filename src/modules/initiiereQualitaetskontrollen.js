@@ -33,9 +33,34 @@ module.exports = function (apId) {
     // clear list, otherwise items are added repeatedly
     qsList.clear();
 
+    // make global so search can be cancelled
+    window.apf.qsList = qsList;
+
     zeigeFormular('qualitaetskontrollen');
     // jede Kontrollabfrage aufrufen
     // aus Daten ein Array values machen
     // diese Daten anfügen:
     qsList.add(values);
+
+    // AP mit Start im Jahr, ohne Stand Umsetzung
+    // AP von AP-Art ohne Stand Umsetzung/Verantwortlich
+    // AP ohne Verantwortlich?
+    // pop ohne Nr/Name/Status/bekannt seit/Koordinaten?/tpop
+    // pop mit mehrdeutiger Nr
+    // pop ohne Name
+    // tpop ohne Nr/Flurname/Status/bekannt seit/Koordinaten
+    // pop/tpop mit Status unklar ohne Begründung?
+    // tpop mit mehrdeutiger Kombination von PopNr und TPopNr
+    // Massn ohne Jahr/Typ
+    // Massn.-Bericht ohne Jahr/Entwicklung
+    // Kontrolle ohne Jahr/Zählung
+    // Feldkontrolle ohne Kontrolltyp
+    // Zählung ohne Einheit/Methode/Anzahl
+    // TPop-Bericht ohne Jahr/Entwicklung
+    // Pop-Bericht/Pop-Massn.-Bericht ohne Jahr/Entwicklung
+    // Ziel ohne Jahr/Zieltyp/Ziel
+    // Ziel-Bericht ohne Jahr/Entwicklung
+    // AP-Erfolgskriterium ohne Beurteilung/Kriterien
+    // AP-Bericht ohne Jahr/Vergleich Vorjahr-Gesamtziel/Beurteilung/was noch?
+    // assoziierte Art ohne Art
 };
