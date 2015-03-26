@@ -1,26 +1,27 @@
 /*jslint node: true, browser: true, nomen: true, todo: true */
 'use strict';
 
-var $                          = require('jquery'),
-    initiiereBeob              = require('../initiiereBeob'),
-    initiiereIdealbiotop       = require('../initiiereIdealbiotop'),
-    initiiereAp                = require('../initiiereAp'),
-    initiierePop               = require('../initiierePop'),
-    initiiereApziel            = require('../initiiereApziel'),
-    initiiereZielber           = require('../initiiereZielber'),
-    initiiereErfkrit           = require('../initiiereErfkrit'),
-    initiiereJber              = require('../initiiereJber'),
-    initiiereJberUebersicht    = require('../initiiereJberUebersicht'),
-    initiiereBer               = require('../initiiereBer'),
-    initiiereAssozart          = require('../initiiereAssozart'),
-    initiierePopMassnBer       = require('../initiierePopMassnBer'),
-    initiiereTPop              = require('../initiiereTPop'),
-    initiierePopBer            = require('../initiierePopBer'),
-    initiiereTPopKontr         = require('../initiiereTPopKontr'),
-    initiiereTPopMassn         = require('../initiiereTPopMassn'),
-    initiiereTPopMassnBer      = require('../initiiereTPopMassnBer'),
-    initiiereTPopBer           = require('../initiiereTPopBer'),
-    erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId');
+var $                             = require('jquery'),
+    initiiereBeob                 = require('../initiiereBeob'),
+    initiiereIdealbiotop          = require('../initiiereIdealbiotop'),
+    initiiereAp                   = require('../initiiereAp'),
+    initiierePop                  = require('../initiierePop'),
+    initiiereApziel               = require('../initiiereApziel'),
+    initiiereZielber              = require('../initiiereZielber'),
+    initiiereErfkrit              = require('../initiiereErfkrit'),
+    initiiereJber                 = require('../initiiereJber'),
+    initiiereJberUebersicht       = require('../initiiereJberUebersicht'),
+    initiiereBer                  = require('../initiiereBer'),
+    initiiereAssozart             = require('../initiiereAssozart'),
+    initiierePopMassnBer          = require('../initiierePopMassnBer'),
+    initiiereTPop                 = require('../initiiereTPop'),
+    initiierePopBer               = require('../initiierePopBer'),
+    initiiereTPopKontr            = require('../initiiereTPopKontr'),
+    initiiereTPopMassn            = require('../initiiereTPopMassn'),
+    initiiereTPopMassnBer         = require('../initiiereTPopMassnBer'),
+    initiiereTPopBer              = require('../initiiereTPopBer'),
+    erstelleIdAusDomAttributId    = require('../erstelleIdAusDomAttributId'),
+    initiiereQualitaetskontrollen = require('../initiiereQualitaetskontrollen');
 
 module.exports = function (event, data, ApArtId) {
     var node,
@@ -175,5 +176,7 @@ module.exports = function (event, data, ApArtId) {
             localStorage.tpopmassnberId = nodeId;
             initiiereTPopMassnBer();
         }
+    } else if (nodeTyp === "qualitaetskontrollen") {
+        initiiereQualitaetskontrollen(nodeId);
     }
 };

@@ -23,7 +23,8 @@
     "addruler":        "global:addruler",
     "removeruler":     "global:removeruler",
     "canvas":          "global:canvas",
-    "Handlebars":      "global:Handlebars"
+    "Handlebars":      "global:Handlebars",
+    "List":            "global:List"
   },
   "dependencies": {
     "async": "0.9.0",

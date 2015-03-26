@@ -74,6 +74,12 @@ module.exports = function () {
     $('#kopiereKoordinatenInPop')
         .on('click',                                           onClickKopiereKoordinatenInPop);
 
+    $('#qualitaetskontrollen')
+        .on('click',             '.list', function (event) {
+            console.log('clicked sort');
+            event.preventDefault();
+        });
+
     $('#olMapExportieren')
         .on('click',                                           onClickOlMapExportieren);
     $('#olMapLayertree')
