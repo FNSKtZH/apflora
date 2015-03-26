@@ -30,6 +30,12 @@ module.exports = function (apId) {
         ],
         qsList = new window.List('qualitaetskontrollen', options);
 
+    $('#qkRefresh').button({
+        icons: {
+            primary: 'ui-icon-refresh'
+        }
+    });
+
     // clear list, otherwise items are added repeatedly
     qsList.clear();
 

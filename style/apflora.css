@@ -551,7 +551,7 @@ label.erforderlich span {
 \*--------------------------------*/
 
 #qualitaetskontrollen .list {
-    padding: 20px 0 0;
+    padding: 5px 0 0;
     margin: 0;
 }
 
@@ -577,6 +577,10 @@ label.erforderlich span {
 
 #qualitaetskontrollen .ui-button-text {
     padding: 3px 10px !important;
+}
+
+#qkRefresh .ui-button-text {
+    margin-left: 23px;
 }
 
 /*--------------------------------*\

@@ -51,12 +51,15 @@
                 </div>
 
                 <form id="qualitaetskontrollen" class="form" action="#" method="get" autocomplete="off">
-                    <div class='fieldcontain' style="margin-right:5px; margin-bottom:5px; position:relative;">
-                        <input class="search" placeholder="suchen" >
-                        <div id="qkSearchEmpty" class="ui-icon ui-icon-closethick" style="position:absolute;top:5px;left:185px;cursor:pointer;"></div>
+                    <div style="display:inline-block;">
+                        <div class='fieldcontain' style="margin-right:5px; margin-bottom:5px; position:relative;">
+                            <input class="search" placeholder="suchen" >
+                            <div id="qkSearchEmpty" class="ui-icon ui-icon-closethick" style="position:absolute;top:5px;left:185px;cursor:pointer;"></div>
+                        </div>
                     </div>
                     <button class="sort" data-sort="datensatz" role="button">nach Datensatz-Bezeichner sortieren</button>
                     <button class="sort" data-sort="hinweis" role="button">nach Hinweis sortieren</button>
+                    <button id="qkRefresh" role="button">erneut prüfen</button>
                     <ul class="list"></ul>
                 </form>
 
