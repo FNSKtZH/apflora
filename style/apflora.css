@@ -359,7 +359,6 @@ textarea {
 }
 
 .ui-button-text {
-    /*padding: .1em .5em !important;*/
     padding: 1px 7px !important;
 }
 
@@ -544,6 +543,40 @@ label.erforderlich span {
        -moz-border-radius: 0 0 5px 5px;
     -webkit-border-radius: 0 0 5px 5px;
             border-radius: 0 0 5px 5px;
+}
+
+/*--------------------------------*\
+    2. #FORMS
+       qualitaetskontrollen
+\*--------------------------------*/
+
+#qualitaetskontrollen .list {
+    padding: 20px 0 0;
+    margin: 0;
+}
+
+#qualitaetskontrollen .list > li {
+    display: block;
+    background-color: rgba(238, 238, 238, 0.5);
+    padding: 5px 10px;
+    box-shadow: inset 0 4px 0 #fff;
+}
+
+#qualitaetskontrollen .list > li > p {
+    padding: 5px 0 0 0;
+    margin: 0;
+}
+
+#qualitaetskontrollen .list > li > p:first-of-type {
+    padding: 10px 0 0 0;
+}
+
+#qualitaetskontrollen .list > li > p:last-of-type {
+    padding: 5px 0 10px 0;
+}
+
+#qualitaetskontrollen .ui-button-text {
+    padding: 3px 10px !important;
 }
 
 /*--------------------------------*\

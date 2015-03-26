@@ -13,6 +13,7 @@
         <!--script src="http://api3.geo.admin.ch/loader.js?lang=de&mode=debug"></script-->
         <script src="src/apflora_built.js"></script>
         <script src="src/jquery.jstree.js"></script>
+        <script src="src/list.js"></script>
         <title>AP Flora Kt ZH</title>
     </head>
     <body>
@@ -48,6 +49,14 @@
                 <div id="formsTitelzeile" class="undelete" style="margin:0 0 0 0; line-height:27px; padding: 0 7px 0 9px; height:auto; display:none;">
                     <div id="testartDiv" style="font-weight:bold; color:#196319; float:left; padding-right:7px;"></div>
                 </div>
+
+                <form id="qualitaetskontrollen" class="form" action="#" method="get" autocomplete="off">
+                    <input class="search" placeholder="suchen" />
+                    <button class="sort" data-sort="datensatz" role="button">nach Datensatz-Bezeichner sortieren</button>
+                    <button class="sort" data-sort="hinweis" role="button">nach Hinweis sortieren</button>
+                    <ul class="list"></ul>
+                </form>
+
                 <form id="ap" class="form" action="#" method="get" autocomplete="off">
                     <table>
                         <tr class="fieldcontain">

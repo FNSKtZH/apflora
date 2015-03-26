@@ -25,7 +25,8 @@ gulp.task('prod_build_src', function () {
         'src/apflora_browserified.js',
         'src/jquery.file.download.js',
         'src/underscore.js',
-        'src/handlebars.js'
+        'src/handlebars.js',
+        'src/list.js'
     ])
         .pipe(concat('apflora_built.js'))
         .pipe(uglify())
