@@ -40,7 +40,8 @@ var $                                   = require('jquery'),
     onChangeBeobNichtBeurteilt          = require('./events/forms/beob/onChangeBeobNichtBeurteilt'),
     onChangeBeobNichtZuordnen           = require('./events/forms/beob/onChangeBeobNichtZuordnen'),
     onChangeDistZuTPop                  = require('./events/forms/beob/onChangeDistZuTPop'),
-    onSelectmenuchangeExportLayerSelect = require('./events/forms/olMap/layertree/onSelectmenuchangeExportLayerSelect');
+    onSelectmenuchangeExportLayerSelect = require('./events/forms/olMap/layertree/onSelectmenuchangeExportLayerSelect'),
+    initiiereQualitaetskontrollen       = require('./initiiereQualitaetskontrollen');
 
 module.exports = function () {
 
@@ -76,12 +77,15 @@ module.exports = function () {
 
     $('#qualitaetskontrollen')
         .on('click',             '.sort', function (event) {
-            console.log('clicked sort');
             event.preventDefault();
         })
         .on('click',             '#qkSearchEmpty', function (event) {
             $(this).prev('input').val('').focus();
+            // cancel filter
             window.apf.qsList.search();
+        })
+        .on('click',             '#qkRefresh', function (event) {
+            initiiereQualitaetskontrollen(window.apf.ap.ApArtId);
         });
 
     $('#olMapExportieren')
