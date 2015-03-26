@@ -51,6 +51,7 @@ var _                                 = require('underscore'),
     queryTabelleUpdateBeob            = require('./queries/tabelleUpdateBeob'),
     queryTabelleDeleteApflora         = require('./queries/tabelleDeleteApflora'),
     queryAnmeldung                    = require('./queries/anmeldung'),
+    treeQualitaetskontrollen          = require('./queries/tree/qualitaetskontrollen'),
     treeAssozarten                    = require('./queries/tree/assozarten'),
     treeIdealbiotop                   = require('./queries/tree/idealbiotop'),
     treeBeobNichtZuzuordnen           = require('./queries/tree/beobNichtZuzuordnen'),
@@ -349,20 +350,22 @@ server.route({
     config: {
         pre: [
             [
-                { method: treeAssozarten,          assign: 'assozarten' },
-                { method: treeIdealbiotop,         assign: 'idealbiotop' },
-                { method: treeBeobNichtZuzuordnen, assign: 'beobNichtZuzuordnen' },
-                { method: treeBeobNichtBeurteilt,  assign: 'beobNichtBeurteilt' },
-                { method: treeBer,                 assign: 'ber' },
-                { method: treeJBer,                assign: 'jber' },
-                { method: treeErfkrit,             assign: 'erfkrit' },
-                { method: treeApziel,              assign: 'apziel' },
-                { method: treePop,                 assign: 'pop' }
+                { method: treeAssozarten,           assign: 'assozarten' },
+                { method: treeIdealbiotop,          assign: 'idealbiotop' },
+                { method: treeBeobNichtZuzuordnen,  assign: 'beobNichtZuzuordnen' },
+                { method: treeBeobNichtBeurteilt,   assign: 'beobNichtBeurteilt' },
+                { method: treeBer,                  assign: 'ber' },
+                { method: treeJBer,                 assign: 'jber' },
+                { method: treeErfkrit,              assign: 'erfkrit' },
+                { method: treeApziel,               assign: 'apziel' },
+                { method: treePop,                  assign: 'pop' },
+                { method: treeQualitaetskontrollen, assign: 'qualitaetskontrollen' }
             ]
 
         ],
         handler: function (request, reply) {
             reply([
+                request.pre.qualitaetskontrollen,
                 request.pre.pop,
                 request.pre.apziel,
                 request.pre.erfkrit,
