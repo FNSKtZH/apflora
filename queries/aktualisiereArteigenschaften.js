@@ -1,4 +1,4 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
+/*jslint node: true, browser: true, nomen: true, todo: true, plusplus */
 'use strict';
 
 
@@ -37,7 +37,7 @@ module.exports = function (req, reply) {
         json: true
     }, function (error, response, body) {
         if (error) { throw error; }
-        if (!error && response.statusCode == 200) {
+        if (!error && response.statusCode === 200) {
             // empty table
             connection.query(
                 'TRUNCATE TABLE apflora_beob.adb_eigenschaften',
@@ -52,7 +52,7 @@ module.exports = function (req, reply) {
                         eigenschaftenString2 = createInsertSqlFromObjectArray(artenArray[2]),
                         eigenschaftenString3 = createInsertSqlFromObjectArray(artenArray[3]),
                         eigenschaftenString4 = createInsertSqlFromObjectArray(artenArray[4]),
-                        sqlBase = 'INSERT INTO apflora_beob.adb_eigenschaften (GUID, TaxonomieId, Familie, Artname, NameDeutsch, Status, Artwert, KefArt, KefKontrolljahr, FnsJahresartJahr) VALUES ',
+                        sqlBase = 'INSERT INTO apflora_beob.adb_eigenschaften (GUID, TaxonomieId, Familie, Artname, NameDeutsch, Status, Artwert, KefArt, KefKontrolljahr) VALUES ',
                         sql;
 
                     // add new values
