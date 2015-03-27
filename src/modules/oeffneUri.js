@@ -39,7 +39,8 @@ var $                         = require('jquery'),
     setzeWindowTpopmassn      = require('./setzeWindowTpopmassn'),
     setzeWindowTpopmassnber   = require('./setzeWindowTpopmassnber'),
     setzeWindowTpopber        = require('./setzeWindowTpopber'),
-    initiiereExporte          = require('./initiiereExporte');
+    initiiereExporte          = require('./initiiereExporte'),
+    initiiereQualitaetskontrollen = require('./initiiereQualitaetskontrollen');
 
 module.exports = function () {
     var uri                     = new Uri($(location).attr('href')),
@@ -66,6 +67,7 @@ module.exports = function () {
         beobNichtBeurteiltId    = uri.getQueryParamValue('beobNichtBeurteilt'),
         beobNichtZuzuordnenId   = uri.getQueryParamValue('beobNichtZuzuordnen'),
         exporte                 = uri.getQueryParamValue('exporte'),
+        qualitaetskontrollen    = uri.getQueryParamValue('qualitaetskontrollen'),
         apWaehlenText;
 
     // ids in Zahlen umwandeln
@@ -184,7 +186,7 @@ module.exports = function () {
                 // markieren, dass nach dem loaded-event im Tree die Pop angezeigt werden soll
                 window.apf.popZeigen = true;
                 // direkt initiieren, bevor der baum fertig aufgebaut ist
-                initiierePop(apId, popId);
+                //initiierePop(apId, popId);
             }
         } else if (apzielId) {
             if (zielberId) {
@@ -256,6 +258,12 @@ module.exports = function () {
                 localStorage.beobtyp = "infospezies";
                 initiiereBeob("infospezies", localStorage.beobId, "nicht_zuzuordnen");
             }
+        } else if (qualitaetskontrollen) {
+            // muss qualitaetskontrollen sein
+            // markieren, dass nach dem loaded-event im Tree die qualitaetskontrollen angezeigt werden soll
+            window.apf.qualitaetskontrollenZeigen = true;
+            // direkt initiieren, bevor der baum fertig aufgebaut ist
+            initiiereQualitaetskontrollen(apId);
         } else {
             // muss ap sein
             // markieren, dass nach dem loaded-event im Tree die Pop angezeigt werden soll 
