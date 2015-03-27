@@ -739,7 +739,7 @@ HAVING Count(apflora.tpop.TPopId)>1
 ORDER BY apflora_beob.adb_eigenschaften.Artname, apflora.pop.PopNr, apflora.tpop.TPopNr;
 
 CREATE OR REPLACE VIEW v_qk_tpop_popnrtpopnrmehrdeutig AS
-SELECT apflora.ap.ApArtId, 'Teilpopulationen: Die Kombination von Pop.-Nr. und TPop.-Nr. ist mehrdeutig:' AS hw, GROUP_CONCAT(DISTINCT CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '&tpop=', apflora.tpop.TPopId, '" target="_blank">', 'Pop: ', apflora.pop.PopNr, ' > TPop: ', apflora.tpop.TPopNr, ' (id=', apflora.tpop.TPopId, ')', '</a>') ORDER BY apflora.tpop.TPopId SEPARATOR '<br> ') AS link
+SELECT apflora.ap.ApArtId, 'Teilpopulation: Die Kombination von Pop.-Nr. und TPop.-Nr. ist mehrdeutig:' AS hw, GROUP_CONCAT(DISTINCT CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '&tpop=', apflora.tpop.TPopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), ' > TPop: ', apflora.tpop.TPopNr, ' (id=', apflora.tpop.TPopId, ')', '</a>') ORDER BY apflora.tpop.TPopId SEPARATOR '<br> ') AS link
 FROM (apflora.tpop INNER JOIN apflora.pop ON apflora.tpop.PopId = apflora.pop.PopId) INNER JOIN apflora.ap ON apflora.pop.ApArtId = apflora.ap.ApArtId
 WHERE apflora.ap.ApArtId Not In (100,150)
 GROUP BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.tpop.TPopNr
@@ -747,13 +747,49 @@ HAVING Count(apflora.tpop.TPopId)>1
 ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.tpop.TPopNr;
 
 CREATE OR REPLACE VIEW v_qk_pop_ohnekoord AS
-SELECT apflora.ap.ApArtId AS 'ApArtId', 'Populationen: Mindestens eine Koordinate fehlt:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '" target="_blank">', 'Pop: ', apflora.pop.PopNr, '</a>') AS link
+SELECT apflora.ap.ApArtId AS 'ApArtId', 'Population: Mindestens eine Koordinate fehlt:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), '</a>') AS link
 FROM apflora.ap INNER JOIN apflora.pop ON apflora.ap.ApArtId = apflora.pop.ApArtId
 WHERE apflora.pop.PopXKoord IS NULL OR apflora.pop.PopYKoord IS NULL 
 ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr;
 
+CREATE OR REPLACE VIEW v_qk_pop_ohnepopnr AS
+SELECT apflora.ap.ApArtId AS 'ApArtId', 'Population ohne Nr.:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopName), CONCAT('Pop: id=', apflora.pop.PopId)), '</a>') AS link
+FROM apflora.ap INNER JOIN apflora.pop ON apflora.ap.ApArtId = apflora.pop.ApArtId
+WHERE apflora.pop.PopNr IS NULL 
+ORDER BY apflora.ap.ApArtId, apflora.pop.PopName;
+
+CREATE OR REPLACE VIEW v_qk_pop_ohnepopname AS
+SELECT apflora.ap.ApArtId AS 'ApArtId', 'Population ohne Name:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), '</a>') AS link
+FROM apflora.ap INNER JOIN apflora.pop ON apflora.ap.ApArtId = apflora.pop.ApArtId
+WHERE apflora.pop.PopName IS NULL
+ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr;
+
+CREATE OR REPLACE VIEW v_qk_pop_ohnepopstatus AS
+SELECT apflora.ap.ApArtId AS 'ApArtId', 'Population ohne Status:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), '</a>') AS link
+FROM apflora.ap INNER JOIN apflora.pop ON apflora.ap.ApArtId = apflora.pop.ApArtId
+WHERE apflora.pop.PopHerkunft IS NULL
+ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr;
+
+CREATE OR REPLACE VIEW v_qk_pop_ohnebekanntseit AS
+SELECT apflora.ap.ApArtId AS 'ApArtId', 'Population ohne "bekannt seit":' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), '</a>') AS link
+FROM apflora.ap INNER JOIN apflora.pop ON apflora.ap.ApArtId = apflora.pop.ApArtId
+WHERE apflora.pop.PopBekanntSeit IS NULL
+ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr;
+
+CREATE OR REPLACE VIEW v_qk_pop_ohnetpop AS
+SELECT apflora.ap.ApArtId AS 'ApArtId', 'Population ohne Teilpopulation:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), '</a>') AS link
+FROM (apflora.ap INNER JOIN apflora.pop ON apflora.ap.ApArtId = apflora.pop.ApArtId) LEFT JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId
+WHERE apflora.tpop.TPopId Is Null
+ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr;
+
+CREATE OR REPLACE VIEW v_qk_tpop_ohnenr AS 
+SELECT apflora.ap.ApArtId, 'Teilpopulation ohne Nr.:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '&tpop=', apflora.tpop.TPopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), IFNULL(CONCAT(' > TPop: ', apflora.tpop.TPopFlurname), CONCAT(' > TPop: id=', apflora.tpop.TPopId)), '</a>') AS link
+FROM apflora.ap INNER JOIN (apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) ON apflora.ap.ApArtId = apflora.pop.ApArtId
+WHERE apflora.tpop.TPopNr Is Null
+ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.tpop.TPopNr;
+
 CREATE OR REPLACE VIEW v_qk_tpop_ohnebekanntseit AS 
-SELECT apflora.ap.ApArtId, 'Teilpopulationen: Feld "bekannt Seit" ist leer:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '&tpop=', apflora.tpop.TPopId, '" target="_blank">', 'Pop: ', apflora.pop.PopNr, ' > TPop: ', apflora.tpop.TPopNr, '</a>') AS link
+SELECT apflora.ap.ApArtId, 'Teilpopulation ohne "bekannt seit":' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '&tpop=', apflora.tpop.TPopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), IFNULL(CONCAT(' > TPop: ', apflora.tpop.TPopNr), CONCAT(' > TPop: ', apflora.tpop.TPopId)), '</a>') AS link
 FROM apflora.ap INNER JOIN (apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) ON apflora.ap.ApArtId = apflora.pop.ApArtId
 WHERE apflora.tpop.TPopBekanntSeit Is Null
 ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.tpop.TPopNr;
