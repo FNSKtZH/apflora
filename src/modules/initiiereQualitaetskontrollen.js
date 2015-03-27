@@ -16,7 +16,7 @@ var $             = require('jquery'),
 function addDataFromViewToQsList(qsList, viewName) {
     $.ajax({
         type: 'get',
-        url: 'api/v1/qkView/' + viewName + '/' + window.apf.ap.ApArtId
+        url: 'api/v1/qkView/' + viewName + '/' + localStorage.apId
     }).done(function (data) {
         // data ist Objekt-Array
         // Felder: ApArtId, hw, link
@@ -44,6 +44,8 @@ module.exports = function (apId) {
     window.apf.qsList = qsList;
 
     zeigeFormular('qualitaetskontrollen');
+    history.pushState(null, null, "index.html?ap=" + apId + "&qualitaetskontrollen=true");
+
     // jede Kontrollabfrage aufrufen
     // aus Daten ein Array values machen
     // diese Daten anfügen:

@@ -128,4 +128,9 @@ module.exports = function (ApArtId) {
         // diese Markierung entfernen, damit das nächste mal nicht mehr dieser AP geöffnet wird
         delete window.apf.apZeigen;
     }
+    if (window.apf.qualitaetskontrollenZeigen) {
+        $("#tree").jstree("select_node", "#qualitaetskontrollen" + ApArtId);
+        // diese Markierung entfernen, damit das nächste mal nicht mehr diese QK geöffnet wird
+        delete window.apf.qualitaetskontrollenZeigen;
+    }
 };
