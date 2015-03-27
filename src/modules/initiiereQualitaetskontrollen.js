@@ -13,6 +13,15 @@ var $             = require('jquery'),
     _             = require('underscore'),
     zeigeFormular = require('./zeigeFormular');
 
+function tellUserIfNoIssues() {
+    var html;
+
+    if (window.apf.qsList.items.length === 0) {
+        html = '<li><p>juhui, keine Probleme gefunden!</p></li>';
+        $('#qualitaetskontrollen').find('.list').html(html);
+    }
+}
+
 function addDataFromViewToQsList(qsList, viewName) {
     $.ajax({
         type: 'get',
@@ -20,7 +29,13 @@ function addDataFromViewToQsList(qsList, viewName) {
     }).done(function (data) {
         // data ist Objekt-Array
         // Felder: ApArtId, hw, link
-        qsList.add(data);
+        if (data && data.length > 0) {
+            qsList.add(data);
+        } else {
+            setTimeout(function () {
+                tellUserIfNoIssues();
+            }, 500);
+        }
     });
 }
 
@@ -60,14 +75,6 @@ module.exports = function (apId) {
     // pop/tpop mit Status unklar ohne Begründung?
     // tpop mit mehrdeutiger Kombination von PopNr und TPopNr
     addDataFromViewToQsList(qsList, 'v_qk_tpop_popnrtpopnrmehrdeutig');
-    /*$.ajax({
-        type: 'get',
-        url: 'api/v1/qkView/v_qk_tpop_popnrtpopnrmehrdeutig'
-    }).done(function (data) {
-        // data ist Objekt-Array
-        // Felder: hw, link
-        qsList.add(data);
-    });*/
     // Massn ohne Jahr/Typ
     // Massn.-Bericht ohne Jahr/Entwicklung
     // Kontrolle ohne Jahr/Zählung
