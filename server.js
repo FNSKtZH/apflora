@@ -28,6 +28,7 @@ var _                                 = require('underscore'),
     queryGemeinden                    = require('./queries/gemeinden'),
     queryArtliste                     = require('./queries/artliste'),
     queryApliste                      = require('./queries/apliste'),
+    queryQkView                       = require('./queries/qkView'),
     queryAdressen                     = require('./queries/adressen'),
     queryLrDelarze                    = require('./queries/lrDelarze'),
     queryTpopMassnTypen               = require('./queries/tpopMassnTypen'),
@@ -197,6 +198,12 @@ server.route({
     method: 'GET',
     path: '/api/v1/apliste/programm={programm}',
     handler: queryApliste
+});
+
+server.route({
+    method: 'GET',
+    path: '/api/v1/qkView/{viewName}/{apId}',
+    handler: queryQkView
 });
 
 server.route({
