@@ -68,12 +68,12 @@ module.exports = function (apId) {
 
     // jede Kontrollabfrage aufrufen
     // aus Daten ein Array values machen
-    // diese Daten anfügen:
+    // diese Daten anfügen
 
     // AP mit Start im Jahr, ohne Stand Umsetzung
     // AP von AP-Art ohne Stand Umsetzung/Verantwortlich
     // AP ohne Verantwortlich?
-    
+
     // pop ohne Nr/Name/Status/bekannt seit/Koordinaten/tpop
     addDataFromViewToQsList(qsList, 'v_qk_pop_ohnepopnr');
     addDataFromViewToQsList(qsList, 'v_qk_pop_ohnepopname');
@@ -81,12 +81,18 @@ module.exports = function (apId) {
     addDataFromViewToQsList(qsList, 'v_qk_pop_ohnebekanntseit');
     addDataFromViewToQsList(qsList, 'v_qk_pop_ohnekoord');
     addDataFromViewToQsList(qsList, 'v_qk_pop_ohnetpop');
+    // pop mit Status unklar, ohne Begründung
+    addDataFromViewToQsList(qsList, 'v_qk_pop_mitstatusunklarohnebegruendung');
     // pop mit mehrdeutiger Nr
-    // pop ohne Name
+    addDataFromViewToQsList(qsList, 'v_qk_pop_popnrmehrdeutig');
     // tpop ohne Nr/Flurname/Status/bekannt seit/Koordinaten
     addDataFromViewToQsList(qsList, 'v_qk_tpop_ohnenr');
+    addDataFromViewToQsList(qsList, 'v_qk_tpop_ohneflurname');
+    addDataFromViewToQsList(qsList, 'v_qk_tpop_ohnestatus');
     addDataFromViewToQsList(qsList, 'v_qk_tpop_ohnebekanntseit');
-    // pop/tpop mit Status unklar ohne Begründung?
+    addDataFromViewToQsList(qsList, 'v_qk_tpop_ohnekoordinaten');
+    // pop/tpop mit Status unklar ohne Begründung
+    addDataFromViewToQsList(qsList, 'v_qk_tpop_mitstatusunklarohnebegruendung');
     // tpop mit mehrdeutiger Kombination von PopNr und TPopNr
     addDataFromViewToQsList(qsList, 'v_qk_tpop_popnrtpopnrmehrdeutig');
     // Massn ohne Jahr/Typ
