@@ -12,7 +12,6 @@ var mysql      = require('mysql'),
     });
 
 module.exports = function (request, callback) {
-    // Artname muss 'label' heissen, sonst funktioniert jquery ui autocomplete nicht
     var sql,
         viewName = request.params.viewName,
         apId     = request.params.apId;

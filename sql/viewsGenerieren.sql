@@ -739,9 +739,21 @@ HAVING Count(apflora.tpop.TPopId)>1
 ORDER BY apflora_beob.adb_eigenschaften.Artname, apflora.pop.PopNr, apflora.tpop.TPopNr;
 
 CREATE OR REPLACE VIEW v_qk_tpop_popnrtpopnrmehrdeutig AS
-SELECT apflora.ap.ApArtId, 'Die Kombination von Pop.-Nr. und TPop.-Nr. ist mehrdeutig:' AS hw, GROUP_CONCAT(DISTINCT CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.tpop.PopId, '&tpop=', apflora.tpop.TPopId, '" target="_blank">', adb_eigenschaften.Artname, ' > Pop: ', apflora.pop.PopNr, ' > TPop: ', apflora.tpop.TPopNr, ' (id=', apflora.tpop.TPopId, ')', '</a>') ORDER BY apflora.tpop.TPopId SEPARATOR '<br> ') AS link
-FROM apflora_beob.adb_eigenschaften INNER JOIN ((apflora.tpop INNER JOIN apflora.pop ON apflora.tpop.PopId = apflora.pop.PopId) INNER JOIN apflora.ap ON apflora.pop.ApArtId = apflora.ap.ApArtId) ON apflora_beob.adb_eigenschaften.TaxonomieId = apflora.ap.ApArtId
+SELECT apflora.ap.ApArtId, 'Teilpopulationen: Die Kombination von Pop.-Nr. und TPop.-Nr. ist mehrdeutig:' AS hw, GROUP_CONCAT(DISTINCT CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '&tpop=', apflora.tpop.TPopId, '" target="_blank">', 'Pop: ', apflora.pop.PopNr, ' > TPop: ', apflora.tpop.TPopNr, ' (id=', apflora.tpop.TPopId, ')', '</a>') ORDER BY apflora.tpop.TPopId SEPARATOR '<br> ') AS link
+FROM (apflora.tpop INNER JOIN apflora.pop ON apflora.tpop.PopId = apflora.pop.PopId) INNER JOIN apflora.ap ON apflora.pop.ApArtId = apflora.ap.ApArtId
 WHERE apflora.ap.ApArtId Not In (100,150)
-GROUP BY apflora_beob.adb_eigenschaften.Artname, apflora.pop.PopNr, apflora.tpop.TPopNr
+GROUP BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.tpop.TPopNr
 HAVING Count(apflora.tpop.TPopId)>1
-ORDER BY apflora_beob.adb_eigenschaften.Artname, apflora.pop.PopNr, apflora.tpop.TPopNr;
+ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.tpop.TPopNr;
+
+CREATE OR REPLACE VIEW v_qk_pop_ohnekoord AS
+SELECT apflora.ap.ApArtId AS 'ApArtId', 'Populationen: Mindestens eine Koordinate fehlt:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '" target="_blank">', 'Pop: ', apflora.pop.PopNr, '</a>') AS link
+FROM apflora.ap INNER JOIN apflora.pop ON apflora.ap.ApArtId = apflora.pop.ApArtId
+WHERE apflora.pop.PopXKoord IS NULL OR apflora.pop.PopYKoord IS NULL 
+ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr;
+
+CREATE OR REPLACE VIEW v_qk_tpop_ohnebekanntseit AS 
+SELECT apflora.ap.ApArtId, 'Teilpopulationen: Feld "bekannt Seit" ist leer:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '&tpop=', apflora.tpop.TPopId, '" target="_blank">', 'Pop: ', apflora.pop.PopNr, ' > TPop: ', apflora.tpop.TPopNr, '</a>') AS link
+FROM apflora.ap INNER JOIN (apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) ON apflora.ap.ApArtId = apflora.pop.ApArtId
+WHERE apflora.tpop.TPopBekanntSeit Is Null
+ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.tpop.TPopNr;
