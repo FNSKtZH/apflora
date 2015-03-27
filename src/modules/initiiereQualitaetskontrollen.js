@@ -29,6 +29,10 @@ function addDataFromViewToQsList(qsList, viewName) {
     }).done(function (data) {
         // data ist Objekt-Array
         // Felder: ApArtId, hw, link
+        // remove data without links
+        data = _.filter(data, function (dat) {
+            return !!dat.link;
+        });
         if (data && data.length > 0) {
             qsList.add(data);
         } else {
@@ -36,6 +40,7 @@ function addDataFromViewToQsList(qsList, viewName) {
                 tellUserIfNoIssues();
             }, 500);
         }
+        $("#tree").jstree("rename_node", "#qualitaetskontrollen" + localStorage.apId, 'Qualitätskontrollen (' + window.apf.qsList.items.length + ')');
     });
 }
 
@@ -69,9 +74,11 @@ module.exports = function (apId) {
     // AP von AP-Art ohne Stand Umsetzung/Verantwortlich
     // AP ohne Verantwortlich?
     // pop ohne Nr/Name/Status/bekannt seit/Koordinaten?/tpop
+    addDataFromViewToQsList(qsList, 'v_qk_pop_ohnekoord');
     // pop mit mehrdeutiger Nr
     // pop ohne Name
     // tpop ohne Nr/Flurname/Status/bekannt seit/Koordinaten
+    addDataFromViewToQsList(qsList, 'v_qk_tpop_ohnebekanntseit');
     // pop/tpop mit Status unklar ohne Begründung?
     // tpop mit mehrdeutiger Kombination von PopNr und TPopNr
     addDataFromViewToQsList(qsList, 'v_qk_tpop_popnrtpopnrmehrdeutig');
