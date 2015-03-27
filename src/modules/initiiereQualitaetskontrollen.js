@@ -9,26 +9,27 @@
 /*jslint node: true, browser: true, nomen: true, todo: true */
 'use strict';
 
-var $                            = require('jquery'),
-    zeigeFormular                = require('./zeigeFormular'),
-    melde                        = require('./melde');
+var $             = require('jquery'),
+    _             = require('underscore'),
+    zeigeFormular = require('./zeigeFormular');
+
+function addDataFromViewToQsList(qsList, viewName) {
+    $.ajax({
+        type: 'get',
+        url: 'api/v1/qkView/' + viewName + '/' + window.apf.ap.ApArtId
+    }).done(function (data) {
+        // data ist Objekt-Array
+        // Felder: ApArtId, hw, link
+        qsList.add(data);
+    });
+}
 
 module.exports = function (apId) {
-    var options = {
-            valueNames: ['datensatz', 'hinweis'],
-            item: '<li><p class="datensatz"></p><p class="hinweis"></p></li>'
+    var listOptions = {
+            valueNames: ['hw', 'link'],
+            item: '<li><p class="hw"></p><p class="link"></p></li>'
         },
-        values = [
-            {
-                datensatz: 'Teilpopulation abies alba > 1 > 1',
-                hinweis: 'hier stinkt\'s, muss wohl was faul sein'
-            },
-            {
-                datensatz: 'Feldkontrolle abies alba > 1 > 2 > 2014',
-                hinweis: 'na so was, dann schau ich doch mal'
-            }
-        ],
-        qsList = new window.List('qualitaetskontrollen', options);
+        qsList = new window.List('qualitaetskontrollen', listOptions);
 
     $('#qkRefresh').button({
         icons: {
@@ -46,7 +47,6 @@ module.exports = function (apId) {
     // jede Kontrollabfrage aufrufen
     // aus Daten ein Array values machen
     // diese Daten anfügen:
-    qsList.add(values);
 
     // AP mit Start im Jahr, ohne Stand Umsetzung
     // AP von AP-Art ohne Stand Umsetzung/Verantwortlich
@@ -57,6 +57,15 @@ module.exports = function (apId) {
     // tpop ohne Nr/Flurname/Status/bekannt seit/Koordinaten
     // pop/tpop mit Status unklar ohne Begründung?
     // tpop mit mehrdeutiger Kombination von PopNr und TPopNr
+    addDataFromViewToQsList(qsList, 'v_qk_tpop_popnrtpopnrmehrdeutig');
+    /*$.ajax({
+        type: 'get',
+        url: 'api/v1/qkView/v_qk_tpop_popnrtpopnrmehrdeutig'
+    }).done(function (data) {
+        // data ist Objekt-Array
+        // Felder: hw, link
+        qsList.add(data);
+    });*/
     // Massn ohne Jahr/Typ
     // Massn.-Bericht ohne Jahr/Entwicklung
     // Kontrolle ohne Jahr/Zählung
