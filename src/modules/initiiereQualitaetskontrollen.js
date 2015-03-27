@@ -73,11 +73,18 @@ module.exports = function (apId) {
     // AP mit Start im Jahr, ohne Stand Umsetzung
     // AP von AP-Art ohne Stand Umsetzung/Verantwortlich
     // AP ohne Verantwortlich?
-    // pop ohne Nr/Name/Status/bekannt seit/Koordinaten?/tpop
+    
+    // pop ohne Nr/Name/Status/bekannt seit/Koordinaten/tpop
+    addDataFromViewToQsList(qsList, 'v_qk_pop_ohnepopnr');
+    addDataFromViewToQsList(qsList, 'v_qk_pop_ohnepopname');
+    addDataFromViewToQsList(qsList, 'v_qk_pop_ohnepopstatus');
+    addDataFromViewToQsList(qsList, 'v_qk_pop_ohnebekanntseit');
     addDataFromViewToQsList(qsList, 'v_qk_pop_ohnekoord');
+    addDataFromViewToQsList(qsList, 'v_qk_pop_ohnetpop');
     // pop mit mehrdeutiger Nr
     // pop ohne Name
     // tpop ohne Nr/Flurname/Status/bekannt seit/Koordinaten
+    addDataFromViewToQsList(qsList, 'v_qk_tpop_ohnenr');
     addDataFromViewToQsList(qsList, 'v_qk_tpop_ohnebekanntseit');
     // pop/tpop mit Status unklar ohne Begründung?
     // tpop mit mehrdeutiger Kombination von PopNr und TPopNr
