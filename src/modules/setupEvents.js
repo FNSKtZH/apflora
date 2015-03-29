@@ -84,7 +84,8 @@ module.exports = function () {
             // cancel filter
             window.apf.qsList.search();
         })
-        .on('click',             '#qkRefresh', function (event) {
+        .on('click',             '.qkRefresh', function (event) {
+            event.preventDefault();
             initiiereQualitaetskontrollen(window.apf.ap.ApArtId);
         });
 
