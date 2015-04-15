@@ -42,6 +42,11 @@ module.exports = function (that) {
     // wenn in speichern.js selbst ein nächster Speichervorgang ausgelöst wird, wird ein Objekt mitgegeben
     // daher nicht nur $(that), sondern auch that prüfen
     feldwert = $(that).val();
+    if (feldtyp && feldtyp === "radio" && feldwert === 'on') {
+        // value '' wird in Chrome als 'on' interpretiert, weil Chrome das HTML für den Value eliminiert
+        feldwert = '';
+    }
+
     if (feldtyp && feldtyp === "checkbox" && !$(that).is(':checked')) {
         // die geklickte Box hat den ermittelten value
         // aber sie ist jetzt nicht gechecked! > Wert = ''
