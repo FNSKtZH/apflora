@@ -1,5 +1,5 @@
 /*
-* jQuery File Download Plugin v1.4.3 
+* jQuery File Download Plugin v1.4.2 
 *
 * http://www.johnculviner.com
 *
@@ -50,7 +50,6 @@ $.extend({
             //the stock android browser straight up doesn't support file downloads initiated by a non GET: http://code.google.com/p/android/issues/detail?id=1780
             //specify a message here to display if a user tries with an android browser
             //if jQuery UI is installed this will be a dialog, otherwise it will be an alert
-            //Set to null to disable the message and attempt to download anyway
             //
             androidPostUnsupportedMessageHtml: "Unfortunately your Android browser doesn't support this type of file download. Please try again with a different browser.",
 
@@ -160,7 +159,7 @@ $.extend({
 
         var httpMethodUpper = settings.httpMethod.toUpperCase();
 
-        if (isAndroid && httpMethodUpper !== "GET" && settings.androidPostUnsupportedMessageHtml) {
+        if (isAndroid && httpMethodUpper !== "GET") {
             //the stock android browser straight up doesn't support file downloads initiated by non GET requests: http://code.google.com/p/android/issues/detail?id=1780
 
             if ($().dialog) {
@@ -196,7 +195,7 @@ $.extend({
                 //remove the perparing message if it was specified
                 if ($preparingDialog) {
                     $preparingDialog.dialog('close');
-                }
+                };
 
                 settings.successCallback(url);
 
@@ -208,7 +207,7 @@ $.extend({
                 //remove the perparing message if it was specified
                 if ($preparingDialog) {
                     $preparingDialog.dialog('close');
-                }
+                };
 
                 //wire up a jquery dialog to display the fail message if specified
                 if (settings.failMessageHtml) {
@@ -329,15 +328,7 @@ $.extend({
 
         function checkFileDownloadComplete() {
             //has the cookie been written due to a file download occuring?
-
-            var cookieValue = settings.cookieValue;
-            if(typeof cookieValue == 'string') {
-                cookieValue = cookieValue.toLowerCase();
-            }
-
-            var lowerCaseCookie = settings.cookieName.toLowerCase() + "=" + cookieValue;
-
-            if (document.cookie.toLowerCase().indexOf(lowerCaseCookie) > -1) {
+            if (document.cookie.indexOf(settings.cookieName + "=" + settings.cookieValue) != -1) {
 
                 //execute specified callback
                 internalCallbacks.onSuccess(fileUrl);
@@ -362,7 +353,7 @@ $.extend({
 
                     var formDoc = downloadWindow ? downloadWindow.document : getiframeDocument($iframe);
 
-                    if (formDoc && formDoc.body !== null && formDoc.body.innerHTML.length) {
+                    if (formDoc && formDoc.body != null && formDoc.body.innerHTML.length) {
 
                         var isFailure = true;
 
@@ -454,12 +445,8 @@ $.extend({
                 return '&' + htmlSpecialCharsPlaceHolders[match];
         	});
         }
-        var promise = deferred.promise();
-        promise.abort = function() {
-            cleanUp();
-            $iframe.remove();
-        };
-        return promise;
+
+        return deferred.promise();
     }
 });
 
