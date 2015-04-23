@@ -99,7 +99,11 @@ module.exports = function (apId) {
     addDataFromViewToQsList(qsList, 'v_qk_massn_ohnejahr');
     addDataFromViewToQsList(qsList, 'v_qk_massn_ohnetyp');
     // Massn.-Bericht ohne Jahr/Entwicklung
+    addDataFromViewToQsList(qsList, 'v_qk_massnber_ohnejahr');
+    addDataFromViewToQsList(qsList, 'v_qk_massnber_ohneerfbeurt');
     // Kontrolle ohne Jahr/Zählung
+    addDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnejahr');
+    addDataFromViewToQsList(qsList, 'v_qk_freiwkontr_ohnejahr');
     // Feldkontrolle ohne Kontrolltyp
     // Zählung ohne Einheit/Methode/Anzahl
     // TPop-Bericht ohne Jahr/Entwicklung
