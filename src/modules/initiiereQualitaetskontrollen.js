@@ -96,6 +96,8 @@ module.exports = function (apId) {
     // tpop mit mehrdeutiger Kombination von PopNr und TPopNr
     addDataFromViewToQsList(qsList, 'v_qk_tpop_popnrtpopnrmehrdeutig');
     // Massn ohne Jahr/Typ
+    addDataFromViewToQsList(qsList, 'v_qk_massn_ohnejahr');
+    addDataFromViewToQsList(qsList, 'v_qk_massn_ohnetyp');
     // Massn.-Bericht ohne Jahr/Entwicklung
     // Kontrolle ohne Jahr/Zählung
     // Feldkontrolle ohne Kontrolltyp
