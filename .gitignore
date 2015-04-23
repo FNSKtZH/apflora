@@ -12,3 +12,4 @@ src/apflora_built.js
 src/templates/
 *.map
 *.TMP
+style/apflora_built.css

@@ -829,3 +829,15 @@ SELECT apflora.ap.ApArtId, 'Teilpopulation: Mindestens eine Koordinate fehlt:' A
 FROM apflora.ap INNER JOIN (apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) ON apflora.ap.ApArtId = apflora.pop.ApArtId
 WHERE apflora.tpop.TPopXKoord Is Null OR apflora.tpop.TPopYKoord IS NULL
 ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.tpop.TPopNr;
+
+CREATE OR REPLACE VIEW v_qk_massn_ohnejahr AS 
+SELECT apflora.ap.ApArtId, 'Massnahmen ohne Jahr:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '&tpop=', apflora.tpop.TPopId, '&tpopmassn=', apflora.tpopmassn.TPopMassnId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop.-ID:', apflora.pop.PopId)), IFNULL(CONCAT(' > TPop: ', apflora.tpop.TPopNr), CONCAT(' > TPop.-ID: ', apflora.tpop.TPopId)), CONCAT(' > Massn.-ID: ', apflora.tpopmassn.TPopMassnId), '</a>') AS link
+FROM ((apflora.ap INNER JOIN apflora.pop ON apflora.ap.ApArtId = apflora.pop.ApArtId) INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) INNER JOIN apflora.tpopmassn ON apflora.tpop.TPopId = apflora.tpopmassn.TPopId
+WHERE apflora.tpopmassn.TPopMassnJahr IS NULL
+ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.tpop.TPopNr, apflora.tpopmassn.TPopId;
+
+CREATE OR REPLACE VIEW v_qk_massn_ohnetyp AS 
+SELECT apflora.ap.ApArtId, 'Massnahmen ohne Typ:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '&tpop=', apflora.tpop.TPopId, '&tpopmassn=', apflora.tpopmassn.TPopMassnId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop.-ID:', apflora.pop.PopId)), IFNULL(CONCAT(' > TPop: ', apflora.tpop.TPopNr), CONCAT(' > TPop.-ID: ', apflora.tpop.TPopId)), IFNULL(CONCAT(' > MassnJahr: ', apflora.tpopmassn.TPopMassnJahr), CONCAT(' > Massn.-ID: ', apflora.tpopmassn.TPopMassnId)), '</a>') AS link
+FROM ((apflora.ap INNER JOIN apflora.pop ON apflora.ap.ApArtId = apflora.pop.ApArtId) INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) INNER JOIN apflora.tpopmassn ON apflora.tpop.TPopId = apflora.tpopmassn.TPopId
+WHERE apflora.tpopmassn.TPopMassnTyp IS NULL
+ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.tpop.TPopNr, apflora.tpopmassn.TPopMassnJahr, apflora.tpopmassn.TPopId;
