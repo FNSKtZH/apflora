@@ -13,11 +13,17 @@ var mysql      = require('mysql'),
 
 module.exports = function (request, callback) {
     var sql,
-        viewName = request.params.viewName,
-        apId     = request.params.apId;
+        viewName    = request.params.viewName,
+        apId        = request.params.apId,
+        berichtjahr = request.params.berichtjahr || null;
 
     // url setzen
-    sql = "SELECT * from " + viewName + " where ApArtId=" + apId;
+    if (berichtjahr) {
+        sql = "SELECT * from " + viewName + " where ApArtId=" + apId;
+    } else {
+        // if berichtjahr was passed, get only data of that year 
+        sql = "SELECT * from " + viewName + " where ApArtId=" + apId + " AND Berichtjahr=" + berichtjahr;
+    }
 
     // Daten abfragen
     connection.query(

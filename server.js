@@ -202,7 +202,7 @@ server.route({
 
 server.route({
     method: 'GET',
-    path: '/api/v1/qkView/{viewName}/{apId}',
+    path: '/api/v1/qkView/{viewName}/{apId}/{berichtjahr?}',
     handler: queryQkView
 });
 

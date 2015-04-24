@@ -22,10 +22,12 @@ function tellUserIfNoIssues() {
     }
 }
 
-function addDataFromViewToQsList(qsList, viewName) {
+function addDataFromViewToQsList(qsList, viewName, berichtjahr) {
+    var baseUrl = 'api/v1/qkView/' + viewName + '/' + localStorage.apId;
+
     $.ajax({
         type: 'get',
-        url: 'api/v1/qkView/' + viewName + '/' + localStorage.apId
+        url: berichtjahr ? baseUrl + '/' + berichtjahr : baseUrl
     }).done(function (data) {
         // data ist Objekt-Array
         // Felder: ApArtId, hw, link
@@ -123,6 +125,6 @@ module.exports = function (apId) {
     // Ziel ohne Jahr/Zieltyp/Ziel
     // Ziel-Bericht ohne Jahr/Entwicklung
     // AP-Erfolgskriterium ohne Beurteilung/Kriterien
-    // AP-Bericht ohne Jahr/Vergleich Vorjahr-Gesamtziel/Beurteilung/was noch?
+    // AP-Bericht ohne Jahr/Vergleich Vorjahr-Gesamtziel/Beurteilung
     // assoziierte Art ohne Art
 };
