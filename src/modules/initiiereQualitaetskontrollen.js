@@ -122,6 +122,7 @@ module.exports = function (apId) {
     addDataFromViewToQsList(qsList, 'v_qk_tpopber_ohnejahr');
     addDataFromViewToQsList(qsList, 'v_qk_tpopber_ohneentwicklung');
     // Pop-Bericht/Pop-Massn.-Bericht ohne Jahr/Entwicklung
+    addDataFromViewToQsList(qsList, 'v_qk_popber_ohnejahr');
     addDataFromViewToQsList(qsList, 'v_qk_popber_ohneentwicklung');
     // Ziel ohne Jahr/Zieltyp/Ziel
     // Ziel-Bericht ohne Jahr/Entwicklung
