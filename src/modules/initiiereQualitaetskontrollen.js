@@ -101,10 +101,14 @@ module.exports = function (apId) {
     // Massn.-Bericht ohne Jahr/Entwicklung
     addDataFromViewToQsList(qsList, 'v_qk_massnber_ohnejahr');
     addDataFromViewToQsList(qsList, 'v_qk_massnber_ohneerfbeurt');
-    // Kontrolle ohne Jahr/Zählung
+    // Kontrolle ohne Jahr
     addDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnejahr');
     addDataFromViewToQsList(qsList, 'v_qk_freiwkontr_ohnejahr');
+    // TODO: Kontrolle ohne Zählung
+    addDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnezaehlung');
+    addDataFromViewToQsList(qsList, 'v_qk_freiwkontr_ohnezaehlung');
     // Feldkontrolle ohne Kontrolltyp
+    addDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnetyp');
     // Zählung ohne Einheit/Methode/Anzahl
     // TPop-Bericht ohne Jahr/Entwicklung
     // Pop-Bericht/Pop-Massn.-Bericht ohne Jahr/Entwicklung
