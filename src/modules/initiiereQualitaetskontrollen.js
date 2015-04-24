@@ -124,6 +124,8 @@ module.exports = function (apId) {
     // Pop-Bericht/Pop-Massn.-Bericht ohne Jahr/Entwicklung
     addDataFromViewToQsList(qsList, 'v_qk_popber_ohnejahr');
     addDataFromViewToQsList(qsList, 'v_qk_popber_ohneentwicklung');
+    addDataFromViewToQsList(qsList, 'v_qk_popmassnber_ohnejahr');
+    addDataFromViewToQsList(qsList, 'v_qk_popmassnber_ohneentwicklung');
     // Ziel ohne Jahr/Zieltyp/Ziel
     // Ziel-Bericht ohne Jahr/Entwicklung
     // AP-Erfolgskriterium ohne Beurteilung/Kriterien
