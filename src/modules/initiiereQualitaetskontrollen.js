@@ -118,6 +118,7 @@ module.exports = function (apId) {
     addDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohneanzahl');
     // TPop-Bericht ohne Jahr/Entwicklung
     addDataFromViewToQsList(qsList, 'v_qk_tpopber_ohnejahr');
+    addDataFromViewToQsList(qsList, 'v_qk_tpopber_ohneentwicklung');
     // Pop-Bericht/Pop-Massn.-Bericht ohne Jahr/Entwicklung
     // Ziel ohne Jahr/Zieltyp/Ziel
     // Ziel-Bericht ohne Jahr/Entwicklung
