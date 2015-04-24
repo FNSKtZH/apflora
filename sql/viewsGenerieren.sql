@@ -931,3 +931,9 @@ SELECT apflora.ap.ApArtId, 'Teilpopulations-Bericht ohne Entwicklung:' AS hw, CO
 FROM ((apflora.ap INNER JOIN apflora.pop ON apflora.ap.ApArtId = apflora.pop.ApArtId) INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) INNER JOIN apflora.tpopber ON apflora.tpop.TPopId = apflora.tpopber.TPopId
 WHERE apflora.tpopber.TPopBerEntwicklung IS NULL
 ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.tpop.TPopNr, apflora.tpopber.TPopBerJahr, apflora.tpopber.TPopBerId;
+
+CREATE OR REPLACE VIEW v_qk_popber_ohneentwicklung AS 
+SELECT apflora.ap.ApArtId, 'Populations-Bericht ohne Entwicklung:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '&popber=', apflora.popber.PopBerId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop.-ID:', apflora.pop.PopId)), IFNULL(CONCAT(' > PopBerJahr: ', apflora.popber.PopBerJahr), CONCAT(' > PopBer.-ID: ', apflora.popber.PopBerId)), '</a>') AS link
+FROM (apflora.ap INNER JOIN apflora.pop ON apflora.ap.ApArtId = apflora.pop.ApArtId) INNER JOIN apflora.popber ON apflora.pop.PopId = apflora.popber.PopId
+WHERE apflora.popber.PopBerEntwicklung IS NULL
+ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.popber.PopBerJahr, apflora.popber.PopBerId;
