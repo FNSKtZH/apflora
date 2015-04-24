@@ -112,6 +112,8 @@ module.exports = function (apId) {
     // Zählung ohne Einheit/Methode/Anzahl
     addDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohneeinheit');
     addDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohneeinheit');
+    addDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohnemethode');
+    addDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohnemethode');
     // TPop-Bericht ohne Jahr/Entwicklung
     // Pop-Bericht/Pop-Massn.-Bericht ohne Jahr/Entwicklung
     // Ziel ohne Jahr/Zieltyp/Ziel
