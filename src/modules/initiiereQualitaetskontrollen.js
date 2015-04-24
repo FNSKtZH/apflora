@@ -110,6 +110,8 @@ module.exports = function (apId) {
     // Feldkontrolle ohne Kontrolltyp
     addDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnetyp');
     // Zählung ohne Einheit/Methode/Anzahl
+    addDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohneeinheit');
+    addDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohneeinheit');
     // TPop-Bericht ohne Jahr/Entwicklung
     // Pop-Bericht/Pop-Massn.-Bericht ohne Jahr/Entwicklung
     // Ziel ohne Jahr/Zieltyp/Ziel
