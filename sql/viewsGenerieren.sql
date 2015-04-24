@@ -951,7 +951,7 @@ WHERE apflora.popmassnber.PopMassnBerJahr IS NULL
 ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.popmassnber.PopMassnBerJahr, apflora.popmassnber.PopMassnBerId;
 
 CREATE OR REPLACE VIEW v_qk_popmassnber_ohneentwicklung AS 
-SELECT apflora.ap.ApArtId, 'Populations-Massnahmen-Bericht ohne Entwicklung:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '&popber=', apflora.popmassnber.PopMassnBerId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop.-ID:', apflora.pop.PopId)), IFNULL(CONCAT(' > PopMassnBerJahr: ', apflora.popmassnber.PopMassnBerJahr), CONCAT(' > PopMassnBer.-ID: ', apflora.popmassnber.PopMassnBerId)), '</a>') AS link
+SELECT apflora.ap.ApArtId, 'Populations-Massnahmen-Bericht ohne Entwicklung:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '&popmassnber=', apflora.popmassnber.PopMassnBerId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop.-ID:', apflora.pop.PopId)), IFNULL(CONCAT(' > PopMassnBerJahr: ', apflora.popmassnber.PopMassnBerJahr), CONCAT(' > PopMassnBer.-ID: ', apflora.popmassnber.PopMassnBerId)), '</a>') AS link
 FROM (apflora.ap INNER JOIN apflora.pop ON apflora.ap.ApArtId = apflora.pop.ApArtId) INNER JOIN apflora.popmassnber ON apflora.pop.PopId = apflora.popmassnber.PopId
 WHERE apflora.popmassnber.PopMassnBerErfolgsbeurteilung IS NULL
 ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.popmassnber.PopMassnBerJahr, apflora.popmassnber.PopMassnBerId;
