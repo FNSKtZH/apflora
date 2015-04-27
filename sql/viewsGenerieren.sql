@@ -1009,3 +1009,15 @@ SELECT apflora.ap.ApArtId, 'AP-Bericht ohne Vergleich Vorjahr - Gesamtziel:' AS 
 FROM apflora.ap INNER JOIN apflora.apber ON apflora.ap.ApArtId = apflora.apber.ApArtId
 WHERE apflora.apber.JBerVergleichVorjahrGesamtziel IS NULL
 ORDER BY apflora.ap.ApArtId, apflora.apber.JBerJahr, apflora.apber.JBerId;
+
+CREATE OR REPLACE VIEW v_qk_apber_ohnebeurteilung AS 
+SELECT apflora.ap.ApArtId, 'AP-Bericht ohne Vergleich Vorjahr - Gesamtziel:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&jber=', apflora.apber.JBerId, '" target="_blank">', IFNULL(CONCAT('Jahr: ', apflora.apber.JBerJahr, ' (id=', apflora.apber.JBerId, ')'), CONCAT('AP-Ber.-ID: ', apflora.apber.JBerId)), '</a>') AS link
+FROM apflora.ap INNER JOIN apflora.apber ON apflora.ap.ApArtId = apflora.apber.ApArtId
+WHERE apflora.apber.JBerBeurteilung IS NULL
+ORDER BY apflora.ap.ApArtId, apflora.apber.JBerJahr, apflora.apber.JBerId;
+
+CREATE OR REPLACE VIEW v_qk_assozart_ohneart AS 
+SELECT apflora.ap.ApArtId, 'Assoziierte Art ohne Art:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&assozarten=', apflora.assozart.AaId, '" target="_blank">', CONCAT('Assoz.-Art-ID: ', apflora.assozart.AaId), '</a>') AS link
+FROM apflora.ap INNER JOIN apflora.assozart ON apflora.ap.ApArtId = apflora.assozart.AaApArtId
+WHERE apflora.assozart.AaSisfNr IS NULL
+ORDER BY apflora.ap.ApArtId, apflora.assozart.AaId;
