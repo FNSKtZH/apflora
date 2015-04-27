@@ -957,7 +957,13 @@ WHERE apflora.popmassnber.PopMassnBerErfolgsbeurteilung IS NULL
 ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.popmassnber.PopMassnBerJahr, apflora.popmassnber.PopMassnBerId;
 
 CREATE OR REPLACE VIEW v_qk_zielber_ohneentwicklung AS 
-SELECT apflora.ap.ApArtId, 'Ziel-Bericht ohne Entwicklung:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&ziel=', apflora.ziel.ZielId, '&zielber=', apflora.zielber.ZielBerId, '" target="_blank">', IFNULL(CONCAT('ZielJahr: ', apflora.ziel.ZielJahr, ' (id=', apflora.ziel.ZielId, ')'), CONCAT('Ziel.-ID:', apflora.ziel.ZielId)), IFNULL(CONCAT(' > ZielBerJahr: ', apflora.zielber.ZielBerJahr), CONCAT(' > ZielBer.-ID: ', apflora.zielber.ZielBerId)), '</a>') AS link
+SELECT apflora.ap.ApArtId, 'Ziel-Bericht ohne Entwicklung:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&apziel=', apflora.ziel.ZielId, '&zielber=', apflora.zielber.ZielBerId, '" target="_blank">', IFNULL(CONCAT('ZielJahr: ', apflora.ziel.ZielJahr, ' (id=', apflora.ziel.ZielId, ')'), CONCAT('Ziel.-ID:', apflora.ziel.ZielId)), IFNULL(CONCAT(' > ZielBerJahr: ', apflora.zielber.ZielBerJahr), CONCAT(' > ZielBer.-ID: ', apflora.zielber.ZielBerId)), '</a>') AS link
 FROM (apflora.ap INNER JOIN apflora.ziel ON apflora.ap.ApArtId = apflora.ziel.ApArtId) INNER JOIN apflora.zielber ON apflora.ziel.ZielId = apflora.zielber.ZielId
 WHERE apflora.zielber.ZielBerErreichung IS NULL
+ORDER BY apflora.ap.ApArtId, apflora.ziel.ZielJahr, apflora.ziel.ZielId, apflora.zielber.ZielBerJahr, apflora.zielber.ZielBerId;
+
+CREATE OR REPLACE VIEW v_qk_zielber_ohnejahr AS 
+SELECT apflora.ap.ApArtId, 'Ziel-Bericht ohne Jahr:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&apziel=', apflora.ziel.ZielId, '&zielber=', apflora.zielber.ZielBerId, '" target="_blank">', IFNULL(CONCAT('ZielJahr: ', apflora.ziel.ZielJahr, ' (id=', apflora.ziel.ZielId, ')'), CONCAT('Ziel.-ID:', apflora.ziel.ZielId)), IFNULL(CONCAT(' > ZielBerJahr: ', apflora.zielber.ZielBerJahr), CONCAT(' > ZielBer.-ID: ', apflora.zielber.ZielBerId)), '</a>') AS link
+FROM (apflora.ap INNER JOIN apflora.ziel ON apflora.ap.ApArtId = apflora.ziel.ApArtId) INNER JOIN apflora.zielber ON apflora.ziel.ZielId = apflora.zielber.ZielId
+WHERE apflora.zielber.ZielBerJahr IS NULL
 ORDER BY apflora.ap.ApArtId, apflora.ziel.ZielJahr, apflora.ziel.ZielId, apflora.zielber.ZielBerJahr, apflora.zielber.ZielBerId;
