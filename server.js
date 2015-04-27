@@ -16,7 +16,7 @@ var _                                 = require('underscore'),
         }
     },
     Hapi                              = require('hapi'),
-    server                            = new Hapi.Server(),
+    server                            = new Hapi.Server(serverOptionsDevelopment),
     mysql                             = require('mysql'),
     config                            = require('./configuration'),
     connectionApflora                 = mysql.createConnection({
