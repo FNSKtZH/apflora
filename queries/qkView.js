@@ -19,10 +19,10 @@ module.exports = function (request, callback) {
 
     // url setzen
     if (berichtjahr) {
-        sql = "SELECT * from " + viewName + " where ApArtId=" + apId;
-    } else {
         // if berichtjahr was passed, get only data of that year 
         sql = "SELECT * from " + viewName + " where ApArtId=" + apId + " AND Berichtjahr=" + berichtjahr;
+    } else {
+        sql = "SELECT * from " + viewName + " where ApArtId=" + apId;
     }
 
     // Daten abfragen
