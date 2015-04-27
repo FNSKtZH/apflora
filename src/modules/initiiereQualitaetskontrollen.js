@@ -23,11 +23,12 @@ function tellUserIfNoIssues() {
 }
 
 function addDataFromViewToQsList(qsList, viewName, berichtjahr) {
-    var baseUrl = 'api/v1/qkView/' + viewName + '/' + localStorage.apId;
+    var baseUrl = 'api/v1/qkView/' + viewName + '/' + localStorage.apId,
+        url     = berichtjahr ? baseUrl + '/' + berichtjahr : baseUrl;
 
     $.ajax({
         type: 'get',
-        url: berichtjahr ? baseUrl + '/' + berichtjahr : baseUrl
+        url:  url
     }).done(function (data) {
         // data ist Objekt-Array
         // Felder: ApArtId, hw, link
@@ -128,6 +129,8 @@ module.exports = function (apId) {
     addDataFromViewToQsList(qsList, 'v_qk_popmassnber_ohneentwicklung');
     // Ziel ohne Jahr/Zieltyp/Ziel
     // Ziel-Bericht ohne Jahr/Entwicklung
+    addDataFromViewToQsList(qsList, 'v_qk_zielber_ohnejahr');
+    addDataFromViewToQsList(qsList, 'v_qk_zielber_ohneentwicklung');
     // AP-Erfolgskriterium ohne Beurteilung/Kriterien
     // AP-Bericht ohne Jahr/Vergleich Vorjahr-Gesamtziel/Beurteilung
     // assoziierte Art ohne Art
