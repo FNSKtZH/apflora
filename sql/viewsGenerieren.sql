@@ -985,3 +985,15 @@ SELECT apflora.ap.ApArtId, 'Ziel ohne Ziel:' AS hw, CONCAT('<a href="http://apfl
 FROM apflora.ap INNER JOIN apflora.ziel ON apflora.ap.ApArtId = apflora.ziel.ApArtId
 WHERE apflora.ziel.ZielBezeichnung IS NULL
 ORDER BY apflora.ap.ApArtId, apflora.ziel.ZielJahr, apflora.ziel.ZielId;
+
+CREATE OR REPLACE VIEW v_qk_erfkrit_ohnebeurteilung AS 
+SELECT apflora.ap.ApArtId, 'Erfolgskriterium ohne Beurteilung:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&erfkrit=', apflora.erfkrit.ErfkritId, '" target="_blank">', CONCAT('Erfkrit.-ID:', apflora.erfkrit.ErfkritId), '</a>') AS link
+FROM apflora.ap INNER JOIN apflora.erfkrit ON apflora.ap.ApArtId = apflora.erfkrit.ApArtId
+WHERE apflora.erfkrit.ErfkritErreichungsgrad IS NULL
+ORDER BY apflora.ap.ApArtId, apflora.erfkrit.ErfkritId;
+
+CREATE OR REPLACE VIEW v_qk_erfkrit_ohnekriterien AS 
+SELECT apflora.ap.ApArtId, 'Erfolgskriterium ohne Kriterien:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&erfkrit=', apflora.erfkrit.ErfkritId, '" target="_blank">', CONCAT('Erfkrit.-ID:', apflora.erfkrit.ErfkritId), '</a>') AS link
+FROM apflora.ap INNER JOIN apflora.erfkrit ON apflora.ap.ApArtId = apflora.erfkrit.ApArtId
+WHERE apflora.erfkrit.ErfkritTxt IS NULL
+ORDER BY apflora.ap.ApArtId, apflora.erfkrit.ErfkritId;
