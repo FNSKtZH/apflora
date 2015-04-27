@@ -967,3 +967,21 @@ SELECT apflora.ap.ApArtId, 'Ziel-Bericht ohne Jahr:' AS hw, CONCAT('<a href="htt
 FROM (apflora.ap INNER JOIN apflora.ziel ON apflora.ap.ApArtId = apflora.ziel.ApArtId) INNER JOIN apflora.zielber ON apflora.ziel.ZielId = apflora.zielber.ZielId
 WHERE apflora.zielber.ZielBerJahr IS NULL
 ORDER BY apflora.ap.ApArtId, apflora.ziel.ZielJahr, apflora.ziel.ZielId, apflora.zielber.ZielBerJahr, apflora.zielber.ZielBerId;
+
+CREATE OR REPLACE VIEW v_qk_ziel_ohnejahr AS 
+SELECT apflora.ap.ApArtId, 'Ziel ohne Jahr:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&apziel=', apflora.ziel.ZielId, '" target="_blank">', IFNULL(CONCAT('ZielJahr: ', apflora.ziel.ZielJahr, ' (id=', apflora.ziel.ZielId, ')'), CONCAT('Ziel.-ID:', apflora.ziel.ZielId)), '</a>') AS link
+FROM apflora.ap INNER JOIN apflora.ziel ON apflora.ap.ApArtId = apflora.ziel.ApArtId
+WHERE apflora.ziel.ZielJahr IS NULL
+ORDER BY apflora.ap.ApArtId, apflora.ziel.ZielJahr, apflora.ziel.ZielId;
+
+CREATE OR REPLACE VIEW v_qk_ziel_ohnetyp AS 
+SELECT apflora.ap.ApArtId, 'Ziel ohne Typ:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&apziel=', apflora.ziel.ZielId, '" target="_blank">', IFNULL(CONCAT('ZielJahr: ', apflora.ziel.ZielJahr, ' (id=', apflora.ziel.ZielId, ')'), CONCAT('Ziel.-ID:', apflora.ziel.ZielId)), '</a>') AS link
+FROM apflora.ap INNER JOIN apflora.ziel ON apflora.ap.ApArtId = apflora.ziel.ApArtId
+WHERE apflora.ziel.ZielTyp IS NULL
+ORDER BY apflora.ap.ApArtId, apflora.ziel.ZielJahr, apflora.ziel.ZielId;
+
+CREATE OR REPLACE VIEW v_qk_ziel_ohneziel AS 
+SELECT apflora.ap.ApArtId, 'Ziel ohne Ziel:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&apziel=', apflora.ziel.ZielId, '" target="_blank">', IFNULL(CONCAT('ZielJahr: ', apflora.ziel.ZielJahr, ' (id=', apflora.ziel.ZielId, ')'), CONCAT('Ziel.-ID:', apflora.ziel.ZielId)), '</a>') AS link
+FROM apflora.ap INNER JOIN apflora.ziel ON apflora.ap.ApArtId = apflora.ziel.ApArtId
+WHERE apflora.ziel.ZielBezeichnung IS NULL
+ORDER BY apflora.ap.ApArtId, apflora.ziel.ZielJahr, apflora.ziel.ZielId;
