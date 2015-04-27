@@ -138,5 +138,7 @@ module.exports = function (apId) {
     addDataFromViewToQsList(qsList, 'v_qk_erfkrit_ohnebeurteilung');
     addDataFromViewToQsList(qsList, 'v_qk_erfkrit_ohnekriterien');
     // AP-Bericht ohne Jahr/Vergleich Vorjahr-Gesamtziel/Beurteilung
+    addDataFromViewToQsList(qsList, 'v_qk_apber_ohnejahr');
+    addDataFromViewToQsList(qsList, 'v_qk_apber_ohnevergleichvorjahrgesamtziel');
     // assoziierte Art ohne Art
 };
