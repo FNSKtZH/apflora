@@ -4,6 +4,10 @@
  * Felder:
  * - Datensatz (Datensatzbeschreibung): ist Link, der in neuem Tab öffnet
  * - Hinweis (Begründung, wieso der Datensatz angezeigt wird)
+ *
+ * jahresabhängige Daten: bei den meisten werden nur die Daten 
+ * des aktuellen oder manuell übersteuerten Berichtjahrs geprüft
+ * Ausnahme: Ziele
  */
 
 /*jslint node: true, browser: true, nomen: true, todo: true */
@@ -88,47 +92,47 @@ module.exports = function (berichtjahr) {
     addDataFromViewToQsList(qsList, 'v_qk_tpop_popnrtpopnrmehrdeutig');
     // Massn ohne Jahr/Typ
     addDataFromViewToQsList(qsList, 'v_qk_massn_ohnejahr');
-    addDataFromViewToQsList(qsList, 'v_qk_massn_ohnetyp');
+    addDataFromViewToQsList(qsList, 'v_qk_massn_ohnetyp', berichtjahr);
     // Massn.-Bericht ohne Jahr/Entwicklung
     addDataFromViewToQsList(qsList, 'v_qk_massnber_ohnejahr');
-    addDataFromViewToQsList(qsList, 'v_qk_massnber_ohneerfbeurt');
+    addDataFromViewToQsList(qsList, 'v_qk_massnber_ohneerfbeurt', berichtjahr);
     // Kontrolle ohne Jahr
     addDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnejahr');
     addDataFromViewToQsList(qsList, 'v_qk_freiwkontr_ohnejahr');
     // TODO: Kontrolle ohne Zählung
-    addDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnezaehlung');
-    addDataFromViewToQsList(qsList, 'v_qk_freiwkontr_ohnezaehlung');
+    addDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnezaehlung', berichtjahr);
+    addDataFromViewToQsList(qsList, 'v_qk_freiwkontr_ohnezaehlung', berichtjahr);
     // Feldkontrolle ohne Kontrolltyp
-    addDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnetyp');
+    addDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnetyp', berichtjahr);
     // Zählung ohne Einheit/Methode/Anzahl
-    addDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohneeinheit');
-    addDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohneeinheit');
-    addDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohnemethode');
-    addDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohnemethode');
-    addDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohneanzahl');
-    addDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohneanzahl');
+    addDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohneeinheit', berichtjahr);
+    addDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohneeinheit', berichtjahr);
+    addDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohnemethode', berichtjahr);
+    addDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohnemethode', berichtjahr);
+    addDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohneanzahl', berichtjahr);
+    addDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohneanzahl', berichtjahr);
     // TPop-Bericht ohne Jahr/Entwicklung
     addDataFromViewToQsList(qsList, 'v_qk_tpopber_ohnejahr');
-    addDataFromViewToQsList(qsList, 'v_qk_tpopber_ohneentwicklung');
+    addDataFromViewToQsList(qsList, 'v_qk_tpopber_ohneentwicklung', berichtjahr);
     // Pop-Bericht/Pop-Massn.-Bericht ohne Jahr/Entwicklung
     addDataFromViewToQsList(qsList, 'v_qk_popber_ohnejahr');
-    addDataFromViewToQsList(qsList, 'v_qk_popber_ohneentwicklung');
+    addDataFromViewToQsList(qsList, 'v_qk_popber_ohneentwicklung', berichtjahr);
     addDataFromViewToQsList(qsList, 'v_qk_popmassnber_ohnejahr');
-    addDataFromViewToQsList(qsList, 'v_qk_popmassnber_ohneentwicklung');
+    addDataFromViewToQsList(qsList, 'v_qk_popmassnber_ohneentwicklung', berichtjahr);
     // Ziel ohne Jahr/Zieltyp/Ziel
     addDataFromViewToQsList(qsList, 'v_qk_ziel_ohnejahr');
     addDataFromViewToQsList(qsList, 'v_qk_ziel_ohnetyp');
-    addDataFromViewToQsList(qsList, 'v_qk_ziel_ohnetyp');
-    // Ziel-Bericht ohne Jahr/Entwicklung
     addDataFromViewToQsList(qsList, 'v_qk_ziel_ohneziel');
-    addDataFromViewToQsList(qsList, 'v_qk_zielber_ohneentwicklung');
+    // Ziel-Bericht ohne Jahr/Entwicklung
+    addDataFromViewToQsList(qsList, 'v_qk_zielber_ohnejahr');
+    addDataFromViewToQsList(qsList, 'v_qk_zielber_ohneentwicklung', berichtjahr);
     // AP-Erfolgskriterium ohne Beurteilung/Kriterien
     addDataFromViewToQsList(qsList, 'v_qk_erfkrit_ohnebeurteilung');
     addDataFromViewToQsList(qsList, 'v_qk_erfkrit_ohnekriterien');
     // AP-Bericht ohne Jahr/Vergleich Vorjahr-Gesamtziel/Beurteilung
     addDataFromViewToQsList(qsList, 'v_qk_apber_ohnejahr');
-    addDataFromViewToQsList(qsList, 'v_qk_apber_ohnevergleichvorjahrgesamtziel');
-    addDataFromViewToQsList(qsList, 'v_qk_apber_ohnebeurteilung');
+    addDataFromViewToQsList(qsList, 'v_qk_apber_ohnevergleichvorjahrgesamtziel', berichtjahr);
+    addDataFromViewToQsList(qsList, 'v_qk_apber_ohnebeurteilung', berichtjahr);
     // assoziierte Art ohne Art
     addDataFromViewToQsList(qsList, 'v_qk_assozart_ohneart');
 };
