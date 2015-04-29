@@ -1019,5 +1019,5 @@ ORDER BY apflora.ap.ApArtId, apflora.apber.JBerJahr, apflora.apber.JBerId;
 CREATE OR REPLACE VIEW v_qk_assozart_ohneart AS 
 SELECT apflora.ap.ApArtId, 'Assoziierte Art ohne Art:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&assozarten=', apflora.assozart.AaId, '" target="_blank">', CONCAT('Assoz.-Art-ID: ', apflora.assozart.AaId), '</a>') AS link
 FROM apflora.ap INNER JOIN apflora.assozart ON apflora.ap.ApArtId = apflora.assozart.AaApArtId
-WHERE apflora.assozart.AaSisfNr IS NULL
+WHERE apflora.assozart.AaSisfNr IS NULL OR apflora.assozart.AaSisfNr = 0
 ORDER BY apflora.ap.ApArtId, apflora.assozart.AaId;
