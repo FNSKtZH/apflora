@@ -41,7 +41,8 @@ var $                                   = require('jquery'),
     onChangeBeobNichtZuordnen           = require('./events/forms/beob/onChangeBeobNichtZuordnen'),
     onChangeDistZuTPop                  = require('./events/forms/beob/onChangeDistZuTPop'),
     onSelectmenuchangeExportLayerSelect = require('./events/forms/olMap/layertree/onSelectmenuchangeExportLayerSelect'),
-    initiiereQualitaetskontrollen       = require('./initiiereQualitaetskontrollen');
+    initiiereQualitaetskontrollen       = require('./initiiereQualitaetskontrollen'),
+    kontrolliereProgramm                = require('./kontrolliereProgramm');
 
 module.exports = function () {
 
@@ -86,7 +87,13 @@ module.exports = function () {
         })
         .on('click',             '.qkRefresh', function (event) {
             event.preventDefault();
-            initiiereQualitaetskontrollen(window.apf.ap.ApArtId);
+            kontrolliereProgramm($('#qkBerichtjahr').val());
+        })
+        .on('change',            '#qkBerichtjahr', function () {
+
+            console.log('kontrolliere Programm für Berichtjahr ', $(this).val());
+
+            kontrolliereProgramm($(this).val());
         });
 
     $('#olMapExportieren')
