@@ -90,6 +90,10 @@ module.exports = function (berichtjahr) {
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_mitstatusunklarohnebegruendung');
     // pop mit mehrdeutiger Nr
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_popnrmehrdeutig');
+    // Pop ohne verlangten Pop-Bericht im Berichtjahr
+    createUrlToAddDataFromQueryToQsList(qsList, 'qkPopOhnePopber', berichtjahr);
+    // Pop ohne verlangten Pop-Massn-Bericht im Berichtjahr
+    createUrlToAddDataFromQueryToQsList(qsList, 'qkPopOhnePopmassnber', berichtjahr);
     // tpop ohne Nr/Flurname/Status/bekannt seit/Koordinaten
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnenr');
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohneflurname');
