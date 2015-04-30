@@ -42,8 +42,8 @@ var $                                   = require('jquery'),
     onChangeDistZuTPop                  = require('./events/forms/beob/onChangeDistZuTPop'),
     onSelectmenuchangeExportLayerSelect = require('./events/forms/olMap/layertree/onSelectmenuchangeExportLayerSelect'),
     initiiereQualitaetskontrollen       = require('./initiiereQualitaetskontrollen'),
-    kontrolliereProgramm                = require('./kontrolliereProgramm'),
     onClickQkSort                       = require('./events/forms/onClickQkSort'),
+    onChangeQkBerichtjahr               = require('./events/forms/onChangeQkBerichtjahr'),
     onClickQkSearchEmpty                = require('./events/forms/onClickQkSearchEmpty'),
     onClickQkRefresh                    = require('./events/forms/onClickQkRefresh');
 
@@ -83,12 +83,7 @@ module.exports = function () {
         .on('click',             '.sort',                      onClickQkSort)
         .on('click',             '#qkSearchEmpty',             onClickQkSearchEmpty)
         .on('click',             '.qkRefresh',                 onClickQkRefresh)
-        .on('change',            '#qkBerichtjahr', function () {
-
-            console.log('kontrolliere Programm für Berichtjahr ', $(this).val());
-
-            kontrolliereProgramm($(this).val());
-        });
+        .on('change',            '#qkBerichtjahr',             onChangeQkBerichtjahr);
 
     $('#olMapExportieren')
         .on('click',                                           onClickOlMapExportieren);
