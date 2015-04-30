@@ -43,6 +43,8 @@ var $                                   = require('jquery'),
     onSelectmenuchangeExportLayerSelect = require('./events/forms/olMap/layertree/onSelectmenuchangeExportLayerSelect'),
     initiiereQualitaetskontrollen       = require('./initiiereQualitaetskontrollen'),
     kontrolliereProgramm                = require('./kontrolliereProgramm'),
+    onClickQkSort                       = require('./events/forms/onClickQkSort'),
+    onClickQkSearchEmpty                = require('./events/forms/onClickQkSearchEmpty'),
     onClickQkRefresh                    = require('./events/forms/onClickQkRefresh');
 
 module.exports = function () {
@@ -78,14 +80,8 @@ module.exports = function () {
         .on('click',                                           onClickKopiereKoordinatenInPop);
 
     $('#qualitaetskontrollen')
-        .on('click',             '.sort', function (event) {
-            event.preventDefault();
-        })
-        .on('click',             '#qkSearchEmpty', function (event) {
-            $(this).prev('input').val('').focus();
-            // cancel filter
-            window.apf.qsList.search();
-        })
+        .on('click',             '.sort',                      onClickQkSort)
+        .on('click',             '#qkSearchEmpty',             onClickQkSearchEmpty)
         .on('click',             '.qkRefresh',                 onClickQkRefresh)
         .on('change',            '#qkBerichtjahr', function () {
 
