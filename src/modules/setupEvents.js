@@ -45,7 +45,8 @@ var $                                   = require('jquery'),
     onClickQkSort                       = require('./events/forms/onClickQkSort'),
     onChangeQkBerichtjahr               = require('./events/forms/onChangeQkBerichtjahr'),
     onClickQkSearchEmpty                = require('./events/forms/onClickQkSearchEmpty'),
-    onClickQkRefresh                    = require('./events/forms/onClickQkRefresh');
+    onClickQkRefresh                    = require('./events/forms/onClickQkRefresh'),
+    onMousewheelNumber                  = require('./events/onMousewheelNumber');
 
 module.exports = function () {
 
@@ -125,7 +126,5 @@ module.exports = function () {
         .on('click',                                           onClickExportDatenstrukturGrafisch);
 
     // verhindern, dass Zahlen durch Scrollen am Mausrad aus Versehen verändert werden
-    $('body').on('mousewheel', '[type="number"]', function (event) {
-        event.preventDefault();
-    });
+    $('body').on('mousewheel', '[type="number"]',              onMousewheelNumber);
 };
