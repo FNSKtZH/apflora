@@ -26,7 +26,42 @@ function tellUserIfNoIssues() {
     }
 }
 
-function addDataFromViewToQsList(qsList, viewName, berichtjahr) {
+function addDataToQsList(qsList, url) {
+    $.ajax({
+        type: 'get',
+        url:  url
+    }).done(function (data) {
+        // data ist Objekt-Array
+        // Felder: ApArtId, hw, link
+        // remove data without links
+        data = _.filter(data, function (dat) {
+            return !!dat.link;
+        });
+        if (data && data.length > 0) {
+            qsList.add(data);
+        } else {
+            setTimeout(function () {
+                tellUserIfNoIssues();
+            }, 500);
+        }
+        $("#tree").jstree("rename_node", "#qualitaetskontrollen" + localStorage.apId, 'Qualitätskontrollen (' + window.apf.qsList.items.length + ')');
+    });
+}
+
+function createUrlToAddDataFromViewToQsList(qsList, viewName, berichtjahr) {
+    var baseUrl = 'api/v1/qkView/' + viewName + '/' + localStorage.apId,
+        url     = berichtjahr ? baseUrl + '/' + berichtjahr : baseUrl;
+
+    addDataToQsList(qsList, url);
+}
+
+function createUrlToAddDataFromQueryToQsList(qsList, queryName, berichtjahr) {
+    var url = 'api/v1/' + queryName + '/' + localStorage.apId + '/' + berichtjahr;
+
+    addDataToQsList(qsList, url);
+}
+
+/*function addDataFromViewToQsList(qsList, viewName, berichtjahr) {
     var baseUrl = 'api/v1/qkView/' + viewName + '/' + localStorage.apId,
         url     = berichtjahr ? baseUrl + '/' + berichtjahr : baseUrl;
 
@@ -51,6 +86,30 @@ function addDataFromViewToQsList(qsList, viewName, berichtjahr) {
     });
 }
 
+function addDataFromQueryToQsList(qsList, queryName, berichtjahr) {
+    var url = 'api/v1/' + queryName + '/' + localStorage.apId + '/' + berichtjahr;
+
+    $.ajax({
+        type: 'get',
+        url:  url
+    }).done(function (data) {
+        // data ist Objekt-Array
+        // Felder: ApArtId, hw, link
+        // remove data without links
+        data = _.filter(data, function (dat) {
+            return !!dat.link;
+        });
+        if (data && data.length > 0) {
+            qsList.add(data);
+        } else {
+            setTimeout(function () {
+                tellUserIfNoIssues();
+            }, 500);
+        }
+        $("#tree").jstree("rename_node", "#qualitaetskontrollen" + localStorage.apId, 'Qualitätskontrollen (' + window.apf.qsList.items.length + ')');
+    });
+}*/
+
 module.exports = function (berichtjahr) {
     var qsList = window.apf.qsList;
 
@@ -70,69 +129,71 @@ module.exports = function (berichtjahr) {
     // AP ohne Verantwortlich?
 
     // pop ohne Nr/Name/Status/bekannt seit/Koordinaten/tpop
-    addDataFromViewToQsList(qsList, 'v_qk_pop_ohnepopnr');
-    addDataFromViewToQsList(qsList, 'v_qk_pop_ohnepopname');
-    addDataFromViewToQsList(qsList, 'v_qk_pop_ohnepopstatus');
-    addDataFromViewToQsList(qsList, 'v_qk_pop_ohnebekanntseit');
-    addDataFromViewToQsList(qsList, 'v_qk_pop_ohnekoord');
-    addDataFromViewToQsList(qsList, 'v_qk_pop_ohnetpop');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_ohnepopnr');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_ohnepopname');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_ohnepopstatus');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_ohnebekanntseit');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_ohnekoord');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_ohnetpop');
     // pop mit Status unklar, ohne Begründung
-    addDataFromViewToQsList(qsList, 'v_qk_pop_mitstatusunklarohnebegruendung');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_mitstatusunklarohnebegruendung');
     // pop mit mehrdeutiger Nr
-    addDataFromViewToQsList(qsList, 'v_qk_pop_popnrmehrdeutig');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_popnrmehrdeutig');
     // tpop ohne Nr/Flurname/Status/bekannt seit/Koordinaten
-    addDataFromViewToQsList(qsList, 'v_qk_tpop_ohnenr');
-    addDataFromViewToQsList(qsList, 'v_qk_tpop_ohneflurname');
-    addDataFromViewToQsList(qsList, 'v_qk_tpop_ohnestatus');
-    addDataFromViewToQsList(qsList, 'v_qk_tpop_ohnebekanntseit');
-    addDataFromViewToQsList(qsList, 'v_qk_tpop_ohnekoordinaten');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnenr');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohneflurname');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnestatus');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnebekanntseit');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnekoordinaten');
     // pop/tpop mit Status unklar ohne Begründung
-    addDataFromViewToQsList(qsList, 'v_qk_tpop_mitstatusunklarohnebegruendung');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_mitstatusunklarohnebegruendung');
     // tpop mit mehrdeutiger Kombination von PopNr und TPopNr
-    addDataFromViewToQsList(qsList, 'v_qk_tpop_popnrtpopnrmehrdeutig');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_popnrtpopnrmehrdeutig');
+    // TPop ohne verlangten TPop-Bericht im Berichtjahr
+    createUrlToAddDataFromQueryToQsList(qsList, 'qkTpopOhneTpopber', berichtjahr);
     // Massn ohne Jahr/Typ
-    addDataFromViewToQsList(qsList, 'v_qk_massn_ohnejahr');
-    addDataFromViewToQsList(qsList, 'v_qk_massn_ohnetyp', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_massn_ohnejahr');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_massn_ohnetyp', berichtjahr);
     // Massn.-Bericht ohne Jahr/Entwicklung
-    addDataFromViewToQsList(qsList, 'v_qk_massnber_ohnejahr');
-    addDataFromViewToQsList(qsList, 'v_qk_massnber_ohneerfbeurt', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_massnber_ohnejahr');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_massnber_ohneerfbeurt', berichtjahr);
     // Kontrolle ohne Jahr
-    addDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnejahr');
-    addDataFromViewToQsList(qsList, 'v_qk_freiwkontr_ohnejahr');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnejahr');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_freiwkontr_ohnejahr');
     // TODO: Kontrolle ohne Zählung
-    addDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnezaehlung', berichtjahr);
-    addDataFromViewToQsList(qsList, 'v_qk_freiwkontr_ohnezaehlung', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnezaehlung', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_freiwkontr_ohnezaehlung', berichtjahr);
     // Feldkontrolle ohne Kontrolltyp
-    addDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnetyp', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnetyp', berichtjahr);
     // Zählung ohne Einheit/Methode/Anzahl
-    addDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohneeinheit', berichtjahr);
-    addDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohneeinheit', berichtjahr);
-    addDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohnemethode', berichtjahr);
-    addDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohnemethode', berichtjahr);
-    addDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohneanzahl', berichtjahr);
-    addDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohneanzahl', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohneeinheit', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohneeinheit', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohnemethode', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohnemethode', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohneanzahl', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_freiwkontrzaehlung_ohneanzahl', berichtjahr);
     // TPop-Bericht ohne Jahr/Entwicklung
-    addDataFromViewToQsList(qsList, 'v_qk_tpopber_ohnejahr');
-    addDataFromViewToQsList(qsList, 'v_qk_tpopber_ohneentwicklung', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpopber_ohnejahr');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpopber_ohneentwicklung', berichtjahr);
     // Pop-Bericht/Pop-Massn.-Bericht ohne Jahr/Entwicklung
-    addDataFromViewToQsList(qsList, 'v_qk_popber_ohnejahr');
-    addDataFromViewToQsList(qsList, 'v_qk_popber_ohneentwicklung', berichtjahr);
-    addDataFromViewToQsList(qsList, 'v_qk_popmassnber_ohnejahr');
-    addDataFromViewToQsList(qsList, 'v_qk_popmassnber_ohneentwicklung', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_popber_ohnejahr');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_popber_ohneentwicklung', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_popmassnber_ohnejahr');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_popmassnber_ohneentwicklung', berichtjahr);
     // Ziel ohne Jahr/Zieltyp/Ziel
-    addDataFromViewToQsList(qsList, 'v_qk_ziel_ohnejahr');
-    addDataFromViewToQsList(qsList, 'v_qk_ziel_ohnetyp');
-    addDataFromViewToQsList(qsList, 'v_qk_ziel_ohneziel');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_ziel_ohnejahr');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_ziel_ohnetyp');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_ziel_ohneziel');
     // Ziel-Bericht ohne Jahr/Entwicklung
-    addDataFromViewToQsList(qsList, 'v_qk_zielber_ohnejahr');
-    addDataFromViewToQsList(qsList, 'v_qk_zielber_ohneentwicklung', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_zielber_ohnejahr');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_zielber_ohneentwicklung', berichtjahr);
     // AP-Erfolgskriterium ohne Beurteilung/Kriterien
-    addDataFromViewToQsList(qsList, 'v_qk_erfkrit_ohnebeurteilung');
-    addDataFromViewToQsList(qsList, 'v_qk_erfkrit_ohnekriterien');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_erfkrit_ohnebeurteilung');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_erfkrit_ohnekriterien');
     // AP-Bericht ohne Jahr/Vergleich Vorjahr-Gesamtziel/Beurteilung
-    addDataFromViewToQsList(qsList, 'v_qk_apber_ohnejahr');
-    addDataFromViewToQsList(qsList, 'v_qk_apber_ohnevergleichvorjahrgesamtziel', berichtjahr);
-    addDataFromViewToQsList(qsList, 'v_qk_apber_ohnebeurteilung', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_apber_ohnejahr');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_apber_ohnevergleichvorjahrgesamtziel', berichtjahr);
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_apber_ohnebeurteilung', berichtjahr);
     // assoziierte Art ohne Art
-    addDataFromViewToQsList(qsList, 'v_qk_assozart_ohneart');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_assozart_ohneart');
 };
