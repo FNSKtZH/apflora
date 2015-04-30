@@ -29,6 +29,7 @@ var _                                 = require('underscore'),
     queryArtliste                     = require('./queries/artliste'),
     queryApliste                      = require('./queries/apliste'),
     queryQkView                       = require('./queries/qkView'),
+    queryQkTpopOhneTpopber            = require('./queries/qkTpopOhneTpopber'),
     queryAdressen                     = require('./queries/adressen'),
     queryLrDelarze                    = require('./queries/lrDelarze'),
     queryTpopMassnTypen               = require('./queries/tpopMassnTypen'),
@@ -204,6 +205,12 @@ server.route({
     method: 'GET',
     path: '/api/v1/qkView/{viewName}/{apId}/{berichtjahr?}',
     handler: queryQkView
+});
+
+server.route({
+    method: 'GET',
+    path: '/api/v1/qkTpopOhneTpopber/{apId}/{berichtjahr}',
+    handler: queryQkTpopOhneTpopber
 });
 
 server.route({
