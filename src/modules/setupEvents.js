@@ -42,7 +42,8 @@ var $                                   = require('jquery'),
     onChangeDistZuTPop                  = require('./events/forms/beob/onChangeDistZuTPop'),
     onSelectmenuchangeExportLayerSelect = require('./events/forms/olMap/layertree/onSelectmenuchangeExportLayerSelect'),
     initiiereQualitaetskontrollen       = require('./initiiereQualitaetskontrollen'),
-    kontrolliereProgramm                = require('./kontrolliereProgramm');
+    kontrolliereProgramm                = require('./kontrolliereProgramm'),
+    onClickQkRefresh                    = require('./events/forms/onClickQkRefresh');
 
 module.exports = function () {
 
@@ -85,10 +86,7 @@ module.exports = function () {
             // cancel filter
             window.apf.qsList.search();
         })
-        .on('click',             '.qkRefresh', function (event) {
-            event.preventDefault();
-            kontrolliereProgramm($('#qkBerichtjahr').val());
-        })
+        .on('click',             '.qkRefresh',                 onClickQkRefresh)
         .on('change',            '#qkBerichtjahr', function () {
 
             console.log('kontrolliere Programm für Berichtjahr ', $(this).val());
