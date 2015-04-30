@@ -61,55 +61,6 @@ function createUrlToAddDataFromQueryToQsList(qsList, queryName, berichtjahr) {
     addDataToQsList(qsList, url);
 }
 
-/*function addDataFromViewToQsList(qsList, viewName, berichtjahr) {
-    var baseUrl = 'api/v1/qkView/' + viewName + '/' + localStorage.apId,
-        url     = berichtjahr ? baseUrl + '/' + berichtjahr : baseUrl;
-
-    $.ajax({
-        type: 'get',
-        url:  url
-    }).done(function (data) {
-        // data ist Objekt-Array
-        // Felder: ApArtId, hw, link
-        // remove data without links
-        data = _.filter(data, function (dat) {
-            return !!dat.link;
-        });
-        if (data && data.length > 0) {
-            qsList.add(data);
-        } else {
-            setTimeout(function () {
-                tellUserIfNoIssues();
-            }, 500);
-        }
-        $("#tree").jstree("rename_node", "#qualitaetskontrollen" + localStorage.apId, 'Qualitätskontrollen (' + window.apf.qsList.items.length + ')');
-    });
-}
-
-function addDataFromQueryToQsList(qsList, queryName, berichtjahr) {
-    var url = 'api/v1/' + queryName + '/' + localStorage.apId + '/' + berichtjahr;
-
-    $.ajax({
-        type: 'get',
-        url:  url
-    }).done(function (data) {
-        // data ist Objekt-Array
-        // Felder: ApArtId, hw, link
-        // remove data without links
-        data = _.filter(data, function (dat) {
-            return !!dat.link;
-        });
-        if (data && data.length > 0) {
-            qsList.add(data);
-        } else {
-            setTimeout(function () {
-                tellUserIfNoIssues();
-            }, 500);
-        }
-        $("#tree").jstree("rename_node", "#qualitaetskontrollen" + localStorage.apId, 'Qualitätskontrollen (' + window.apf.qsList.items.length + ')');
-    });
-}*/
-
 module.exports = function (berichtjahr) {
     var qsList = window.apf.qsList;
 
@@ -151,6 +102,8 @@ module.exports = function (berichtjahr) {
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_popnrtpopnrmehrdeutig');
     // TPop ohne verlangten TPop-Bericht im Berichtjahr
     createUrlToAddDataFromQueryToQsList(qsList, 'qkTpopOhneTpopber', berichtjahr);
+    // TPop ohne verlangten TPop-Massn.-Bericht im Berichtjahr
+    createUrlToAddDataFromQueryToQsList(qsList, 'qkTpopOhneMassnber', berichtjahr);
     // Massn ohne Jahr/Typ
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_massn_ohnejahr');
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_massn_ohnetyp', berichtjahr);
