@@ -72,7 +72,7 @@ module.exports = function (that) {
     // Feldwert hängt von PopBekanntSeit bzw. TPopBekanntSeit ab:
     // PopBekanntSeit/TPopBekanntSeit >= ApJahr: 200 ("angesiedelt (nach Beginn AP), aktuell"), sonst 210 ("angesiedelt vor Beginn AP, aktuell")
     if (feldname === 'PopHerkunft') {
-        apJahr = window.apf.ap.ApJahr;
+        apJahr      = window.apf.ap.ApJahr;
         bekanntSeit = $('#PopBekanntSeit').val();
         if (apJahr && !bekanntSeit && feldwert != 300) {
             // bekanntSeit muss gesetzt sein, ausser bei potentiellen Wuchsorten
@@ -91,7 +91,7 @@ module.exports = function (that) {
         }
     }
     if (feldname === 'TPopHerkunft') {
-        apJahr = window.apf.ap.ApJahr;
+        apJahr      = window.apf.ap.ApJahr;
         bekanntSeit = $('#TPopBekanntSeit').val();
         if (apJahr && !bekanntSeit && feldwert != 300) {
             // bekanntSeit muss gesetzt sein, ausser bei potentiellen Wuchsorten
