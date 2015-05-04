@@ -1021,3 +1021,9 @@ SELECT apflora.ap.ApArtId, 'Assoziierte Art ohne Art:' AS hw, CONCAT('<a href="h
 FROM apflora.ap INNER JOIN apflora.assozart ON apflora.ap.ApArtId = apflora.assozart.AaApArtId
 WHERE apflora.assozart.AaSisfNr IS NULL OR apflora.assozart.AaSisfNr = 0
 ORDER BY apflora.ap.ApArtId, apflora.assozart.AaId;
+
+CREATE OR REPLACE VIEW v_qk_pop_koordentsprechenkeinertpop AS 
+SELECT DISTINCT 'Population: Koordinaten entsprechen keiner Teilpopulation:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.pop.ApArtId, '&pop=', apflora.pop.PopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), '</a>') AS link, apflora.pop.PopXKoord AS XKoord, apflora.pop.PopYKoord AS YKoord
+FROM apflora.pop
+WHERE apflora.pop.PopXKoord Is NOT Null AND apflora.pop.PopYKoord IS NOT NULL AND apflora.pop.PopId NOT IN (SELECT apflora.tpop.PopId FROM apflora.tpop WHERE apflora.tpop.TPopXKoord = PopXKoord AND apflora.tpop.TPopYKoord = PopYKoord)
+ORDER BY apflora.pop.ApArtId, apflora.pop.PopNr;
