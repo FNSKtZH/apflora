@@ -1081,3 +1081,8 @@ SELECT DISTINCT apflora.pop.ApArtId, apflora.pop.PopId, apflora.tpop.TPopId, 'Te
 FROM apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId
 WHERE apflora.tpop.TPopHerkunft = 300 AND apflora.tpop.TPopId IN (SELECT DISTINCT apflora.tpopmassn.TPopId FROM apflora.tpopmassn WHERE apflora.tpopmassn.TPopMassnTyp < 4)
 ORDER BY apflora.pop.ApArtId, apflora.pop.PopNr, apflora.pop.PopId, apflora.tpop.TPopNr, apflora.tpop.TPopId;
+
+CREATE OR REPLACE VIEW v_qk_tpop_mitstatusaktuellundtpopbererloschen_maxtpopberjahr AS 
+SELECT apflora.tpopber.TPopId, MAX(apflora.tpopber.TPopBerJahr) AS MaxTPopBerJahr
+FROM apflora.tpopber
+GROUP BY apflora.tpopber.TPopId;

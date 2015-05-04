@@ -124,10 +124,12 @@ module.exports = function (berichtjahr) {
     createUrlToAddDataFromQueryToQsList(qsList, 'qkTpopOhneMassnber', berichtjahr);
     // Teilpopulation mit Status "Ansaatversuch", bei denen in einer Kontrolle eine Anzahl festgestellt wurde:
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_mitstatusansaatversuchundzaehlungmitanzahl');
-
-    
     // Teilpopulation mit Status "potentieller Wuchs-/Ansiedlungsort", bei der eine Massnahme des Typs "Ansiedlung" existiert:
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_mitstatuspotentiellundmassnansiedlung');
+
+    
+    // Teilpopulation mit Status "aktuell", gemäss einem Teilpopulationsbericht erloschen
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_mitstatusaktuellundtpopbererloschen');
 
 
     // Massn ohne Jahr/Typ
