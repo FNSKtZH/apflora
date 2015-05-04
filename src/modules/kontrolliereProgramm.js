@@ -113,6 +113,9 @@ module.exports = function (berichtjahr) {
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohneflurname');
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnestatus');
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnebekanntseit');
+
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohneapberrelevant');
+    
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnekoordinaten');
     // pop/tpop mit Status unklar ohne Begründung
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_mitstatusunklarohnebegruendung');
@@ -126,12 +129,8 @@ module.exports = function (berichtjahr) {
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_mitstatusansaatversuchundzaehlungmitanzahl');
     // Teilpopulation mit Status "potentieller Wuchs-/Ansiedlungsort", bei der eine Massnahme des Typs "Ansiedlung" existiert:
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_mitstatuspotentiellundmassnansiedlung');
-
-    
     // Teilpopulation mit Status "aktuell", gemäss einem Teilpopulationsbericht erloschen
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_mitstatusaktuellundtpopbererloschen');
-
-
     // Massn ohne Jahr/Typ
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_massn_ohnejahr');
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_massn_ohnetyp', berichtjahr);
