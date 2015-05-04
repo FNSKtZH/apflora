@@ -824,6 +824,12 @@ FROM apflora.ap INNER JOIN (apflora.pop INNER JOIN apflora.tpop ON apflora.pop.P
 WHERE apflora.tpop.TPopApBerichtRelevant Is Null
 ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.tpop.TPopNr;
 
+CREATE OR REPLACE VIEW v_qk_tpop_statuspotentiellfuerapberrelevant AS 
+SELECT apflora.ap.ApArtId, 'Teilpopulation mit Status "potenzieller Wuchs-/Ansiedlungsort" und "Für AP-Bericht relevant?" = ja:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '&tpop=', apflora.tpop.TPopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), IFNULL(CONCAT(' > TPop: ', apflora.tpop.TPopNr), CONCAT(' > TPop: ', apflora.tpop.TPopId)), '</a>') AS link
+FROM apflora.ap INNER JOIN (apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) ON apflora.ap.ApArtId = apflora.pop.ApArtId
+WHERE apflora.tpop.TPopHerkunft = 300 AND apflora.tpop.TPopApBerichtRelevant = 1
+ORDER BY apflora.ap.ApArtId, apflora.pop.PopNr, apflora.tpop.TPopNr;
+
 CREATE OR REPLACE VIEW v_qk_tpop_mitstatusunklarohnebegruendung AS 
 SELECT apflora.ap.ApArtId, 'Teilpopulation mit "Status unklar", ohne Begründung:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.ap.ApArtId, '&pop=', apflora.pop.PopId, '&tpop=', apflora.tpop.TPopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), IFNULL(CONCAT(' > TPop: ', apflora.tpop.TPopNr), CONCAT(' > TPop: ', apflora.tpop.TPopId)), '</a>') AS link
 FROM apflora.ap INNER JOIN (apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId) ON apflora.ap.ApArtId = apflora.pop.ApArtId
