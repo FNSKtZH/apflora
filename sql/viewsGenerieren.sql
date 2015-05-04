@@ -1034,8 +1034,14 @@ FROM apflora.pop
 WHERE apflora.pop.PopHerkunft = 201 AND apflora.pop.PopId IN (SELECT DISTINCT apflora.tpop.PopId FROM apflora.tpop WHERE apflora.tpop.TPopHerkunft = 100)
 ORDER BY apflora.pop.ApArtId, apflora.pop.PopNr;
 
-CREATE OR REPLACE VIEW v_qk_pop_statusansaatversuchmitpopursprerloschen AS 
+CREATE OR REPLACE VIEW v_qk_pop_statusansaatversuchmittpopursprerloschen AS 
 SELECT DISTINCT apflora.pop.ApArtId, 'Population: Status ist "angesiedelt, Ansaatversuch", es gibt aber eine Teilpopulation mit Status "ursprünglich, erloschen":' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.pop.ApArtId, '&pop=', apflora.pop.PopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), '</a>') AS link
 FROM apflora.pop
 WHERE apflora.pop.PopHerkunft = 201 AND apflora.pop.PopId IN (SELECT DISTINCT apflora.tpop.PopId FROM apflora.tpop WHERE apflora.tpop.TPopHerkunft = 101)
+ORDER BY apflora.pop.ApArtId, apflora.pop.PopNr;
+
+CREATE OR REPLACE VIEW v_qk_pop_statuserloschenmittpopaktuell AS 
+SELECT DISTINCT apflora.pop.ApArtId, 'Population: Status ist "erloschen" (ursprünglich oder angesiedelt), es gibt aber eine Teilpopulation mit Status "aktuell" (ursprünglich oder angesiedelt):' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.pop.ApArtId, '&pop=', apflora.pop.PopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), '</a>') AS link
+FROM apflora.pop
+WHERE apflora.pop.PopHerkunft IN (101, 202, 211) AND apflora.pop.PopId IN (SELECT DISTINCT apflora.tpop.PopId FROM apflora.tpop WHERE apflora.tpop.TPopHerkunft IN (100, 200, 210))
 ORDER BY apflora.pop.ApArtId, apflora.pop.PopNr;
