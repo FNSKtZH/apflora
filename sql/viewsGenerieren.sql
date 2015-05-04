@@ -1023,7 +1023,13 @@ WHERE apflora.assozart.AaSisfNr IS NULL OR apflora.assozart.AaSisfNr = 0
 ORDER BY apflora.ap.ApArtId, apflora.assozart.AaId;
 
 CREATE OR REPLACE VIEW v_qk_pop_koordentsprechenkeinertpop AS 
-SELECT DISTINCT 'Population: Koordinaten entsprechen keiner Teilpopulation:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.pop.ApArtId, '&pop=', apflora.pop.PopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), '</a>') AS link, apflora.pop.PopXKoord AS XKoord, apflora.pop.PopYKoord AS YKoord
+SELECT DISTINCT apflora.pop.ApArtId, 'Population: Koordinaten entsprechen keiner Teilpopulation:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.pop.ApArtId, '&pop=', apflora.pop.PopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), '</a>') AS link, apflora.pop.PopXKoord AS XKoord, apflora.pop.PopYKoord AS YKoord
 FROM apflora.pop
 WHERE apflora.pop.PopXKoord Is NOT Null AND apflora.pop.PopYKoord IS NOT NULL AND apflora.pop.PopId NOT IN (SELECT apflora.tpop.PopId FROM apflora.tpop WHERE apflora.tpop.TPopXKoord = PopXKoord AND apflora.tpop.TPopYKoord = PopYKoord)
+ORDER BY apflora.pop.ApArtId, apflora.pop.PopNr;
+
+CREATE OR REPLACE VIEW v_qk_pop_statusansaatversuchmitaktuellentpop AS 
+SELECT DISTINCT apflora.pop.ApArtId, 'Population: Status ist "angesiedelt, Ansaatversuch", es gibt aber eine Teilpopulation mit Status "ursprünglich, aktuell":' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.pop.ApArtId, '&pop=', apflora.pop.PopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), '</a>') AS link
+FROM apflora.pop
+WHERE apflora.pop.PopHerkunft = 201 AND apflora.pop.PopId IN (SELECT DISTINCT apflora.tpop.PopId FROM apflora.tpop WHERE apflora.tpop.TPopHerkunft = 100)
 ORDER BY apflora.pop.ApArtId, apflora.pop.PopNr;

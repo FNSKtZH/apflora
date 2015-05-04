@@ -96,6 +96,8 @@ module.exports = function (berichtjahr) {
     createUrlToAddDataFromQueryToQsList(qsList, 'qkPopOhnePopmassnber', berichtjahr);
     // Entsprechen Koordinaten der Pop einer der TPops?
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_koordentsprechenkeinertpop');
+    // pop mit Status ansaatversuch, es gibt tpop mit status aktuell
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_statusansaatversuchmitaktuellentpop');
     // tpop ohne Nr/Flurname/Status/bekannt seit/Koordinaten
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnenr');
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohneflurname');
