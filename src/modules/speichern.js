@@ -74,8 +74,8 @@ module.exports = function (that) {
     if (feldname === 'PopHerkunft') {
         apJahr = window.apf.ap.ApJahr;
         bekanntSeit = $('#PopBekanntSeit').val();
-        if (apJahr && !bekanntSeit) {
-            // muss gesetzt sein
+        if (apJahr && !bekanntSeit && feldwert != 300) {
+            // bekanntSeit muss gesetzt sein, ausser bei potentiellen Wuchsorten
             melde('Wert wird noch nicht gespeichert:<br><br>Erfassen Sie zuerst "bekannt seit",<br><br>damit die Anwendung weiss, ob die Ansiedlung vor oder nach Beginn des AP erfolgte');
             // Markierung entfernen
             $(that).prop('checked', false);
@@ -93,8 +93,8 @@ module.exports = function (that) {
     if (feldname === 'TPopHerkunft') {
         apJahr = window.apf.ap.ApJahr;
         bekanntSeit = $('#TPopBekanntSeit').val();
-        if (apJahr && !bekanntSeit) {
-            // muss gesetzt sein
+        if (apJahr && !bekanntSeit && feldwert != 300) {
+            // bekanntSeit muss gesetzt sein, ausser bei potentiellen Wuchsorten
             melde('Wert wird noch nicht gespeichert:<br><br>Erfassen Sie zuerst "bekannt seit",<br><br>damit die Anwendung weiss, ob die Ansiedlung vor oder nach Beginn des AP erfolgte');
             // Markierung entfernen
             $(that).prop('checked', false);

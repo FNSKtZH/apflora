@@ -1069,3 +1069,9 @@ SELECT DISTINCT apflora.pop.ApArtId, apflora.pop.PopId, apflora.tpop.TPopId, 'Te
 FROM apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId
 WHERE apflora.tpop.TPopHerkunft = 201 AND apflora.tpop.TPopId IN (SELECT DISTINCT apflora.tpopkontr.TPopId FROM apflora.tpopkontr INNER JOIN apflora.tpopkontrzaehl ON apflora.tpopkontr.TPopKontrId = apflora.tpopkontrzaehl.TPopKontrId WHERE apflora.tpopkontr.TPopKontrTyp NOT IN ('Zwischenziel', 'Ziel') AND apflora.tpopkontrzaehl.Anzahl > 0)
 ORDER BY apflora.pop.ApArtId, apflora.pop.PopNr, apflora.pop.PopId, apflora.tpop.TPopNr, apflora.tpop.TPopId;
+
+CREATE OR REPLACE VIEW v_qk_tpop_mitstatuspotentiellundzaehlungmitanzahl AS 
+SELECT DISTINCT apflora.pop.ApArtId, apflora.pop.PopId, apflora.tpop.TPopId, 'Teilpopulation mit Status "potentieller Wuchs-/Ansiedlungsort", bei denen in einer Kontrolle eine Anzahl festgestellt wurde:' AS hw, CONCAT('<a href="http://apflora.ch/index.html?ap=', apflora.pop.ApArtId, '&pop=', apflora.pop.PopId, '&tpop=', apflora.tpop.TPopId, '" target="_blank">', IFNULL(CONCAT('Pop: ', apflora.pop.PopNr), CONCAT('Pop: id=', apflora.pop.PopId)), IFNULL(CONCAT(' > TPop: ', apflora.tpop.TPopNr), CONCAT(' > TPop: ', apflora.tpop.TPopId)), '</a>') AS link
+FROM apflora.pop INNER JOIN apflora.tpop ON apflora.pop.PopId = apflora.tpop.PopId
+WHERE apflora.tpop.TPopHerkunft = 300 AND apflora.tpop.TPopId IN (SELECT DISTINCT apflora.tpopkontr.TPopId FROM apflora.tpopkontr INNER JOIN apflora.tpopkontrzaehl ON apflora.tpopkontr.TPopKontrId = apflora.tpopkontrzaehl.TPopKontrId WHERE apflora.tpopkontr.TPopKontrTyp NOT IN ('Zwischenziel', 'Ziel') AND apflora.tpopkontrzaehl.Anzahl > 0)
+ORDER BY apflora.pop.ApArtId, apflora.pop.PopNr, apflora.pop.PopId, apflora.tpop.TPopNr, apflora.tpop.TPopId;
