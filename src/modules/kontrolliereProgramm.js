@@ -113,9 +113,10 @@ module.exports = function (berichtjahr) {
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohneflurname');
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnestatus');
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnebekanntseit');
-
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohneapberrelevant');
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_statuspotentiellfuerapberrelevant');
+    
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_erloschenundrelevantaberletztebeobvor1950');
 
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnekoordinaten');
     // pop/tpop mit Status unklar ohne Begründung
