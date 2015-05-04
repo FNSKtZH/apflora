@@ -99,7 +99,9 @@ module.exports = function (berichtjahr) {
     // pop mit Status ansaatversuch, es gibt tpop mit status aktuell
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_statusansaatversuchmitaktuellentpop');
     // pop mit Status ansaatversuch, es gibt tpop mit status ursprünglich erloschen
-    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_statusansaatversuchmitpopursprerloschen');
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_statusansaatversuchmittpopursprerloschen');
+    // Population: Status ist "erloschen" (ursprünglich oder angesiedelt), es gibt aber eine Teilpopulation mit Status "aktuell" (ursprünglich oder angesiedelt)
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_statuserloschenmittpopaktuell');
     // tpop ohne Nr/Flurname/Status/bekannt seit/Koordinaten
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnenr');
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohneflurname');
