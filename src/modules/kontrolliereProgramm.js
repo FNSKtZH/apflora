@@ -106,6 +106,8 @@ module.exports = function (berichtjahr) {
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_statuserloschenmittpopansaatversuch');
     // Population: Status ist "angesiedelt", es gibt aber eine Teilpopulation mit Status "ursprünglich":
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_statusangesiedeltmittpopursprünglich');
+    // Population: Status ist "potenzieller Wuchs-/Ansiedlungsort", es gibt aber eine Teilpopulation mit Status "angesiedelt" oder "ursprünglich":
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_statuspotwuchsortmittpopanders');
     // tpop ohne Nr/Flurname/Status/bekannt seit/Koordinaten
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnenr');
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohneflurname');
