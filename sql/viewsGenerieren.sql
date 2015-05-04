@@ -1098,3 +1098,8 @@ CREATE OR REPLACE VIEW v_qk_tpop_mitstatusaktuellundtpopbererloschen_maxtpopberj
 SELECT apflora.tpopber.TPopId, MAX(apflora.tpopber.TPopBerJahr) AS MaxTPopBerJahr
 FROM apflora.tpopber
 GROUP BY apflora.tpopber.TPopId;
+
+CREATE OR REPLACE VIEW v_qk_tpop_erloschenundrelevantaberletztebeobvor1950_maxbeobjahr AS 
+SELECT apflora.beobzuordnung.TPopId, MAX(CONVERT(LEFT(apflora_beob.beob_bereitgestellt.Datum, 4), SIGNED)) AS 'MaxJahr'
+FROM apflora.beobzuordnung INNER JOIN apflora_beob.beob_bereitgestellt ON apflora.beobzuordnung.NO_NOTE = apflora_beob.beob_bereitgestellt.NO_NOTE
+GROUP BY apflora.beobzuordnung.TPopId
