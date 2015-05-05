@@ -15,7 +15,8 @@
 
 var $                    = require('jquery'),
     _                    = require('underscore'),
-    aktuellesBerichtjahr = require('./aktuellesBerichtjahr');
+    aktuellesBerichtjahr = require('./aktuellesBerichtjahr'),
+    isPointInsideZh      = require('./isPointInsideZh');
 
 function tellUserIfNoIssues() {
     var html;
@@ -178,4 +179,6 @@ module.exports = function (berichtjahr) {
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_apber_ohnebeurteilung', berichtjahr);
     // assoziierte Art ohne Art
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_assozart_ohneart');
+
+    isPointInsideZh();
 };
