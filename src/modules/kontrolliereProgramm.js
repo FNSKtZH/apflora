@@ -179,5 +179,5 @@ module.exports = function (berichtjahr) {
     // assoziierte Art ohne Art
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_assozart_ohneart');
 
-    isPointInsideZh();
+    //isPointInsideZh();
 };
