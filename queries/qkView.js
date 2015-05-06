@@ -1,7 +1,6 @@
 /*jslint node: true, browser: true, nomen: true, todo: true */
 'use strict';
 
-
 var mysql      = require('mysql'),
     config     = require('../configuration'),
     connection = mysql.createConnection({
