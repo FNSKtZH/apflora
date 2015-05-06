@@ -13,10 +13,10 @@
 /*jslint node: true, browser: true, nomen: true, todo: true */
 'use strict';
 
-var $                    = require('jquery'),
-    _                    = require('underscore'),
-    aktuellesBerichtjahr = require('./aktuellesBerichtjahr'),
-    isPointInsideZh      = require('./isPointInsideZh');
+var $                                        = require('jquery'),
+    _                                        = require('underscore'),
+    aktuellesBerichtjahr                     = require('./aktuellesBerichtjahr'),
+    kontrolliereRelevanzAusserkantonalerTpop = require('./kontrolliereRelevanzAusserkantonalerTpop');
 
 function tellUserIfNoIssues() {
     var html;
@@ -179,5 +179,5 @@ module.exports = function (berichtjahr) {
     // assoziierte Art ohne Art
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_assozart_ohneart');
 
-    //isPointInsideZh();
+    kontrolliereRelevanzAusserkantonalerTpop();
 };
