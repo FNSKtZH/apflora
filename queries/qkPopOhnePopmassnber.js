@@ -22,7 +22,7 @@ module.exports = function (request, callback) {
     // 1. "TPop mit Ansiedlungen/Ansaaten vor dem Berichtjahr" ermitteln: 
     sqlTpopMitAnsVorBerjahr = 'SELECT DISTINCT apflora.tpopmassn.TPopId FROM apflora.tpopmassn WHERE apflora.tpopmassn.TPopMassnTyp in (1, 2, 3) AND apflora.tpopmassn.TPopMassnJahr < ' + berichtjahr;
     // 2. "TPop mit Kontrolle im Berichtjahr" ermitteln:
-    sqlTpopMitKontrolleImBerjahr = 'SELECT DISTINCT apflora.tpopkontr.TPopId FROM apflora.tpopkontr WHERE apflora.tpopkontr.TPopKontrJahr = ' + berichtjahr;
+    sqlTpopMitKontrolleImBerjahr = 'SELECT DISTINCT apflora.tpopkontr.TPopId FROM apflora.tpopkontr WHERE apflora.tpopkontr.TPopKontrTyp NOT IN ("Zwischenziel", "Ziel") AND apflora.tpopkontr.TPopKontrJahr = ' + berichtjahr;
     // 3. "Pop mit TPop mit verlangten TPopMassnBer im Berichtjahr" ermitteln:
     sqlPopMitTpopMitVerlangtemTpopmassnberImBerjahr = 'SELECT DISTINCT apflora.tpop.PopId FROM apflora.tpop WHERE apflora.tpop.TPopId IN (' + sqlTpopMitAnsVorBerjahr + ') AND apflora.tpop.TPopId IN (' + sqlTpopMitKontrolleImBerjahr + ')';
     // 4. "Pop mit PopMassnBer im Berichtjahr" ermitteln:
