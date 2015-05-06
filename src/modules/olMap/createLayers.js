@@ -149,6 +149,9 @@ module.exports = function () {
 
     detailplaeneLayerSource = new ol.source.GeoJSON({
         url: 'geojson/detailplaene.geojson'/*,
+        // ol 3.5.0 deprecates ol.source.GeoJSON, see: https://github.com/openlayers/ol3/releases/tag/v3.5.0
+        // make ol.source.Vector and the next line:
+        //format: new ol.format.GeoJSON(),
          myTyp: 'Detailplan'*/    // funktioniert nicht
     });
     /* funktioniert nicht:
