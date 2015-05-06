@@ -1,14 +1,13 @@
 /*jslint node: true, browser: true, nomen: true, todo: true */
 'use strict';
 
-var turf           = require('turf'),
-    ol             = require('ol'),
-    _              = require('underscore'),
-    kantoneGeoJson = require('../../geojson/chKantone.json');
+var turf      = require('turf'),
+    ol        = require('ol'),
+    _         = require('underscore'),
+    zhGeojson = require('../../geojson/ktZh.json');
 
 module.exports = function (x, y) {
-    var zhGeojson,
-        koordLv03  = [x, y],
+    var koordLv03  = [x, y],
         koordWgs84,
         koordPt,
         isInsideZh = false;
@@ -24,11 +23,6 @@ module.exports = function (x, y) {
             "coordinates": koordWgs84
         }
     };
-
-    // get geojson of zh
-    zhGeojson = _.find(kantoneGeoJson.features, function (feature) {
-        return feature.properties.NAME === 'Zürich';
-    });
 
     // let turf check if the point is in zh
     isInsideZh = turf.inside(koordPt, zhGeojson);
