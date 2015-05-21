@@ -5,6 +5,8 @@ var $     = require('jquery'),
     melde = require('./melde');
 
 module.exports = function (xKoord, yKoord) {
+    var $kopiereKoordinatenInPopRueckmeldung = $('#kopiereKoordinatenInPopRueckmeldung');
+
     // prüfen, ob X- und Y-Koordinaten vergeben sind
     if (xKoord > 100000 && yKoord > 100000) {
         // Koordinaten der Pop nachführen
@@ -16,9 +18,9 @@ module.exports = function (xKoord, yKoord) {
                 type: 'post',
                 url: 'api/v1/update/apflora/tabelle=pop/tabelleIdFeld=PopId/tabelleId=' + localStorage.popId + '/feld=PopYKoord/wert=' + yKoord + '/user=' + encodeURIComponent(sessionStorage.user)
             }).done(function () {
-                $("#kopiereKoordinatenInPopRueckmeldung").fadeIn('slow');
+                $kopiereKoordinatenInPopRueckmeldung.fadeIn('slow');
                 setTimeout(function () {
-                    $("#kopiereKoordinatenInPopRueckmeldung").fadeOut('slow');
+                    $kopiereKoordinatenInPopRueckmeldung.fadeOut('slow');
                 }, 3000);
             }).fail(function () {
                 melde("Fehler: Y-Koordinate wurde nicht kopiert (die X-Koordinate offenbar schon)");
