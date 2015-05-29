@@ -15,7 +15,7 @@ module.exports = function (nodeBeobId) {
       // Array belassen -zeigeBeob benötigt einen Array
       $.ajax({
         type: 'get',
-        url: 'api/v1/apKarte/apId=' + localStorage.apId
+        url: 'api/v1/apKarte/apId=' + window.localStorage.apId
       }).done(function (tpop) {
         if (tpop && tpop.length > 0) {
           zeigeBeobUndTPop(beob, tpop)

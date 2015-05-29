@@ -9,8 +9,6 @@ var $ = require('jquery'),
   chToWgsLng = require('../../lib/chToWgsLng'),
   zeigeFormular = require('../zeigeFormular'),
   beschrifteTPopMitNrFuerKarte = require('../beschrifteTPopMitNrFuerKarte'),
-  ddInChY = require('../../lib/ddInChY'),
-  ddInChX = require('../../lib/ddInChX'),
   makeListenerMarkerClick = require('./makeListenerMarkerClick'),
   makeListenerBeobMarkerDragend = require('./makeListenerBeobMarkerDragend')
 
@@ -38,7 +36,6 @@ module.exports = function (beobListe, tpopListe) {
     tpopBeschriftung,
     aNote,
     myFlurname,
-    tpopId,
     autor,
     projekt,
     ort
@@ -88,7 +85,6 @@ module.exports = function (beobListe, tpopListe) {
   // für alle TPop Marker erstellen
   markersTpop = []
   _.each(tpopListe, function (tpop) {
-    tpopId = tpop.TPopId
     latlng2 = new google.maps.LatLng(tpop.Lat, tpop.Lng)
     // Kartenausschnitt um diese Koordinate erweitern
     bounds.extend(latlng2)

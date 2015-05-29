@@ -10,8 +10,8 @@ module.exports = function (nodeApId, nodeBeobId) {
   var apId,
     beobId
 
-  apId = (nodeApId   ? erstelleIdAusDomAttributId(nodeApId)   : '')
-  beobId = (nodeBeobId ? erstelleIdAusDomAttributId(nodeBeobId) : '')
+  apId = nodeApId ? erstelleIdAusDomAttributId(nodeApId) : ''
+  beobId = nodeBeobId ? erstelleIdAusDomAttributId(nodeBeobId) : ''
 
   $.ajax({
     type: 'get',

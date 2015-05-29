@@ -1,7 +1,6 @@
 'use strict'
 
-var $ = require('jquery'),
-  google = require('google'),
+var google = require('google'),
   setLocationTPop = require('./setLocationTPop'),
   clearMarkers = require('./clearMarkers')
 

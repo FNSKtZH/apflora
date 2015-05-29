@@ -10,8 +10,8 @@ module.exports = function (nodeTpopId, nodeBeobId) {
     beobId = ''
 
   // id's vorbereiten
-  if (nodeTpopId) { tpopId = erstelleIdAusDomAttributId(nodeTpopId); }
-  if (nodeBeobId) { beobId = erstelleIdAusDomAttributId(nodeBeobId); }
+  if (nodeTpopId) { tpopId = erstelleIdAusDomAttributId(nodeTpopId) }
+  if (nodeBeobId) { beobId = erstelleIdAusDomAttributId(nodeBeobId) }
 
   // es ist immer nur eine der id's gegeben
   $.ajax({

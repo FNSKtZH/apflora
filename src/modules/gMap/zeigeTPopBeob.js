@@ -1,7 +1,6 @@
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
+var _ = require('underscore'),
   google = require('google'),
   MarkerWithLabel = require('MarkerWithLabel'),
   MarkerClusterer = require('MarkerClusterer'),
