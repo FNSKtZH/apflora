@@ -1,66 +1,66 @@
 <fieldset style='background:none;'>
-    <legend>{{index}}. Zähleinheit</legend>
-    <table>
-        <tr id='fieldcontain_Zaehleinheit' class='fieldcontain Zaehleinheit'>
-            <td class='labelFieldset'>
-                <label for='Zaehleinheit' style='width:115;' class='apf-with-tooltip'>
-                    <span>Einheit:</span>
-                </label>
-                <div class='tooltiptext'>
-                    <p>Spezialfall<br>Vorkommen gemeldet ohne Zahlenangabe, z.B. durch Dritte:</p>
-                    <ul>
-                        <li>Einheit: 'Art ist vorhanden' (letzter Punkt auf Auswahlliste)</li>
-                        <li>Anzahl: 1</li>
-                    </ul>
-                </div>
-            </td>
-            <td class='Datenfelder'>
-                <select id="Zaehleinheit" name='Zaehleinheit' class='speichern' data-formular='tpopkontrzaehl'>
-                    <option></option>
-                    {{#select Zaehleinheit}}
-                        {{#each zaehlungenOptionen}}
-                            <option value={{value}}>{{label}}</option>
-                        {{/each}}
-                    {{/select}}
-                </select>
-            </td>
-        </tr>
-        <tr id='fieldcontain_Methode' class='fieldcontain Methode'>
-            <td class='labelFieldset'>
-                <label for='Methode' style='width:115;'>Methode:</label>
-            </td>
-            <td class='Datenfelder'>
-                    <label>
-                        <input type='radio' name='Methode{{index}}' class='speichern' data-formular='tpopkontrzaehl' data-feld='Methode' value='1' {{{setChecked 1 Methode}}}>
-                        <span>geschätzt</span>
-                    </label><br>
-                    <label>
-                        <input type='radio' name='Methode{{index}}' class='speichern' data-formular='tpopkontrzaehl' data-feld='Methode' value='2' {{{setChecked 2 Methode}}}>
-                        <span>gezählt</span>
-                    </label><br>
-                    <label>
-                        <input type='radio' name='Methode{{index}}' class='speichern' data-formular='tpopkontrzaehl' data-feld='Methode' value='3' {{{setChecked 3 Methode}}}>
-                        <span>geschätzt/gezählt</span>
-                    </label>
-            </td>
-        </tr>
-        <tr id='fieldcontain_Anzahl' class='fieldcontain Anzahl'>
-            <td class='labelFieldset'>
-                <label for='Anzahl' style='width:115;' class='apf-with-tooltip'>
-                    <span>Anzahl:</span>
-                </label>
-                <div class='tooltiptext'>
-                    <p>Spezialfall<br>Vorkommen gemeldet ohne Zahlenangabe, z.B. durch Dritte:</p>
-                    <ul>
-                        <li>Einheit: 'Art ist vorhanden' (letzter Punkt auf Auswahlliste)</li>
-                        <li>Anzahl: 1</li>
-                    </ul>
-                </div>
-            </td>
-            <td class='Datenfelder'>
-                <input type='number' name='Anzahl'           data-formular='tpopkontrzaehl' class='speichern' value={{Anzahl}}>
-                <input type='hidden' name='TPopKontrZaehlId' data-formular='tpopkontrzaehl'                   value={{TPopKontrZaehlId}}>
-            </td>
-        </tr>
-    </table>
+  <legend>{{index}}. Zähleinheit</legend>
+  <table>
+    <tr id='fieldcontain_Zaehleinheit' class='fieldcontain Zaehleinheit'>
+      <td class='labelFieldset'>
+        <label for='Zaehleinheit' style='width:115;' class='apf-with-tooltip'>
+          <span>Einheit:</span>
+        </label>
+        <div class='tooltiptext'>
+          <p>Spezialfall<br>Vorkommen gemeldet ohne Zahlenangabe, z.B. durch Dritte:</p>
+          <ul>
+            <li>Einheit: 'Art ist vorhanden' (letzter Punkt auf Auswahlliste)</li>
+            <li>Anzahl: 1</li>
+          </ul>
+        </div>
+      </td>
+      <td class='Datenfelder'>
+        <select id="Zaehleinheit" name='Zaehleinheit' class='speichern' data-formular='tpopkontrzaehl'>
+          <option></option>
+          {{#select Zaehleinheit}}
+            {{#each zaehlungenOptionen}}
+              <option value={{value}}>{{label}}</option>
+            {{/each}}
+          {{/select}}
+        </select>
+      </td>
+    </tr>
+    <tr id='fieldcontain_Methode' class='fieldcontain Methode'>
+      <td class='labelFieldset'>
+        <label for='Methode' style='width:115;'>Methode:</label>
+      </td>
+      <td class='Datenfelder'>
+          <label>
+            <input type='radio' name='Methode{{index}}' class='speichern' data-formular='tpopkontrzaehl' data-feld='Methode' value='1' {{{setChecked 1 Methode}}}>
+            <span>geschätzt</span>
+          </label><br>
+          <label>
+            <input type='radio' name='Methode{{index}}' class='speichern' data-formular='tpopkontrzaehl' data-feld='Methode' value='2' {{{setChecked 2 Methode}}}>
+            <span>gezählt</span>
+          </label><br>
+          <label>
+            <input type='radio' name='Methode{{index}}' class='speichern' data-formular='tpopkontrzaehl' data-feld='Methode' value='3' {{{setChecked 3 Methode}}}>
+            <span>geschätzt/gezählt</span>
+          </label>
+      </td>
+    </tr>
+    <tr id='fieldcontain_Anzahl' class='fieldcontain Anzahl'>
+      <td class='labelFieldset'>
+        <label for='Anzahl' style='width:115;' class='apf-with-tooltip'>
+          <span>Anzahl:</span>
+        </label>
+        <div class='tooltiptext'>
+          <p>Spezialfall<br>Vorkommen gemeldet ohne Zahlenangabe, z.B. durch Dritte:</p>
+          <ul>
+            <li>Einheit: 'Art ist vorhanden' (letzter Punkt auf Auswahlliste)</li>
+            <li>Anzahl: 1</li>
+          </ul>
+        </div>
+      </td>
+      <td class='Datenfelder'>
+        <input type='number' name='Anzahl'           data-formular='tpopkontrzaehl' class='speichern' value={{Anzahl}}>
+        <input type='hidden' name='TPopKontrZaehlId' data-formular='tpopkontrzaehl'                   value={{TPopKontrZaehlId}}>
+      </td>
+    </tr>
+  </table>
 </fieldset>

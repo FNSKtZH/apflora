@@ -2,7 +2,6 @@
 'use strict'
 
 var $ = require('jquery'),
-  _ = require('underscore'),
   createGlobals = require('./modules/createGlobals'),
   clearLocalStorage = require('./modules/clearLocalStorage'),
   erstelleGemeindeliste = require('./modules/erstelleGemeindeliste'),
