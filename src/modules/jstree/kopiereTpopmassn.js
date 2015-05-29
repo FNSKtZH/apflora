@@ -8,9 +8,7 @@ var $ = require('jquery'),
 
 module.exports = function (aktiverNode) {
   // nur aktualisieren, wenn Schreibrechte bestehen
-  if (!pruefeSchreibvoraussetzungen()) {
-    return
-  }
+  if (!pruefeSchreibvoraussetzungen()) { return }
   var tpopMassnTypCheckedText = $('#TPopMassnTyp option:checked').text()
   window.apf.tpopmassnNodeKopiert = aktiverNode
   // Daten des Objekts holen

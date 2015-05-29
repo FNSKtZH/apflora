@@ -10,15 +10,15 @@ var $ = require('jquery'),
 module.exports = function (aktiverNode, parentNode, nodeApId) {
   $.ajax({
     type: 'post',
-    url: 'api/v1/insert/apflora/tabelle=ziel/feld=ApArtId/wert=' + erstelleIdAusDomAttributId(nodeApId) + '/user=' + encodeURIComponent(sessionStorage.user)
+    url: 'api/v1/insert/apflora/tabelle=ziel/feld=ApArtId/wert=' + erstelleIdAusDomAttributId(nodeApId) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
     var strukturtyp = 'apziel',
       beschriftung = 'neues Ziel'
 
     // mitteilen, dass von ganz oben ein apziel erstellt wird und daher noch ein Zwischenordner erstellt werden muss
-    localStorage.apzielVonOrdnerApziel = true
+    window.localStorage.apzielVonOrdnerApziel = true
     // zur Sicherheit den anderen Zeiger löschen
-    delete localStorage.apzielVonApzieljahr
+    delete window.localStorage.apzielVonApzieljahr
     if ($(aktiverNode).attr('typ') === 'apOrdnerApziel') {
       insertNeuenNodeEineHierarchiestufeTiefer(aktiverNode, parentNode, strukturtyp, id, beschriftung)
     } else if ($(aktiverNode).attr('typ') === 'apzieljahr') {

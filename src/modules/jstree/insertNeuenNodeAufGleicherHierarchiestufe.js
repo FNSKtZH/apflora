@@ -7,7 +7,6 @@ var $ = require('jquery'),
   initiiereFormularMitStrukturtyp = require('../initiiereFormularMitStrukturtyp'),
   erstelleUnterordnerVonTpop = require('./erstelleUnterordnerVonTpop'),
   erstelleUnterordnerVonPop = require('./erstelleUnterordnerVonPop'),
-  capitaliseFirstLetter = require('../../lib/capitaliseFirstLetter'),
   beschrifteOrdner = require('../beschrifteOrdner')
 
 module.exports = function (aktiverNode, parentNode, strukturtyp, dsId, beschriftung) {
@@ -20,7 +19,7 @@ module.exports = function (aktiverNode, parentNode, strukturtyp, dsId, beschrift
   }
 
   // id global verfügbar machen
-  localStorage[strukturtyp + 'Id'] = dsId
+  window.localStorage[strukturtyp + 'Id'] = dsId
   // letzte globale Variable entfernen
   delete window.apf[strukturtyp]
   // neuen Node bauen

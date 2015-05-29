@@ -2,14 +2,13 @@
 'use strict'
 
 var $ = require('jquery'),
-  erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
   insertNeuenNodeEineHierarchiestufeTiefer = require('./insertNeuenNodeEineHierarchiestufeTiefer'),
   melde = require('../melde')
 
 module.exports = function (aktiverNode, parentNode, nodeText) {
   $.ajax({
     type: 'post',
-    url: 'api/v1/insert/apflora/tabelle=apberuebersicht/feld=JbuJahr/wert=' + nodeText + '/user=' + encodeURIComponent(sessionStorage.user)
+    url: 'api/v1/insert/apflora/tabelle=apberuebersicht/feld=JbuJahr/wert=' + nodeText + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function () {
     var strukturtyp = 'jberUebersicht',
       dsId = nodeText,

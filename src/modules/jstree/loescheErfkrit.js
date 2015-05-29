@@ -12,9 +12,7 @@ module.exports = function (aktiverNode, parentNode) {
   var bezeichnung
 
   // nur aktualisieren, wenn Schreibrechte bestehen
-  if (!pruefeSchreibvoraussetzungen()) {
-    return
-  }
+  if (!pruefeSchreibvoraussetzungen()) { return }
   // selektieren, falls direkt mit der rechten Maustaste gewählt wurde
   $.jstree._reference(aktiverNode).deselect_all()
   // alle tieferen Knoten öffnen um zu zeigen, was mit gelöscht wird
