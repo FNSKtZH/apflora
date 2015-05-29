@@ -1,8 +1,7 @@
 /*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
-var $ = require('jquery'),
-  ol = require('ol'),
+var ol = require('ol'),
   ga = require('ga'),
   initiiereLayertree = require('./initiiereLayertree'),
   createLayers = require('./createLayers'),

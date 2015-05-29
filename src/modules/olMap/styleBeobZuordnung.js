@@ -4,8 +4,7 @@
 /*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
-var $ = require('jquery'),
-  ol = require('ol')
+var ol = require('ol')
 
 module.exports = function (feature, resolution, selected) {
   var style = new ol.style.Style({

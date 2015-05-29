@@ -2,7 +2,6 @@
 'use strict'
 
 var $ = require('jquery'),
-  ol = require('ol'),
   nenneEbeneUm = require('./nenneEbeneUm')
 
 module.exports = function (eigeneEbene) {

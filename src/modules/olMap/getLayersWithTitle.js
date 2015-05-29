@@ -1,8 +1,7 @@
 /*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
-var _ = require('underscore'),
-  ol = require('ol')
+var _ = require('underscore')
 
 module.exports = function () {
   var layersArray,

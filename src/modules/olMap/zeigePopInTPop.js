@@ -2,7 +2,6 @@
 'use strict'
 
 var $ = require('jquery'),
-  ol = require('ol'),
   melde = require('../melde'),
   initiiereLayertree = require('./initiiereLayertree'),
   erstellePopLayer = require('./erstellePopLayer')
