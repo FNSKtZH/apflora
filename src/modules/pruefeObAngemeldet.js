@@ -27,7 +27,7 @@ module.exports = function () {
     }
   })
 
-  if (!sessionStorage.user) {
+  if (!window.sessionStorage.user) {
     $Useranmeldung.dialog('open')
   }
 }
