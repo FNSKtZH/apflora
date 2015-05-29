@@ -12,9 +12,7 @@ module.exports = function (aktiverNode, parentNode) {
   var bezeichnung
 
   // nur aktualisieren, wenn Schreibrechte bestehen
-  if (!pruefeSchreibvoraussetzungen()) {
-    return
-  }
+  if (!pruefeSchreibvoraussetzungen()) { return }
   // selektieren, falls direkt mit der rechten Maustaste gewählt wurde
   $.jstree._reference(aktiverNode).deselect_all()
   // alle tieferen Knoten öffnen um zu zeigen, was mit gelöscht wird
@@ -39,7 +37,7 @@ module.exports = function (aktiverNode, parentNode) {
           type: 'delete',
           url: 'api/v1/apflora/tabelle=tpop/tabelleIdFeld=TPopId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
         }).done(function () {
-          delete localStorage.tpopId
+          delete window.localStorage.tpopId
           delete window.apf.tpop
           $.jstree._reference(aktiverNode).delete_node(aktiverNode)
           // Parent Node-Beschriftung: Anzahl anpassen

@@ -1,4 +1,3 @@
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery'),
@@ -7,9 +6,7 @@ var $ = require('jquery'),
 
 module.exports = function (aktiverNode) {
   // nur aktualisieren, wenn Schreibrechte bestehen
-  if (!pruefeSchreibvoraussetzungen()) {
-    return
-  }
+  if (!pruefeSchreibvoraussetzungen()) { return }
   // Jetzt die PopId merken - ihr muss danach eine andere ApArtId zugeteilt werden
   window.apf.popId = erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
   // merken, dass ein node ausgeschnitten wurde
