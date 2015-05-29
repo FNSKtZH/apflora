@@ -9,15 +9,15 @@ var $ = require('jquery'),
 
 module.exports = function (apId) {
   // prüfen, ob voraussetzungen gegeben sind
-  if (!localStorage.apId && !apId) {
+  if (!window.localStorage.apId && !apId) {
     // es fehlen benötigte Daten > zurück zum Anfang
     window.apf.initiiereApp()
     return
   }
 
   // apId setzen
-  localStorage.apId = localStorage.apId || apId
-  apId = apId || localStorage.apId
+  window.localStorage.apId = window.localStorage.apId || apId
+  apId = apId || window.localStorage.apId
 
   // Programm-Wahl konfigurieren
   var programmWahl = $("[name='programmWahl']:checked").attr('id')
@@ -51,7 +51,7 @@ module.exports = function (apId) {
         })
         // Formulare blenden
         zeigeFormular('ap')
-        history.pushState(null, null, 'index.html?ap=' + data.ApArtId)
+        window.history.pushState(null, null, 'index.html?ap=' + data.ApArtId)
       }
     }).fail(function () {
       melde('Fehler: Keine Daten für den Aktionsplan erhalten')
