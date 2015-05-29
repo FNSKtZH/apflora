@@ -12,8 +12,7 @@ var $ = require('jquery'),
   erstelleLabelFuerMassnahme = require('./erstelleLabelFuerMassnahme')
 
 module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId, feldname, feldwert) {
-  var felder,
-    popbeschriftung,
+  var popbeschriftung,
     popberbeschriftung,
     popberentwicklungLabel,
     popmassnberbeschriftung,
@@ -54,7 +53,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
 
   $.ajax({
     type: 'post',
-    url: 'api/v1/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=' + feldname + '/wert=' + encodeURIComponent(feldwert) + '/user=' + encodeURIComponent(sessionStorage.user)
+    url: 'api/v1/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=' + feldname + '/wert=' + encodeURIComponent(feldwert) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function () {
     // Variable für Objekt nachführen
     // jberUebersicht speichert kein window.formular, daher testen, ob es existiert
@@ -72,7 +71,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       $('#TPopKontrJahr').val(jahr)
       $.ajax({
         type: 'post',
-        url: 'api/v1/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopKontrJahr/wert=' + encodeURIComponent(jahr) + '/user=' + encodeURIComponent(sessionStorage.user)
+        url: 'api/v1/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopKontrJahr/wert=' + encodeURIComponent(jahr) + '/user=' + encodeURIComponent(window.sessionStorage.user)
       })
     }
     // dito bei tpopmassn
@@ -81,7 +80,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       $('#TPopMassnJahr').val(jahr)
       $.ajax({
         type: 'post',
-        url: 'api/v1/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopMassnJahr/wert=' + encodeURIComponent(jahr) + '/user=' + encodeURIComponent(sessionStorage.user)
+        url: 'api/v1/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopMassnJahr/wert=' + encodeURIComponent(jahr) + '/user=' + encodeURIComponent(window.sessionStorage.user)
       })
     }
     // wenn in Kontr Jahr geändert wurde, allfälliges Datum löschen
@@ -90,7 +89,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
         $('#TPopKontrDatum').val(null)
         $.ajax({
           type: 'post',
-          url: 'api/v1/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopKontrDatum/wert=/user=' + encodeURIComponent(sessionStorage.user)
+          url: 'api/v1/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopKontrDatum/wert=/user=' + encodeURIComponent(window.sessionStorage.user)
         })
       }
     }
@@ -100,7 +99,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
         $('#TPopMassnDatum').val(null)
         $.ajax({
           type: 'post',
-          url: 'api/v1/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopMassnDatum/wert=/user=' + encodeURIComponent(sessionStorage.user)
+          url: 'api/v1/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopMassnDatum/wert=/user=' + encodeURIComponent(window.sessionStorage.user)
         })
       }
     }
@@ -144,7 +143,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       } else {
         popbeschriftung = '(keine Nr, kein Name)'
       }
-      $tree.jstree('rename_node', "[typ='apOrdnerPop'] #" + localStorage.popId, popbeschriftung)
+      $tree.jstree('rename_node', "[typ='apOrdnerPop'] #" + window.localStorage.popId, popbeschriftung)
       break
     case 'PopBerJahr':
     case 'PopBerEntwicklung':
@@ -159,7 +158,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       } else {
         popberbeschriftung = '(kein Jahr): (kein Status)'
       }
-      $tree.jstree('rename_node', "[typ='popOrdnerPopber'] #" + localStorage.popberId, popberbeschriftung)
+      $tree.jstree('rename_node', "[typ='popOrdnerPopber'] #" + window.localStorage.popberId, popberbeschriftung)
       break
     case 'PopMassnBerJahr':
     case 'PopMassnBerErfolgsbeurteilung':
@@ -174,7 +173,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       } else {
         popmassnberbeschriftung = '(kein Jahr): (nicht beurteilt)'
       }
-      $tree.jstree('rename_node', "[typ='popOrdnerMassnber'] #" + localStorage.popmassnberId, popmassnberbeschriftung)
+      $tree.jstree('rename_node', "[typ='popOrdnerMassnber'] #" + window.localStorage.popmassnberId, popmassnberbeschriftung)
       break
     case 'TPopNr':
     case 'TPopFlurname':
@@ -189,7 +188,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       } else {
         tpopbeschriftung = '(keine Nr, kein Flurname)'
       }
-      $tree.jstree('rename_node', "[typ='popOrdnerTpop'] #" + localStorage.tpopId, tpopbeschriftung)
+      $tree.jstree('rename_node', "[typ='popOrdnerTpop'] #" + window.localStorage.tpopId, tpopbeschriftung)
       break
     case 'TPopKontrTyp':
     case 'TPopKontrJahr':
@@ -199,16 +198,16 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       tpopfeldkontrLabel = tpopkontrjahr + ': ' + $("label[for='" + $('input[name="TPopKontrTyp"]:checked').attr('id') + "']").text()
       // Problem: Es ist nicht bekannt, ob eine Freiwilligenkontrolle umbennant wird oder eine Feldkontrolle
       // Lösung: Beide nodes umbenennen. Nur eine davon hat die richtige id
-      $tree.jstree('rename_node', "[typ='tpopOrdnerFreiwkontr'] #" + localStorage.tpopfeldkontrId, tpopkontrjahr)
-      $tree.jstree('rename_node', "[typ='tpopOrdnerFeldkontr'] #" + localStorage.tpopfeldkontrId, tpopfeldkontrLabel)
+      $tree.jstree('rename_node', "[typ='tpopOrdnerFreiwkontr'] #" + window.localStorage.tpopfeldkontrId, tpopkontrjahr)
+      $tree.jstree('rename_node', "[typ='tpopOrdnerFeldkontr'] #" + window.localStorage.tpopfeldkontrId, tpopfeldkontrLabel)
       break
     case 'TPopKontrDatum':
       jahr = feldwert ? feldwert.split('.')[0] : '(kein Jahr)'
       tpopfeldkontrLabel = jahr + ': ' + $("label[for='" + $('input[name="TPopKontrTyp"]:checked').attr('id') + "']").text()
       // Problem: Es ist nicht bekannt, ob eine Freiwilligenkontrolle umbennant wird oder eine Feldkontrolle
       // Lösung: Beide nodes umbenennen. Nur eine davon hat die richtige id
-      $tree.jstree('rename_node', "[typ='tpopOrdnerFreiwkontr'] #" + localStorage.tpopfeldkontrId, jahr)
-      $tree.jstree('rename_node', "[typ='tpopOrdnerFeldkontr'] #" + localStorage.tpopfeldkontrId, tpopfeldkontrLabel)
+      $tree.jstree('rename_node', "[typ='tpopOrdnerFreiwkontr'] #" + window.localStorage.tpopfeldkontrId, jahr)
+      $tree.jstree('rename_node', "[typ='tpopOrdnerFeldkontr'] #" + window.localStorage.tpopfeldkontrId, tpopfeldkontrLabel)
       break
     case 'TPopBerJahr':
     case 'TPopBerEntwicklung':
@@ -216,20 +215,20 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       tpopberentwicklungLabel = $("label[for='" + $('input[name="TPopBerEntwicklung"]:checked').attr('id') + "']").text()
       tpopberjahr = $TPopBerJahr.val() || '(kein Jahr)'
       tpopberentwicklung = tpopberentwicklungLabel || '(keine Beurteilung)'
-      $tree.jstree('rename_node', "[typ='tpopOrdnerTpopber'] #" + localStorage.tpopberId, tpopberjahr + ': ' + tpopberentwicklung)
+      $tree.jstree('rename_node', "[typ='tpopOrdnerTpopber'] #" + window.localStorage.tpopberId, tpopberjahr + ': ' + tpopberentwicklung)
       break
     case 'TPopMassnJahr':
     case 'TPopMassnTyp':
       $TPopMassnJahr = $('#TPopMassnJahr')
       $TPopMassnTypChecked = $('#TPopMassnTyp option:checked')
       tpopmassnbezeichnung = erstelleLabelFuerMassnahme($TPopMassnJahr.val(), $TPopMassnTypChecked.text())
-      $tree.jstree('rename_node', "[typ='tpopOrdnerMassn'] #" + localStorage.tpopmassnId, tpopmassnbezeichnung)
+      $tree.jstree('rename_node', "[typ='tpopOrdnerMassn'] #" + window.localStorage.tpopmassnId, tpopmassnbezeichnung)
       break
     case 'TPopMassnDatum':
       jahr = feldwert ? feldwert.split('.')[0] : null
       $TPopMassnTypChecked = $('#TPopMassnTyp option:checked')
       tpopmassnbezeichnung = erstelleLabelFuerMassnahme(jahr, $TPopMassnTypChecked.text())
-      $tree.jstree('rename_node', "[typ='tpopOrdnerMassn'] #" + localStorage.tpopmassnId, tpopmassnbezeichnung)
+      $tree.jstree('rename_node', "[typ='tpopOrdnerMassn'] #" + window.localStorage.tpopmassnId, tpopmassnbezeichnung)
       break
     case 'TPopMassnBerJahr':
     case 'TPopMassnBerErfolgsbeurteilung':
@@ -245,11 +244,11 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       } else {
         tpopmassberbeschriftung = '(kein Jahr): (keine Beurteilung)'
       }
-      $tree.jstree('rename_node', "[typ='tpopOrdnerMassnber'] #" + localStorage.tpopmassnberId, tpopmassberbeschriftung)
+      $tree.jstree('rename_node', "[typ='tpopOrdnerMassnber'] #" + window.localStorage.tpopmassnberId, tpopmassberbeschriftung)
       break
     case 'ZielBezeichnung':
       zielbeschriftung = feldwert || '(Ziel nicht beschrieben)'
-      $tree.jstree('rename_node', "[typ='apzieljahr'] #" + localStorage.apzielId, zielbeschriftung)
+      $tree.jstree('rename_node', "[typ='apzieljahr'] #" + window.localStorage.apzielId, zielbeschriftung)
       break
     case 'ZielBerJahr':
     case 'ZielBerErreichung':
@@ -264,7 +263,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       } else {
         zielberbeschriftung = '(kein Jahr): (keine Beurteilung)'
       }
-      $tree.jstree('rename_node', "[typ='zielberOrdner'] #" + localStorage.zielberId, zielberbeschriftung)
+      $tree.jstree('rename_node', "[typ='zielberOrdner'] #" + window.localStorage.zielberId, zielberbeschriftung)
       break
     case 'ErfkritErreichungsgrad':
     case 'ErfkritTxt':
@@ -278,11 +277,11 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       } else {
         erfkritbeschriftung = '(keine Beurteilung): (kein Kriterium)'
       }
-      $tree.jstree('rename_node', "[typ='apOrdnerErfkrit'] #" + localStorage.erfkritId, erfkritbeschriftung)
+      $tree.jstree('rename_node', "[typ='apOrdnerErfkrit'] #" + window.localStorage.erfkritId, erfkritbeschriftung)
       break
     case 'JBerJahr':
       jberbeschriftung = feldwert || '(kein Jahr)'
-      $tree.jstree('rename_node', "[typ='apOrdnerJber'] #" + localStorage.jberId, jberbeschriftung)
+      $tree.jstree('rename_node', "[typ='apOrdnerJber'] #" + window.localStorage.jberId, jberbeschriftung)
       break
     case 'BerTitel':
     case 'BerJahr':
@@ -297,11 +296,11 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       } else {
         berbeschriftung = '(kein Jahr): (kein Titel)'
       }
-      $tree.jstree('rename_node', "[typ='apOrdnerBer'] #" + localStorage.berId, berbeschriftung)
+      $tree.jstree('rename_node', "[typ='apOrdnerBer'] #" + window.localStorage.berId, berbeschriftung)
       break
     case 'AaSisfNr':
       aabeschriftung = $('#AaSisfNrText').val() || '(kein Artname)'
-      $tree.jstree('rename_node', "[typ='apOrdnerAssozarten'] #" + localStorage.assozartenId, aabeschriftung)
+      $tree.jstree('rename_node', "[typ='apOrdnerAssozarten'] #" + window.localStorage.assozartenId, aabeschriftung)
       break
   }
 }

@@ -2,7 +2,6 @@
 'use strict'
 
 var $ = require('jquery'),
-  initiiereAp = require('./initiiereAp'),
   erstelleApliste = require('./erstelleApliste')
 
 module.exports = function (programm) {

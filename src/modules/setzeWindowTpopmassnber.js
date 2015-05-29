@@ -1,4 +1,4 @@
-// setzt window.apf.tpopmassnber und localStorage.tpopmassnberId
+// setzt window.apf.tpopmassnber und window.localStorage.tpopmassnberId
 // wird benötigt, wenn beim App-Start direkt ein deep link geöffnet wird
 
 /*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
@@ -7,7 +7,7 @@
 var $ = require('jquery')
 
 module.exports = function (id) {
-  localStorage.tpopmassnberId = id
+  window.localStorage.tpopmassnberId = id
   $.ajax({
     type: 'get',
     url: 'api/v1/apflora/tabelle=tpopmassnber/feld=TPopMassnBerId/wertNumber=' + id
