@@ -9,7 +9,7 @@ module.exports = function () {
     $anmeldungPasswort = $('#anmeldungPasswort').val()
 
   // Leserechte zurücksetzen
-  delete sessionStorage.NurLesen
+  delete window.sessionStorage.NurLesen
 
   if ($anmeldungName && $anmeldungPasswort) {
     $.ajax({
@@ -17,10 +17,10 @@ module.exports = function () {
       url: 'api/v1/anmeldung/name=' + $anmeldungName + '/pwd=' + $anmeldungPasswort
     }).done(function (data) {
       if (data && data.length > 0) {
-        sessionStorage.user = $anmeldungName
+        window.sessionStorage.user = $anmeldungName
         // wenn NurLesen, globale Variable setzen
         if (data[0].NurLesen === -1) {
-          sessionStorage.NurLesen = true
+          window.sessionStorage.NurLesen = true
         }
         $('#anmeldungRueckmeldung')
           .html('Willkommen ' + $anmeldungName)

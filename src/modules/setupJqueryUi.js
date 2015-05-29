@@ -6,7 +6,6 @@
 'use strict'
 
 var $ = require('jquery'),
-  speichern = require('./speichern'),
   initializeTooltipsInElement = require('./initializeTooltipsInElement')
 
 module.exports = function () {

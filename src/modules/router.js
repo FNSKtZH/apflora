@@ -53,7 +53,7 @@ module.exports = Backbone.Router.extend({
   },
   ap: function (apId) {
     console.log('route zu ap ', apId)
-    // markieren, dass nach dem loaded-event im Tree die Pop angezeigt werden soll 
+    // markieren, dass nach dem loaded-event im Tree die Pop angezeigt werden soll
     // Die Markierung wird im load-Event wieder entfernt
     window.apf.apZeigen = true
     // direkt initiieren, nicht erst, wenn baum fertig aufgebaut ist
