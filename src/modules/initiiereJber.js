@@ -12,24 +12,24 @@ var $ = require('jquery'),
 
 module.exports = function (apId, apBerId) {
   // prüfen, ob voraussetzungen gegeben sind
-  if (!apId && !localStorage.apId) {
+  if (!apId && !window.localStorage.apId) {
     // Anwendung neu initiieren
     window.apf.initiiereApp()
     return
   }
-  if (!apBerId && !localStorage.jberId) {
+  if (!apBerId && !window.localStorage.jberId) {
     // es fehlen benötigte Daten > eine Ebene höher
     initiiereAp(apId)
     return
   }
 
   // apId setzen
-  localStorage.apId = localStorage.apId || apId
-  apId = apId || localStorage.apId
+  window.localStorage.apId = window.localStorage.apId || apId
+  apId = apId || window.localStorage.apId
 
   // apBerId setzen
-  localStorage.jberId = localStorage.jberId || apBerId
-  apBerId = apBerId || localStorage.jberId
+  window.localStorage.jberId = window.localStorage.jberId || apBerId
+  apBerId = apBerId || window.localStorage.jberId
 
   var $JBerJahr = $('#JBerJahr')
 
@@ -42,7 +42,7 @@ module.exports = function (apId, apBerId) {
   // Daten für die jber aus der DB holen
   $.ajax({
     type: 'get',
-    url: '/api/v1/apflora/tabelle=apber/feld=JBerId/wertNumber=' + localStorage.jberId
+    url: '/api/v1/apflora/tabelle=apber/feld=JBerId/wertNumber=' + window.localStorage.jberId
   }).done(function (data) {
     // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
     if (data && data[0]) {
@@ -70,10 +70,10 @@ module.exports = function (apId, apBerId) {
       if (data.JBerDatum) {
         // chrome akzeptiert nur - getrennte Daten. Und zeigt sie dann gemäss Pattern korrekt an
         // die übrigen stellen mit - getrennte Daten leider mit - dar
-        if (!!window.chrome) {
-          $('#JBerDatum').val(dateFormat(data.JBerDatum, 'yyyy-mm-dd'))
-        } else {
+        if (!window.chrome) {
           $('#JBerDatum').val(dateFormat(data.JBerDatum, 'dd.mm.yyyy'))
+        } else {
+          $('#JBerDatum').val(dateFormat(data.JBerDatum, 'yyyy-mm-dd'))
         }
       }
       // adressen holen, um JBerBearb zu füllen
@@ -85,7 +85,7 @@ module.exports = function (apId, apBerId) {
 
       // Formulare blenden
       zeigeFormular('jber')
-      history.pushState(null, null, 'index.html?ap=' + localStorage.apId + '&jber=' + localStorage.jberId)
+      window.history.pushState(null, null, 'index.html?ap=' + window.localStorage.apId + '&jber=' + window.localStorage.jberId)
 
       // bei neuen Datensätzen Fokus steuern
       if (!$JBerJahr.val()) {

@@ -3,7 +3,6 @@
 
 var $ = require('jquery'),
   dateFormat = require('dateformat'),
-  initiiereAp = require('./initiiereAp'),
   pruefeSchreibvoraussetzungen = require('./pruefeSchreibvoraussetzungen'),
   zeigeFormular = require('./zeigeFormular'),
   melde = require('./melde'),
@@ -11,15 +10,15 @@ var $ = require('jquery'),
 
 var initiiereIdealbiotop = function (apId) {
   // prüfen, ob voraussetzungen gegeben sind
-  if (!localStorage.apId && !apId) {
+  if (!window.localStorage.apId && !apId) {
     // es fehlen benötigte Daten > zurück zum Anfang
     window.apf.initiiereApp()
     return
   }
 
   // apId setzen
-  localStorage.apId = localStorage.apId || apId
-  apId = apId || localStorage.apId
+  window.localStorage.apId = window.localStorage.apId || apId
+  apId = apId || window.localStorage.apId
 
   var $IbErstelldatum = $('#IbErstelldatum')
 
@@ -29,24 +28,24 @@ var initiiereIdealbiotop = function (apId) {
   // Daten für die idealbiotop aus der DB holen
   $.ajax({
     type: 'get',
-    url: '/api/v1/apflora/tabelle=idealbiotop/feld=IbApArtId/wertNumber=' + localStorage.apId
+    url: '/api/v1/apflora/tabelle=idealbiotop/feld=IbApArtId/wertNumber=' + window.localStorage.apId
   }).done(function (data) {
     // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
     if (data && data[0]) {
       data = data[0]
 
       // idealbiotop bereitstellen
-      localStorage.idealbiotopId = data.IbApArtId
+      window.localStorage.idealbiotopId = data.IbApArtId
       window.apf.idealbiotop = data
 
       // Felder mit Daten beliefern
       if (data.IbErstelldatum) {
         // chrome akzeptiert nur - getrennte Daten. Und zeigt sie dann gemäss Pattern korrekt an
         // die übrigen stellen mit - getrennte Daten leider mit - dar
-        if (!!window.chrome) {
-          $('#IbErstelldatum').val(dateFormat(data.IbErstelldatum, 'yyyy-mm-dd'))
-        } else {
+        if (!window.chrome) {
           $('#IbErstelldatum').val(dateFormat(data.IbErstelldatum, 'dd.mm.yyyy'))
+        } else {
+          $('#IbErstelldatum').val(dateFormat(data.IbErstelldatum, 'yyyy-mm-dd'))
         }
       }
       $('#IbHoehenlage').val(data.IbHoehenlage)
@@ -69,7 +68,7 @@ var initiiereIdealbiotop = function (apId) {
 
       // Formulare blenden
       zeigeFormular('idealbiotop')
-      history.pushState(null, null, 'index.html?ap=' + localStorage.apId + '&idealbiotop=' + localStorage.idealbiotopId)
+      window.history.pushState(null, null, 'index.html?ap=' + window.localStorage.apId + '&idealbiotop=' + window.localStorage.idealbiotopId)
 
       // bei neuen Datensätzen Fokus steuern
       if (!$IbErstelldatum.val()) {
@@ -84,9 +83,9 @@ var initiiereIdealbiotop = function (apId) {
       // null zurückgekommen > Datensatz schaffen
       $.ajax({
         type: 'post',
-        url: '/api/v1/insert/apflora/tabelle=idealbiotop/feld=IbApArtId/wert=' + localStorage.apId + '/user=' + encodeURIComponent(sessionStorage.user)
+        url: '/api/v1/insert/apflora/tabelle=idealbiotop/feld=IbApArtId/wert=' + window.localStorage.apId + '/user=' + encodeURIComponent(window.sessionStorage.user)
       }).done(function () {
-        localStorage.idealbiotopId = localStorage.apId
+        window.localStorage.idealbiotopId = window.localStorage.apId
         initiiereIdealbiotop()
       }).fail(function () {
         melde('Fehler: Kein Idealbiotop erstellt')

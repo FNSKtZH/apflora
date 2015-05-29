@@ -10,27 +10,27 @@ var $ = require('jquery'),
 
 module.exports = function (apId, assozId) {
   // prüfen, ob voraussetzungen gegeben sind
-  if (!apId && !localStorage.apId) {
+  if (!apId && !window.localStorage.apId) {
     // Anwendung neu initiieren
     window.apf.initiiereApp()
     return
   }
-  if (!assozId && !localStorage.assozartenId) {
+  if (!assozId && !window.localStorage.assozartenId) {
     // es fehlen benötigte Daten > eine Ebene höher
     initiiereAp(apId)
     return
   }
 
   // apId setzen
-  localStorage.apId = localStorage.apId || apId
-  apId = apId || localStorage.apId
+  window.localStorage.apId = window.localStorage.apId || apId
+  apId = apId || window.localStorage.apId
 
   // assozId setzen
-  if (!localStorage.assozartenId) {
-    localStorage.assozartenId = assozId
+  if (!window.localStorage.assozartenId) {
+    window.localStorage.assozartenId = assozId
   }
   if (!assozId) {
-    assozId = localStorage.assozartenId
+    assozId = window.localStorage.assozartenId
   }
 
   var $AaSisfNrText = $('#AaSisfNrText'),
@@ -67,7 +67,7 @@ module.exports = function (apId, assozId) {
 
       // Formulare blenden
       zeigeFormular('assozarten')
-      history.pushState(null, null, 'index.html?ap=' + apId + '&assozarten=' + assozId)
+      window.history.pushState(null, null, 'index.html?ap=' + apId + '&assozarten=' + assozId)
 
       // bei neuen Datensätzen Fokus steuern
       if (!$AaSisfNrText.val()) {

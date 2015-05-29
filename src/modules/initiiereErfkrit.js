@@ -10,24 +10,24 @@ var $ = require('jquery'),
 
 module.exports = function (apId, erfkritId) {
   // prüfen, ob voraussetzungen gegeben sind
-  if (!apId && !localStorage.apId) {
+  if (!apId && !window.localStorage.apId) {
     // Anwendung neu initiieren
     window.apf.initiiereApp()
     return
   }
-  if (!erfkritId && !localStorage.erfkritId) {
+  if (!erfkritId && !window.localStorage.erfkritId) {
     // es fehlen benötigte Daten > eine Ebene höher
     initiiereAp(apId)
     return
   }
 
   // apId setzen
-  localStorage.apId = localStorage.apId || apId
-  apId = apId || localStorage.apId
+  window.localStorage.apId = window.localStorage.apId || apId
+  apId = apId || window.localStorage.apId
 
   // erfkritId setzen
-  localStorage.erfkritId = localStorage.erfkritId || erfkritId
-  erfkritId = erfkritId || localStorage.erfkritId
+  window.localStorage.erfkritId = window.localStorage.erfkritId || erfkritId
+  erfkritId = erfkritId || window.localStorage.erfkritId
 
   var $ErfkritErreichungsgrad = $('#ErfkritErreichungsgrad')
 
@@ -57,7 +57,7 @@ module.exports = function (apId, erfkritId) {
 
       // Formulare blenden
       zeigeFormular('erfkrit')
-      history.pushState(null, null, 'index.html?ap=' + apId + '&erfkrit=' + erfkritId)
+      window.history.pushState(null, null, 'index.html?ap=' + apId + '&erfkrit=' + erfkritId)
 
       // bei neuen Datensätzen Fokus steuern
       if (!$ErfkritErreichungsgrad.val()) {

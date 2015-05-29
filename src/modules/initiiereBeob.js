@@ -16,9 +16,9 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
   // - noch nicht beurteilt ist (nicht_beurteilt)
   // - nicht zuzuordnen ist (nicht_zuzuordnen)
   // beobStatus muss gespeichert werden, damit bei Datenänderungen bekannt ist, ob ein bestehender Datensatz bearbeitet oder ein neuer geschaffen werden muss
-  localStorage.beobStatus = beobStatus
+  window.localStorage.beobStatus = beobStatus
   // sicherstellen, dass beobtyp immer bekannt ist
-  localStorage.beobtyp = beobTyp
+  window.localStorage.beobtyp = beobTyp
 
   var url,
     urlDistzutpop,
@@ -45,7 +45,7 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
     beobId = beobId.replace('beob', '')
   }
   // beobid bereitstellen
-  localStorage.beobId = beobId
+  window.localStorage.beobId = beobId
 
   // EvAB oder Infospezies? > entsprechende url zusammensetzen
   if (beobTyp === 'evab') {
@@ -94,7 +94,7 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
             htmlDistzutpop += '"'
             // jetzt ermitteln, ob das die angezeigte Beob ist
             // wenn ja: checked
-            if (beob.TPopId === localStorage.tpopId) {
+            if (beob.TPopId === window.localStorage.tpopId) {
               htmlDistzutpop += ' checked'
             }
             htmlDistzutpop += '>'
@@ -152,9 +152,9 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
                 if (!ohneZuZeigen) {
                   zeigeFormular('beob')
                   if (beobStatus === 'zugeordnet') {
-                    history.pushState(null, null, 'index.html?ap=' + localStorage.apId + '&pop=' + localStorage.popId + '&tpop=' + localStorage.tpopId + '&beobZugeordnet=' + beobId)
+                    window.history.pushState(null, null, 'index.html?ap=' + window.localStorage.apId + '&pop=' + window.localStorage.popId + '&tpop=' + window.localStorage.tpopId + '&beobZugeordnet=' + beobId)
                   } else if (beobStatus === 'nicht_zuzuordnen') {
-                    history.pushState(null, null, 'index.html?ap=' + localStorage.apId + '&beobNichtZuzuordnen=' + beobId)
+                    window.history.pushState(null, null, 'index.html?ap=' + window.localStorage.apId + '&beobNichtZuzuordnen=' + beobId)
                   }
                 }
               }
@@ -173,7 +173,7 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
             // nur, wenn ohneZuZeigen nicht true ist (true, um in dialog anzuzeigen)
             if (!ohneZuZeigen) {
               zeigeFormular('beob')
-              history.pushState(null, null, 'index.html?ap=' + localStorage.apId + '&beobNichtBeurteilt=' + beobId)
+              window.history.pushState(null, null, 'index.html?ap=' + window.localStorage.apId + '&beobNichtBeurteilt=' + beobId)
             }
           }
         }
