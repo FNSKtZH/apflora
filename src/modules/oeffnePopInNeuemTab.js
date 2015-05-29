@@ -2,5 +2,5 @@
 'use strict'
 
 module.exports = function (popId) {
-  window.open('index.html?ap=' + localStorage.apId + '&pop=' + popId, '_blank')
+  window.open('index.html?ap=' + window.localStorage.apId + '&pop=' + popId, '_blank')
 }

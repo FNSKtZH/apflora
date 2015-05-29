@@ -10,45 +10,45 @@ var $ = require('jquery'),
 
 module.exports = function (apId, popId, massnberId) {
   // prüfen, ob voraussetzungen gegeben sind
-  if (!apId && !localStorage.apId) {
+  if (!apId && !window.localStorage.apId) {
     // Anwendung neu initiieren
     window.apf.initiiereApp()
     return
   }
-  if (!popId && !localStorage.popId && !window.apf.pop && (window.apf.pop && !window.apf.pop.PopId)) {
+  if (!popId && !window.localStorage.popId && !window.apf.pop && (window.apf.pop && !window.apf.pop.PopId)) {
     // es fehlen benötigte Daten > zwei Ebenen höher
     initiiereAp(apId)
     return
   }
-  if (!massnberId && !localStorage.popmassnberId) {
+  if (!massnberId && !window.localStorage.popmassnberId) {
     // es fehlen benötigte Daten > eine Ebene höher
     initiierePop(apId, popId)
     return
   }
 
   // apId setzen
-  localStorage.apId = localStorage.apId || apId
-  apId = apId || localStorage.apId
+  window.localStorage.apId = window.localStorage.apId || apId
+  apId = apId || window.localStorage.apId
 
   // popId setzen
-  if (!localStorage.popId) {
+  if (!window.localStorage.popId) {
     if (!window.apf.pop || !window.apf.pop.PopId) {
-      localStorage.popId = popId
+      window.localStorage.popId = popId
     } else {
-      localStorage.popId = window.apf.pop.PopId
+      window.localStorage.popId = window.apf.pop.PopId
     }
   }
   if (!popId) {
     if (!window.apf.pop || !window.apf.pop.PopId) {
-      popId = localStorage.popId
+      popId = window.localStorage.popId
     } else {
       popId = window.apf.pop.PopId
     }
   }
 
   // massnberId setzen
-  localStorage.popmassnberId = localStorage.popmassnberId || massnberId
-  massnberId = massnberId || localStorage.popmassnberId
+  window.localStorage.popmassnberId = window.localStorage.popmassnberId || massnberId
+  massnberId = massnberId || window.localStorage.popmassnberId
 
   // Felder zurücksetzen
   leereFelderVonFormular('popmassnber')
@@ -72,7 +72,7 @@ module.exports = function (apId, popId, massnberId) {
 
       // Formulare blenden
       zeigeFormular('popmassnber')
-      history.pushState(null, null, 'index.html?ap=' + apId + '&pop=' + popId + '&popmassnber=' + massnberId)
+      window.history.pushState(null, null, 'index.html?ap=' + apId + '&pop=' + popId + '&popmassnber=' + massnberId)
 
       // bei neuen Datensätzen Fokus steuern
       $('#PopMassnBerJahr').focus()

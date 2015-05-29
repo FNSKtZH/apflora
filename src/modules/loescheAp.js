@@ -20,9 +20,9 @@ module.exports = function (apId) {
     type: 'delete',
     url: 'api/v1/apflora/tabelle=ap/tabelleIdFeld=ApArtId/tabelleId=' + apId
   }).done(function () {
-    delete localStorage.apId
+    delete window.localStorage.apId
     delete window.apf.ap
-    delete localStorage.ap
+    delete window.localStorage.ap
     // alle zwischengespeicherten aplisten löschen
     delete window.apf.apliste
     $('#programmNeu')

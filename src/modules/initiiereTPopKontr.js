@@ -24,58 +24,58 @@ var $ = require('jquery'),
 
 module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
   // prüfen, ob voraussetzungen gegeben sind
-  if (!apId && !localStorage.apId) {
+  if (!apId && !window.localStorage.apId) {
     // Anwendung neu initiieren
     window.apf.initiiereApp()
     return
   }
-  if (!popId && !localStorage.popId && !window.apf.pop && (window.apf.pop && !window.apf.pop.PopId)) {
+  if (!popId && !window.localStorage.popId && !window.apf.pop && (window.apf.pop && !window.apf.pop.PopId)) {
     // es fehlen benötigte Daten > zwei Ebenen höher
     initiiereAp(apId)
     return
   }
-  if (!tpopId && !localStorage.tpopId) {
+  if (!tpopId && !window.localStorage.tpopId) {
     // es fehlen benötigte Daten > eine Ebene höher
     initiierePop(apId, popId)
     return
   }
-  if (!feldKontrId && !localStorage.tpopfeldkontrId) {
+  if (!feldKontrId && !window.localStorage.tpopfeldkontrId) {
     // es fehlen benötigte Daten > eine Ebene höher
     initiiereTPop(apId, popId, tpopId)
     return
   }
 
   // apId setzen
-  localStorage.apId = localStorage.apId || apId
-  apId = apId || localStorage.apId
+  window.localStorage.apId = window.localStorage.apId || apId
+  apId = apId || window.localStorage.apId
   // popId setzen
-  if (!localStorage.popId) {
+  if (!window.localStorage.popId) {
     if (!window.apf.pop || !window.apf.pop.PopId) {
-      localStorage.popId = popId
+      window.localStorage.popId = popId
     } else {
-      localStorage.popId = window.apf.pop.PopId
+      window.localStorage.popId = window.apf.pop.PopId
     }
   }
   if (!popId) {
     if (!window.apf.pop || !window.apf.pop.PopId) {
-      popId = localStorage.popId
+      popId = window.localStorage.popId
     } else {
       popId = window.apf.pop.PopId
     }
   }
   // tpopId setzen
-  localStorage.tpopId = localStorage.tpopId || tpopId
-  tpopId = tpopId || localStorage.tpopId
+  window.localStorage.tpopId = window.localStorage.tpopId || tpopId
+  tpopId = tpopId || window.localStorage.tpopId
   // feldKontrId setzen
-  localStorage.tpopfeldkontrId = localStorage.tpopfeldkontrId || feldKontrId
-  feldKontrId = feldKontrId || localStorage.tpopfeldkontrId
+  window.localStorage.tpopfeldkontrId = window.localStorage.tpopfeldkontrId || feldKontrId
+  feldKontrId = feldKontrId || window.localStorage.tpopfeldkontrId
 
   // typ setzen, falls er nicht übergeben wurde (provisorisch)
   // TODO: entfernen, wenn router übernimmt
-  if (!kontrTyp && localStorage.tpopfreiwkontr) {
+  if (!kontrTyp && window.localStorage.tpopfreiwkontr) {
     kontrTyp = 'freiwKontr'
   }
-  if (!kontrTyp && !localStorage.tpopfreiwkontr) {
+  if (!kontrTyp && !window.localStorage.tpopfreiwkontr) {
     kontrTyp = 'feldKontr'
   }
 
@@ -124,10 +124,10 @@ module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
       if (data.TPopKontrDatum) {
         // chrome akzeptiert nur - getrennte Daten. Und zeigt sie dann gemäss Pattern korrekt an
         // die übrigen stellen mit - getrennte Daten leider mit - dar
-        if (!!window.chrome) {
-          $('#TPopKontrDatum').val(dateFormat(data.TPopKontrDatum, 'yyyy-mm-dd'))
-        } else {
+        if (!window.chrome) {
           $('#TPopKontrDatum').val(dateFormat(data.TPopKontrDatum, 'dd.mm.yyyy'))
+        } else {
+          $('#TPopKontrDatum').val(dateFormat(data.TPopKontrDatum, 'yyyy-mm-dd'))
         }
       }
       $('#TPopKontrTxt').val(data.TPopKontrTxt)
@@ -264,9 +264,9 @@ module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
       // Formulare blenden
       zeigeFormular('tpopfeldkontr')
       if (kontrTyp === 'feldKontr') {
-        history.pushState(null, null, 'index.html?ap=' + apId + '&pop=' + popId + '&tpop=' + tpopId + '&tpopfeldkontr=' + feldKontrId)
+        window.history.pushState(null, null, 'index.html?ap=' + apId + '&pop=' + popId + '&tpop=' + tpopId + '&tpopfeldkontr=' + feldKontrId)
       } else {
-        history.pushState(null, null, 'index.html?ap=' + apId + '&pop=' + popId + '&tpop=' + tpopId + '&tpopfreiwkontr=' + feldKontrId)
+        window.history.pushState(null, null, 'index.html?ap=' + apId + '&pop=' + popId + '&tpop=' + tpopId + '&tpopfreiwkontr=' + feldKontrId)
       }
 
       // Register in Feldkontr blenden

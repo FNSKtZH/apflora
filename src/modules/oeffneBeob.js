@@ -17,6 +17,6 @@ module.exports = function (beob) {
 
   beobTyp = (isNaN(beob.NO_NOTE) ? 'evab' : 'infospezies')
 
-  localStorage.beobtyp = beobTyp
+  window.localStorage.beobtyp = beobTyp
   initiiereBeob(beobTyp, beob.NO_NOTE, beobStatus)
 }

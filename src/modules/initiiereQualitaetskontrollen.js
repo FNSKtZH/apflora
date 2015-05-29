@@ -10,7 +10,6 @@
 'use strict'
 
 var $ = require('jquery'),
-  _ = require('underscore'),
   zeigeFormular = require('./zeigeFormular'),
   kontrolliereProgramm = require('./kontrolliereProgramm')
 
@@ -31,7 +30,7 @@ module.exports = function (apId) {
   window.apf.qsList = qsList
 
   zeigeFormular('qualitaetskontrollen')
-  history.pushState(null, null, 'index.html?ap=' + apId + '&qualitaetskontrollen=true')
+  window.history.pushState(null, null, 'index.html?ap=' + apId + '&qualitaetskontrollen=true')
 
   kontrolliereProgramm()
 }

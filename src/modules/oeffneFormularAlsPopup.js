@@ -15,7 +15,7 @@ module.exports = function (formularname, id, statusZuordnung) {
     formWidth = 600
 
   // id setzen
-  localStorage[formularname + 'Id'] = id
+  window.localStorage[formularname + 'Id'] = id
 
   // titel bestimmen
   switch (formularname) {
