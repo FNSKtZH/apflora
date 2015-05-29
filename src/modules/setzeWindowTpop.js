@@ -1,7 +1,6 @@
 // setzt window.apf.tpop und window.localStorage.tpopId
 // wird benötigt, wenn beim App-Start direkt ein deep link geöffnet wird
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery')

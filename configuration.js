@@ -2,7 +2,6 @@
  * Hier werden zentral alle Konfigurationsparameter gesammelt
  */
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var config = {},

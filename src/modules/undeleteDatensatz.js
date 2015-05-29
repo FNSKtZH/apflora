@@ -1,5 +1,3 @@
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
-
 // Stellt einen Datensatz aus window.apf.deleted wieder her
 /*
 ** TODO

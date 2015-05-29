@@ -1,7 +1,6 @@
 // löst einen Download aus
 // als Formate steht momentan nur csv (und teilweise kml) zur Verfügung, weil xlsx leider nicht funktioniert hat
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery'),

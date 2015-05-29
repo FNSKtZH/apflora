@@ -1,6 +1,5 @@
 // sucht features an einem Ort in der Karte
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 module.exports = function (pixel) {

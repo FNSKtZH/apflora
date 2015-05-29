@@ -1,7 +1,6 @@
 // steuert den style von Beob
 // selected: mit der Maus oder drag_box markierte
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var ol = require('ol')

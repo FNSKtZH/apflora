@@ -1,6 +1,5 @@
 // setzt die Höhe von textareas so, dass der Text genau rein passt
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 module.exports = function (id, maxHeight) {

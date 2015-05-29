@@ -5,7 +5,6 @@
  * then checks if point is inside polygon
  */
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var turf = require('turf'),

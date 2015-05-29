@@ -3,7 +3,6 @@
 // sonst wird die enthaltene Version durch die aktuelle ersetzt
 // geschrieben wird GeoJSON. Grund: Die Layerobjekte sind rekursiv und können daher nicht stringified werden
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery'),

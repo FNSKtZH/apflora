@@ -1,7 +1,6 @@
 // zeigt während 25 Sekunden einen Hinweis an und einen Link, mit dem eine Aktion rückgängig gemacht werden kann
 // erwartet die Mitteilung, was passiert ist
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery')

@@ -1,6 +1,5 @@
 // tooltip bzw. label vorbereiten: nullwerte ausblenden
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 module.exports = function (popnr, tpopnr) {

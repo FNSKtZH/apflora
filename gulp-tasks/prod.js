@@ -2,7 +2,6 @@
  * Baut das Projekt für die Produktion
  */
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict';
 
 var gulp        = require('gulp'),

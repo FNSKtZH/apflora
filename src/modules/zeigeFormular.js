@@ -4,7 +4,6 @@
 // und alle anderen ausgeblendet
 // zusätzlich wird die Höhe von textinput-Feldern an den Textinhalt angepasst
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery'),

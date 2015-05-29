@@ -1,7 +1,6 @@
 // erwartet aktuelle Werte für jahr und typ
 // erstellt den label für den Baum
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 module.exports = function (jahr, typ) {
