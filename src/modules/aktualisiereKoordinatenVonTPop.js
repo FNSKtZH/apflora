@@ -10,7 +10,7 @@ module.exports = function (tpop) {
 
   // Objekt vorbereiten, das die Felder, ihre Werte und übrige benötigte Angaben enthält
   felder.id = tpop.TPopId
-  felder.user = sessionStorage.user
+  felder.user = window.sessionStorage.user
   felder.TPopXKoord = tpop.TPopXKoord
   felder.TPopYKoord = tpop.TPopYKoord
 

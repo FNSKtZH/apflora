@@ -35,7 +35,7 @@ module.exports = function (view, filename, format) {
     }).done(function (data) {
       // als Blob verpacken und downloaden
       blobData = createBlobDataXlsx(data)
-      blob = new Blob([blobData], {type: 'application/octet-stream;charset=utf-8;'})
+      blob = new window.Blob([blobData], {type: 'application/octet-stream;charset=utf-8;'})
       saveAs(blob, filename + '_' + getTimestamp() + '.xlsx')
     })
   } else {
