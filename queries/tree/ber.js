@@ -43,7 +43,7 @@ module.exports = function (request, reply) {
     function (err, data) {
       var node
 
-      if (err) { return reply(err); }
+      if (err) { return reply(err) }
 
       node = {}
       node.data = 'Berichte (' + data.length + ')'

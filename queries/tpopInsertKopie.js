@@ -15,7 +15,7 @@ module.exports = function (request, callback) {
   var tpopId = escapeStringForSql(request.params.tpopId),
     popId = escapeStringForSql(request.params.popId),
     user = escapeStringForSql(request.params.user),   // der Benutzername
-    date = new Date().toISOString();                  // wann gespeichert wird
+    date = new Date().toISOString()                   // wann gespeichert wird
 
   async.series([
     function (callback) {

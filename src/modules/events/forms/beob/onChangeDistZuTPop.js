@@ -4,7 +4,7 @@ var $ = require('jquery'),
   ordneBeobEinerTpopZu = require('../../../ordneBeobEinerTpopZu')
 
 module.exports = function () {
-  var beobId = localStorage.beobId,
+  var beobId = window.localStorage.beobId,
     tpopId = $(this).val(),
     beobTpopId
 

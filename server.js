@@ -5,7 +5,6 @@
 'use strict'
 
 var _ = require('underscore'),
-  json2xls = require('json2xls'),
   json2csv = require('json2csv'),
   // wird nur in Entwicklung genutzt
   serverOptionsDevelopment = {
@@ -391,15 +390,15 @@ server.route({
   config: {
     pre: [
       [
-        { method: treeAssozarten,           assign: 'assozarten' },
-        { method: treeIdealbiotop,          assign: 'idealbiotop' },
-        { method: treeBeobNichtZuzuordnen,  assign: 'beobNichtZuzuordnen' },
-        { method: treeBeobNichtBeurteilt,   assign: 'beobNichtBeurteilt' },
-        { method: treeBer,                  assign: 'ber' },
-        { method: treeJBer,                 assign: 'jber' },
-        { method: treeErfkrit,              assign: 'erfkrit' },
-        { method: treeApziel,               assign: 'apziel' },
-        { method: treePop,                  assign: 'pop' },
+        { method: treeAssozarten, assign: 'assozarten' },
+        { method: treeIdealbiotop, assign: 'idealbiotop' },
+        { method: treeBeobNichtZuzuordnen, assign: 'beobNichtZuzuordnen' },
+        { method: treeBeobNichtBeurteilt, assign: 'beobNichtBeurteilt' },
+        { method: treeBer, assign: 'ber' },
+        { method: treeJBer, assign: 'jber' },
+        { method: treeErfkrit, assign: 'erfkrit' },
+        { method: treeApziel, assign: 'apziel' },
+        { method: treePop, assign: 'pop' },
         { method: treeQualitaetskontrollen, assign: 'qualitaetskontrollen' }
       ]
 
@@ -506,7 +505,7 @@ server.route({
   // handler: exportView
   handler: function (request, reply) {
     exportView(request, function (err, data) {
-      if (err) { return reply(err); }
+      if (err) { return reply(err) }
       reply(data)
         .header('Content-Type', 'application/json;')
         .header('Accept', 'application/json;')
@@ -524,7 +523,7 @@ server.route({
     var filename = request.params.filename
     exportView(request, function (err, data) {
       var fields = _.keys(data[0])
-      if (err) { return reply(err); }
+      if (err) { return reply(err) }
       json2csv({
         data: data,
         fields: fields
@@ -553,7 +552,7 @@ server.route({
         data: data,
         fields: fields
       }, function (err, csv) {
-        if (err) { return reply(err); }
+        if (err) { return reply(err) }
         reply(csv)
           .header('Content-Type', 'text/x-csv; charset=utf-8')
           .header('Content-disposition', 'attachment; filename=' + filename + '.csv')
@@ -573,7 +572,7 @@ server.route({
       kml
 
     exportView(request, function (err, data) {
-      if (err) { return reply(err); }
+      if (err) { return reply(err) }
       switch (view) {
         case 'v_pop_kml':
         case 'v_pop_kmlnamen':

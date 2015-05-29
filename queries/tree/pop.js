@@ -20,8 +20,8 @@ var _ = require('underscore'),
 // alle Nummern dieselbe Anzahl stellen haben
 function ergaenzePopNrUmFuehrendeNullen (popNrMax, popNr) {
   /*jslint white: true, plusplus: true*/
-  if (!popNr && popNr !== 0) { return null; }
-  if (!popNrMax && popNrMax !== 0) { return null; }
+  if (!popNr && popNr !== 0) { return null }
+  if (!popNrMax && popNrMax !== 0) { return null }
 
   // Nummern in Strings umwandeln
   popNrMax = popNrMax.toString()
@@ -147,7 +147,7 @@ module.exports = function (request, reply) {
           popOrdnerNodeChildren,
           popNrMax
 
-        if (err) { return reply(err); }
+        if (err) { return reply(err) }
 
         // node für apOrdnerPop aufbauen
         popOrdnerNode.data = 'Populationen (' + popListe.length + ')'

@@ -22,7 +22,7 @@ module.exports = function (request, reply) {
       connection.query(
         'SELECT ZielId, ZielTyp, ZielJahr, ZielBezeichnung FROM ziel WHERE ApArtId = ' + apId + ' ORDER BY ZielTyp, ZielBezeichnung',
         function (err, apzielListe) {
-          if (err) { return callback(err); }
+          if (err) { return callback(err) }
           callback(null, apzielListe)
         }
       )
@@ -35,7 +35,7 @@ module.exports = function (request, reply) {
       connection.query(
         'SELECT ZielBerId, ZielId, ZielBerJahr, ZielBerErreichung FROM zielber where ZielId in (' + zielIds.join() + ') ORDER BY ZielBerJahr, ZielBerErreichung',
         function (err, zielberListe) {
-          if (err) { return callback(err); }
+          if (err) { return callback(err) }
           // das Ergebnis der vorigen Abfrage anfügen
           var resultArray = [apzielListe, zielberListe]
           callback(null, resultArray)

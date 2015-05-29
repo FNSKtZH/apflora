@@ -35,7 +35,7 @@ module.exports = function (request, reply) {
   connection.query(
     'SELECT AaId, apflora_beob.adb_eigenschaften.Artname FROM assozart LEFT JOIN apflora_beob.adb_eigenschaften ON AaSisfNr = apflora_beob.adb_eigenschaften.TaxonomieId where AaApArtId = ' + apId + ' ORDER BY apflora_beob.adb_eigenschaften.Artname',
     function (err, data) {
-      if (err) { return reply(err); }
+      if (err) { return reply(err) }
       response = {}
       response.data = 'assoziierte Arten (' + data.length + ')'
       response.attr = {

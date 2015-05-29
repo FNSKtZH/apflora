@@ -21,7 +21,7 @@ module.exports = function (str) {
           case "'":
           case '\\':
           case '%':
-            return '\\' + char; // prepends a backslash to backslash, percent and double/single quotes
+            return '\\' + char // prepends a backslash to backslash, percent and double/single quotes
         }
       })
     } else {

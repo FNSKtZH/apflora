@@ -1,7 +1,6 @@
 'use strict'
 
 var mysql = require('mysql'),
-  async = require('async'),
   config = require('../configuration'),
   escapeStringForSql = require('./escapeStringForSql'),
   connection = mysql.createConnection({
@@ -20,13 +19,13 @@ var mysql = require('mysql'),
 module.exports = function (request, callback) {
   var apId = escapeStringForSql(request.params.apId), // ApArtId
     user = escapeStringForSql(request.params.user), // der Benutzername
-    date = new Date().toISOString();                // wann gespeichert wird
+    date = new Date().toISOString()                // wann gespeichert wird
 
   // neuen AP einfügen
   connection.query(
     'INSERT INTO apflora.ap (ApArtId, MutWann, MutWer) VALUES (' + apId + ', "' + date + '", "' + user + '")',
     function (err, data) {
-      if (err) { callback(err, null); }
+      if (err) { callback(err, null) }
       // Artwert holen
       connection2.query(
         'SELECT Artwert FROM apflora_beob.adb_eigenschaften WHERE TaxonomieId=' + apId,

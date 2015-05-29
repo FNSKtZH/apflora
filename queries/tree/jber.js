@@ -41,7 +41,7 @@ function buildChildrenForJBerOrdner (results) {
   _.each(results.jberListe, function (jber) {
     object = {}
 
-    if (jber.JBerJahr) { beschriftung = jber.JBerJahr.toString(); }
+    if (jber.JBerJahr) { beschriftung = jber.JBerJahr.toString() }
     object.data = beschriftung
 
     object.attr = {
@@ -84,7 +84,7 @@ module.exports = function (request, reply) {
       nodeChildren,
       node = {}
 
-    if (err) { return reply(err); }
+    if (err) { return reply(err) }
 
     node.data = 'AP-Berichte (' + jberListe.length + ')'
     node.attr = {

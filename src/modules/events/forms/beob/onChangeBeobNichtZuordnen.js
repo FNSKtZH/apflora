@@ -3,7 +3,7 @@
 var ordneBeobEinerTpopZu = require('../../../ordneBeobEinerTpopZu')
 
 module.exports = function () {
-  var beobId = localStorage.beobId,
+  var beobId = window.localStorage.beobId,
     beobStatus = 'nicht_zuordnen',
     tpopId = null,
     beobTpopId = null,
