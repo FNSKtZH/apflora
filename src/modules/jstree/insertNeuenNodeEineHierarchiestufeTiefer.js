@@ -9,7 +9,6 @@ var $ = require('jquery'),
   erstelleUnterordnerVonTpop = require('./erstelleUnterordnerVonTpop'),
   erstelleUnterordnerVonPop = require('./erstelleUnterordnerVonPop'),
   erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
-  capitaliseFirstLetter = require('../../lib/capitaliseFirstLetter'),
   beschrifteOrdner = require('../beschrifteOrdner')
 
 module.exports = function (aktiverNode, parentNode, strukturtyp, dsId, beschriftung) {
@@ -22,11 +21,11 @@ module.exports = function (aktiverNode, parentNode, strukturtyp, dsId, beschrift
   }
 
   // id global verfügbar machen
-  localStorage[strukturtyp + 'Id'] = dsId
+  window.localStorage[strukturtyp + 'Id'] = dsId
   // letzte globale Variable entfernen
   delete window.apf[strukturtyp]
-  if (strukturtyp === 'apziel' && localStorage.apzielVonOrdnerApziel) {
-    // localStorage.apzielVonOrdnerApziel sagt: apziel wird vom ordner_apziel aus angelegt > temporären Unterordner anlegen
+  if (strukturtyp === 'apziel' && window.localStorage.apzielVonOrdnerApziel) {
+    // window.localStorage.apzielVonOrdnerApziel sagt: apziel wird vom ordner_apziel aus angelegt > temporären Unterordner anlegen
     neueApzieleNode = $.jstree._reference(aktiverNode).create_node(aktiverNode, 'last', {
       'data': 'neue AP-Ziele',
       'attr': {
@@ -42,7 +41,7 @@ module.exports = function (aktiverNode, parentNode, strukturtyp, dsId, beschrift
         'typ': 'apziel'
       }
     })
-    delete localStorage.apzielVonOrdnerApziel
+    delete window.localStorage.apzielVonOrdnerApziel
   } else {
     // Normalfall
     // neuen Node bauen
@@ -72,7 +71,7 @@ module.exports = function (aktiverNode, parentNode, strukturtyp, dsId, beschrift
   // im create_node-Event von jstree wird Jahr eingefügt und gespeichert
   }
   // Node-Beschriftung: Anzahl anpassen
-  if (strukturtyp === 'apziel' && localStorage.apzielVonApzieljahr) {
+  if (strukturtyp === 'apziel' && window.localStorage.apzielVonApzieljahr) {
     // hier ist ein Ordner zwischengeschaltet
     // Parent Node-Beschriftung: Anzahl anpassen, wenns nicht der neue Ordner ist
     if ($.jstree._reference(parentNode).get_text(parentNode) !== 'neue AP-Ziele') {
@@ -80,7 +79,7 @@ module.exports = function (aktiverNode, parentNode, strukturtyp, dsId, beschrift
     }
     // aktiver Node-Beschriftung: Anzahl anpassen
     beschrifteOrdner(aktiverNode)
-    delete localStorage.apzielVonApzieljahr
+    delete window.localStorage.apzielVonApzieljahr
   } else if (strukturtyp !== 'jberUebersicht') {
     beschrifteOrdner(aktiverNode)
   }

@@ -8,9 +8,7 @@ var $ = require('jquery'),
 
 module.exports = function (aktiverNode) {
   // nur aktualisieren, wenn Schreibrechte bestehen
-  if (!pruefeSchreibvoraussetzungen()) {
-    return
-  }
+  if (!pruefeSchreibvoraussetzungen()) { return }
   window.apf.popNodeKopiert = aktiverNode
   // Daten des Objekts holen
   $.ajax({

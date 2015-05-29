@@ -11,7 +11,7 @@ module.exports = function (nodeApId) {
 
   $.ajax({
     type: 'post',
-    url: 'api/v1/update/apflora/tabelle=pop/tabelleIdFeld=PopId/tabelleId=' + window.apf.popId + '/feld=ApArtId/wert=' + apId + '/user=' + encodeURIComponent(sessionStorage.user)
+    url: 'api/v1/update/apflora/tabelle=pop/tabelleIdFeld=PopId/tabelleId=' + window.apf.popId + '/feld=ApArtId/wert=' + apId + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function () {
     // Baum neu aufbauen
     $.when(erstelleTree(apId)).then(function () {

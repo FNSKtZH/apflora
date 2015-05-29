@@ -10,11 +10,9 @@ var $ = require('jquery'),
 module.exports = function (nodeFeldkontrId) {
   var data = {}
   data.id = erstelleIdAusDomAttributId(nodeFeldkontrId)
-  data.user = sessionStorage.user
+  data.user = window.sessionStorage.user
   // nur aktualisieren, wenn Schreibrechte bestehen
-  if (!pruefeSchreibvoraussetzungen()) {
-    return
-  }
+  if (!pruefeSchreibvoraussetzungen()) { return }
   _.each(window.apf.feldkontrBiotop, function (value, key) {
     $('#' + key).val(value)
     data[key] = value
