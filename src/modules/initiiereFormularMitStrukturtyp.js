@@ -35,7 +35,7 @@ fn.initiiereTPopBer = require('./initiiereTPopBer')
 module.exports = function (strukturtyp) {
   if (strukturtyp === 'tpopfreiwkontr') {
     // der Initiierung mitteilen, dass es eine Freiwilligenkontrolle ist und keine Feldkontrolle
-    localStorage.tpopfreiwkontr = true
+    window.localStorage.tpopfreiwkontr = true
     // Freiwilligen-Kontrollen werden von derselben Funktion initiiert, wie Feldkontrollen
     fn.initiiereTPopKontr()
     return

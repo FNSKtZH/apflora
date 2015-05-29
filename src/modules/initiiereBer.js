@@ -12,24 +12,24 @@ var $ = require('jquery'),
 // Quelle: https://www.scriptiny.com/2012/09/jquery-input-textarea-limiter/
 module.exports = function (apId, berId) {
   // prüfen, ob voraussetzungen gegeben sind
-  if (!apId && !localStorage.apId) {
+  if (!apId && !window.localStorage.apId) {
     // Anwendung neu initiieren
     window.apf.initiiereApp()
     return
   }
-  if (!berId && !localStorage.berId) {
+  if (!berId && !window.localStorage.berId) {
     // es fehlen benötigte Daten > eine Ebene höher
     initiiereAp(apId)
     return
   }
 
   // apId setzen
-  localStorage.apId = localStorage.apId || apId
-  apId = apId || localStorage.apId
+  window.localStorage.apId = window.localStorage.apId || apId
+  apId = apId || window.localStorage.apId
 
   // berId setzen
-  localStorage.berId = localStorage.berId || berId
-  berId = berId || localStorage.berId
+  window.localStorage.berId = window.localStorage.berId || berId
+  berId = berId || window.localStorage.berId
 
   var $BerAutor = $('#BerAutor'),
     $BerJahr = $('#BerJahr'),
@@ -44,7 +44,7 @@ module.exports = function (apId, berId) {
   // Daten für die ber aus der DB holen
   $.ajax({
     type: 'get',
-    url: '/api/v1/apflora/tabelle=ber/feld=BerId/wertNumber=' + localStorage.berId
+    url: '/api/v1/apflora/tabelle=ber/feld=BerId/wertNumber=' + window.localStorage.berId
   }).done(function (data) {
     // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
     if (data && data[0]) {
@@ -68,7 +68,7 @@ module.exports = function (apId, berId) {
 
       // Formulare blenden
       zeigeFormular('ber')
-      history.pushState(null, null, 'index.html?ap=' + localStorage.apId + '&ber=' + localStorage.berId)
+      window.history.pushState(null, null, 'index.html?ap=' + window.localStorage.apId + '&ber=' + window.localStorage.berId)
 
       // bei neuen Datensätzen Fokus steuern
       if (!$BerAutor.val()) {

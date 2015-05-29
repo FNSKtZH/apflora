@@ -9,27 +9,27 @@ var $ = require('jquery'),
 
 module.exports = function (apId, apZielId) {
   // prüfen, ob voraussetzungen gegeben sind
-  if (!apId && !localStorage.apId) {
+  if (!apId && !window.localStorage.apId) {
     // Anwendung neu initiieren
     window.apf.initiiereApp()
     return
   }
-  if (!apZielId && !localStorage.apzielId) {
+  if (!apZielId && !window.localStorage.apzielId) {
     // es fehlen benötigte Daten > eine Ebene höher
     initiiereAp(apId)
     return
   }
 
   // apId setzen
-  localStorage.apId = localStorage.apId || apId
-  apId = apId || localStorage.apId
+  window.localStorage.apId = window.localStorage.apId || apId
+  apId = apId || window.localStorage.apId
 
   // apZielId setzen
-  if (!localStorage.apzielId) {
-    localStorage.apzielId = apZielId
+  if (!window.localStorage.apzielId) {
+    window.localStorage.apzielId = apZielId
   }
   if (!apZielId) {
-    apZielId = localStorage.apzielId
+    apZielId = window.localStorage.apzielId
   }
 
   var $ZielJahr = $('#ZielJahr')
@@ -53,7 +53,7 @@ module.exports = function (apId, apZielId) {
       $('#ZielBezeichnung').val(data.ZielBezeichnung)
       // Formulare blenden
       zeigeFormular('apziel')
-      history.pushState(null, null, 'index.html?ap=' + apId + '&apziel=' + apZielId)
+      window.history.pushState(null, null, 'index.html?ap=' + apId + '&apziel=' + apZielId)
       // bei neuen Datensätzen Fokus steuern
       if (!$ZielJahr.val()) {
         $ZielJahr.focus()

@@ -13,32 +13,32 @@ module.exports = function (apId, popId, ohneZuZeigen) {
     $PopNr = $('#PopNr')
 
   // prüfen, ob voraussetzungen gegeben sind
-  if (!apId && !localStorage.apId) {
+  if (!apId && !window.localStorage.apId) {
     // Anwendung neu initiieren
     window.apf.initiiereApp()
     return
   }
-  if (!popId && !localStorage.popId && !window.apf.pop && (window.apf.pop && !window.apf.pop.PopId)) {
+  if (!popId && !window.localStorage.popId && !window.apf.pop && (window.apf.pop && !window.apf.pop.PopId)) {
     // es fehlen benötigte Daten > zwei Ebenen höher
     initiiereAp(apId)
     return
   }
 
   // apId setzen
-  localStorage.apId = localStorage.apId || apId
-  apId = apId || localStorage.apId
+  window.localStorage.apId = window.localStorage.apId || apId
+  apId = apId || window.localStorage.apId
 
   // popId setzen
-  if (!localStorage.popId) {
+  if (!window.localStorage.popId) {
     if (!window.apf.pop || !window.apf.pop.PopId) {
-      localStorage.popId = popId
+      window.localStorage.popId = popId
     } else {
-      localStorage.popId = window.apf.pop.PopId
+      window.localStorage.popId = window.apf.pop.PopId
     }
   }
   if (!popId) {
     if (!window.apf.pop || !window.apf.pop.PopId) {
-      popId = localStorage.popId
+      popId = window.localStorage.popId
     } else {
       popId = window.apf.pop.PopId
     }
@@ -89,7 +89,7 @@ module.exports = function (apId, popId, ohneZuZeigen) {
       // nur, wenn ohneZuZeigen nicht true ist (true, um in dialog anzuzeigen)
       if (!ohneZuZeigen) {
         zeigeFormular('pop')
-        history.pushState(null, null, 'index.html?ap=' + apId + '&pop=' + popId)
+        window.history.pushState(null, null, 'index.html?ap=' + apId + '&pop=' + popId)
 
         // bei neuen Datensätzen Fokus steuern
         if (!$PopName.val()) {

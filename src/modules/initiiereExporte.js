@@ -8,8 +8,8 @@ module.exports = function (anchor) {
   $('#testartDiv').hide()
   $('#formsTitelzeile').hide()
   zeigeFormular('exporte')
-  history.pushState(null, null, 'index.html?exporte=true')
+  window.history.pushState(null, null, 'index.html?exporte=true')
   if (anchor) {
-    location.hash = '#' + anchor
+    window.location.hash = '#' + anchor
   }
 }
