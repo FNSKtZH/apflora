@@ -1,4 +1,4 @@
-// aktualisiert eine Kopie eigener Ebenen in localStorage
+// aktualisiert eine Kopie eigener Ebenen in window.localStorage
 // remove: wenn vorhanden, wird die Ebene entfernt
 // sonst wird die enthaltene Version durch die aktuelle ersetzt
 // geschrieben wird GeoJSON. Grund: Die Layerobjekte sind rekursiv und können daher nicht stringified werden
@@ -17,8 +17,8 @@ module.exports = function (layer, remove) {
     format,
     dataParsed
 
-  if (localStorage.olmapEigeneEbenen) {
-    eigeneEbenen = JSON.parse(localStorage.olmapEigeneEbenen)
+  if (window.localStorage.olmapEigeneEbenen) {
+    eigeneEbenen = JSON.parse(window.localStorage.olmapEigeneEbenen)
   }
 
   if (guid) {
@@ -39,9 +39,9 @@ module.exports = function (layer, remove) {
     }
     try {
       // TODO: wenn rueteren.kml importiert wurde erscheint Fehler 'Converting circular structure to JSON'
-      localStorage.olmapEigeneEbenen = JSON.stringify(eigeneEbenen)
+      window.localStorage.olmapEigeneEbenen = JSON.stringify(eigeneEbenen)
     } catch (e) {
-      console.log('Ebene konnte nicht in localStorage gespeichert werden. Fehlermeldung: ' + e)
+      console.log('Ebene konnte nicht in window.localStorage gespeichert werden. Fehlermeldung: ' + e)
       $('#eigene_layer_meldung_' + layer.get('title').replace(' ', '_'))
         .html('Ebene kann nicht im Cache des Browsers gespeichert werden')
         .show()

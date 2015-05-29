@@ -420,8 +420,8 @@ module.exports = function () {
   // var layers = layersProv.concat(bingLayers)
   layers = layersProv
 
-  // prüfen, ob in localStorage eigene Layer existieren
-  if (localStorage.olmapEigeneEbenen) {
+  // prüfen, ob in window.localStorage eigene Layer existieren
+  if (window.localStorage.olmapEigeneEbenen) {
     // drag and drop geo-files
     styleFunction = function (feature, resolution) {
       var featureStyleFunction = feature.getStyleFunction()
@@ -432,7 +432,7 @@ module.exports = function () {
       return defaultStyle[feature.getGeometry().getType()]
     }
     // diese hinzufügen
-    eigeneEbenen = JSON.parse(localStorage.olmapEigeneEbenen)
+    eigeneEbenen = JSON.parse(window.localStorage.olmapEigeneEbenen)
     eigeneEbenenLayers = []
     _.each(eigeneEbenen, function (ebene) {
       var format,
