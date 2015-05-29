@@ -6,32 +6,32 @@
  * - Hinweis (Begründung, wieso der Datensatz angezeigt wird)
  */
 
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var $                    = require('jquery'),
-    _                    = require('underscore'),
-    zeigeFormular        = require('./zeigeFormular'),
-    kontrolliereProgramm = require('./kontrolliereProgramm');
+var $ = require('jquery'),
+  _ = require('underscore'),
+  zeigeFormular = require('./zeigeFormular'),
+  kontrolliereProgramm = require('./kontrolliereProgramm')
 
 module.exports = function (apId) {
-    var listOptions = {
-            valueNames: ['hw', 'link'],
-            item: '<li><p class="hw"></p><p class="link"></p></li>'
-        },
-        qsList = new window.List('qualitaetskontrollen', listOptions);
+  var listOptions = {
+      valueNames: ['hw', 'link'],
+      item: '<li><p class="hw"></p><p class="link"></p></li>'
+    },
+    qsList = new window.List('qualitaetskontrollen', listOptions)
 
-    $('#qkRefresh').button({
-        icons: {
-            primary: 'ui-icon-refresh'
-        }
-    });
+  $('#qkRefresh').button({
+    icons: {
+      primary: 'ui-icon-refresh'
+    }
+  })
 
-    // make global so search can be cancelled
-    window.apf.qsList = qsList;
+  // make global so search can be cancelled
+  window.apf.qsList = qsList
 
-    zeigeFormular('qualitaetskontrollen');
-    history.pushState(null, null, "index.html?ap=" + apId + "&qualitaetskontrollen=true");
+  zeigeFormular('qualitaetskontrollen')
+  history.pushState(null, null, 'index.html?ap=' + apId + '&qualitaetskontrollen=true')
 
-    kontrolliereProgramm();
-};
+  kontrolliereProgramm()
+}

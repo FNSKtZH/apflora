@@ -1,34 +1,32 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-
-var _                 = require('underscore'),
-    erstelleTpopMassn = require('./tpopMassn');
+var _ = require('underscore'),
+  erstelleTpopMassn = require('./tpopMassn')
 
 module.exports = function (tpopMassnListe, tpop) {
-    var tpopMassnOrdner = {},
-        massnVonTpop,
-        tpopMassnNode;
+  var tpopMassnOrdner = {},
+    massnVonTpop,
+    tpopMassnNode
 
-    // Liste der Massnahmen dieser tpop erstellen
-    massnVonTpop = _.filter(tpopMassnListe, function (tpopMassn) {
-        return tpopMassn.TPopId === tpop.TPopId;
-    });
+  // Liste der Massnahmen dieser tpop erstellen
+  massnVonTpop = _.filter(tpopMassnListe, function (tpopMassn) {
+    return tpopMassn.TPopId === tpop.TPopId
+  })
 
-    // tpopOrdnerMassnahmen aufbauen
-    tpopMassnOrdner.data = 'Massnahmen (' + massnVonTpop.length + ')';
-    tpopMassnOrdner.attr = {
-        id:  'tpopOrdnerMassn' + tpop.TPopId,
-        typ: 'tpopOrdnerMassn'
-    };
-    tpopMassnOrdner.children = [];
+  // tpopOrdnerMassnahmen aufbauen
+  tpopMassnOrdner.data = 'Massnahmen (' + massnVonTpop.length + ')'
+  tpopMassnOrdner.attr = {
+    id: 'tpopOrdnerMassn' + tpop.TPopId,
+    typ: 'tpopOrdnerMassn'
+  }
+  tpopMassnOrdner.children = []
 
-    // massn aufbauen
-    _.each(massnVonTpop, function (massn) {
-        tpopMassnNode = erstelleTpopMassn(massn);
-        tpopMassnOrdner.children.push(tpopMassnNode);
-    });
+  // massn aufbauen
+  _.each(massnVonTpop, function (massn) {
+    tpopMassnNode = erstelleTpopMassn(massn)
+    tpopMassnOrdner.children.push(tpopMassnNode)
+  })
 
-
-    return tpopMassnOrdner;
-};
+  return tpopMassnOrdner
+}

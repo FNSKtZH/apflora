@@ -3,23 +3,23 @@
  * bis und mit März wird für das Vorjahr gearbeitet
  */
 
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
 module.exports = function () {
-    var date,
-        month,
-        jear,
-        berichtjahr;
+  var date,
+    month,
+    jear,
+    berichtjahr
 
-    date        = new Date();
-    month       = date.getMonth();
-    jear        = date.getFullYear();
-    berichtjahr = jear;
+  date = new Date()
+  month = date.getMonth()
+  jear = date.getFullYear()
+  berichtjahr = jear
 
-    if (month < 4) {
-        berichtjahr = jear - 1;
-    }
+  if (month < 4) {
+    berichtjahr = jear - 1
+  }
 
-    return berichtjahr;
-};
+  return berichtjahr
+}

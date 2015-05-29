@@ -4,20 +4,20 @@
  * @return {string}
 */
 
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var $  = require('jquery'),
-    ol = require('ol');
+var $ = require('jquery'),
+  ol = require('ol')
 
 module.exports = function (line) {
-    var length = Math.round(line.getLength() * 100) / 100,
-        output;
+  var length = Math.round(line.getLength() * 100) / 100,
+    output
 
-    if (length > 1000) {
-        output = (Math.round(length / 1000 * 100) / 100) + ' km';
-    } else {
-        output = (Math.round(length * 100) / 100) + ' m';
-    }
-    return output;
-};
+  if (length > 1000) {
+    output = (Math.round(length / 1000 * 100) / 100) + ' km'
+  } else {
+    output = (Math.round(length * 100) / 100) + ' m'
+  }
+  return output
+}

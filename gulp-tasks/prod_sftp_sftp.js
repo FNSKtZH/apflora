@@ -2,7 +2,7 @@
  * beamt die Dateien aus dem dist-Ordner nach apflora.ch
  */
 
-/*jslint node: true, browser: true, nomen: true, todo: true */
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var gulp = require('gulp'),

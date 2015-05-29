@@ -1,33 +1,32 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-
-var _                      = require('underscore'),
-    erstelleTPopFreiwKontr = require('./tpopFreiwkontr');
+var _ = require('underscore'),
+  erstelleTPopFreiwKontr = require('./tpopFreiwkontr')
 
 module.exports = function (tpopFreiwkontrListe, tpop) {
-    var tpopFreiwkontrOrdner = {},
-        freiwkontrVonTpop,
-        freiwkontrNode;
+  var tpopFreiwkontrOrdner = {},
+    freiwkontrVonTpop,
+    freiwkontrNode
 
-    // Liste der Freiwkontrollen dieser tpop erstellen
-    freiwkontrVonTpop = _.filter(tpopFreiwkontrListe, function (tpopFreiwkontr) {
-        return tpopFreiwkontr.TPopId === tpop.TPopId;
-    });
+  // Liste der Freiwkontrollen dieser tpop erstellen
+  freiwkontrVonTpop = _.filter(tpopFreiwkontrListe, function (tpopFreiwkontr) {
+    return tpopFreiwkontr.TPopId === tpop.TPopId
+  })
 
-    // tpopOrdnerFreiwkontr aufbauen
-    tpopFreiwkontrOrdner.data = 'Freiwilligen-Kontrollen (' + freiwkontrVonTpop.length + ')';
-    tpopFreiwkontrOrdner.attr = {
-        id:  'tpopOrdnerFreiwkontr' + tpop.TPopId,
-        typ: 'tpopOrdnerFreiwkontr'
-    };
-    tpopFreiwkontrOrdner.children = [];
+  // tpopOrdnerFreiwkontr aufbauen
+  tpopFreiwkontrOrdner.data = 'Freiwilligen-Kontrollen (' + freiwkontrVonTpop.length + ')'
+  tpopFreiwkontrOrdner.attr = {
+    id: 'tpopOrdnerFreiwkontr' + tpop.TPopId,
+    typ: 'tpopOrdnerFreiwkontr'
+  }
+  tpopFreiwkontrOrdner.children = []
 
-    // freiwkontr aufbauen
-    _.each(freiwkontrVonTpop, function (freiwkontr) {
-        freiwkontrNode = erstelleTPopFreiwKontr(freiwkontr);
-        tpopFreiwkontrOrdner.children.push(freiwkontrNode);
-    });
+  // freiwkontr aufbauen
+  _.each(freiwkontrVonTpop, function (freiwkontr) {
+    freiwkontrNode = erstelleTPopFreiwKontr(freiwkontr)
+    tpopFreiwkontrOrdner.children.push(freiwkontrNode)
+  })
 
-    return tpopFreiwkontrOrdner;
-};
+  return tpopFreiwkontrOrdner
+}

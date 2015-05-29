@@ -3,10 +3,10 @@
  * @return {number}
  */
 
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
 module.exports = function (laenge) {
-    var laengeGrad = Math.floor(laenge);
-    return Math.floor((laenge - laengeGrad) * 60);
-};
+  var laengeGrad = Math.floor(laenge)
+  return Math.floor((laenge - laengeGrad) * 60)
+}

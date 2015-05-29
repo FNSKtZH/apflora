@@ -1,26 +1,26 @@
 // Baum-node sinnvoll beschreiben, auch wenn leere Werte vorhanden
 
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
 module.exports = function (popber) {
-    var node  = {},
-        nodeText,
-        popberjahrText,
-        entwicklungText;
+  var node = {},
+    nodeText,
+    popberjahrText,
+    entwicklungText
 
-    if (popber) {
-        popberjahrText  = popber.PopBerJahr     || '(kein Jahr)';
-        entwicklungText = popber.EntwicklungTxt || '(nicht beurteilt)';
-        nodeText        = popberjahrText + ': ' + entwicklungText;
+  if (popber) {
+    popberjahrText = popber.PopBerJahr || '(kein Jahr)'
+    entwicklungText = popber.EntwicklungTxt || '(nicht beurteilt)'
+    nodeText = popberjahrText + ': ' + entwicklungText
 
-        // node aufbauen
-        node.data = nodeText;
-        node.attr = {
-            id: popber.PopBerId,
-            typ: 'popber'
-        };
+    // node aufbauen
+    node.data = nodeText
+    node.attr = {
+      id: popber.PopBerId,
+      typ: 'popber'
     }
+  }
 
-    return node;
-};
+  return node
+}

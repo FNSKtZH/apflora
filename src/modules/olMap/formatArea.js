@@ -4,22 +4,22 @@
  * @return {string}
 */
 
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var $  = require('jquery'),
-    ol = require('ol');
+var $ = require('jquery'),
+  ol = require('ol')
 
 module.exports = function (polygon) {
-    var area = polygon.getArea(),
-        output;
+  var area = polygon.getArea(),
+    output
 
-    if (area > 1000000) {
-        output = (Math.round(area / 1000000 * 100) / 100) + ' km<sup>2</sup>';
-    } else if (area > 10000) {
-        output = (Math.round(area / 10000 * 100) / 100) + ' ha';
-    } else {
-        output = (Math.round(area * 100) / 100) + ' m<sup>2</sup>';
-    }
-    return output;
-};
+  if (area > 1000000) {
+    output = (Math.round(area / 1000000 * 100) / 100) + ' km<sup>2</sup>'
+  } else if (area > 10000) {
+    output = (Math.round(area / 10000 * 100) / 100) + ' ha'
+  } else {
+    output = (Math.round(area * 100) / 100) + ' m<sup>2</sup>'
+  }
+  return output
+}

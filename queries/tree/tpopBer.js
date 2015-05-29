@@ -1,32 +1,31 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
-
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
 var returnFunction = function (tpopber) {
-    var node  = {},
-        nodeText;
+  var node = {},
+    nodeText
 
-    if (tpopber) {
-        // Baum-node sinnvoll beschreiben, auch wenn leere Werte vorhanden
-        if (tpopber.TPopBerJahr && tpopber.EntwicklungTxt) {
-            nodeText = tpopber.TPopBerJahr + ": " + tpopber.EntwicklungTxt;
-        } else if (tpopber.TPopBerJahr) {
-            nodeText = tpopber.TPopBerJahr + ": (nicht beurteilt)";
-        } else if (tpopber.EntwicklungTxt) {
-            nodeText = "(kein Jahr): " + tpopber.EntwicklungTxt;
-        } else {
-            nodeText = "(kein Jahr): (keine Beurteilung)";
-        }
-
-        // node aufbauen
-        node.data = nodeText;
-        node.attr = {
-            id: tpopber.TPopBerId,
-            typ: 'tpopber'
-        };
+  if (tpopber) {
+    // Baum-node sinnvoll beschreiben, auch wenn leere Werte vorhanden
+    if (tpopber.TPopBerJahr && tpopber.EntwicklungTxt) {
+      nodeText = tpopber.TPopBerJahr + ': ' + tpopber.EntwicklungTxt
+    } else if (tpopber.TPopBerJahr) {
+      nodeText = tpopber.TPopBerJahr + ': (nicht beurteilt)'
+    } else if (tpopber.EntwicklungTxt) {
+      nodeText = '(kein Jahr): ' + tpopber.EntwicklungTxt
+    } else {
+      nodeText = '(kein Jahr): (keine Beurteilung)'
     }
 
-    return node;
-};
+    // node aufbauen
+    node.data = nodeText
+    node.attr = {
+      id: tpopber.TPopBerId,
+      typ: 'tpopber'
+    }
+  }
 
-module.exports = returnFunction;
+  return node
+}
+
+module.exports = returnFunction

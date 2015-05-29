@@ -1,33 +1,33 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var $                          = require('jquery'),
-    erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
-    melde                      = require('../melde'),
-    zeigeBeobUndTPop           = require('../gMap/zeigeBeobUndTPop'),
-    zeigeBeob                  = require('../gMap/zeigeBeob');
+var $ = require('jquery'),
+  erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
+  melde = require('../melde'),
+  zeigeBeobUndTPop = require('../gMap/zeigeBeobUndTPop'),
+  zeigeBeob = require('../gMap/zeigeBeob')
 
 module.exports = function (nodeBeobId) {
-    $.ajax({
+  $.ajax({
+    type: 'get',
+    url: '/api/v1/beobKarte/apId=/tpopId=/beobId=' + erstelleIdAusDomAttributId(nodeBeobId) + '/nichtZuzuordnen='
+  }).done(function (beob) {
+    if (beob && beob[0]) {
+      // Array belassen -zeigeBeob benötigt einen Array
+      $.ajax({
         type: 'get',
-        url: '/api/v1/beobKarte/apId=/tpopId=/beobId=' + erstelleIdAusDomAttributId(nodeBeobId) + '/nichtZuzuordnen='
-    }).done(function (beob) {
-        if (beob && beob[0]) {
-            // Array belassen -zeigeBeob benötigt einen Array
-            $.ajax({
-                type: 'get',
-                url: 'api/v1/apKarte/apId=' + localStorage.apId
-            }).done(function (tpop) {
-                if (tpop && tpop.length > 0) {
-                    zeigeBeobUndTPop(beob, tpop);
-                } else {
-                    zeigeBeob(beob);
-                }
-            });
+        url: 'api/v1/apKarte/apId=' + localStorage.apId
+      }).done(function (tpop) {
+        if (tpop && tpop.length > 0) {
+          zeigeBeobUndTPop(beob, tpop)
         } else {
-            melde("Die Beobachtung hat keine Koordinaten<br>Bitte im Formular zuordnen", "Aktion abgebrochen");
+          zeigeBeob(beob)
         }
-    }).fail(function () {
-        melde("Fehler: Keine Daten erhalten");
-    });
-};
+      })
+    } else {
+      melde('Die Beobachtung hat keine Koordinaten<br>Bitte im Formular zuordnen', 'Aktion abgebrochen')
+    }
+  }).fail(function () {
+    melde('Fehler: Keine Daten erhalten')
+  })
+}

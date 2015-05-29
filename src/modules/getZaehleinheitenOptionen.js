@@ -7,28 +7,28 @@
  * dieser werden die geholten Daten übergeben
  */
 
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
 var $ = require('jquery'),
-    _ = require('underscore');
+  _ = require('underscore')
 
 module.exports = function () {
-    var dataGeholt = $.Deferred();
+  var dataGeholt = $.Deferred()
 
-    if (!window.apf.tPopKontrZaehleinheitOptionen) {
-        $.ajax({
-            type: 'get',
-            url: 'api/v1/feldkontrZaehleinheit'
-        }).done(function (data) {
-            window.apf.tPopKontrZaehleinheitOptionen = data;
-            dataGeholt.resolve();
-        }).fail(function () {
-            window.apf.tPopKontrZaehleinheitOptionen = [];
-            dataGeholt.resolve();
-        });
-    } else {
-        dataGeholt.resolve();
-    }
-    return dataGeholt.promise();
-};
+  if (!window.apf.tPopKontrZaehleinheitOptionen) {
+    $.ajax({
+      type: 'get',
+      url: 'api/v1/feldkontrZaehleinheit'
+    }).done(function (data) {
+      window.apf.tPopKontrZaehleinheitOptionen = data
+      dataGeholt.resolve()
+    }).fail(function () {
+      window.apf.tPopKontrZaehleinheitOptionen = []
+      dataGeholt.resolve()
+    })
+  } else {
+    dataGeholt.resolve()
+  }
+  return dataGeholt.promise()
+}

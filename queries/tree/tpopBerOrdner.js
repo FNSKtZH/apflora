@@ -1,35 +1,34 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-
-var _               = require('underscore'),
-    erstelleTPopBer = require('./tpopBer');
+var _ = require('underscore'),
+  erstelleTPopBer = require('./tpopBer')
 
 var returnFunction = function (tpopBerListe, tpop) {
-    var tpopTpopberOrdner = {},
-        tpopberVonTpop,
-        tpopBerNode;
+  var tpopTpopberOrdner = {},
+    tpopberVonTpop,
+    tpopBerNode
 
-    // Liste der Berichte dieser tpop erstellen
-    tpopberVonTpop = _.filter(tpopBerListe, function (tpopBer) {
-        return tpopBer.TPopId === tpop.TPopId;
-    });
+  // Liste der Berichte dieser tpop erstellen
+  tpopberVonTpop = _.filter(tpopBerListe, function (tpopBer) {
+    return tpopBer.TPopId === tpop.TPopId
+  })
 
-    // tpopOrdnerTpopber aufbauen
-    tpopTpopberOrdner.data = 'Teilpopulations-Berichte (' + tpopberVonTpop.length + ')';
-    tpopTpopberOrdner.attr = {
-        id: 'tpopOrdnerTpopber' + tpop.TPopId,
-        typ: 'tpopOrdnerTpopber'
-    };
-    tpopTpopberOrdner.children = [];
+  // tpopOrdnerTpopber aufbauen
+  tpopTpopberOrdner.data = 'Teilpopulations-Berichte (' + tpopberVonTpop.length + ')'
+  tpopTpopberOrdner.attr = {
+    id: 'tpopOrdnerTpopber' + tpop.TPopId,
+    typ: 'tpopOrdnerTpopber'
+  }
+  tpopTpopberOrdner.children = []
 
-    // tpopber aufbauen
-    _.each(tpopberVonTpop, function (tpopber) {
-        tpopBerNode = erstelleTPopBer(tpopber);
-        tpopTpopberOrdner.children.push(tpopBerNode);
-    });
+  // tpopber aufbauen
+  _.each(tpopberVonTpop, function (tpopber) {
+    tpopBerNode = erstelleTPopBer(tpopber)
+    tpopTpopberOrdner.children.push(tpopBerNode)
+  })
 
-    return tpopTpopberOrdner;
-};
+  return tpopTpopberOrdner
+}
 
-module.exports = returnFunction;
+module.exports = returnFunction

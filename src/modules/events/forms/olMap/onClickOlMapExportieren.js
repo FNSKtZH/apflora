@@ -1,8 +1,8 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var exportiereKarte = require('../../../olMap/exportiereKarte');
+var exportiereKarte = require('../../../olMap/exportiereKarte')
 
 module.exports = function (event) {
-    exportiereKarte(event);
-};
+  exportiereKarte(event)
+}

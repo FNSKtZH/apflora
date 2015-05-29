@@ -1,20 +1,20 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var escapeStringForSql = require('../escapeStringForSql');
+var escapeStringForSql = require('../escapeStringForSql')
 
 module.exports = function (request, reply) {
-    var apId,
-        node;
+  var apId,
+    node
 
-    apId      = escapeStringForSql(request.params.apId);
+  apId = escapeStringForSql(request.params.apId)
 
-    node      = {};
-    node.data = 'Idealbiotop';
-    node.attr = {
-        id:  'idealbiotop' + apId,
-        typ: 'idealbiotop'
-    };
+  node = {}
+  node.data = 'Idealbiotop'
+  node.attr = {
+    id: 'idealbiotop' + apId,
+    typ: 'idealbiotop'
+  }
 
-    reply(null, node);
-};
+  reply(null, node)
+}

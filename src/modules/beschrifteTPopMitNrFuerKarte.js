@@ -2,14 +2,14 @@
 // Wenn TPop mit ihrer Nummer beschriftet sein sollen
 // tpopNr und popNr wird übernommen
 
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
 module.exports = function (popNr, tpopNr) {
-    var tpopBeschriftung;
+  var tpopBeschriftung
 
-    popNr = popNr || "?";
-    tpopBeschriftung = (tpopNr ? popNr + "/" + tpopNr : popNr + "/?");
+  popNr = popNr || '?'
+  tpopBeschriftung = (tpopNr ? popNr + '/' + tpopNr : popNr + '/?')
 
-    return tpopBeschriftung;
-};
+  return tpopBeschriftung
+}

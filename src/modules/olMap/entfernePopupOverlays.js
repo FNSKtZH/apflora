@@ -1,25 +1,25 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
 var _ = require('underscore'),
-    $ = require('jquery');
+  $ = require('jquery')
 
 module.exports = function () {
-    var overlays = window.apf.olMap.map.getOverlays().getArray(),
-        zuLoeschendeOverlays = [];
+  var overlays = window.apf.olMap.map.getOverlays().getArray(),
+    zuLoeschendeOverlays = []
 
-    _.each(overlays, function (overlay) {
-        if (overlay.get('typ') === 'popup') {
-            zuLoeschendeOverlays.push(overlay);
-        }
-    });
+  _.each(overlays, function (overlay) {
+    if (overlay.get('typ') === 'popup') {
+      zuLoeschendeOverlays.push(overlay)
+    }
+  })
 
-    _.each(zuLoeschendeOverlays, function (overlay) {
-        window.apf.olMap.map.removeOverlay(overlay);
-    });
+  _.each(zuLoeschendeOverlays, function (overlay) {
+    window.apf.olMap.map.removeOverlay(overlay)
+  })
 
-    // alle qtips entfernen
-    $('.qtip').each(function () {
-        $(this).qtip('destroy', true);
-    });
-};
+  // alle qtips entfernen
+  $('.qtip').each(function () {
+    $(this).qtip('destroy', true)
+  })
+}

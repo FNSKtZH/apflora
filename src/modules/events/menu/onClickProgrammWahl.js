@@ -1,9 +1,9 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var $             = require('jquery'),
-    waehleApListe = require('../../waehleApListe');
+var $ = require('jquery'),
+  waehleApListe = require('../../waehleApListe')
 
 module.exports = function () {
-    waehleApListe($(this).attr('id'));
-};
+  waehleApListe($(this).attr('id'))
+}

@@ -1,25 +1,25 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
 module.exports = function (freiwkontr) {
-    var node  = {},
-        nodeText;
+  var node = {},
+    nodeText
 
-    if (freiwkontr) {
-        // Baum-node sinnvoll beschreiben, auch wenn leere Werte vorhanden
-        if (freiwkontr.TPopKontrJahr && freiwkontr.TPopKontrJahr >= 0) {
-            nodeText = freiwkontr.TPopKontrJahr.toString();
-        } else {
-            nodeText = "(kein Jahr)";
-        }
-
-        // node aufbauen
-        node.data = nodeText;
-        node.attr = {
-            id:  'tpopfreiwkontr' + freiwkontr.TPopKontrId,
-            typ: 'tpopfreiwkontr'
-        };
+  if (freiwkontr) {
+    // Baum-node sinnvoll beschreiben, auch wenn leere Werte vorhanden
+    if (freiwkontr.TPopKontrJahr && freiwkontr.TPopKontrJahr >= 0) {
+      nodeText = freiwkontr.TPopKontrJahr.toString()
+    } else {
+      nodeText = '(kein Jahr)'
     }
 
-    return node;
-};
+    // node aufbauen
+    node.data = nodeText
+    node.attr = {
+      id: 'tpopfreiwkontr' + freiwkontr.TPopKontrId,
+      typ: 'tpopfreiwkontr'
+    }
+  }
+
+  return node
+}
