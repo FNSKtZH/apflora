@@ -3,7 +3,6 @@
 
 var $ = require('jquery'),
   dateFormat = require('dateformat'),
-  _ = require('underscore'),
   limiter = require('../lib/limiter'),
   initiiereAp = require('./initiiereAp'),
   initiierePop = require('./initiierePop'),
@@ -16,51 +15,51 @@ var $ = require('jquery'),
 
 module.exports = function (apId, popId, tpopId, massnId) {
   // prüfen, ob voraussetzungen gegeben sind
-  if (!apId && !localStorage.apId) {
+  if (!apId && !window.localStorage.apId) {
     // Anwendung neu initiieren
     window.apf.initiiereApp()
     return
   }
-  if (!popId && !localStorage.popId && !window.apf.pop && (window.apf.pop && !window.apf.pop.PopId)) {
+  if (!popId && !window.localStorage.popId && !window.apf.pop && (window.apf.pop && !window.apf.pop.PopId)) {
     // es fehlen benötigte Daten > zwei Ebenen höher
     initiiereAp(apId)
     return
   }
-  if (!tpopId && !localStorage.tpopId) {
+  if (!tpopId && !window.localStorage.tpopId) {
     // es fehlen benötigte Daten > eine Ebene höher
     initiierePop(apId, popId)
     return
   }
-  if (!massnId && !localStorage.tpopmassnId) {
+  if (!massnId && !window.localStorage.tpopmassnId) {
     // es fehlen benötigte Daten > eine Ebene höher
     initiiereTPop(apId, popId, tpopId)
     return
   }
 
   // apId setzen
-  localStorage.apId = localStorage.apId || apId
-  apId = apId || localStorage.apId
+  window.localStorage.apId = window.localStorage.apId || apId
+  apId = apId || window.localStorage.apId
   // popId setzen
-  if (!localStorage.popId) {
+  if (!window.localStorage.popId) {
     if (!window.apf.pop || !window.apf.pop.PopId) {
-      localStorage.popId = popId
+      window.localStorage.popId = popId
     } else {
-      localStorage.popId = window.apf.pop.PopId
+      window.localStorage.popId = window.apf.pop.PopId
     }
   }
   if (!popId) {
     if (!window.apf.pop || !window.apf.pop.PopId) {
-      popId = localStorage.popId
+      popId = window.localStorage.popId
     } else {
       popId = window.apf.pop.PopId
     }
   }
   // tpopId setzen
-  localStorage.tpopId = localStorage.tpopId || tpopId
-  tpopId = tpopId || localStorage.tpopId
+  window.localStorage.tpopId = window.localStorage.tpopId || tpopId
+  tpopId = tpopId || window.localStorage.tpopId
   // massnId setzen
-  localStorage.tpopmassnId = localStorage.tpopmassnId || massnId
-  massnId = massnId || localStorage.tpopmassnId
+  window.localStorage.tpopmassnId = window.localStorage.tpopmassnId || massnId
+  massnId = massnId || window.localStorage.tpopmassnId
 
   // damit kann man die verbleibende Anzahl Zeichen, die in einem Feld erfasst werden, anzeigen
   limiter($)
@@ -94,10 +93,10 @@ module.exports = function (apId, popId, tpopId, massnId) {
       if (data.TPopMassnDatum) {
         // chrome akzeptiert nur - getrennte Daten. Und zeigt sie dann gemäss Pattern korrekt an
         // die übrigen stellen mit - getrennte Daten leider mit - dar
-        if (!!window.chrome) {
-          $('#TPopMassnDatum').val(dateFormat(data.TPopMassnDatum, 'yyyy-mm-dd'))
-        } else {
+        if (!window.chrome) {
           $('#TPopMassnDatum').val(dateFormat(data.TPopMassnDatum, 'dd.mm.yyyy'))
+        } else {
+          $('#TPopMassnDatum').val(dateFormat(data.TPopMassnDatum, 'yyyy-mm-dd'))
         }
       }
       // Adressen holen, um TPopMassnBearb zu füllen
@@ -139,7 +138,7 @@ module.exports = function (apId, popId, tpopId, massnId) {
 
       // Formulare blenden
       zeigeFormular('tpopmassn')
-      history.pushState(null, null, 'index.html?ap=' + apId + '&pop=' + popId + '&tpop=' + tpopId + '&tpopmassn=' + massnId)
+      window.history.pushState(null, null, 'index.html?ap=' + apId + '&pop=' + popId + '&tpop=' + tpopId + '&tpopmassn=' + massnId)
 
       // bei neuen Datensätzen Fokus steuern
       $('#TPopMassnJahr').focus()

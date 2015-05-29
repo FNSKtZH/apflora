@@ -12,33 +12,33 @@ module.exports = function (apId, apZielId, zielberId) {
   var $ZielBerJahr = $('#ZielBerJahr')
 
   // prüfen, ob voraussetzungen gegeben sind
-  if (!apId && !localStorage.apId) {
+  if (!apId && !window.localStorage.apId) {
     // Anwendung neu initiieren
     window.apf.initiiereApp()
     return
   }
-  if (!apZielId && !localStorage.apzielId) {
+  if (!apZielId && !window.localStorage.apzielId) {
     // es fehlen benötigte Daten > zwei Ebenen höher
     initiiereAp(apId)
     return
   }
-  if (!zielberId && !localStorage.zielberId) {
+  if (!zielberId && !window.localStorage.zielberId) {
     // es fehlen benötigte Daten > eine Ebene höher
     initiiereApziel(apId, apZielId)
     return
   }
 
   // apId setzen
-  localStorage.apId = localStorage.apId || apId
-  apId = apId || localStorage.apId
+  window.localStorage.apId = window.localStorage.apId || apId
+  apId = apId || window.localStorage.apId
 
   // apZielId setzen
-  localStorage.apzielId = localStorage.apzielId || apZielId
-  apZielId = apZielId || localStorage.apzielId
+  window.localStorage.apzielId = window.localStorage.apzielId || apZielId
+  apZielId = apZielId || window.localStorage.apzielId
 
   // zielberId setzen
-  localStorage.zielberId = localStorage.zielberId || zielberId
-  zielberId = zielberId || localStorage.zielberId
+  window.localStorage.zielberId = window.localStorage.zielberId || zielberId
+  zielberId = zielberId || window.localStorage.zielberId
 
   // Felder zurücksetzen
   leereFelderVonFormular('zielber')
@@ -62,7 +62,7 @@ module.exports = function (apId, apZielId, zielberId) {
 
       // Formulare blenden
       zeigeFormular('zielber')
-      history.pushState(null, null, 'index.html?ap=' + apId + '&apziel=' + apZielId + '&zielber=' + zielberId)
+      window.history.pushState(null, null, 'index.html?ap=' + apId + '&apziel=' + apZielId + '&zielber=' + zielberId)
 
       // bei neuen Datensätzen Fokus steuern
       if (!$ZielBerJahr.val()) {

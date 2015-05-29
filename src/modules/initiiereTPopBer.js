@@ -11,51 +11,51 @@ var $ = require('jquery'),
 
 module.exports = function (apId, popId, tpopId, tpopBerId) {
   // prüfen, ob voraussetzungen gegeben sind
-  if (!apId && !localStorage.apId) {
+  if (!apId && !window.localStorage.apId) {
     // Anwendung neu initiieren
     window.apf.initiiereApp()
     return
   }
-  if (!popId && !localStorage.popId && !window.apf.pop && (window.apf.pop && !window.apf.pop.PopId)) {
+  if (!popId && !window.localStorage.popId && !window.apf.pop && (window.apf.pop && !window.apf.pop.PopId)) {
     // es fehlen benötigte Daten > zwei Ebenen höher
     initiiereAp(apId)
     return
   }
-  if (!tpopId && !localStorage.tpopId) {
+  if (!tpopId && !window.localStorage.tpopId) {
     // es fehlen benötigte Daten > eine Ebene höher
     initiierePop(apId, popId)
     return
   }
-  if (!tpopBerId && !localStorage.tpopberId) {
+  if (!tpopBerId && !window.localStorage.tpopberId) {
     // es fehlen benötigte Daten > eine Ebene höher
     initiiereTPop(apId, popId, tpopId)
     return
   }
 
   // apId setzen
-  localStorage.apId = localStorage.apId || apId
-  apId = apId || localStorage.apId
+  window.localStorage.apId = window.localStorage.apId || apId
+  apId = apId || window.localStorage.apId
   // popId setzen
-  if (!localStorage.popId) {
+  if (!window.localStorage.popId) {
     if (!window.apf.pop || !window.apf.pop.PopId) {
-      localStorage.popId = popId
+      window.localStorage.popId = popId
     } else {
-      localStorage.popId = window.apf.pop.PopId
+      window.localStorage.popId = window.apf.pop.PopId
     }
   }
   if (!popId) {
     if (!window.apf.pop || !window.apf.pop.PopId) {
-      popId = localStorage.popId
+      popId = window.localStorage.popId
     } else {
       popId = window.apf.pop.PopId
     }
   }
   // tpopId setzen
-  localStorage.tpopId = localStorage.tpopId || tpopId
-  tpopId = tpopId || localStorage.tpopId
+  window.localStorage.tpopId = window.localStorage.tpopId || tpopId
+  tpopId = tpopId || window.localStorage.tpopId
   // tpopBerId setzen
-  localStorage.tpopberId = localStorage.tpopberId || tpopBerId
-  tpopBerId = tpopBerId || localStorage.tpopberId
+  window.localStorage.tpopberId = window.localStorage.tpopberId || tpopBerId
+  tpopBerId = tpopBerId || window.localStorage.tpopberId
 
   // Felder zurücksetzen
   leereFelderVonFormular('tpopber')
@@ -79,7 +79,7 @@ module.exports = function (apId, popId, tpopId, tpopBerId) {
 
       // Formulare blenden
       zeigeFormular('tpopber')
-      history.pushState(null, null, 'index.html?ap=' + apId + '&pop=' + popId + '&tpop=' + tpopId + '&tpopber=' + tpopBerId)
+      window.history.pushState(null, null, 'index.html?ap=' + apId + '&pop=' + popId + '&tpop=' + tpopId + '&tpopber=' + tpopBerId)
 
       // bei neuen Datensätzen Fokus steuern
       $('#TPopBerJahr').focus()

@@ -5,7 +5,7 @@
  * - Datensatz (Datensatzbeschreibung): ist Link, der in neuem Tab öffnet
  * - Hinweis (Begründung, wieso der Datensatz angezeigt wird)
  *
- * jahresabhängige Daten: bei den meisten werden nur die Daten 
+ * jahresabhängige Daten: bei den meisten werden nur die Daten
  * des aktuellen oder manuell übersteuerten Berichtjahrs geprüft
  * Ausnahme: Ziele
  */
@@ -45,19 +45,19 @@ function addDataToQsList (qsList, url) {
         tellUserIfNoIssues()
       }, 500)
     }
-    $('#tree').jstree('rename_node', '#qualitaetskontrollen' + localStorage.apId, 'Qualitätskontrollen (' + qsList.items.length + ')')
+    $('#tree').jstree('rename_node', '#qualitaetskontrollen' + window.localStorage.apId, 'Qualitätskontrollen (' + qsList.items.length + ')')
   })
 }
 
 function createUrlToAddDataFromViewToQsList (qsList, viewName, berichtjahr) {
-  var baseUrl = 'api/v1/qkView/' + viewName + '/' + localStorage.apId,
+  var baseUrl = 'api/v1/qkView/' + viewName + '/' + window.localStorage.apId,
     url = berichtjahr ? baseUrl + '/' + berichtjahr : baseUrl
 
   addDataToQsList(qsList, url)
 }
 
 function createUrlToAddDataFromQueryToQsList (qsList, queryName, berichtjahr) {
-  var url = 'api/v1/' + queryName + '/' + localStorage.apId + '/' + berichtjahr
+  var url = 'api/v1/' + queryName + '/' + window.localStorage.apId + '/' + berichtjahr
 
   addDataToQsList(qsList, url)
 }

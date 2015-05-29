@@ -3,5 +3,5 @@
 
 module.exports = function (beob) {
   var beobStatus = (beob.beobNichtZuordnen ? 'beobNichtZuzuordnen' : 'beobNichtBeurteilt')
-  window.open('index.html?ap=' + localStorage.apId + '&' + beobStatus + '=' + beob.NO_NOTE, '_blank')
+  window.open('index.html?ap=' + window.localStorage.apId + '&' + beobStatus + '=' + beob.NO_NOTE, '_blank')
 }

@@ -9,8 +9,7 @@
 'use strict'
 
 var turf = require('turf'),
-  ol = require('ol'),
-  _ = require('underscore')
+  ol = require('ol')
 
 module.exports = function (polygon, x, y) {
   var koordLv03 = [x, y],

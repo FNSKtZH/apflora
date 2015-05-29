@@ -10,10 +10,10 @@ var $ = require('jquery'),
 module.exports = function () {
   var qsList = window.apf.qsList
 
-  // get list of tpop's of this localStorage.apId
+  // get list of tpop's of this window.localStorage.apId
   $.ajax({
     type: 'get',
-    url: 'api/v1/tpopKoordFuerProgramm/apId=' + localStorage.apId
+    url: 'api/v1/tpopKoordFuerProgramm/apId=' + window.localStorage.apId
   }).done(function (data) {
     // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
     if (data) {
@@ -36,7 +36,7 @@ module.exports = function () {
           tpop.link += '</a>'
           // an qsList anfügen
           qsList.add(tpop)
-          $('#tree').jstree('rename_node', '#qualitaetskontrollen' + localStorage.apId, 'Qualitätskontrollen (' + qsList.items.length + ')')
+          $('#tree').jstree('rename_node', '#qualitaetskontrollen' + window.localStorage.apId, 'Qualitätskontrollen (' + qsList.items.length + ')')
         }
       })
     }

@@ -11,51 +11,51 @@ var $ = require('jquery'),
 
 module.exports = function (apId, popId, tpopId, massnBerId) {
   // prüfen, ob voraussetzungen gegeben sind
-  if (!apId && !localStorage.apId) {
+  if (!apId && !window.localStorage.apId) {
     // Anwendung neu initiieren
     window.apf.initiiereApp()
     return
   }
-  if (!popId && !localStorage.popId && !window.apf.pop && (window.apf.pop && !window.apf.pop.PopId)) {
+  if (!popId && !window.localStorage.popId && !window.apf.pop && (window.apf.pop && !window.apf.pop.PopId)) {
     // es fehlen benötigte Daten > zwei Ebenen höher
     initiiereAp(apId)
     return
   }
-  if (!tpopId && !localStorage.tpopId) {
+  if (!tpopId && !window.localStorage.tpopId) {
     // es fehlen benötigte Daten > eine Ebene höher
     initiierePop(apId, popId)
     return
   }
-  if (!massnBerId && !localStorage.tpopmassnberId) {
+  if (!massnBerId && !window.localStorage.tpopmassnberId) {
     // es fehlen benötigte Daten > eine Ebene höher
     initiiereTPop(apId, popId, tpopId)
     return
   }
 
   // apId setzen
-  localStorage.apId = localStorage.apId || apId
-  apId = apId || localStorage.apId
+  window.localStorage.apId = window.localStorage.apId || apId
+  apId = apId || window.localStorage.apId
   // popId setzen
-  if (!localStorage.popId) {
+  if (!window.localStorage.popId) {
     if (!window.apf.pop || !window.apf.pop.PopId) {
-      localStorage.popId = popId
+      window.localStorage.popId = popId
     } else {
-      localStorage.popId = window.apf.pop.PopId
+      window.localStorage.popId = window.apf.pop.PopId
     }
   }
   if (!popId) {
     if (!window.apf.pop || !window.apf.pop.PopId) {
-      popId = localStorage.popId
+      popId = window.localStorage.popId
     } else {
       popId = window.apf.pop.PopId
     }
   }
   // tpopId setzen
-  localStorage.tpopId = localStorage.tpopId || tpopId
-  tpopId = tpopId || localStorage.tpopId
+  window.localStorage.tpopId = window.localStorage.tpopId || tpopId
+  tpopId = tpopId || window.localStorage.tpopId
   // massnBerId setzen
-  localStorage.tpopmassnberId = localStorage.tpopmassnberId || massnBerId
-  massnBerId = massnBerId || localStorage.tpopmassnberId
+  window.localStorage.tpopmassnberId = window.localStorage.tpopmassnberId || massnBerId
+  massnBerId = massnBerId || window.localStorage.tpopmassnberId
 
   // Felder zurücksetzen
   leereFelderVonFormular('tpopmassnber')
@@ -79,7 +79,7 @@ module.exports = function (apId, popId, tpopId, massnBerId) {
 
       // Formulare blenden
       zeigeFormular('tpopmassnber')
-      history.pushState(null, null, 'index.html?ap=' + apId + '&pop=' + popId + '&tpop=' + tpopId + '&tpopmassnber=' + massnBerId)
+      window.history.pushState(null, null, 'index.html?ap=' + apId + '&pop=' + popId + '&tpop=' + tpopId + '&tpopmassnber=' + massnBerId)
 
       // bei neuen Datensätzen Fokus steuern
       $('#TPopMassnBerJahr').focus()
