@@ -27,7 +27,7 @@ module.exports = function (layer, selectedValue) {
       melde('Sorry, das kann Open Layers 3 noch nicht richtig', 'Fehler beim Export')
     }
   } else {
-    serializer = new XMLSerializer()
+    serializer = new window.XMLSerializer()
     try {
       dataStringified = serializer.serializeToString(dataParsed)
     } catch (e) {

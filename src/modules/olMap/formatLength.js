@@ -7,9 +7,6 @@
 /*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
-var $ = require('jquery'),
-  ol = require('ol')
-
 module.exports = function (line) {
   var length = Math.round(line.getLength() * 100) / 100,
     output
