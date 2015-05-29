@@ -16,7 +16,6 @@
     customParams - Additional WMS parameters
 */
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var google = require('google')

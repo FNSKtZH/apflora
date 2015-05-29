@@ -3,7 +3,6 @@
 // selected: mit der Maus oder drag_box markierte
 // verorten: beim Verorten soll das Symbol rot sein
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery'),

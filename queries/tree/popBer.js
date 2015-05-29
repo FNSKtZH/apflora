@@ -1,6 +1,5 @@
 // Baum-node sinnvoll beschreiben, auch wenn leere Werte vorhanden
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 module.exports = function (popber) {

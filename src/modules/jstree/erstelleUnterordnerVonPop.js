@@ -1,7 +1,6 @@
 // erstellt alle Unterordner des Ordners vom Typ pop
 // erwartet den node des pop-ordners
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery')

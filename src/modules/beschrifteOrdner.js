@@ -1,7 +1,6 @@
 // übernimmt einen node
 // zählt dessen children und passt die Beschriftung an
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery')

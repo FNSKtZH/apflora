@@ -3,7 +3,6 @@
 // tpopidMarkiert: die ID der zu markierenden TPop
 // visible: Ob das Layer sichtbar sein soll
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery'),

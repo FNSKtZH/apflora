@@ -1,6 +1,5 @@
 // inputDiv: div des Layers, das jetzt aktiviert wird
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery')

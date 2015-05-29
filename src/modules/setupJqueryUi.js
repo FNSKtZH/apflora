@@ -2,7 +2,6 @@
 // ursprünglich waren sie in index.html selber enthalten
 // es klappt aber auch, wenn index.html sie via globale Variable aufruft
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery'),

@@ -1,6 +1,5 @@
 // begrenzt die maximale Höhe des Baums auf die Seitenhöhe, wenn nötig
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery')

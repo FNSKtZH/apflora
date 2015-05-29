@@ -2,7 +2,6 @@
 // Wenn TPop mit ihrer Nummer beschriftet sein sollen
 // tpopNr und popNr wird übernommen
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 module.exports = function (popNr, tpopNr) {

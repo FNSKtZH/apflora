@@ -2,7 +2,6 @@
 // retourniert den Ausschnitt = bounds der angezeigt werden soll
 // und einen array mit den tpopId's der liste
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var _ = require('underscore')

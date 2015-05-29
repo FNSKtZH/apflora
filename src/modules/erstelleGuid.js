@@ -1,7 +1,6 @@
 // erstellt einen guid
 // Quelle: http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 module.exports = function () {

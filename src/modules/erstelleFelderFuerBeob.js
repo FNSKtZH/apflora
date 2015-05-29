@@ -1,7 +1,6 @@
 // gibt HTML zurück, mit dem die Informationen über eine Beobachtung dargestellt werden
 // erwartet die Daten der Beobachtung
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery'),

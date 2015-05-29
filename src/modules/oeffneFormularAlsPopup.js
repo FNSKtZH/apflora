@@ -2,7 +2,6 @@
 // braucht die id des Formulars
 // und die id des Datensatzes, der anzuzeigen ist
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery'),

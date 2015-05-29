@@ -6,7 +6,6 @@
  * - Hinweis (Begründung, wieso der Datensatz angezeigt wird)
  */
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery'),

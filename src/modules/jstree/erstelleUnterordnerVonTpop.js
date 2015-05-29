@@ -1,7 +1,6 @@
 // erstellt alle Unterordner des Ordners vom Typ tpop
 // erwartet den node des tpop-ordners
 
-/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
 'use strict'
 
 var $ = require('jquery')
