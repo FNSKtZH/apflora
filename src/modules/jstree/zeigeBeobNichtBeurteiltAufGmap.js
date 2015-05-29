@@ -6,8 +6,9 @@ var $ = require('jquery'),
   zeigeBeob = require('../gMap/zeigeBeob')
 
 module.exports = function (nodeApId, nodeBeobId) {
-  var apId = (nodeApId   ? erstelleIdAusDomAttributId(nodeApId)   : ''),
-    beobId = (nodeBeobId ? erstelleIdAusDomAttributId(nodeBeobId) : '')
+  var apId = nodeApId ? erstelleIdAusDomAttributId(nodeApId) : '',
+    beobId = nodeBeobId ? erstelleIdAusDomAttributId(nodeBeobId) : ''
+
   $.ajax({
     type: 'get',
     url: '/api/v1/beobKarte/apId=' + apId + '/tpopId=/beobId=' + beobId + '/nichtZuzuordnen='

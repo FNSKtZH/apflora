@@ -28,11 +28,11 @@ module.exports = function (latLng, map, marker, tpop) {
 
   $.ajax({
     type: 'post',
-    url: 'api/v1/update/apflora/tabelle=tpop/tabelleIdFeld=TPopId/tabelleId=' + localStorage.tpopId + '/feld=TPopXKoord/wert=' + X + '/user=' + encodeURIComponent(sessionStorage.user)
+    url: 'api/v1/update/apflora/tabelle=tpop/tabelleIdFeld=TPopId/tabelleId=' + window.localStorage.tpopId + '/feld=TPopXKoord/wert=' + X + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function () {
     $.ajax({
       type: 'post',
-      url: 'api/v1/update/apflora/tabelle=tpop/tabelleIdFeld=TPopId/tabelleId=' + localStorage.tpopId + '/feld=TPopYKoord/wert=' + Y + '/user=' + encodeURIComponent(sessionStorage.user)
+      url: 'api/v1/update/apflora/tabelle=tpop/tabelleIdFeld=TPopId/tabelleId=' + window.localStorage.tpopId + '/feld=TPopYKoord/wert=' + Y + '/user=' + encodeURIComponent(window.sessionStorage.user)
     }).done(function () {
       clearInfoWindows()
       contentString = '<div id="content">' +
@@ -41,9 +41,9 @@ module.exports = function (latLng, map, marker, tpop) {
         '<div id="bodyContent" class="GmInfowindow">' +
         '<h3>' + title + '</h3>' +
         '<p>Koordinaten: ' + X + ' / ' + Y + '</p>' +
-        '<p><a href="#" onclick="window.apf.oeffneTPop(\'' + localStorage.tpopId + '\')">Formular anstelle Karte öffnen<\/a></p>' +
-        '<p><a href="#" onclick="window.apf.oeffneFormularAlsPopup(\'tpop\', ' + localStorage.tpopId + ')">Formular neben der Karte öffnen<\/a></p>' +
-        '<p><a href="#" onclick="window.apf.oeffneTPopInNeuemTab(\'' + localStorage.tpopId + '\')">Formular in neuem Fenster öffnen<\/a></p>' +
+        '<p><a href="#" onclick="window.apf.oeffneTPop(\'' + window.localStorage.tpopId + '\')">Formular anstelle Karte öffnen<\/a></p>' +
+        '<p><a href="#" onclick="window.apf.oeffneFormularAlsPopup(\'tpop\', ' + window.localStorage.tpopId + ')">Formular neben der Karte öffnen<\/a></p>' +
+        '<p><a href="#" onclick="window.apf.oeffneTPopInNeuemTab(\'' + window.localStorage.tpopId + '\')">Formular in neuem Fenster öffnen<\/a></p>' +
         '</div>' +
         '</div>'
       infowindow = new google.maps.InfoWindow({

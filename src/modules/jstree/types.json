@@ -1,141 +1,141 @@
 {
-    "type_attr": "typ",
-    "max_children": -2,
-    "max_depth": -2,
-    "valid_children": ["apOrdnerPop", "apOrdnerApziel", "apOrdnerErfkrit", "apOrdnerJber", "apOrdnerBer", "apOrdnerBeobNichtBeurteilt", "apOrdnerBeobNichtZuzuordnen", "idealbiotop", "apOrdnerAssozarten"],
-    "types": {
-        "apOrdnerPop": {
-            "valid_children": "pop"
-        },
-        "pop": {
-            "valid_children": ["popOrdnerTpop", "popOrdnerPopber", "popOrdnerMassnber"],
-            "new_node": "neue Population"
-        },
-        "popOrdnerTpop": {
-            "valid_children": "tpop"
-        },
-        "tpop": {
-            "valid_children": ["tpopOrdnerMassn", "tpopOrdnerMassnber", "tpopOrdnerFeldkontr", "tpopOrdnerFreiwkontr", "tpopOrdnerTpopber", "tpopOrdnerBeobZugeordnet"],
-            "new_node": "neue Teilpopulation"
-        },
-        "tpopOrdnerMassn": {
-            "valid_children": "tpopmassn"
-        },
-        "tpopmassn": {
-            "valid_children": "none",
-            "new_node": "neue Massnahme"
-        },
-        "tpopOrdnerMassnber": {
-            "valid_children": "tpopmassnber"
-        },
-        "tpopmassnber": {
-            "valid_children": "none",
-            "new_node": "neuer Massnahmen-Bericht"
-        },
-        "tpopOrdnerFeldkontr": {
-            "valid_children": "tpopfeldkontr"
-        },
-        "tpopfeldkontr": {
-            "valid_children": "none",
-            "new_node": "neue Feldkontrolle"
-        },
-        "tpopOrdnerFreiwkontr": {
-            "valid_children": "tpopfreiwkontr"
-        },
-        "tpopfreiwkontr": {
-            "valid_children": "none",
-            "new_node": "neue Freiwilligen-Kontrolle"
-        },
-        "tpopOrdnerTpopber": {
-            "valid_children": "tpopber"
-        },
-        "tpopber": {
-            "valid_children": "none",
-            "new_node": "neuer Teilpopulations-Bericht"
-        },
-        "tpopOrdnerBeobZugeordnet": {
-            "valid_children": "beobZugeordnet"
-        },
-        "beobZugeordnet": {
-            "valid_children": "none"
-        },
-        "popOrdnerPopber": {
-            "valid_children": "popber"
-        },
-        "popber": {
-            "valid_children": "none",
-            "new_node": "neuer Populations-Bericht"
-        },
-        "popOrdnerMassnber": {
-            "valid_children": "massnber"
-        },
-        "massnber": {
-            "valid_children": "none",
-            "new_node": "neuer Massnahmen-Bericht"
-        },
-        "apOrdnerApziel": {
-            "valid_children": "apzieljahr"
-        },
-        "apzieljahr": {
-            "valid_children": "apziel"
-        },
-        "apziel": {
-            "valid_children": "zielberOrdner",
-            "new_node": "neues AP-Ziel"
-        },
-        "zielberOrdner": {
-            "valid_children": "zielber"
-        },
-        "zielber": {
-            "valid_children": "none",
-            "new_node": "neuer Ziel-Bericht"
-        },
-        "apOrdnerErfkrit": {
-            "valid_children": "erfkrit"
-        },
-        "erfkrit": {
-            "valid_children": "none",
-            "new_node": "neues Erfolgskriterium"
-        },
-        "apOrdnerJber": {
-            "valid_children": "jber"
-        },
-        "jber": {
-            "valid_children": "jberUebersicht",
-            "new_node": "neuer AP-Bericht"
-        },
-        "jberUebersicht": {
-            "valid_children": "none",
-            "new_node": "neue Übersicht zu allen Arten"
-        },
-        "apOrdnerBer": {
-            "valid_children": "ber"
-        },
-        "ber": {
-            "valid_children": "none",
-            "new_node": "neuer Bericht"
-        },
-        "apOrdnerBeobNichtBeurteilt": {
-            "valid_children": "beobNichtBeurteilt"
-        },
-        "beobNichtBeurteilt": {
-            "valid_children": "none"
-        },
-        "apOrdnerBeobNichtZuzuordnen": {
-            "valid_children": "beobNichtZuzuordnen"
-        },
-        "beobNichtZuzuordnen": {
-            "valid_children": "none"
-        },
-        "idealbiotop": {
-            "valid_children": "none"
-        },
-        "apOrdnerAssozarten": {
-            "valid_children": "assozarten"
-        },
-        "assozarten": {
-            "valid_children": "none",
-            "new_node": "neue assoziierte Art"
-        }
+  "type_attr": "typ",
+  "max_children": -2,
+  "max_depth": -2,
+  "valid_children": ["apOrdnerPop", "apOrdnerApziel", "apOrdnerErfkrit", "apOrdnerJber", "apOrdnerBer", "apOrdnerBeobNichtBeurteilt", "apOrdnerBeobNichtZuzuordnen", "idealbiotop", "apOrdnerAssozarten"],
+  "types": {
+    "apOrdnerPop": {
+      "valid_children": "pop"
+    },
+    "pop": {
+      "valid_children": ["popOrdnerTpop", "popOrdnerPopber", "popOrdnerMassnber"],
+      "new_node": "neue Population"
+    },
+    "popOrdnerTpop": {
+      "valid_children": "tpop"
+    },
+    "tpop": {
+      "valid_children": ["tpopOrdnerMassn", "tpopOrdnerMassnber", "tpopOrdnerFeldkontr", "tpopOrdnerFreiwkontr", "tpopOrdnerTpopber", "tpopOrdnerBeobZugeordnet"],
+      "new_node": "neue Teilpopulation"
+    },
+    "tpopOrdnerMassn": {
+      "valid_children": "tpopmassn"
+    },
+    "tpopmassn": {
+      "valid_children": "none",
+      "new_node": "neue Massnahme"
+    },
+    "tpopOrdnerMassnber": {
+      "valid_children": "tpopmassnber"
+    },
+    "tpopmassnber": {
+      "valid_children": "none",
+      "new_node": "neuer Massnahmen-Bericht"
+    },
+    "tpopOrdnerFeldkontr": {
+      "valid_children": "tpopfeldkontr"
+    },
+    "tpopfeldkontr": {
+      "valid_children": "none",
+      "new_node": "neue Feldkontrolle"
+    },
+    "tpopOrdnerFreiwkontr": {
+      "valid_children": "tpopfreiwkontr"
+    },
+    "tpopfreiwkontr": {
+      "valid_children": "none",
+      "new_node": "neue Freiwilligen-Kontrolle"
+    },
+    "tpopOrdnerTpopber": {
+      "valid_children": "tpopber"
+    },
+    "tpopber": {
+      "valid_children": "none",
+      "new_node": "neuer Teilpopulations-Bericht"
+    },
+    "tpopOrdnerBeobZugeordnet": {
+      "valid_children": "beobZugeordnet"
+    },
+    "beobZugeordnet": {
+      "valid_children": "none"
+    },
+    "popOrdnerPopber": {
+      "valid_children": "popber"
+    },
+    "popber": {
+      "valid_children": "none",
+      "new_node": "neuer Populations-Bericht"
+    },
+    "popOrdnerMassnber": {
+      "valid_children": "massnber"
+    },
+    "massnber": {
+      "valid_children": "none",
+      "new_node": "neuer Massnahmen-Bericht"
+    },
+    "apOrdnerApziel": {
+      "valid_children": "apzieljahr"
+    },
+    "apzieljahr": {
+      "valid_children": "apziel"
+    },
+    "apziel": {
+      "valid_children": "zielberOrdner",
+      "new_node": "neues AP-Ziel"
+    },
+    "zielberOrdner": {
+      "valid_children": "zielber"
+    },
+    "zielber": {
+      "valid_children": "none",
+      "new_node": "neuer Ziel-Bericht"
+    },
+    "apOrdnerErfkrit": {
+      "valid_children": "erfkrit"
+    },
+    "erfkrit": {
+      "valid_children": "none",
+      "new_node": "neues Erfolgskriterium"
+    },
+    "apOrdnerJber": {
+      "valid_children": "jber"
+    },
+    "jber": {
+      "valid_children": "jberUebersicht",
+      "new_node": "neuer AP-Bericht"
+    },
+    "jberUebersicht": {
+      "valid_children": "none",
+      "new_node": "neue Übersicht zu allen Arten"
+    },
+    "apOrdnerBer": {
+      "valid_children": "ber"
+    },
+    "ber": {
+      "valid_children": "none",
+      "new_node": "neuer Bericht"
+    },
+    "apOrdnerBeobNichtBeurteilt": {
+      "valid_children": "beobNichtBeurteilt"
+    },
+    "beobNichtBeurteilt": {
+      "valid_children": "none"
+    },
+    "apOrdnerBeobNichtZuzuordnen": {
+      "valid_children": "beobNichtZuzuordnen"
+    },
+    "beobNichtZuzuordnen": {
+      "valid_children": "none"
+    },
+    "idealbiotop": {
+      "valid_children": "none"
+    },
+    "apOrdnerAssozarten": {
+      "valid_children": "assozarten"
+    },
+    "assozarten": {
+      "valid_children": "none",
+      "new_node": "neue assoziierte Art"
     }
+  }
 }

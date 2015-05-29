@@ -1,6 +1,6 @@
 // momentan nicht verwendet
 
-/* 
+/*
     Document   : wms.js
     Created on : Feb 16, 2011, 3:25:27 PM
     Author     : "Gavin Jackson <Gavin.Jackson@csiro.au>"
@@ -21,8 +21,8 @@
 var google = require('google')
 
 function bound (value, opt_min, opt_max) {
-  if (opt_min != null) { value = Math.max(value, opt_min); }
-  if (opt_max != null) { value = Math.min(value, opt_max); }
+  if (opt_min != null) { value = Math.max(value, opt_min) }
+  if (opt_max != null) { value = Math.min(value, opt_max) }
   return value
 }
 

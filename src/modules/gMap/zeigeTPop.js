@@ -1,7 +1,6 @@
 'use strict'
 
 var _ = require('underscore'),
-  $ = require('jquery'),
   google = require('google'),
   MarkerClusterer = require('MarkerClusterer'),
   MarkerWithLabel = require('MarkerWithLabel'),
@@ -22,7 +21,6 @@ module.exports = function (tpopListe) {
     map,
     bounds,
     markers,
-    tpopId,
     latlng2,
     marker,
     contentString,
@@ -69,7 +67,6 @@ module.exports = function (tpopListe) {
   // für alle TPop Marker erstellen
   markers = []
   _.each(tpopListe, function (tpop) {
-    tpopId = tpop.TPopId
     tpopBeschriftung = beschrifteTPopMitNrFuerKarte(tpop.PopNr, tpop.TPopNr)
     latlng2 = new google.maps.LatLng(tpop.Lat, tpop.Lng)
     if (anzTpop === 1) {

@@ -49,7 +49,7 @@ module.exports = function (markerBeob, Beob) {
               $(this).dialog('close')
 
               // dem bind.move_node mitteilen, dass das Formular nicht initiiert werden soll
-              localStorage.karteFokussieren = true
+              window.localStorage.karteFokussieren = true
 
               // Beob der TPop zuweisen
               $('#tree').jstree('move_node', beobRef.toString(), tpopOrdnerRef.toString(), 'first')
