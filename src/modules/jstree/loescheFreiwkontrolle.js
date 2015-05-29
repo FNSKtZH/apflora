@@ -30,8 +30,8 @@ module.exports = function (aktiverNode, parentNode) {
           type: 'delete',
           url: 'api/v1/apflora/tabelle=tpopkontr/tabelleIdFeld=TPopKontrId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
         }).done(function () {
-          delete localStorage.tpopfeldkontrId
-          delete localStorage.tpopfreiwkontr
+          delete window.localStorage.tpopfeldkontrId
+          delete window.localStorage.tpopfreiwkontr
           delete window.apf.tpopfeldkontr
           $.jstree._reference(aktiverNode).delete_node(aktiverNode)
           // Parent Node-Beschriftung: Anzahl anpassen

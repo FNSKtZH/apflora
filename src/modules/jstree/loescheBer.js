@@ -36,7 +36,7 @@ module.exports = function (aktiverNode, parentNode) {
           type: 'delete',
           url: 'api/v1/apflora/tabelle=ber/tabelleIdFeld=BerId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
         }).done(function () {
-          delete localStorage.berId
+          delete window.localStorage.berId
           delete window.apf.ber
           $.jstree._reference(aktiverNode).delete_node(aktiverNode)
           // Parent Node-Beschriftung: Anzahl anpassen

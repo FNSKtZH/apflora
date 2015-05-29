@@ -12,9 +12,7 @@ module.exports = function (aktiverNode, parentNode) {
   var bezeichnung
 
   // nur aktualisieren, wenn Schreibrechte bestehen
-  if (!pruefeSchreibvoraussetzungen()) {
-    return
-  }
+  if (!pruefeSchreibvoraussetzungen()) { return }
   bezeichnung = $.jstree._reference(aktiverNode).get_text(aktiverNode)
   $('#loeschen_dialog_mitteilung').html("Die Massnahme '" + bezeichnung + "' wird gelöscht.")
   $('#loeschen_dialog').dialog({
@@ -32,7 +30,7 @@ module.exports = function (aktiverNode, parentNode) {
           type: 'delete',
           url: 'api/v1/apflora/tabelle=tpopmassn/tabelleIdFeld=TPopMassnId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
         }).done(function () {
-          delete localStorage.tpopmassnId
+          delete window.localStorage.tpopmassnId
           delete window.apf.tpopmassn
           $.jstree._reference(aktiverNode).delete_node(aktiverNode)
           // Parent Node-Beschriftung: Anzahl anpassen

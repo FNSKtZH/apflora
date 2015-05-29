@@ -32,7 +32,7 @@ module.exports = function (aktiverNode) {
           type: 'delete',
           url: 'api/v1/apflora/tabelle=apberuebersicht/tabelleIdFeld=JbuJahr/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
         }).done(function () {
-          delete localStorage.jberUebersichtId
+          delete window.localStorage.jberUebersichtId
           delete window.apf.jberUebersicht
           $.jstree._reference(aktiverNode).delete_node(aktiverNode)
           // Hinweis zum rückgängig machen anzeigen

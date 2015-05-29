@@ -12,9 +12,7 @@ module.exports = function (aktiverNode, parentNode) {
   var bezeichnung
 
   // nur aktualisieren, wenn Schreibrechte bestehen
-  if (!pruefeSchreibvoraussetzungen()) {
-    return
-  }
+  if (!pruefeSchreibvoraussetzungen()) { return }
   bezeichnung = $.jstree._reference(aktiverNode).get_text(aktiverNode)
   $('#loeschen_dialog_mitteilung').html("Der Teilpopulations-Bericht '" + bezeichnung + "' wird gelöscht.")
   $('#loeschen_dialog').dialog({
@@ -32,7 +30,7 @@ module.exports = function (aktiverNode, parentNode) {
           type: 'delete',
           url: 'api/v1/apflora/tabelle=tpopber/tabelleIdFeld=TPopBerId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
         }).done(function () {
-          delete localStorage.tpopberId
+          delete window.localStorage.tpopberId
           delete window.apf.tpopber
           $.jstree._reference(aktiverNode).delete_node(aktiverNode)
           // Parent Node-Beschriftung: Anzahl anpassen
