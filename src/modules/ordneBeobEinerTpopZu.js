@@ -15,7 +15,9 @@
 'use strict'
 
 var $ = require('jquery'),
-  ol = require('ol')
+  ol = require('ol'),
+  _ = require('underscore'),
+  melde = require('./melde')
 
 function aktualisiereGlobaleVariable (tpopId) {
   if (window.apf.beob) {
@@ -23,7 +25,7 @@ function aktualisiereGlobaleVariable (tpopId) {
       window.apf.beob.zuordnung = window.apf.beob.zuordnung || {}
       window.apf.beob.zuordnung.TPopId = tpopId
     } else {
-      if (window.apf.beob.zuordnung && window.apf.beob.zuordnung.TPopId) { delete window.apf.beob.zuordnung.TPopId; }
+      if (window.apf.beob.zuordnung && window.apf.beob.zuordnung.TPopId) { delete window.apf.beob.zuordnung.TPopId }
     }
   }
 }
@@ -79,7 +81,7 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
       case 'nicht_beurteilt':
         $beobNichtBeurteilt = $('#beobNichtBeurteilt')
         if ($beobNichtBeurteilt.prop('checked') === true) {
-          $('#tree').jstree('move_node', '#beob' + beobId, '#apOrdnerBeobNichtBeurteilt' + localStorage.apId, 'first')
+          $('#tree').jstree('move_node', '#beob' + beobId, '#apOrdnerBeobNichtBeurteilt' + window.localStorage.apId, 'first')
         } else {
           // es bringt nichts, diesen Haken zu entfernen
           // stattdessen soll ein anderer Wert gewählt werden
@@ -90,9 +92,9 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
         break
       case 'nicht_zuordnen':
         if ($('#beobNichtZuordnen').prop('checked') === true) {
-          $('#tree').jstree('move_node', '#beob' + beobId, '#apOrdnerBeobNichtZuzuordnen' + localStorage.apId, 'first')
+          $('#tree').jstree('move_node', '#beob' + beobId, '#apOrdnerBeobNichtZuzuordnen' + window.localStorage.apId, 'first')
         } else {
-          $('#tree').jstree('move_node', '#beob' + beobId, '#apOrdnerBeobNichtBeurteilt' + localStorage.apId, 'first')
+          $('#tree').jstree('move_node', '#beob' + beobId, '#apOrdnerBeobNichtBeurteilt' + window.localStorage.apId, 'first')
         }
         // globale Variable anpassen, falls nötig
         aktualisiereGlobaleVariable()
@@ -117,9 +119,9 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
         url: 'api/v1/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId
       }).done(function () {
         // tree aktualisieren, falls von move_node ausgelöst
-        if (jstreeCallback) { jstreeCallback(); }
+        if (jstreeCallback) { jstreeCallback() }
         // olMap aktualisieren, falls von ihr ausgelöst
-        if (olmapCallback) { olmapCallback(); }
+        if (olmapCallback) { olmapCallback() }
         // wenn kein olmapCallback aber olmap offen
         if (!olmapCallback && window.apf.olMap.beobZuordnungsLayerFeatures && $('#olMap').is(':visible')) {
           // vermutlich sollte das beobzuordnungs-Layer nachgeführt werden
@@ -147,17 +149,17 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
     case 'nicht_zuordnen':
       $.ajax({
         type: 'post',
-        url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=beobNichtZuordnen/wert=1/user=' + encodeURIComponent(sessionStorage.user)
+        url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=beobNichtZuordnen/wert=1/user=' + encodeURIComponent(window.sessionStorage.user)
       }).done(function () {
         // TPopId null setzen
         $.ajax({
           type: 'post',
-          url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=/user=' + encodeURIComponent(sessionStorage.user)
+          url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // tree aktualisieren, falls von move_node ausgelöst
-          if (jstreeCallback) { jstreeCallback(); }
+          if (jstreeCallback) { jstreeCallback() }
           // olMap aktualisieren, falls von ihr ausgelöst
-          if (olmapCallback) { olmapCallback(); }
+          if (olmapCallback) { olmapCallback() }
           // wenn kein olmapCallback aber olmap offen
           if (!olmapCallback && window.apf.olMap.beobZuordnungsLayerFeatures && $('#olMap').is(':visible')) {
             // vermutlich sollte das beobzuordnungs-Layer nachgeführt werden
@@ -193,12 +195,12 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
         // er muss nur noch aktualisiert werden
         $.ajax({
           type: 'post',
-          url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(sessionStorage.user)
+          url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // tree aktualisieren, falls von move_node ausgelöst
-          if (jstreeCallback) { jstreeCallback(); }
+          if (jstreeCallback) { jstreeCallback() }
           // olMap aktualisieren, falls von ihr ausgelöst
-          if (olmapCallback) { olmapCallback(); }
+          if (olmapCallback) { olmapCallback() }
           // wenn kein olmapCallback aber olmap offen
           if (!olmapCallback && window.apf.olMap.beobZuordnungsLayerFeatures && $('#olMap').is(':visible')) {
             // vermutlich sollte das beobzuordnungs-Layer nachgeführt werden
@@ -215,17 +217,17 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
         // er muss inserted werden
         $.ajax({
           type: 'post',
-          url: 'api/v1/insert/apflora/tabelle=beobzuordnung/feld=NO_NOTE/wert=' + beobId + '/user=' + encodeURIComponent(sessionStorage.user)
+          url: 'api/v1/insert/apflora/tabelle=beobzuordnung/feld=NO_NOTE/wert=' + beobId + '/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // jetzt aktualisieren
           $.ajax({
             type: 'post',
-            url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(sessionStorage.user)
+            url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(window.sessionStorage.user)
           }).done(function () {
             // tree aktualisieren, falls von move_node ausgelöst
-            if (jstreeCallback) { jstreeCallback(); }
+            if (jstreeCallback) { jstreeCallback() }
             // olMap aktualisieren, falls von ihr ausgelöst
-            if (olmapCallback) { olmapCallback(); }
+            if (olmapCallback) { olmapCallback() }
             // wenn kein olmapCallback aber olmap offen
             if (!olmapCallback && window.apf.olMap.beobZuordnungsLayerFeatures && $('#olMap').is(':visible')) {
               // vermutlich sollte das beobzuordnungs-Layer nachgeführt werden
