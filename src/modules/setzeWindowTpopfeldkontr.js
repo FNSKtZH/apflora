@@ -1,4 +1,4 @@
-// setzt window.apf.tpopfeldkontr und localStorage.tpopfeldkontrId
+// setzt window.apf.tpopfeldkontr und window.localStorage.tpopfeldkontrId
 // wird benötigt, wenn beim App-Start direkt ein deep link geöffnet wird
 
 /*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
@@ -7,7 +7,7 @@
 var $ = require('jquery')
 
 module.exports = function (id) {
-  localStorage.tpopfeldkontrId = id
+  window.localStorage.tpopfeldkontrId = id
   $.ajax({
     type: 'get',
     url: 'api/v1/apflora/tabelle=tpopkontr/feld=TPopKontrId/wertNumber=' + id

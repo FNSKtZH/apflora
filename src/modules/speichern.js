@@ -35,7 +35,7 @@ module.exports = function (that) {
   table = _.findWhere(configuration.tables, {form: formular})
   tabelleInDb = table.tabelleInDb
   tabelleIdFeld = table.tabelleIdFeld
-  feldname = $(that).data('feld') || that.name;   // tpopkontrzahl: die Namen müssen die id enthalten
+  feldname = $(that).data('feld') || that.name   // tpopkontrzahl: die Namen müssen die id enthalten
   feldtyp = $(that).attr('type') || null
 
   // Feldwert ermitteln
@@ -74,7 +74,7 @@ module.exports = function (that) {
   if (feldname === 'PopHerkunft') {
     apJahr = window.apf.ap.ApJahr
     bekanntSeit = $('#PopBekanntSeit').val()
-    if (apJahr && !bekanntSeit && feldwert != 300) {
+    if (apJahr && !bekanntSeit && feldwert !== 300) {
       // bekanntSeit muss gesetzt sein, ausser bei potentiellen Wuchsorten
       melde('Wert wird noch nicht gespeichert:<br><br>Erfassen Sie zuerst "bekannt seit",<br><br>damit die Anwendung weiss, ob die Ansiedlung vor oder nach Beginn des AP erfolgte')
       // Markierung entfernen
@@ -83,17 +83,17 @@ module.exports = function (that) {
       $('#PopBekanntSeit').focus()
       return
     }
-    if (feldwert == 200 && apJahr && bekanntSeit < apJahr) {
+    if (feldwert === 200 && apJahr && bekanntSeit < apJahr) {
       feldwert = 210
     }
-    if (feldwert == 200 && !apJahr) {
+    if (feldwert === 200 && !apJahr) {
       feldwert = 210
     }
   }
   if (feldname === 'TPopHerkunft') {
     apJahr = window.apf.ap.ApJahr
     bekanntSeit = $('#TPopBekanntSeit').val()
-    if (apJahr && !bekanntSeit && feldwert != 300) {
+    if (apJahr && !bekanntSeit && feldwert !== 300) {
       // bekanntSeit muss gesetzt sein, ausser bei potentiellen Wuchsorten
       melde('Wert wird noch nicht gespeichert:<br><br>Erfassen Sie zuerst "bekannt seit",<br><br>damit die Anwendung weiss, ob die Ansiedlung vor oder nach Beginn des AP erfolgte')
       // Markierung entfernen
@@ -102,10 +102,10 @@ module.exports = function (that) {
       $('#TPopBekanntSeit').focus()
       return
     }
-    if (feldwert == 200 && apJahr && bekanntSeit < apJahr) {
+    if (feldwert === 200 && apJahr && bekanntSeit < apJahr) {
       feldwert = 210
     }
-    if (feldwert == 200 && !apJahr) {
+    if (feldwert === 200 && !apJahr) {
       feldwert = 210
     }
   }
@@ -114,14 +114,14 @@ module.exports = function (that) {
   if (feldname === 'PopHerkunftUnklar' || feldname === 'TPopHerkunftUnklar' || feldname === 'TPopMassnPlan' || feldname === 'TPopKontrPlan') {
     feldwert = (feldwert ? 1 : '')
   }
-  if (feldname === 'BeobBemerkungen' && localStorage.beobStatus === 'nicht_beurteilt') {
+  if (feldname === 'BeobBemerkungen' && window.localStorage.beobStatus === 'nicht_beurteilt') {
     // hier soll nicht gespeichert werden
     $('#BeobBemerkungen').val('')
     melde('Bemerkungen sind nur in zugeordneten oder nicht zuzuordnenden Beobachtungen möglich', 'Aktion abgebrochen')
     return
   }
 
-  tabelleId = localStorage[formular + 'Id']
+  tabelleId = window.localStorage[formular + 'Id']
 
   if (formular === 'tpopkontrzaehl') {
     tabelleId = $(that).closest('table').find('[name="TPopKontrZaehlId"]').val()
@@ -129,7 +129,7 @@ module.exports = function (that) {
     if (!tabelleId) {
       $.ajax({
         type: 'post',
-        url: 'api/v1/insert/apflora/tabelle=tpopkontrzaehl/feld=TPopKontrId/wert=' + localStorage.tpopfeldkontrId + '/user=' + encodeURIComponent(sessionStorage.user)
+        url: 'api/v1/insert/apflora/tabelle=tpopkontrzaehl/feld=TPopKontrId/wert=' + window.localStorage.tpopfeldkontrId + '/user=' + encodeURIComponent(window.sessionStorage.user)
       }).done(function (TPopKontrZaehlId) {
         // die Felder dieser Zählung mit der neuen id aktualisieren
         tabelleId = TPopKontrZaehlId

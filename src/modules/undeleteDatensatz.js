@@ -16,7 +16,6 @@
 var $ = require('jquery'),
   _ = require('underscore'),
   melde = require('./melde'),
-  zeigeFormular = require('./zeigeFormular'),
   waehleApliste = require('./waehleApliste'),
   oeffneUri = require('./oeffneUri'),
   erstelleTree = require('./jstree/erstelleTree')
@@ -133,12 +132,12 @@ module.exports = function () {
       delete window.apf.apliste.programmAlle
       $.when(waehleApliste('programmAlle')).then(function () {
         // pushState funktioniert nicht, unklar wieso
-        history.pushState(null, null, 'index.html?ap=' + id)
+        window.history.pushState(null, null, 'index.html?ap=' + id)
         oeffneUri()
       })
     } else {
       // tree neu aufbauen
-      $.when(erstelleTree(localStorage.apId)).then(function () {
+      $.when(erstelleTree(window.localStorage.apId)).then(function () {
         $('#tree').jstree('select_node', "[typ='" + typ + "']#" + id)
       })
     }
