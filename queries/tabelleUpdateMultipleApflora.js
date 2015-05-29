@@ -17,16 +17,15 @@ var mysql = require('mysql'),
   })
 
 module.exports = function (request, callback) {
-  var tabelle = escapeStringForSql(request.params.tabelle),         // der Name der Tabelle, in der die Daten gespeichert werden sollen
-    felder = request.params.felder,                              // Ein Objekt mit allen feldern und deren Werten. PLUS: der id
-    date = new Date().toISOString(),                           // wann gespeichert wird
+  var tabelle = escapeStringForSql(request.params.tabelle),           // der Name der Tabelle, in der die Daten gespeichert werden sollen
+    felder = request.params.felder,                                   // Ein Objekt mit allen feldern und deren Werten. PLUS: der id
+    date = new Date().toISOString(),                                  // wann gespeichert wird
     sql,
     id,
-    user,
     configTable = _.findWhere(config.tables, {tabelleInDb: tabelle}), // die table in der Konfiguration, welche die Informationen dieser Tabelle enthält
-    nameMutwannFeld = configTable.mutWannFeld || 'MutWann',               // so heisst das MutWann-Feld in dieser Tabelle
-    nameMutWerFeld = configTable.mutWerFeld || 'MutWer',                // so heisst das MutWer-Feld in dieser Tabelle
-    tabelleIdFeld = configTable.tabelleIdFeld;                          // so heisst das Schlüsselfeld dieser Tabelle
+    nameMutwannFeld = configTable.mutWannFeld || 'MutWann',           // so heisst das MutWann-Feld in dieser Tabelle
+    nameMutWerFeld = configTable.mutWerFeld || 'MutWer',              // so heisst das MutWer-Feld in dieser Tabelle
+    tabelleIdFeld = configTable.tabelleIdFeld                         // so heisst das Schlüsselfeld dieser Tabelle
 
   felder = JSON.parse(felder)
 
@@ -35,7 +34,6 @@ module.exports = function (request, callback) {
   delete felder.id
 
   // user wird nur für update-Klausel benutzt
-  user = felder.user
   delete felder.user
 
   // sql beginnen

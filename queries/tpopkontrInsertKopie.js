@@ -15,7 +15,7 @@ module.exports = function (request, callback) {
   var tpopId = escapeStringForSql(request.params.tpopId),
     tpopKontrId = escapeStringForSql(request.params.tpopKontrId),
     user = escapeStringForSql(request.params.user),        // der Benutzername
-    date = new Date().toISOString();                       // wann gespeichert wird
+    date = new Date().toISOString()                        // wann gespeichert wird
 
   async.series([
     function (callback) {
@@ -60,7 +60,7 @@ module.exports = function (request, callback) {
     var sql = '',
       tpopkontridNeu = results[3]
 
-    if (err) { return callback(err, null); }
+    if (err) { return callback(err, null) }
     // Zählungen der herkunfts-Kontrolle holen und der neuen Kontrolle anfügen
     sql += 'INSERT INTO tpopkontrzaehl (Anzahl, Zaehleinheit, Methode, MutWann, MutWer, TPopKontrId)'
     sql += ' SELECT tpopkontrzaehl.Anzahl, tpopkontrzaehl.Zaehleinheit, tpopkontrzaehl.Methode, "' + date + '", "' + user + '", ' + tpopkontridNeu

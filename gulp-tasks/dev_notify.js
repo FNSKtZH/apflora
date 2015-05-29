@@ -1,14 +1,14 @@
-'use strict';
+'use strict'
 
-var gulp       = require('gulp'),
-    requireDir = require('require-dir'),
-    notifier   = require('node-notifier');
+var gulp = require('gulp'),
+  requireDir = require('require-dir'),
+  notifier = require('node-notifier')
 
-requireDir('../gulp-tasks', {recurse: true});
+requireDir('../gulp-tasks', {recurse: true})
 
-return gulp.task('dev_notify', function () {
-    notifier.notify({
-        'title': 'dev code built',
-        'message': 'watching now'
-    });
-});
+gulp.task('dev_notify', function () {
+  notifier.notify({
+    'title': 'dev code built',
+    'message': 'watching now'
+  })
+})

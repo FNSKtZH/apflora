@@ -2,21 +2,20 @@
  * Baut das Projekt für die Produktion
  */
 
-'use strict';
+'use strict'
 
-var gulp        = require('gulp'),
-    requireDir  = require('require-dir'),
-    runSequence = require('run-sequence'),
-    notifier    = require('node-notifier');
+var gulp = require('gulp'),
+  requireDir = require('require-dir'),
+  runSequence = require('run-sequence')
 
-requireDir('../gulp-tasks', {recurse: true});
+requireDir('../gulp-tasks', {recurse: true})
 
-return gulp.task('prod', function () {
-    runSequence(
-        'templates',
-        ['browserify', 'prod_clean_dist'],
-        ['prod_build_style', 'prod_build_src', 'prod_build_html'],
-        'prod_copy',
-        'prod_notify'
-    );
-});
+gulp.task('prod', function () {
+  runSequence(
+    'templates',
+    ['browserify', 'prod_clean_dist'],
+    ['prod_build_style', 'prod_build_src', 'prod_build_html'],
+    'prod_copy',
+    'prod_notify'
+  )
+})

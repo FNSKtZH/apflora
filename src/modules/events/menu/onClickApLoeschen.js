@@ -24,7 +24,7 @@ module.exports = function () {
         width: 500,
         buttons: {
           ja: function () {
-            loescheAp(localStorage.apId)
+            loescheAp(window.localStorage.apId)
             $(this).dialog('close')
           },
           nein: function () {

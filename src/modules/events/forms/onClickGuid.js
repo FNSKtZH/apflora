@@ -4,7 +4,6 @@ var $ = require('jquery')
 
 module.exports = function () {
   var successful = false
-  var msg
   var $guidRueckmeldung = $('.js-guidRueckmeldung')
 
   // die GUIDS sollen einfach kopiert werden können

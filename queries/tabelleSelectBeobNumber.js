@@ -12,8 +12,8 @@ var mysql = require('mysql'),
 
 module.exports = function (request, callback) {
   var tabelle = escapeStringForSql(request.params.tabelle), // Name der Tabelle, aus der die Daten geholt werden sollen
-    feld = escapeStringForSql(request.params.feld),    // Name der ID der Tabelle
-    wert = escapeStringForSql(request.params.wert);    // Wert der ID
+    feld = escapeStringForSql(request.params.feld),         // Name der ID der Tabelle
+    wert = escapeStringForSql(request.params.wert)          // Wert der ID
 
   connection.query(
     'SELECT * FROM ' + tabelle + ' WHERE ' + feld + '=' + wert,

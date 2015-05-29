@@ -17,7 +17,7 @@ module.exports = function (JBerJahr) {
       var node = {},
         nodeArray = []
 
-      if (err) { throw err; }
+      if (err) { throw err }
 
       if (data && data[0]) {
         data = data[0]

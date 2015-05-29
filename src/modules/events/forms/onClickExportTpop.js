@@ -18,5 +18,5 @@ module.exports = function () {
   } else {
     downloadFileFromView('v_tpop', 'Teilpopulationen')
   }
-  return false; // this is critical to stop the click event which will trigger a normal file download!
+  return false // this is critical to stop the click event which will trigger a normal file download!
 }
