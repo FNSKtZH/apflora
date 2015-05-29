@@ -1,12 +1,12 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
 var saveAs = require('saveAs'),
-    canvas = require('canvas');
+  canvas = require('canvas')
 
 module.exports = function () {
-    canvas = document.getElementsByTagName('canvas')[0];
-    canvas.toBlob(function (blob) {
-        saveAs(blob, 'ch-karte.png');
-    });
-};
+  canvas = document.getElementsByTagName('canvas')[0]
+  canvas.toBlob(function (blob) {
+    saveAs(blob, 'ch-karte.png')
+  })
+}

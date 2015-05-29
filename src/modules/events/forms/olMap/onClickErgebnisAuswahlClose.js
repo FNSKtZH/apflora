@@ -1,9 +1,9 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var $ = require('jquery');
+var $ = require('jquery')
 
 module.exports = function () {
-    $('#olMapInfosAbfragen').trigger('click');
-    $("#olMapErgebnisAuswahl").hide();
-};
+  $('#olMapInfosAbfragen').trigger('click')
+  $('#olMapErgebnisAuswahl').hide()
+}

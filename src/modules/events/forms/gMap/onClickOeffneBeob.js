@@ -1,10 +1,10 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var $          = require('jquery'),
-    oeffneBeob = require('../../../oeffneBeob');
+var $ = require('jquery'),
+  oeffneBeob = require('../../../oeffneBeob')
 
 module.exports = function (event) {
-    event.preventDefault();
-    oeffneBeob($(this).data('beob'));
-};
+  event.preventDefault()
+  oeffneBeob($(this).data('beob'))
+}

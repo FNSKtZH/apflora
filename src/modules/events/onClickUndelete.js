@@ -1,9 +1,9 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var undeleteDatensatz = require('../undeleteDatensatz');
+var undeleteDatensatz = require('../undeleteDatensatz')
 
 module.exports = function (event) {
-    event.preventDefault();
-    undeleteDatensatz();
-};
+  event.preventDefault()
+  undeleteDatensatz()
+}

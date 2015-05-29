@@ -1,20 +1,20 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var escapeStringForSql = require('../escapeStringForSql');
+var escapeStringForSql = require('../escapeStringForSql')
 
 module.exports = function (request, reply) {
-    var apId,
-        node;
+  var apId,
+    node
 
-    apId      = escapeStringForSql(request.params.apId);
+  apId = escapeStringForSql(request.params.apId)
 
-    node      = {};
-    node.data = 'Qualitätskontrollen';
-    node.attr = {
-        id:  'qualitaetskontrollen' + apId,
-        typ: 'qualitaetskontrollen'
-    };
+  node = {}
+  node.data = 'Qualitätskontrollen'
+  node.attr = {
+    id: 'qualitaetskontrollen' + apId,
+    typ: 'qualitaetskontrollen'
+  }
 
-    reply(null, node);
-};
+  reply(null, node)
+}

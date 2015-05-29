@@ -1,27 +1,27 @@
 // steuert den style von pop
 // selected: mit der Maus oder drag_box markierte
 
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var $  = require('jquery'),
-    ol = require('ol');
+var $ = require('jquery'),
+  ol = require('ol')
 
 module.exports = function (feature, resolution, selected) {
-    var style = new ol.style.Style({
-        fill: new ol.style.Fill({
-            color: 'black'
-        }),
-        stroke: new ol.style.Stroke({
-            color: 'rgba(183, 42, 249, 0.9)',
-            width: 2
-        }),
-        image: new ol.style.Circle({
-            radius: 7,
-            fill: new ol.style.Fill({
-                color: '#ffcc33'
-            })
-        })
-    });
-    return [style];
-};
+  var style = new ol.style.Style({
+    fill: new ol.style.Fill({
+      color: 'black'
+    }),
+    stroke: new ol.style.Stroke({
+      color: 'rgba(183, 42, 249, 0.9)',
+      width: 2
+    }),
+    image: new ol.style.Circle({
+      radius: 7,
+      fill: new ol.style.Fill({
+        color: '#ffcc33'
+      })
+    })
+  })
+  return [style]
+}

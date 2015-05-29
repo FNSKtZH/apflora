@@ -1,17 +1,17 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var $  = require('jquery');
+var $ = require('jquery')
 
 module.exports = function () {
-    var tooltipTitle;
+  var tooltipTitle
 
-    $('#olMapExportieren').button();
-    $('#olMapExportieren').button("enable");
+  $('#olMapExportieren').button()
+  $('#olMapExportieren').button('enable')
 
-    tooltipTitle = 'Karte als png herunterladen';
-    $("#olMapExportierenDiv").tooltip({
-        tooltipClass: "tooltip-styling-hinterlegt",
-        content:      tooltipTitle
-    });
-};
+  tooltipTitle = 'Karte als png herunterladen'
+  $('#olMapExportierenDiv').tooltip({
+    tooltipClass: 'tooltip-styling-hinterlegt',
+    content: tooltipTitle
+  })
+}

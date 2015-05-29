@@ -1,9 +1,9 @@
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var addruler = require('addruler');
+var addruler = require('addruler')
 
 module.exports = function (event) {
-    event.preventDefault();
-    addruler();
-};
+  event.preventDefault()
+  addruler()
+}

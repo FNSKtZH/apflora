@@ -4,64 +4,64 @@
  * retourniert das kml
  */
 
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var _                    = require('underscore'),
-    removeKmlNogoStrings = require('./removeKmlNogoStrings'),
-    getHeaderForKml      = require('./getHeaderForKml'),
-    getFooterForKml      = require('./getFooterForKml'),
-    getTimestamp         = require('./getTimestamp');
+var _ = require('underscore'),
+  removeKmlNogoStrings = require('./removeKmlNogoStrings'),
+  getHeaderForKml = require('./getHeaderForKml'),
+  getFooterForKml = require('./getFooterForKml'),
+  getTimestamp = require('./getTimestamp')
 
 module.exports = function (pops) {
-    var filename = 'Teilpopulationen_' + getTimestamp(),
-        kml,
-        art,
-        zeile;
+  var filename = 'Teilpopulationen_' + getTimestamp(),
+    kml,
+    art,
+    zeile
 
-    // header schreiben
-    kml = getHeaderForKml(filename);
-    // folder beginnen
-    kml += '<Folder>';
+  // header schreiben
+  kml = getHeaderForKml(filename)
+  // folder beginnen
+  kml += '<Folder>'
 
-    // Zeilen schreiben
-    _.each(pops, function (tpop) {
-        zeile = '';
-        if (art && art !== tpop.Art) {
-            // neue Art: Folder abschliessen und neuen beginnen
-            zeile += '</Folder><Folder>';
-        }
-        zeile += '<name>';
-        zeile += removeKmlNogoStrings(tpop.Art);
-        zeile += '</name>';
-        zeile += '<Placemark><name>';
-        zeile += removeKmlNogoStrings(tpop.Label);
-        zeile += '</name>';
-        // html in xml muss in cdata gewickelt werden
-        zeile += '<description><![CDATA[';
-        zeile += removeKmlNogoStrings(tpop.Inhalte);
-        zeile += '<br><a href=\'';
-        zeile += tpop.URL;
-        zeile += '\'>Formular öffnen</a>';
-        zeile += ']]></description>';
-        zeile += '<styleUrl>#default+nicon=http://maps.google.com/mapfiles/kml/pal3/icon63.png+hicon=http://maps.google.com/mapfiles/kml/pal3/icon55.png</styleUrl>';
-        zeile += '<Point><coordinates>';
-        zeile += tpop.Laengengrad;
-        zeile += ',';
-        zeile += tpop.Breitengrad;
-        zeile += ',0</coordinates></Point>';
-        zeile += '</Placemark>';
-        // art zwischenspeichern, um zu merken, wenn sie ändert
-        art = tpop.Art;
-        kml += zeile + '\n';
-    });
+  // Zeilen schreiben
+  _.each(pops, function (tpop) {
+    zeile = ''
+    if (art && art !== tpop.Art) {
+      // neue Art: Folder abschliessen und neuen beginnen
+      zeile += '</Folder><Folder>'
+    }
+    zeile += '<name>'
+    zeile += removeKmlNogoStrings(tpop.Art)
+    zeile += '</name>'
+    zeile += '<Placemark><name>'
+    zeile += removeKmlNogoStrings(tpop.Label)
+    zeile += '</name>'
+    // html in xml muss in cdata gewickelt werden
+    zeile += '<description><![CDATA['
+    zeile += removeKmlNogoStrings(tpop.Inhalte)
+    zeile += "<br><a href='"
+    zeile += tpop.URL
+    zeile += "'>Formular öffnen</a>"
+    zeile += ']]></description>'
+    zeile += '<styleUrl>#default+nicon=http://maps.google.com/mapfiles/kml/pal3/icon63.png+hicon=http://maps.google.com/mapfiles/kml/pal3/icon55.png</styleUrl>'
+    zeile += '<Point><coordinates>'
+    zeile += tpop.Laengengrad
+    zeile += ','
+    zeile += tpop.Breitengrad
+    zeile += ',0</coordinates></Point>'
+    zeile += '</Placemark>'
+    // art zwischenspeichern, um zu merken, wenn sie ändert
+    art = tpop.Art
+    kml += zeile + '\n'
+  })
 
-    // folder abschliessen
-    kml += '</Folder>';
+  // folder abschliessen
+  kml += '</Folder>'
 
-    // footer schreiben
-    kml += getFooterForKml();
+  // footer schreiben
+  kml += getFooterForKml()
 
-    // kml zurück geben
-    return kml;
-};
+  // kml zurück geben
+  return kml
+}

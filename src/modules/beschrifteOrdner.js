@@ -1,83 +1,83 @@
 // übernimmt einen node
 // zählt dessen children und passt die Beschriftung an
 
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
-var $ = require('jquery');
+var $ = require('jquery')
 
 module.exports = function (node) {
-    var anz,
-        anzTxt,
-        nodeTyp = node.attr('typ');
+  var anz,
+    anzTxt,
+    nodeTyp = node.attr('typ')
 
-    anz = $(node).find("> ul > li").length;
+  anz = $(node).find('> ul > li').length
 
-    switch (nodeTyp) {
+  switch (nodeTyp) {
     case 'apOrdnerPop':
-        anzTxt = "Populationen (" + anz + ")";
-        break;
+      anzTxt = 'Populationen (' + anz + ')'
+      break
     case 'apzieljahr':
-        anzTxt = $.jstree._reference(node).get_text(node).slice(0, 6);
-        anzTxt += anz + ")";
-        break;
+      anzTxt = $.jstree._reference(node).get_text(node).slice(0, 6)
+      anzTxt += anz + ')'
+      break
     case 'zielberOrdner':
-        anzTxt = "Ziel-Berichte (" + anz + ")";
-        break;
+      anzTxt = 'Ziel-Berichte (' + anz + ')'
+      break
     case 'apOrdnerErfkrit':
-        anzTxt = "AP-Erfolgskriterien (" + anz + ")";
-        break;
+      anzTxt = 'AP-Erfolgskriterien (' + anz + ')'
+      break
     case 'apOrdnerJber':
-        anzTxt = "AP-Berichte (" + anz + ")";
-        break;
+      anzTxt = 'AP-Berichte (' + anz + ')'
+      break
     case 'apOrdnerBer':
-        anzTxt = "Berichte (" + anz + ")";
-        break;
+      anzTxt = 'Berichte (' + anz + ')'
+      break
     case 'apOrdnerAssozarten':
-        anzTxt = "assoziierte Arten (" + anz + ")";
-        break;
+      anzTxt = 'assoziierte Arten (' + anz + ')'
+      break
     case 'popOrdnerMassnber':
-        anzTxt = "Massnahmen-Berichte (" + anz + ")";
-        break;
+      anzTxt = 'Massnahmen-Berichte (' + anz + ')'
+      break
     case 'popOrdnerPopber':
-        anzTxt = "Populations-Berichte (" + anz + ")";
-        break;
+      anzTxt = 'Populations-Berichte (' + anz + ')'
+      break
     case 'popOrdnerTpop':
-        anzTxt = "Teilpopulationen (" + anz + ")";
-        break;
+      anzTxt = 'Teilpopulationen (' + anz + ')'
+      break
     case 'tpopOrdnerMassn':
-        anzTxt = "Massnahmen (" + anz + ")";
-        break;
+      anzTxt = 'Massnahmen (' + anz + ')'
+      break
     case 'tpopOrdnerMassnber':
-        anzTxt = "Massnahmen-Berichte (" + anz + ")";
-        break;
+      anzTxt = 'Massnahmen-Berichte (' + anz + ')'
+      break
     case 'tpopOrdnerTpopber':
-        anzTxt = "Teilpopulations-Berichte (" + anz + ")";
-        break;
+      anzTxt = 'Teilpopulations-Berichte (' + anz + ')'
+      break
     case 'tpopOrdnerFeldkontr':
-        anzTxt = "Feldkontrollen (" + anz + ")";
-        break;
+      anzTxt = 'Feldkontrollen (' + anz + ')'
+      break
     case 'tpopOrdnerFreiwkontr':
-        anzTxt = "Freiwilligen-Kontrollen (" + anz + ")";
-        break;
+      anzTxt = 'Freiwilligen-Kontrollen (' + anz + ')'
+      break
     case 'tpopOrdnerBeobZugeordnet':
-        anzTxt = "Beobachtungen (" + anz + ")";
-        break;
+      anzTxt = 'Beobachtungen (' + anz + ')'
+      break
     case 'apOrdnerBeobNichtBeurteilt':
-        anzTxt = (anz === 100 ? "nicht beurteilte Beobachtungen (neuste " + anz + ")" : "nicht beurteilte Beobachtungen (" + anz + ")");
-        break;
+      anzTxt = (anz === 100 ? 'nicht beurteilte Beobachtungen (neuste ' + anz + ')' : 'nicht beurteilte Beobachtungen (' + anz + ')')
+      break
     case 'apOrdnerBeobNichtZuzuordnen':
-        anzTxt = (anz === 100 ? "nicht zuzuordnende Beobachtungen (neuste " + anz + ")" : "nicht zuzuordnende Beobachtungen (" + anz + ")");
-        break;
+      anzTxt = (anz === 100 ? 'nicht zuzuordnende Beobachtungen (neuste ' + anz + ')' : 'nicht zuzuordnende Beobachtungen (' + anz + ')')
+      break
     case 'apOrdnerApziel':
-        anz = 0;
-        $($.jstree._reference(node)._get_children(node)).each(function () {
-            $($(this).find("> ul > li")).each(function () {
-                anz += 1;
-            });
-        });
-        anzTxt = "AP-Ziele (" + anz + ")";
-        break;
-    }
-    $.jstree._reference(node).rename_node(node, anzTxt);
-};
+      anz = 0
+      $($.jstree._reference(node)._get_children(node)).each(function () {
+        $($(this).find('> ul > li')).each(function () {
+          anz += 1
+        })
+      })
+      anzTxt = 'AP-Ziele (' + anz + ')'
+      break
+  }
+  $.jstree._reference(node).rename_node(node, anzTxt)
+}

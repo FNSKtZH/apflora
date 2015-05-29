@@ -4,12 +4,12 @@
  * retourniert das kml
  */
 
-/*jslint node: true, browser: true, nomen: true, todo: true */
-'use strict';
+/*jslint node: true, browser: true, nomen: true, todo: true, asi: true */
+'use strict'
 
 module.exports = function (string) {
-    if (string && typeof string === 'string') {
-        return string.replace(/&/g, 'und').replace(/>>>/g, ' ').replace(/<<</g, ' ').replace(/"/g, '').replace(/'/g, "");
-    }
-    return string;
-};
+  if (string && typeof string === 'string') {
+    return string.replace(/&/g, 'und').replace(/>>>/g, ' ').replace(/<<</g, ' ').replace(/"/g, '').replace(/'/g, '')
+  }
+  return string
+}
