@@ -5,7 +5,7 @@
 Web-Applikation zur Verwaltung des [Aktionsplans Flora der Fachstelle Naturschutz des Kantons Zürich](//www.aln.zh.ch/internet/baudirektion/aln/de/naturschutz/artenfoerderung/ap_fl.html).
 
 <a name="top"></a>
-### Inhalt ###
+**Inhalt**
 * <a href="#machen">Was kann man mit ApFloraDb machen?</a>
 * <a href="#fns">Produkte für die Fachstelle Naturschutz</a>
 * <a href="#Technik">Technische Umsetzung</a>
