@@ -7,8 +7,7 @@ var _ = require('underscore'),
   chToWgsLng = require('../../lib/chToWgsLng'),
   chToWgsLat = require('../../lib/chToWgsLat'),
   zeigeFormular = require('../zeigeFormular'),
-  makeListenerMarkerClick = require('./makeListenerMarkerClick'),
-  getApiHost = require('../getApiHost')
+  makeListenerMarkerClick = require('./makeListenerMarkerClick')
 
 module.exports = function (tpopBeobListe) {
   var anzTpopBeob,
@@ -24,7 +23,6 @@ module.exports = function (tpopBeobListe) {
     marker,
     contentString,
     markerOptions,
-    markerCluster,
     datum,
     titel,
     autor,
@@ -126,11 +124,11 @@ module.exports = function (tpopBeobListe) {
     maxZoom: 17,
     styles: [{
       height: 53,
-      url: getApiHost() + '/img/m5.png',
+      url: '../../../img/m5.png',
       width: 53
     }]
   }
-  markerCluster = new MarkerClusterer(map, markers, markerOptions)
+  new MarkerClusterer(map, markers, markerOptions)
   if (anzTpopBeob === 1) {
     // map.fitbounds setzt zu hohen zoom, wenn nur eine Beobachtung erfasst wurde > verhindern
     map.setCenter(latlng)

@@ -26,7 +26,6 @@ module.exports = function (tpopListe) {
     marker,
     contentString,
     markerOptions,
-    markerCluster,
     myFlurname
 
   // vor Erneuerung zeigen - sonst klappt Wiederaufruf nicht, wenn die Karte schon angezeigt ist
@@ -107,7 +106,7 @@ module.exports = function (tpopListe) {
     maxZoom: 17,
     styles: [{
       height: 53,
-      url: getApiHost() + '/img/m8.png',
+      url: '../../../img/m8.png',
       width: 53
     }]
   }
@@ -119,7 +118,7 @@ module.exports = function (tpopListe) {
   })
   window.apf.googleKarteDetailplaene.setMap(null)
 
-  markerCluster = new MarkerClusterer(map, markers, markerOptions)
+  new MarkerClusterer(map, markers, markerOptions)
   if (anzTpop === 1) {
     // map.fitbounds setzt zu hohen zoom, wenn nur eine Beobachtung erfasst wurde > verhindern
     map.setCenter(latlng)

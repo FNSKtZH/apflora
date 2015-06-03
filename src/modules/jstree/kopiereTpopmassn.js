@@ -14,7 +14,7 @@ module.exports = function (aktiverNode) {
   // Daten des Objekts holen
   $.ajax({
     type: 'get',
-    url: getApiHost() + '/api/v1/apflora/tabelle=tpopmassn/feld=TPopMassnId/wertNumber=' + erstelleIdAusDomAttributId($(window.apf.tpopmassnNodeKopiert).attr('id'))
+    url: getApiHost() + '/apflora/tabelle=tpopmassn/feld=TPopMassnId/wertNumber=' + erstelleIdAusDomAttributId($(window.apf.tpopmassnNodeKopiert).attr('id'))
   }).done(function (data) {
     if (data && data[0]) {
       window.apf.tpopmassnObjektKopiert = data[0]

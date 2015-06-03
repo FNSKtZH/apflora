@@ -9,7 +9,7 @@ var $ = require('jquery'),
 module.exports = function (nodeApId) {
   $.ajax({
     type: 'get',
-    url: getApiHost() + '/api/v1/popsChKarte/apId=' + erstelleIdAusDomAttributId(nodeApId)
+    url: getApiHost() + '/popsChKarte/apId=' + erstelleIdAusDomAttributId(nodeApId)
   }).done(function (data) {
     if (data && data.length > 0) {
       zeigePop(data)

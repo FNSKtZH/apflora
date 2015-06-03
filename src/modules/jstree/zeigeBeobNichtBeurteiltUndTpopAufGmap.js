@@ -16,12 +16,12 @@ module.exports = function (nodeApId, nodeBeobId) {
 
   $.ajax({
     type: 'get',
-    url: getApiHost() + '/api/v1/beobKarte/apId=' + apId + '/tpopId=/beobId=' + beobId + '/nichtZuzuordnen='
+    url: getApiHost() + '/beobKarte/apId=' + apId + '/tpopId=/beobId=' + beobId + '/nichtZuzuordnen='
   }).done(function (beob) {
     if (beob.length > 0) {
       $.ajax({
         type: 'get',
-        url: getApiHost() + '/api/v1/apKarte/apId=' + apId
+        url: getApiHost() + '/apKarte/apId=' + apId
       }).done(function (tpop) {
         if (tpop && tpop.length > 0) {
           zeigeBeobUndTPop(beob, tpop)

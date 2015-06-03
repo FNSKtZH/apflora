@@ -16,7 +16,7 @@ module.exports = function (programm, callback) {
   if (!window.apf.apliste[programm]) {
     $.ajax({
       type: 'get',
-      url: getApiHost() + '/api/v1/apliste/programm=' + programm
+      url: getApiHost() + '/apliste/programm=' + programm
     }).done(function (data) {
       // die Daten werden später benötigt > globale Variable erstellen
       window.apf.apliste[programm] = data

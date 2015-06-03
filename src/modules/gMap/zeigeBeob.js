@@ -1,15 +1,13 @@
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
+var _ = require('underscore'),
   google = require('google'),
   MarkerWithLabel = require('MarkerWithLabel'),
   MarkerClusterer = require('MarkerClusterer'),
   chToWgsLng = require('../../lib/chToWgsLng'),
   chToWgsLat = require('../../lib/chToWgsLat'),
   zeigeFormular = require('../zeigeFormular'),
-  makeListenerMarkerClick = require('./makeListenerMarkerClick'),
-  getApiHost = require('../getApiHost')
+  makeListenerMarkerClick = require('./makeListenerMarkerClick')
 
 module.exports = function (beobListe) {
   var anzBeob,
@@ -25,7 +23,6 @@ module.exports = function (beobListe) {
     marker,
     contentString,
     markerOptions,
-    markerCluster,
     datum,
     titel,
     aNote,
@@ -128,11 +125,11 @@ module.exports = function (beobListe) {
     maxZoom: 17,
     styles: [{
       height: 53,
-      url: getApiHost() + '/img/m5.png',
+      url: '../../../img/m5.png',
       width: 53
     }]
   }
-  markerCluster = new MarkerClusterer(map, markers, markerOptions)
+  new MarkerClusterer(map, markers, markerOptions)
   if (anzBeob === 1) {
     // map.fitbounds setzt zu hohen zoom, wenn nur eine Beobachtung erfasst wurde > verhindern
     map.setCenter(latlng)

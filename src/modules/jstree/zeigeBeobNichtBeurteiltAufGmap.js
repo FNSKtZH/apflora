@@ -12,7 +12,7 @@ module.exports = function (nodeApId, nodeBeobId) {
 
   $.ajax({
     type: 'get',
-    url: getApiHost() + '/api/v1/beobKarte/apId=' + apId + '/tpopId=/beobId=' + beobId + '/nichtZuzuordnen='
+    url: getApiHost() + '/beobKarte/apId=' + apId + '/tpopId=/beobId=' + beobId + '/nichtZuzuordnen='
   }).done(function (data) {
     if (data.length > 0) {
       zeigeBeob(data)

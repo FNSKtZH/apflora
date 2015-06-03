@@ -53,7 +53,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
 
   $.ajax({
     type: 'post',
-    url: getApiHost() + '/api/v1/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=' + feldname + '/wert=' + encodeURIComponent(feldwert) + '/user=' + encodeURIComponent(window.sessionStorage.user)
+    url: getApiHost() + '/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=' + feldname + '/wert=' + encodeURIComponent(feldwert) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function () {
     // Variable für Objekt nachführen
     // jberUebersicht speichert kein window.formular, daher testen, ob es existiert
@@ -71,7 +71,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       $('#TPopKontrJahr').val(jahr)
       $.ajax({
         type: 'post',
-        url: getApiHost() + '/api/v1/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopKontrJahr/wert=' + encodeURIComponent(jahr) + '/user=' + encodeURIComponent(window.sessionStorage.user)
+        url: getApiHost() + '/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopKontrJahr/wert=' + encodeURIComponent(jahr) + '/user=' + encodeURIComponent(window.sessionStorage.user)
       })
     }
     // dito bei tpopmassn
@@ -80,7 +80,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       $('#TPopMassnJahr').val(jahr)
       $.ajax({
         type: 'post',
-        url: getApiHost() + '/api/v1/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopMassnJahr/wert=' + encodeURIComponent(jahr) + '/user=' + encodeURIComponent(window.sessionStorage.user)
+        url: getApiHost() + '/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopMassnJahr/wert=' + encodeURIComponent(jahr) + '/user=' + encodeURIComponent(window.sessionStorage.user)
       })
     }
     // wenn in Kontr Jahr geändert wurde, allfälliges Datum löschen
@@ -89,7 +89,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
         $('#TPopKontrDatum').val(null)
         $.ajax({
           type: 'post',
-          url: getApiHost() + '/api/v1/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopKontrDatum/wert=/user=' + encodeURIComponent(window.sessionStorage.user)
+          url: getApiHost() + '/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopKontrDatum/wert=/user=' + encodeURIComponent(window.sessionStorage.user)
         })
       }
     }
@@ -99,7 +99,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
         $('#TPopMassnDatum').val(null)
         $.ajax({
           type: 'post',
-          url: getApiHost() + '/api/v1/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopMassnDatum/wert=/user=' + encodeURIComponent(window.sessionStorage.user)
+          url: getApiHost() + '/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopMassnDatum/wert=/user=' + encodeURIComponent(window.sessionStorage.user)
         })
       }
     }
@@ -117,7 +117,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
         // Zählung enthält keine Daten > löschen
         $.ajax({
           type: 'delete',
-          url: getApiHost() + '/api/v1/apflora/tabelle=tpopkontrzaehl/tabelleIdFeld=TPopKontrZaehlId/tabelleId=' + tabelleId
+          url: getApiHost() + '/apflora/tabelle=tpopkontrzaehl/tabelleIdFeld=TPopKontrZaehlId/tabelleId=' + tabelleId
         }).done(function () {
           // die Felder dieser Zählung mit der neuen id aktualisieren
           $(that).closest('table').find('[name="TPopKontrZaehlId"]').val('')

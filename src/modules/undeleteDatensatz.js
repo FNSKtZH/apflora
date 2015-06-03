@@ -121,7 +121,7 @@ module.exports = function () {
   // Datensatz hinzufügen
   $.ajax({
     type: 'post',
-    url: getApiHost() + '/api/v1/insertMultiple/apflora/tabelle=' + tabelle + '/felder=' + JSON.stringify(data)
+    url: getApiHost() + '/insertMultiple/apflora/tabelle=' + tabelle + '/felder=' + JSON.stringify(data)
   }).done(function () {
     $('.undelete').hide()
     $('#forms').css('top', '')

@@ -9,7 +9,7 @@ var $ = require('jquery'),
 module.exports = function (nodePopId) {
   $.ajax({
     type: 'get',
-    url: getApiHost() + '/api/v1/tpopsKarte/popId=' + erstelleIdAusDomAttributId(nodePopId)
+    url: getApiHost() + '/tpopsKarte/popId=' + erstelleIdAusDomAttributId(nodePopId)
   }).done(function (data) {
     if (data.length > 0) {
       zeigeTPop(data)

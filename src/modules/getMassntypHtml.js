@@ -19,7 +19,7 @@ module.exports = function (callback) {
   if (!html) {
     $.ajax({
       type: 'get',
-      url: getApiHost() + '/api/v1/tpopMassnTypen'
+      url: getApiHost() + '/tpopMassnTypen'
     }).done(function (data) {
       if (data && data.length > 0) {
         // Feld mit Daten beliefern

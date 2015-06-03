@@ -18,7 +18,7 @@ module.exports = function (apId) {
   window.apf.deleted.Artname = $apWaehlenText.val()
   $.ajax({
     type: 'delete',
-    url: getApiHost() + '/api/v1/apflora/tabelle=ap/tabelleIdFeld=ApArtId/tabelleId=' + apId
+    url: getApiHost() + '/apflora/tabelle=ap/tabelleIdFeld=ApArtId/tabelleId=' + apId
   }).done(function () {
     delete window.localStorage.apId
     delete window.apf.ap

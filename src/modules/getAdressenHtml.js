@@ -19,7 +19,7 @@ module.exports = function (callback) {
   if (!html) {
     $.ajax({
       type: 'get',
-      url: getApiHost() + '/api/v1/adressen'
+      url: getApiHost() + '/adressen'
     }).done(function (data) {
       if (data) {
         // Feld mit Daten beliefern

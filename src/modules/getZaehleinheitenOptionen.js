@@ -18,7 +18,7 @@ module.exports = function () {
   if (!window.apf.tPopKontrZaehleinheitOptionen) {
     $.ajax({
       type: 'get',
-      url: getApiHost() + '/api/v1/feldkontrZaehleinheit'
+      url: getApiHost() + '/feldkontrZaehleinheit'
     }).done(function (data) {
       window.apf.tPopKontrZaehleinheitOptionen = data
       dataGeholt.resolve()

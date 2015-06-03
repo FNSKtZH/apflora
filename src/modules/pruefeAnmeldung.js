@@ -14,7 +14,7 @@ module.exports = function () {
   if ($anmeldungName && $anmeldungPasswort) {
     $.ajax({
       type: 'get',
-      url: getApiHost() + '/api/v1/anmeldung/name=' + $anmeldungName + '/pwd=' + $anmeldungPasswort
+      url: getApiHost() + '/anmeldung/name=' + $anmeldungName + '/pwd=' + $anmeldungPasswort
     }).done(function (data) {
       if (data && data.length > 0) {
         window.sessionStorage.user = $anmeldungName

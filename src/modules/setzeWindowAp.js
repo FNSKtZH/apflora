@@ -10,7 +10,7 @@ module.exports = function (id) {
   window.localStorage.apId = id
   $.ajax({
     type: 'get',
-    url: getApiHost() + '/api/v1/ap=' + window.localStorage.apId
+    url: getApiHost() + '/ap=' + window.localStorage.apId
   }).done(function (data) {
     // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
     if (data && data[0]) {

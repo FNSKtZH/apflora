@@ -62,7 +62,7 @@ module.exports = function (apId, popId, tpopId, ohneZuZeigen) {
   // Daten für die pop aus der DB holen
   $.ajax({
     type: 'get',
-    url: getApiHost() + '/api/v1/apflora/tabelle=tpop/feld=TPopId/wertNumber=' + tpopId
+    url: getApiHost() + '/apflora/tabelle=tpop/feld=TPopId/wertNumber=' + tpopId
   }).done(function (data) {
     // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
     if (data && data[0]) {

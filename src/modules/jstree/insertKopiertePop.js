@@ -10,7 +10,7 @@ var $ = require('jquery'),
 module.exports = function (aktiverNode, parentNode, nodeApId) {
   $.ajax({
     type: 'post',
-    url: getApiHost() + '/api/v1/popInsertKopie/apId=' + erstelleIdAusDomAttributId(nodeApId) + '/popId=' + erstelleIdAusDomAttributId($(window.apf.popNodeKopiert).attr('id')) + '/user=' + encodeURIComponent(window.sessionStorage.user)
+    url: getApiHost() + '/popInsertKopie/apId=' + erstelleIdAusDomAttributId(nodeApId) + '/popId=' + erstelleIdAusDomAttributId($(window.apf.popNodeKopiert).attr('id')) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
     var strukturtyp = 'pop',
       beschriftung = window.apf.popObjektKopiert.PopName

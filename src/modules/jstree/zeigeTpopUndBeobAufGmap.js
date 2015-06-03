@@ -10,13 +10,13 @@ var $ = require('jquery'),
 module.exports = function (nodeBeobId) {
   $.ajax({
     type: 'get',
-    url: getApiHost() + '/api/v1/beobKarte/apId=/tpopId=/beobId=' + erstelleIdAusDomAttributId(nodeBeobId) + '/nichtZuzuordnen='
+    url: getApiHost() + '/beobKarte/apId=/tpopId=/beobId=' + erstelleIdAusDomAttributId(nodeBeobId) + '/nichtZuzuordnen='
   }).done(function (beob) {
     if (beob && beob[0]) {
       // Array belassen -zeigeBeob benötigt einen Array
       $.ajax({
         type: 'get',
-        url: getApiHost() + '/api/v1/apKarte/apId=' + window.localStorage.apId
+        url: getApiHost() + '/apKarte/apId=' + window.localStorage.apId
       }).done(function (tpop) {
         if (tpop && tpop.length > 0) {
           zeigeBeobUndTPop(beob, tpop)
