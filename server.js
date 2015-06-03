@@ -7,12 +7,12 @@
 var _ = require('underscore'),
   json2csv = require('json2csv'),
   // wird nur in Entwicklung genutzt
-  serverOptionsDevelopment = {
+  /*serverOptionsDevelopment = {
     debug: {
       log: ['error'],
       request: ['error']
     }
-  },
+  },*/
   Hapi = require('hapi'),
   server = new Hapi.Server(),
   mysql = require('mysql'),
