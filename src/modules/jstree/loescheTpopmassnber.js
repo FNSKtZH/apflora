@@ -28,7 +28,7 @@ module.exports = function (aktiverNode, parentNode) {
         window.apf.deleted.typ = 'tpopmassnber'
         $.ajax({
           type: 'delete',
-          url: getApiHost() + '/api/v1/apflora/tabelle=tpopmassnber/tabelleIdFeld=TPopMassnBerId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
+          url: getApiHost() + '/apflora/tabelle=tpopmassnber/tabelleIdFeld=TPopMassnBerId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
         }).done(function () {
           delete window.localStorage.tpopmassnberId
           delete window.apf.tpopmassnber

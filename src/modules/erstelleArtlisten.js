@@ -9,7 +9,7 @@ module.exports = function () {
   if (!window.apf.artliste) {
     $.ajax({
       type: 'get',
-      url: getApiHost() + '/api/v1/artliste'
+      url: getApiHost() + '/artliste'
     }).done(function (data) {
       // data ist Objekt-Array
       // Felder: id, label

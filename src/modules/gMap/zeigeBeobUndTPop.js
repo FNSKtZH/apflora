@@ -10,8 +10,7 @@ var $ = require('jquery'),
   zeigeFormular = require('../zeigeFormular'),
   beschrifteTPopMitNrFuerKarte = require('../beschrifteTPopMitNrFuerKarte'),
   makeListenerMarkerClick = require('./makeListenerMarkerClick'),
-  makeListenerBeobMarkerDragend = require('./makeListenerBeobMarkerDragend'),
-  getApiHost = require('../getApiHost')
+  makeListenerBeobMarkerDragend = require('./makeListenerBeobMarkerDragend')
 
 module.exports = function (beobListe, tpopListe) {
   var anzBeob,
@@ -31,7 +30,6 @@ module.exports = function (beobListe, tpopListe) {
     contentstringBeob,
     contentstringTpop,
     markerOptionsTpop,
-    markerClusterTpop,
     datum,
     titelBeob,
     tpopBeschriftung,
@@ -120,11 +118,11 @@ module.exports = function (beobListe, tpopListe) {
     maxZoom: 17,
     styles: [{
       height: 53,
-      url: getApiHost() + '/img/m8.png',
+      url: '../../../img/m8.png',
       width: 53
     }]
   }
-  markerClusterTpop = new MarkerClusterer(map, markersTpop, markerOptionsTpop)
+  new MarkerClusterer(map, markersTpop, markerOptionsTpop)
 
   // für alle Beob Marker erstellen
   window.markersBeob = []

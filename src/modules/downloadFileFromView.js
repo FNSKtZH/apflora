@@ -25,7 +25,7 @@ module.exports = function (view, filename, format) {
               xhrObj.setRequestHeader("Accept","application/json")
       },*/
       type: 'get',
-      url: getApiHost() + '/api/v1/exportView/xlsx/view=' + view,
+      url: getApiHost() + '/exportView/xlsx/view=' + view,
       // contentType: "application/json",
       dataType: 'json',
       headers: {

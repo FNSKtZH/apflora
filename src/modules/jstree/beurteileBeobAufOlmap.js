@@ -56,7 +56,7 @@ module.exports = function (nodeTpopId) {
     getBeob: function (callback) {
       $.ajax({
         type: 'get',
-        url: getApiHost() + '/api/v1/beobZuordnen/apId=' + window.apf.ap.ApArtId
+        url: getApiHost() + '/beobZuordnen/apId=' + window.apf.ap.ApArtId
       }).done(function (beobArray) {
         callback(null, beobArray)
       }).fail(function () {
@@ -66,7 +66,7 @@ module.exports = function (nodeTpopId) {
     getTpop: function (callback) {
       $.ajax({
         type: 'get',
-        url: getApiHost() + '/api/v1/apKarte/apId=' + window.apf.ap.ApArtId
+        url: getApiHost() + '/apKarte/apId=' + window.apf.ap.ApArtId
       }).done(function (tpopArray) {
         callback(null, tpopArray)
       }).fail(function () {

@@ -13,7 +13,7 @@ module.exports = function (aktiverNode) {
   // Daten des Objekts holen
   $.ajax({
     type: 'get',
-    url: getApiHost() + '/api/v1/apflora/tabelle=tpop/feld=TPopId/wertNumber=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
+    url: getApiHost() + '/apflora/tabelle=tpop/feld=TPopId/wertNumber=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
   }).done(function (data) {
     window.apf.tpopObjektKopiert = data[0]
   }).fail(function () {

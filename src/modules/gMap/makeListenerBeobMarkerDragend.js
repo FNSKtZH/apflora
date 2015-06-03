@@ -26,7 +26,7 @@ module.exports = function (markerBeob, Beob) {
     // nächstgelegene TPop aus DB holen
     $.ajax({
       type: 'get',
-      url: getApiHost() + '/api/v1/beobNaechsteTpop/apId=' + Beob.NO_ISFS + '/X=' + X + '/Y=' + Y
+      url: getApiHost() + '/beobNaechsteTpop/apId=' + Beob.NO_ISFS + '/X=' + X + '/Y=' + Y
     }).done(function (data) {
       var beobtxt
 

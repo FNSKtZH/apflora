@@ -8,7 +8,7 @@ var $ = require('jquery'),
 module.exports = function (aktiverNode, parentNode, nodeText) {
   $.ajax({
     type: 'post',
-    url: getApiHost() + '/api/v1/insert/apflora/tabelle=apberuebersicht/feld=JbuJahr/wert=' + nodeText + '/user=' + encodeURIComponent(window.sessionStorage.user)
+    url: getApiHost() + '/insert/apflora/tabelle=apberuebersicht/feld=JbuJahr/wert=' + nodeText + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function () {
     var strukturtyp = 'jberUebersicht',
       dsId = nodeText,

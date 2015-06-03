@@ -26,7 +26,7 @@ module.exports = function (tpopListeMarkiert) {
     // alle tpop holen
     $.ajax({
       type: 'get',
-      url: getApiHost() + '/api/v1/tpopKarteAlle/apId=' + window.apf.ap.ApArtId
+      url: getApiHost() + '/tpopKarteAlle/apId=' + window.apf.ap.ApArtId
     }).done(function (tpopListe) {
       $.when(
         // Layer für Symbole und Beschriftung erstellen

@@ -13,7 +13,7 @@ module.exports = function (aktiverNode, parentNode, nodeTpopId) {
   // und an die DB schicken
   $.ajax({
     type: 'post',
-    url: getApiHost() + '/api/v1/tpopkontrInsertKopie/tpopId=' + erstelleIdAusDomAttributId(nodeTpopId) + '/tpopKontrId=' + herkunftKontrId + '/user=' + encodeURIComponent(window.sessionStorage.user)
+    url: getApiHost() + '/tpopkontrInsertKopie/tpopId=' + erstelleIdAusDomAttributId(nodeTpopId) + '/tpopKontrId=' + herkunftKontrId + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
     var strukturtyp = 'tpopfeldkontr',
       beschriftung = erstelleLabelFuerFeldkontrolle(window.apf.tpopfeldkontrObjektKopiert.TPopKontrJahr, window.apf.tpopfeldkontrObjektKopiert.TPopKontrTyp)

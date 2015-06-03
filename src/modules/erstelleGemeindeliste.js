@@ -11,7 +11,7 @@ module.exports = function () {
   if (!window.apf.gemeinden) {
     $.ajax({
       type: 'get',
-      url: getApiHost() + '/api/v1/gemeinden'
+      url: getApiHost() + '/gemeinden'
     }).done(function (data) {
       if (data) {
         // Gemeinden bereitstellen

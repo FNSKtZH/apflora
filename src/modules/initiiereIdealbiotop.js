@@ -28,7 +28,7 @@ var initiiereIdealbiotop = function (apId) {
   // Daten für die idealbiotop aus der DB holen
   $.ajax({
     type: 'get',
-    url: getApiHost() + '/api/v1/apflora/tabelle=idealbiotop/feld=IbApArtId/wertNumber=' + window.localStorage.apId
+    url: getApiHost() + '/apflora/tabelle=idealbiotop/feld=IbApArtId/wertNumber=' + window.localStorage.apId
   }).done(function (data) {
     // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
     if (data && data[0]) {
@@ -83,7 +83,7 @@ var initiiereIdealbiotop = function (apId) {
       // null zurückgekommen > Datensatz schaffen
       $.ajax({
         type: 'post',
-        url: getApiHost() + '/api/v1/insert/apflora/tabelle=idealbiotop/feld=IbApArtId/wert=' + window.localStorage.apId + '/user=' + encodeURIComponent(window.sessionStorage.user)
+        url: getApiHost() + '/insert/apflora/tabelle=idealbiotop/feld=IbApArtId/wert=' + window.localStorage.apId + '/user=' + encodeURIComponent(window.sessionStorage.user)
       }).done(function () {
         window.localStorage.idealbiotopId = window.localStorage.apId
         initiiereIdealbiotop()

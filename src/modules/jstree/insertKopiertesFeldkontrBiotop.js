@@ -20,7 +20,7 @@ module.exports = function (nodeFeldkontrId) {
   // jetzt alles speichern
   $.ajax({
     type: 'post',
-    url: getApiHost() + '/api/v1/updateMultiple/apflora/tabelle=tpopkontr/felder=' + JSON.stringify(data)
+    url: getApiHost() + '/updateMultiple/apflora/tabelle=tpopkontr/felder=' + JSON.stringify(data)
   }).fail(function () {
     melde('Fehler: Das kopierte Biotop wurde nicht eingefügt')
   })

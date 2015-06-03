@@ -11,7 +11,7 @@ module.exports = function (overlayPopVisible, popidMarkiert) {
 
   $.ajax({
     type: 'get',
-    url: getApiHost() + '/api/v1/popKarteAlle/apId=' + window.apf.ap.ApArtId
+    url: getApiHost() + '/popKarteAlle/apId=' + window.apf.ap.ApArtId
   }).done(function (popListe) {
     // Layer für Symbole und Beschriftung erstellen
     $.when(erstellePopLayer(popListe, popidMarkiert, overlayPopVisible)).then(function () {

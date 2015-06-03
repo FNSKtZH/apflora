@@ -13,7 +13,7 @@ module.exports = function () {
   // get list of tpop's of this window.localStorage.apId
   $.ajax({
     type: 'get',
-    url: getApiHost() + '/api/v1/tpopKoordFuerProgramm/apId=' + window.localStorage.apId
+    url: getApiHost() + '/tpopKoordFuerProgramm/apId=' + window.localStorage.apId
   }).done(function (data) {
     // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
     if (data) {

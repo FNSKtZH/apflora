@@ -13,7 +13,7 @@ module.exports = function (aktiverNode) {
   // Daten des Objekts holen
   $.ajax({
     type: 'get',
-    url: getApiHost() + '/api/v1/apflora/tabelle=pop/feld=PopId/wertNumber=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
+    url: getApiHost() + '/apflora/tabelle=pop/feld=PopId/wertNumber=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
   }).done(function (data) {
     window.apf.popObjektKopiert = data[0]
   }).fail(function () {

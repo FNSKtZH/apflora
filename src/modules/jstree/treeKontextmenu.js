@@ -488,7 +488,7 @@ module.exports = function (node) {
           'action': function () {
             var getPopKarte_2 = $.ajax({
               type: 'get',
-              url: getApiHost() + '/api/v1/popKarte/popId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
+              url: getApiHost() + '/popKarte/popId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
             })
             getPopKarte_2.done(function (data) {
               if (data && data.length > 0) {
