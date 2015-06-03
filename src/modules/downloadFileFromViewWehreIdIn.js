@@ -4,13 +4,14 @@
 'use strict'
 
 var $ = require('jquery'),
-  getTimestamp = require('./getTimestamp')
+  getTimestamp = require('./getTimestamp'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function (view, idName, idListe, filename, format) {
   var url
 
   format = format || 'csv'
-  url = 'api/v1/exportViewWhereIdIn/' + format + '/view=' + view + '/idName=' + idName + '/idListe=' + idListe + '/filename=' + filename + '_' + getTimestamp()
+  url = getApiHost() + '/exportViewWhereIdIn/' + format + '/view=' + view + '/idName=' + idName + '/idListe=' + idListe + '/filename=' + filename + '_' + getTimestamp()
 
   $.fileDownload(url, {
     preparingMessageHtml: 'Der Download wird vorbereitet, bitte warten...',
