@@ -39,7 +39,7 @@ module.exports = function (view, filename, format) {
       saveAs(blob, filename + '_' + getTimestamp() + '.xlsx')
     })
   } else {
-    url = 'api/v1/exportView/' + format + '/view=' + view + '/filename=' + filename + '_' + getTimestamp()
+    url = getApiHost() + '/exportView/' + format + '/view=' + view + '/filename=' + filename + '_' + getTimestamp()
     $.fileDownload(url, {
       preparingMessageHtml: 'Der Download wird vorbereitet, bitte warten...',
       failMessageHtml: 'Beim Aufbereiten des Downloads ist ein Problem aufgetreten, bitte nochmals versuchen.'

@@ -50,14 +50,14 @@ function addDataToQsList (qsList, url) {
 }
 
 function createUrlToAddDataFromViewToQsList (qsList, viewName, berichtjahr) {
-  var baseUrl = 'api/v1/qkView/' + viewName + '/' + window.localStorage.apId,
+  var baseUrl = getApiHost() + '/qkView/' + viewName + '/' + window.localStorage.apId,
     url = berichtjahr ? baseUrl + '/' + berichtjahr : baseUrl
 
   addDataToQsList(qsList, url)
 }
 
 function createUrlToAddDataFromQueryToQsList (qsList, queryName, berichtjahr) {
-  var url = 'api/v1/' + queryName + '/' + window.localStorage.apId + '/' + berichtjahr
+  var url = getApiHost() + '/' + queryName + '/' + window.localStorage.apId + '/' + berichtjahr
 
   addDataToQsList(qsList, url)
 }

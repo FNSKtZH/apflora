@@ -15,7 +15,7 @@ module.exports = function (tpop) {
   felder.TPopYKoord = tpop.TPopYKoord
 
   // Datensatz updaten
-  // /api/v1/updateMultiple/apflora/tabelle={tabelle}/felder={felder}
+  // /updateMultiple/apflora/tabelle={tabelle}/felder={felder}
   $.ajax({
     type: 'post',
     url: getApiHost() + '/updateMultiple/apflora/tabelle=tpop/felder=' + JSON.stringify(felder)
