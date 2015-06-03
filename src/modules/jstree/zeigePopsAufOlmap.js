@@ -3,12 +3,13 @@
 var $ = require('jquery'),
   erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
   melde = require('../melde'),
-  zeigePop = require('../olMap/zeigePop')
+  zeigePop = require('../olMap/zeigePop'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (nodeApId) {
   $.ajax({
     type: 'get',
-    url: 'api/v1/popsChKarte/apId=' + erstelleIdAusDomAttributId(nodeApId)
+    url: getApiHost() + '/api/v1/popsChKarte/apId=' + erstelleIdAusDomAttributId(nodeApId)
   }).done(function (data) {
     if (data && data.length > 0) {
       zeigePop(data)

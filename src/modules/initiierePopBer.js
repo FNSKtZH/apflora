@@ -4,7 +4,8 @@ var $ = require('jquery'),
   initiiereAp = require('./initiiereAp'),
   initiierePop = require('./initiierePop'),
   zeigeFormular = require('./zeigeFormular'),
-  leereFelderVonFormular = require('./leereFelderVonFormular')
+  leereFelderVonFormular = require('./leereFelderVonFormular'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function (apId, popId, popberId) {
   // prüfen, ob voraussetzungen gegeben sind
@@ -54,7 +55,7 @@ module.exports = function (apId, popId, popberId) {
   // Daten für die popber aus der DB holen
   $.ajax({
     type: 'get',
-    url: 'api/v1/apflora/tabelle=popber/feld=PopBerId/wertNumber=' + popberId
+    url: getApiHost() + '/api/v1/apflora/tabelle=popber/feld=PopBerId/wertNumber=' + popberId
   }).done(function (data) {
     // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
     if (data && data[0]) {

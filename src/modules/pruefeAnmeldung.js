@@ -1,7 +1,8 @@
 'use strict'
 
 var $ = require('jquery'),
-  melde = require('./melde')
+  melde = require('./melde'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function () {
   var $anmeldungName = $('#anmeldungName').val(),
@@ -13,7 +14,7 @@ module.exports = function () {
   if ($anmeldungName && $anmeldungPasswort) {
     $.ajax({
       type: 'get',
-      url: 'api/v1/anmeldung/name=' + $anmeldungName + '/pwd=' + $anmeldungPasswort
+      url: getApiHost() + '/api/v1/anmeldung/name=' + $anmeldungName + '/pwd=' + $anmeldungPasswort
     }).done(function (data) {
       if (data && data.length > 0) {
         window.sessionStorage.user = $anmeldungName

@@ -6,7 +6,8 @@ var $ = require('jquery'),
   chToWgsLng = require('../../lib/chToWgsLng'),
   ddInChY = require('../../lib/ddInChY'),
   ddInChX = require('../../lib/ddInChX'),
-  melde = require('../melde')
+  melde = require('../melde'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (markerBeob, Beob) {
   google.maps.event.addListener(markerBeob, 'dragend', function (event) {
@@ -25,7 +26,7 @@ module.exports = function (markerBeob, Beob) {
     // nächstgelegene TPop aus DB holen
     $.ajax({
       type: 'get',
-      url: 'api/v1/beobNaechsteTpop/apId=' + Beob.NO_ISFS + '/X=' + X + '/Y=' + Y
+      url: getApiHost() + '/api/v1/beobNaechsteTpop/apId=' + Beob.NO_ISFS + '/X=' + X + '/Y=' + Y
     }).done(function (data) {
       var beobtxt
 

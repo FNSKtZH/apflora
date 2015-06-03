@@ -2,12 +2,13 @@
 
 var $ = require('jquery'),
   insertNeuenNodeEineHierarchiestufeTiefer = require('./insertNeuenNodeEineHierarchiestufeTiefer'),
-  melde = require('../melde')
+  melde = require('../melde'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (aktiverNode, parentNode, nodeText) {
   $.ajax({
     type: 'post',
-    url: 'api/v1/insert/apflora/tabelle=apberuebersicht/feld=JbuJahr/wert=' + nodeText + '/user=' + encodeURIComponent(window.sessionStorage.user)
+    url: getApiHost() + '/api/v1/insert/apflora/tabelle=apberuebersicht/feld=JbuJahr/wert=' + nodeText + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function () {
     var strukturtyp = 'jberUebersicht',
       dsId = nodeText,

@@ -5,7 +5,8 @@ var $ = require('jquery'),
   melde = require('../melde'),
   frageObUndeleteDatensatz = require('../frageObUndeleteDatensatz'),
   pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen'),
-  beschrifteOrdner = require('../beschrifteOrdner')
+  beschrifteOrdner = require('../beschrifteOrdner'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (aktiverNode, parentNode) {
   var grandparentNode,
@@ -34,7 +35,7 @@ module.exports = function (aktiverNode, parentNode) {
         window.apf.deleted.typ = 'apziel'
         $.ajax({
           type: 'delete',
-          url: 'api/v1/apflora/tabelle=ziel/tabelleIdFeld=ZielId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
+          url: getApiHost() + '/api/v1/apflora/tabelle=ziel/tabelleIdFeld=ZielId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
         }).done(function () {
           delete window.localStorage.apzielId
           delete window.apf.apziel

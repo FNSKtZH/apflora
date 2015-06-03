@@ -4,7 +4,8 @@ var $ = require('jquery'),
   _ = require('underscore'),
   erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
   melde = require('../melde'),
-  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
+  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (nodeFeldkontrId) {
   var data = {}
@@ -19,7 +20,7 @@ module.exports = function (nodeFeldkontrId) {
   // jetzt alles speichern
   $.ajax({
     type: 'post',
-    url: 'api/v1/updateMultiple/apflora/tabelle=tpopkontr/felder=' + JSON.stringify(data)
+    url: getApiHost() + '/api/v1/updateMultiple/apflora/tabelle=tpopkontr/felder=' + JSON.stringify(data)
   }).fail(function () {
     melde('Fehler: Das kopierte Biotop wurde nicht eingefügt')
   })

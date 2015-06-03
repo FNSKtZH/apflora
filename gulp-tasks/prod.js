@@ -15,7 +15,6 @@ gulp.task('prod', function () {
     'templates',
     ['browserify', 'prod_clean_dist'],
     ['prod_build_style', 'prod_build_src', 'prod_build_html'],
-    'prod_copy',
-    'prod_notify'
+    'prod_copy'
   )
 })

@@ -10,7 +10,8 @@ var $ = require('jquery'),
   zeigeFormular = require('../zeigeFormular'),
   beschrifteTPopMitNrFuerKarte = require('../beschrifteTPopMitNrFuerKarte'),
   makeListenerMarkerClick = require('./makeListenerMarkerClick'),
-  makeListenerBeobMarkerDragend = require('./makeListenerBeobMarkerDragend')
+  makeListenerBeobMarkerDragend = require('./makeListenerBeobMarkerDragend'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (beobListe, tpopListe) {
   var anzBeob,
@@ -119,7 +120,7 @@ module.exports = function (beobListe, tpopListe) {
     maxZoom: 17,
     styles: [{
       height: 53,
-      url: 'img/m8.png',
+      url: getApiHost() + '/img/m8.png',
       width: 53
     }]
   }

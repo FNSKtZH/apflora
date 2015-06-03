@@ -6,7 +6,8 @@
 var $ = require('jquery'),
   saveAs = require('saveAs'),
   getTimestamp = require('./getTimestamp'),
-  createBlobDataXlsx = require('./createBlobDataXlsx')
+  createBlobDataXlsx = require('./createBlobDataXlsx'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function (view, filename, format) {
   var url,
@@ -24,7 +25,7 @@ module.exports = function (view, filename, format) {
               xhrObj.setRequestHeader("Accept","application/json")
       },*/
       type: 'get',
-      url: 'api/v1/exportView/xlsx/view=' + view,
+      url: getApiHost() + '/api/v1/exportView/xlsx/view=' + view,
       // contentType: "application/json",
       dataType: 'json',
       headers: {

@@ -1,7 +1,8 @@
 'use strict'
 
 var $ = require('jquery'),
-  melde = require('./melde')
+  melde = require('./melde'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function (tpop) {
   var koordAktualisiert = $.Deferred(),
@@ -17,7 +18,7 @@ module.exports = function (tpop) {
   // /api/v1/updateMultiple/apflora/tabelle={tabelle}/felder={felder}
   $.ajax({
     type: 'post',
-    url: 'api/v1/updateMultiple/apflora/tabelle=tpop/felder=' + JSON.stringify(felder)
+    url: getApiHost() + '/api/v1/updateMultiple/apflora/tabelle=tpop/felder=' + JSON.stringify(felder)
   }).done(function () {
     koordAktualisiert.resolve()
   }).fail(function () {

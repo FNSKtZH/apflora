@@ -2,7 +2,8 @@
 
 var $ = require('jquery'),
   _ = require('underscore'),
-  melde = require('./melde')
+  melde = require('./melde'),
+  getApiHost = require('./getApiHost')
 
 // übernimmt $ wegen jquery ui
 module.exports = function () {
@@ -10,7 +11,7 @@ module.exports = function () {
   if (!window.apf.gemeinden) {
     $.ajax({
       type: 'get',
-      url: 'api/v1/gemeinden'
+      url: getApiHost() + '/api/v1/gemeinden'
     }).done(function (data) {
       if (data) {
         // Gemeinden bereitstellen

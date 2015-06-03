@@ -4,13 +4,14 @@ var $ = require('jquery'),
   erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
   insertNeuenNodeEineHierarchiestufeTiefer = require('./insertNeuenNodeEineHierarchiestufeTiefer'),
   insertNeuenNodeAufGleicherHierarchiestufe = require('./insertNeuenNodeAufGleicherHierarchiestufe'),
-  melde = require('../melde')
+  melde = require('../melde'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (aktiverNode, parentNode, nodeTpopId) {
   // und an die DB schicken
   $.ajax({
     type: 'post',
-    url: 'api/v1/tpopkontrInsertKopie/tpopId=' + erstelleIdAusDomAttributId(nodeTpopId) + '/tpopKontrId=' + erstelleIdAusDomAttributId($(window.apf.tpopfreiwkontrNodeKopiert).attr('id')) + '/user=' + encodeURIComponent(window.sessionStorage.user)
+    url: getApiHost() + '/api/v1/tpopkontrInsertKopie/tpopId=' + erstelleIdAusDomAttributId(nodeTpopId) + '/tpopKontrId=' + erstelleIdAusDomAttributId($(window.apf.tpopfreiwkontrNodeKopiert).attr('id')) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
     var strukturtyp = 'tpopfreiwkontr',
       beschriftung = window.apf.tpopfreiwkontrObjektKopiert.TPopKontrJahr.toString()

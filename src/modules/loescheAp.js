@@ -4,7 +4,8 @@ var $ = require('jquery'),
   zeigeFormular = require('./zeigeFormular'),
   frageObUndeleteDatensatz = require('./frageObUndeleteDatensatz'),
   melde = require('./melde'),
-  erstelleApliste = require('./erstelleApliste')
+  erstelleApliste = require('./erstelleApliste'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function (apId) {
   var $apWaehlenText = $('#apWaehlenText'),
@@ -17,7 +18,7 @@ module.exports = function (apId) {
   window.apf.deleted.Artname = $apWaehlenText.val()
   $.ajax({
     type: 'delete',
-    url: 'api/v1/apflora/tabelle=ap/tabelleIdFeld=ApArtId/tabelleId=' + apId
+    url: getApiHost() + '/api/v1/apflora/tabelle=ap/tabelleIdFeld=ApArtId/tabelleId=' + apId
   }).done(function () {
     delete window.localStorage.apId
     delete window.apf.ap

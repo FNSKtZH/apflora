@@ -3,12 +3,13 @@
 var $ = require('jquery'),
   erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
   melde = require('../melde'),
-  zeigeTPopAufGmap = require('../gMap/zeigeTPop')
+  zeigeTPopAufGmap = require('../gMap/zeigeTPop'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (nodePopId) {
   $.ajax({
     type: 'get',
-    url: 'api/v1/popKarte/popId=' + erstelleIdAusDomAttributId(nodePopId)
+    url: getApiHost() + '/api/v1/popKarte/popId=' + erstelleIdAusDomAttributId(nodePopId)
   }).done(function (data) {
     if (data && data.length > 0) {
       zeigeTPopAufGmap(data)

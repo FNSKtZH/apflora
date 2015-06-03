@@ -1,14 +1,15 @@
 'use strict'
 
 var $ = require('jquery'),
-  _ = require('underscore')
+  _ = require('underscore'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function () {
   // nur machen, wenn noch nicht passiert - sonst werden die html dauernd ersetzt
   if (!window.apf.artliste) {
     $.ajax({
       type: 'get',
-      url: 'api/v1/artliste'
+      url: getApiHost() + '/api/v1/artliste'
     }).done(function (data) {
       // data ist Objekt-Array
       // Felder: id, label

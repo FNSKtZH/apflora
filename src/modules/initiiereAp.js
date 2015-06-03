@@ -4,7 +4,8 @@ var $ = require('jquery'),
   getAdressenHtml = require('./getAdressenHtml'),
   zeigeFormular = require('./zeigeFormular'),
   melde = require('./melde'),
-  leereFelderVonFormular = require('./leereFelderVonFormular')
+  leereFelderVonFormular = require('./leereFelderVonFormular'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function (apId) {
   // prüfen, ob voraussetzungen gegeben sind
@@ -29,7 +30,7 @@ module.exports = function (apId) {
     // Daten für den ap aus der DB holen
     $.ajax({
       type: 'get',
-      url: 'api/v1/ap=' + apId
+      url: getApiHost() + '/api/v1/ap=' + apId
     }).done(function (data) {
       // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
       if (data && data[0]) {

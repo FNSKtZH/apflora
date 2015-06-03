@@ -9,7 +9,8 @@
 
 'use strict'
 
-var $ = require('jquery')
+var $ = require('jquery'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function () {
   var dataGeholt = $.Deferred()
@@ -17,7 +18,7 @@ module.exports = function () {
   if (!window.apf.tPopKontrZaehleinheitOptionen) {
     $.ajax({
       type: 'get',
-      url: 'api/v1/feldkontrZaehleinheit'
+      url: getApiHost() + '/api/v1/feldkontrZaehleinheit'
     }).done(function (data) {
       window.apf.tPopKontrZaehleinheitOptionen = data
       dataGeholt.resolve()

@@ -21,14 +21,6 @@
 			"path": "kml"
 		},
 		{
-			"follow_symlinks": true,
-			"path": "queries"
-		},
-		{
-			"follow_symlinks": true,
-			"path": "sql"
-		},
-		{
 			"file_exclude_patterns":
 			[
 				"apflora_browserified.js",

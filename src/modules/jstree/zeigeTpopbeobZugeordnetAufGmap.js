@@ -3,7 +3,8 @@
 var $ = require('jquery'),
   erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
   melde = require('../melde'),
-  zeigeTPopBeob = require('../gMap/zeigeTPopBeob')
+  zeigeTPopBeob = require('../gMap/zeigeTPopBeob'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (nodeTpopId, nodeBeobId) {
   var tpopId = '',
@@ -16,7 +17,7 @@ module.exports = function (nodeTpopId, nodeBeobId) {
   // es ist immer nur eine der id's gegeben
   $.ajax({
     type: 'get',
-    url: '/api/v1/beobKarte/apId=/tpopId=' + tpopId + '/beobId=' + beobId + '/nichtZuzuordnen='
+    url: getApiHost() + '/api/v1/beobKarte/apId=/tpopId=' + tpopId + '/beobId=' + beobId + '/nichtZuzuordnen='
   }).done(function (data) {
     if (data) {
       zeigeTPopBeob(data)

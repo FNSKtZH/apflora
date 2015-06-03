@@ -19,7 +19,8 @@ var $ = require('jquery'),
   melde = require('./melde'),
   leereFelderVonFormular = require('./leereFelderVonFormular'),
   tPopKontrZaehl = require('../templates/tPopKontrZaehl'),
-  initializeTooltipsInElement = require('./initializeTooltipsInElement')
+  initializeTooltipsInElement = require('./initializeTooltipsInElement'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
   // prüfen, ob voraussetzungen gegeben sind
@@ -108,7 +109,7 @@ module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
   // Daten für die tpopfeldkontr aus der DB holen
   $.ajax({
     type: 'get',
-    url: 'api/v1/apflora/tabelle=tpopkontr/feld=TPopKontrId/wertNumber=' + feldKontrId
+    url: getApiHost() + '/api/v1/apflora/tabelle=tpopkontr/feld=TPopKontrId/wertNumber=' + feldKontrId
   }).done(function (data) {
     // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
     if (data && data[0]) {
@@ -289,7 +290,7 @@ module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
       // Daten für Zählungen holen
       $.ajax({
         type: 'get',
-        url: 'api/v1/apflora/tabelle=tpopkontrzaehl/feld=TPopKontrId/wertNumber=' + feldKontrId
+        url: getApiHost() + '/api/v1/apflora/tabelle=tpopkontrzaehl/feld=TPopKontrId/wertNumber=' + feldKontrId
       }).done(function (data) {
         // zuerst die Zähleinheiten holen
         $.when(getZaehleinheitenOptionen()).then(function () {

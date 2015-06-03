@@ -16,7 +16,8 @@ var $ = require('jquery'),
   melde = require('./melde'),
   waehleApliste = require('./waehleApliste'),
   oeffneUri = require('./oeffneUri'),
-  erstelleTree = require('./jstree/erstelleTree')
+  erstelleTree = require('./jstree/erstelleTree'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function () {
   var tabelle,
@@ -120,7 +121,7 @@ module.exports = function () {
   // Datensatz hinzufügen
   $.ajax({
     type: 'post',
-    url: 'api/v1/insertMultiple/apflora/tabelle=' + tabelle + '/felder=' + JSON.stringify(data)
+    url: getApiHost() + '/api/v1/insertMultiple/apflora/tabelle=' + tabelle + '/felder=' + JSON.stringify(data)
   }).done(function () {
     $('.undelete').hide()
     $('#forms').css('top', '')
