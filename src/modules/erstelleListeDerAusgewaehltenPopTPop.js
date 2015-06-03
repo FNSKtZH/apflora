@@ -11,7 +11,6 @@ module.exports = function (popSelected, tpopSelected) {
     tpopId,
     tpopNr,
     popTpopNr,
-    height,
     listentitel,
     exportieren,
     exportierenPop,
@@ -59,11 +58,6 @@ module.exports = function (popSelected, tpopSelected) {
       rueckmeldung += tpop.get('tpopName') + '<\/a></td></tr>'
     })
     rueckmeldung += '</table>'
-  }
-  // Höhe der Meldung begrenzen. Leider funktioniert maxHeight nicht
-  height = 'auto'
-  if (tpopSelected.length > 25) {
-    height = 650
   }
 
   // Listentitel erstellen

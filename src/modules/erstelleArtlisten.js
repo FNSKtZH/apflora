@@ -36,7 +36,7 @@ module.exports = function () {
 
           if (id) {
             text = _.find(window.apf.artliste, function (art) {
-              return art.id == id
+              return art.id === id
             })
             if (text && text.label) {
               if (text.label !== $(this).val()) {
