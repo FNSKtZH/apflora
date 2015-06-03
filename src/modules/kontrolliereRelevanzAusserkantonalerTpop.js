@@ -4,7 +4,8 @@ var $ = require('jquery'),
   _ = require('underscore'),
   isPointInsidePolygon = require('./isPointInsidePolygon'),
   zhGeojson = require('../../geojson/ktZh.json'),
-  melde = require('./melde')
+  melde = require('./melde'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function () {
   var qsList = window.apf.qsList
@@ -12,7 +13,7 @@ module.exports = function () {
   // get list of tpop's of this window.localStorage.apId
   $.ajax({
     type: 'get',
-    url: 'api/v1/tpopKoordFuerProgramm/apId=' + window.localStorage.apId
+    url: getApiHost() + '/api/v1/tpopKoordFuerProgramm/apId=' + window.localStorage.apId
   }).done(function (data) {
     // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
     if (data) {

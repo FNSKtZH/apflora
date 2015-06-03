@@ -4,12 +4,13 @@ var $ = require('jquery'),
   erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
   insertNeuenNodeEineHierarchiestufeTiefer = require('./insertNeuenNodeEineHierarchiestufeTiefer'),
   insertNeuenNodeAufGleicherHierarchiestufe = require('./insertNeuenNodeAufGleicherHierarchiestufe'),
-  melde = require('../melde')
+  melde = require('../melde'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (aktiverNode, parentNode, nodeApId) {
   $.ajax({
     type: 'post',
-    url: 'api/v1/insert/apflora/tabelle=erfkrit/feld=ApArtId/wert=' + erstelleIdAusDomAttributId(nodeApId) + '/user=' + encodeURIComponent(window.sessionStorage.user)
+    url: getApiHost() + '/api/v1/insert/apflora/tabelle=erfkrit/feld=ApArtId/wert=' + erstelleIdAusDomAttributId(nodeApId) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
     var strukturtyp = 'erfkrit',
       beschriftung = 'neues Erfolgskriterium'

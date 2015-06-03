@@ -3,12 +3,13 @@
 var $ = require('jquery'),
   erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
   melde = require('../melde'),
-  verorteTPop = require('../gMap/verorteTPop')
+  verorteTPop = require('../gMap/verorteTPop'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (nodeTpopId) {
   $.ajax({
     type: 'get',
-    url: 'api/v1/apflora/tabelle=tpop/feld=TPopId/wertNumber=' + erstelleIdAusDomAttributId(nodeTpopId)
+    url: getApiHost() + '/api/v1/apflora/tabelle=tpop/feld=TPopId/wertNumber=' + erstelleIdAusDomAttributId(nodeTpopId)
   }).done(function (data) {
     verorteTPop(data[0])
   }).fail(function () {

@@ -5,7 +5,8 @@ var $ = require('jquery'),
   limiter = require('../lib/limiter'),
   zeigeFormular = require('./zeigeFormular'),
   melde = require('./melde'),
-  leereFelderVonFormular = require('./leereFelderVonFormular')
+  leereFelderVonFormular = require('./leereFelderVonFormular'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function (apId, erfkritId) {
   // prüfen, ob voraussetzungen gegeben sind
@@ -39,7 +40,7 @@ module.exports = function (apId, erfkritId) {
   // Daten für die erfkrit aus der DB holen
   $.ajax({
     type: 'get',
-    url: 'api/v1/apflora/tabelle=erfkrit/feld=ErfkritId/wertString=' + erfkritId
+    url: getApiHost() + '/api/v1/apflora/tabelle=erfkrit/feld=ErfkritId/wertString=' + erfkritId
   }).done(function (data) {
     // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
     if (data && data[0]) {

@@ -16,7 +16,8 @@
 var $ = require('jquery'),
   ol = require('ol'),
   _ = require('underscore'),
-  melde = require('./melde')
+  melde = require('./melde'),
+  getApiHost = require('./getApiHost')
 
 function aktualisiereGlobaleVariable (tpopId) {
   if (window.apf.beob) {
@@ -40,7 +41,7 @@ function aktualisiereZuordnungInOlmap (beobId, tpopId) {
   // koordinaten der tpop holen
   $.ajax({
     type: 'get',
-    url: 'api/v1/apflora/tabelle=tpop/feld=TPopId/wertNumber=' + tpopId
+    url: getApiHost() + '/api/v1/apflora/tabelle=tpop/feld=TPopId/wertNumber=' + tpopId
   }).done(function (data) {
     if (data && data[0]) {
       data = data[0]
@@ -115,7 +116,7 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
     case 'nicht_beurteilt':
       $.ajax({
         type: 'delete',
-        url: 'api/v1/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId
+        url: getApiHost() + '/api/v1/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId
       }).done(function () {
         // tree aktualisieren, falls von move_node ausgelöst
         if (jstreeCallback) { jstreeCallback() }
@@ -148,12 +149,12 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
     case 'nicht_zuordnen':
       $.ajax({
         type: 'post',
-        url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=beobNichtZuordnen/wert=1/user=' + encodeURIComponent(window.sessionStorage.user)
+        url: getApiHost() + '/api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=beobNichtZuordnen/wert=1/user=' + encodeURIComponent(window.sessionStorage.user)
       }).done(function () {
         // TPopId null setzen
         $.ajax({
           type: 'post',
-          url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=/user=' + encodeURIComponent(window.sessionStorage.user)
+          url: getApiHost() + '/api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // tree aktualisieren, falls von move_node ausgelöst
           if (jstreeCallback) { jstreeCallback() }
@@ -194,7 +195,7 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
         // er muss nur noch aktualisiert werden
         $.ajax({
           type: 'post',
-          url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(window.sessionStorage.user)
+          url: getApiHost() + '/api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // tree aktualisieren, falls von move_node ausgelöst
           if (jstreeCallback) { jstreeCallback() }
@@ -216,12 +217,12 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
         // er muss inserted werden
         $.ajax({
           type: 'post',
-          url: 'api/v1/insert/apflora/tabelle=beobzuordnung/feld=NO_NOTE/wert=' + beobId + '/user=' + encodeURIComponent(window.sessionStorage.user)
+          url: getApiHost() + '/api/v1/insert/apflora/tabelle=beobzuordnung/feld=NO_NOTE/wert=' + beobId + '/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // jetzt aktualisieren
           $.ajax({
             type: 'post',
-            url: 'api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(window.sessionStorage.user)
+            url: getApiHost() + '/api/v1/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(window.sessionStorage.user)
           }).done(function () {
             // tree aktualisieren, falls von move_node ausgelöst
             if (jstreeCallback) { jstreeCallback() }

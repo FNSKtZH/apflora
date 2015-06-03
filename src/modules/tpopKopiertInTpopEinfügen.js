@@ -7,7 +7,8 @@ var $ = require('jquery'),
   insertNeuenNodeAufGleicherHierarchiestufe = require('./jstree/insertNeuenNodeAufGleicherHierarchiestufe'),
   erstelleIdAusDomAttributId = require('./erstelleIdAusDomAttributId'),
   melde = require('./melde'),
-  pruefeSchreibvoraussetzungen = require('./pruefeSchreibvoraussetzungen')
+  pruefeSchreibvoraussetzungen = require('./pruefeSchreibvoraussetzungen'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function (aktiverNode, parentNode) {
   var data = {}
@@ -37,7 +38,7 @@ module.exports = function (aktiverNode, parentNode) {
   // und an die DB schicken
   $.ajax({
     type: 'post',
-    url: 'api/v1/tpopInsertKopie/popId=' + data.PopId + '/tpopId=' + erstelleIdAusDomAttributId($(window.apf.tpopNodeKopiert).attr('id')) + '/user=' + data.MutWer
+    url: getApiHost() + '/api/v1/tpopInsertKopie/popId=' + data.PopId + '/tpopId=' + erstelleIdAusDomAttributId($(window.apf.tpopNodeKopiert).attr('id')) + '/user=' + data.MutWer
   }).done(function (tpopId) {
     var strukturtyp = 'tpop',
       beschriftung = window.apf.tpopObjektKopiert.TPopNr + ' ' + window.apf.tpopObjektKopiert.TPopFlurname

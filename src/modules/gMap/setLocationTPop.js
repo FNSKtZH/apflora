@@ -6,7 +6,8 @@ var $ = require('jquery'),
   ddInChX = require('../../lib/ddInChX'),
   melde = require('../melde'),
   clearInfoWindows = require('./clearInfoWindows'),
-  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
+  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (latLng, map, marker, tpop) {
   var lat,
@@ -28,11 +29,11 @@ module.exports = function (latLng, map, marker, tpop) {
 
   $.ajax({
     type: 'post',
-    url: 'api/v1/update/apflora/tabelle=tpop/tabelleIdFeld=TPopId/tabelleId=' + window.localStorage.tpopId + '/feld=TPopXKoord/wert=' + X + '/user=' + encodeURIComponent(window.sessionStorage.user)
+    url: getApiHost() + '/api/v1/update/apflora/tabelle=tpop/tabelleIdFeld=TPopId/tabelleId=' + window.localStorage.tpopId + '/feld=TPopXKoord/wert=' + X + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function () {
     $.ajax({
       type: 'post',
-      url: 'api/v1/update/apflora/tabelle=tpop/tabelleIdFeld=TPopId/tabelleId=' + window.localStorage.tpopId + '/feld=TPopYKoord/wert=' + Y + '/user=' + encodeURIComponent(window.sessionStorage.user)
+      url: getApiHost() + '/api/v1/update/apflora/tabelle=tpop/tabelleIdFeld=TPopId/tabelleId=' + window.localStorage.tpopId + '/feld=TPopYKoord/wert=' + Y + '/user=' + encodeURIComponent(window.sessionStorage.user)
     }).done(function () {
       clearInfoWindows()
       contentString = '<div id="content">' +

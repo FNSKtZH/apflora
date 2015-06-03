@@ -46,7 +46,8 @@ var $ = require('jquery'),
   erstelleBeobLayer = require('../olMap/erstelleBeobLayer'),
   initiiereLayertree = require('../olMap/initiiereLayertree'),
   stapleLayerEineEbeneTiefer = require('../olMap/stapleLayerEineEbeneTiefer'),
-  stapleLayerXTiefer = require('../olMap/stapleLayerXTiefer')
+  stapleLayerXTiefer = require('../olMap/stapleLayerXTiefer'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (nodeTpopId) {
   var tpopId = erstelleIdAusDomAttributId(nodeTpopId)
@@ -55,7 +56,7 @@ module.exports = function (nodeTpopId) {
     getBeob: function (callback) {
       $.ajax({
         type: 'get',
-        url: '/api/v1/beobZuordnen/apId=' + window.apf.ap.ApArtId
+        url: getApiHost() + '/api/v1/beobZuordnen/apId=' + window.apf.ap.ApArtId
       }).done(function (beobArray) {
         callback(null, beobArray)
       }).fail(function () {
@@ -65,7 +66,7 @@ module.exports = function (nodeTpopId) {
     getTpop: function (callback) {
       $.ajax({
         type: 'get',
-        url: 'api/v1/apKarte/apId=' + window.apf.ap.ApArtId
+        url: getApiHost() + '/api/v1/apKarte/apId=' + window.apf.ap.ApArtId
       }).done(function (tpopArray) {
         callback(null, tpopArray)
       }).fail(function () {

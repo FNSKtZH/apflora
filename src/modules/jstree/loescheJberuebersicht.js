@@ -4,7 +4,8 @@ var $ = require('jquery'),
   erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
   melde = require('../melde'),
   frageObUndeleteDatensatz = require('../frageObUndeleteDatensatz'),
-  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
+  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (aktiverNode) {
   // nur aktualisieren, wenn Schreibrechte bestehen
@@ -29,7 +30,7 @@ module.exports = function (aktiverNode) {
         window.apf.deleted.typ = 'jberUebersicht'
         $.ajax({
           type: 'delete',
-          url: 'api/v1/apflora/tabelle=apberuebersicht/tabelleIdFeld=JbuJahr/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
+          url: getApiHost() + '/api/v1/apflora/tabelle=apberuebersicht/tabelleIdFeld=JbuJahr/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
         }).done(function () {
           delete window.localStorage.jberUebersichtId
           delete window.apf.jberUebersicht

@@ -7,7 +7,8 @@ var $ = require('jquery'),
   zeigePopInTPop = require('./zeigePopInTPop'),
   waehleAusschnittFuerUebergebeneTPop = require('./waehleAusschnittFuerUebergebeneTPop'),
   melde = require('../melde'),
-  istLayerSichtbarNachName = require('./istLayerSichtbarNachName')
+  istLayerSichtbarNachName = require('./istLayerSichtbarNachName'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (tpopListeMarkiert) {
   var markierteTpop,
@@ -25,7 +26,7 @@ module.exports = function (tpopListeMarkiert) {
     // alle tpop holen
     $.ajax({
       type: 'get',
-      url: 'api/v1/tpopKarteAlle/apId=' + window.apf.ap.ApArtId
+      url: getApiHost() + '/api/v1/tpopKarteAlle/apId=' + window.apf.ap.ApArtId
     }).done(function (tpopListe) {
       $.when(
         // Layer für Symbole und Beschriftung erstellen

@@ -1,7 +1,8 @@
 'use strict'
 
 var $ = require('jquery'),
-  melde = require('./melde')
+  melde = require('./melde'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function (xKoord, yKoord) {
   var $kopiereKoordinatenInPopRueckmeldung = $('#kopiereKoordinatenInPopRueckmeldung')
@@ -11,11 +12,11 @@ module.exports = function (xKoord, yKoord) {
     // Koordinaten der Pop nachführen
     $.ajax({
       type: 'post',
-      url: 'api/v1/update/apflora/tabelle=pop/tabelleIdFeld=PopId/tabelleId=' + window.localStorage.popId + '/feld=PopXKoord/wert=' + xKoord + '/user=' + encodeURIComponent(window.sessionStorage.user)
+      url: getApiHost() + '/api/v1/update/apflora/tabelle=pop/tabelleIdFeld=PopId/tabelleId=' + window.localStorage.popId + '/feld=PopXKoord/wert=' + xKoord + '/user=' + encodeURIComponent(window.sessionStorage.user)
     }).done(function () {
       $.ajax({
         type: 'post',
-        url: 'api/v1/update/apflora/tabelle=pop/tabelleIdFeld=PopId/tabelleId=' + window.localStorage.popId + '/feld=PopYKoord/wert=' + yKoord + '/user=' + encodeURIComponent(window.sessionStorage.user)
+        url: getApiHost() + '/api/v1/update/apflora/tabelle=pop/tabelleIdFeld=PopId/tabelleId=' + window.localStorage.popId + '/feld=PopYKoord/wert=' + yKoord + '/user=' + encodeURIComponent(window.sessionStorage.user)
       }).done(function () {
         $kopiereKoordinatenInPopRueckmeldung.fadeIn('slow')
         setTimeout(function () {

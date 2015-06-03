@@ -3,7 +3,8 @@
 var $ = require('jquery'),
   erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
   melde = require('../melde'),
-  zeigeBeob = require('../gMap/zeigeBeob')
+  zeigeBeob = require('../gMap/zeigeBeob'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (nodeApId, nodeBeobId) {
   var apId = nodeApId ? erstelleIdAusDomAttributId(nodeApId) : '',
@@ -11,7 +12,7 @@ module.exports = function (nodeApId, nodeBeobId) {
 
   $.ajax({
     type: 'get',
-    url: '/api/v1/beobKarte/apId=' + apId + '/tpopId=/beobId=' + beobId + '/nichtZuzuordnen=1'
+    url: getApiHost() + '/api/v1/beobKarte/apId=' + apId + '/tpopId=/beobId=' + beobId + '/nichtZuzuordnen=1'
   }).done(function (data) {
     if (data && data.length > 0) {
       zeigeBeob(data)

@@ -10,7 +10,8 @@ var $ = require('jquery'),
   configuration = require('../../configuration'),
   melde = require('./melde'),
   pruefeSchreibvoraussetzungen = require('./pruefeSchreibvoraussetzungen'),
-  speichern2 = require('./speichern2')
+  speichern2 = require('./speichern2'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function (that) {
   var feldtyp,
@@ -126,7 +127,7 @@ module.exports = function (that) {
     if (!tabelleId) {
       $.ajax({
         type: 'post',
-        url: 'api/v1/insert/apflora/tabelle=tpopkontrzaehl/feld=TPopKontrId/wert=' + window.localStorage.tpopfeldkontrId + '/user=' + encodeURIComponent(window.sessionStorage.user)
+        url: getApiHost() + '/api/v1/insert/apflora/tabelle=tpopkontrzaehl/feld=TPopKontrId/wert=' + window.localStorage.tpopfeldkontrId + '/user=' + encodeURIComponent(window.sessionStorage.user)
       }).done(function (TPopKontrZaehlId) {
         // die Felder dieser Zählung mit der neuen id aktualisieren
         tabelleId = TPopKontrZaehlId
@@ -139,7 +140,7 @@ module.exports = function (that) {
       // Zählung enthält keine Daten > löschen
       $.ajax({
         type: 'delete',
-        url: '/api/v1/apflora/tabelle=tpopkontrzaehl/tabelleIdFeld=TPopKontrZaehlId/tabelleId=' + tabelleId
+        url: getApiHost() + '/api/v1/apflora/tabelle=tpopkontrzaehl/tabelleIdFeld=TPopKontrZaehlId/tabelleId=' + tabelleId
       }).done(function () {
         // die Felder dieser Zählung mit der neuen id aktualisieren
         $(that).closest('table').find('[name="TPopKontrZaehlId"]').val('')

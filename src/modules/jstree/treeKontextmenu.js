@@ -75,7 +75,8 @@ var _ = require('underscore'),
   schneideBeobAus = require('./schneideBeobAus'),
   zeigeBeobNichtZuzuordnenAufGmap = require('./zeigeBeobNichtZuzuordnenAufGmap'),
   uebertrageKoordBeobZugeordnetAufTpop = require('./uebertrageKoordBeobZugeordnetAufTpop'),
-  beurteileBeobAufOlmap = require('./beurteileBeobAufOlmap')
+  beurteileBeobAufOlmap = require('./beurteileBeobAufOlmap'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (node) {
   var items,
@@ -487,7 +488,7 @@ module.exports = function (node) {
           'action': function () {
             var getPopKarte_2 = $.ajax({
               type: 'get',
-              url: 'api/v1/popKarte/popId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
+              url: getApiHost() + '/api/v1/popKarte/popId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
             })
             getPopKarte_2.done(function (data) {
               if (data && data.length > 0) {

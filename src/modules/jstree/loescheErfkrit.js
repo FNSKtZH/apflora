@@ -5,7 +5,8 @@ var $ = require('jquery'),
   melde = require('../melde'),
   frageObUndeleteDatensatz = require('../frageObUndeleteDatensatz'),
   pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen'),
-  beschrifteOrdner = require('../beschrifteOrdner')
+  beschrifteOrdner = require('../beschrifteOrdner'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (aktiverNode, parentNode) {
   var bezeichnung
@@ -33,7 +34,7 @@ module.exports = function (aktiverNode, parentNode) {
         window.apf.deleted.typ = 'erfkrit'
         $.ajax({
           type: 'delete',
-          url: 'api/v1/apflora/tabelle=erfkrit/tabelleIdFeld=ErfkritId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
+          url: getApiHost() + '/api/v1/apflora/tabelle=erfkrit/tabelleIdFeld=ErfkritId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
         }).done(function () {
           delete window.localStorage.erfkritId
           delete window.apf.erfkrit

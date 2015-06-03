@@ -5,7 +5,8 @@ var $ = require('jquery'),
   melde = require('../melde'),
   frageObUndeleteDatensatz = require('../frageObUndeleteDatensatz'),
   pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen'),
-  beschrifteOrdner = require('../beschrifteOrdner')
+  beschrifteOrdner = require('../beschrifteOrdner'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (aktiverNode, parentNode) {
   var bezeichnung
@@ -27,7 +28,7 @@ module.exports = function (aktiverNode, parentNode) {
         window.apf.deleted.typ = 'tpopber'
         $.ajax({
           type: 'delete',
-          url: 'api/v1/apflora/tabelle=tpopber/tabelleIdFeld=TPopBerId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
+          url: getApiHost() + '/api/v1/apflora/tabelle=tpopber/tabelleIdFeld=TPopBerId/tabelleId=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id'))
         }).done(function () {
           delete window.localStorage.tpopberId
           delete window.apf.tpopber

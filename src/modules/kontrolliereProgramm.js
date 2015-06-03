@@ -15,7 +15,8 @@
 var $ = require('jquery'),
   _ = require('underscore'),
   aktuellesBerichtjahr = require('./aktuellesBerichtjahr'),
-  kontrolliereRelevanzAusserkantonalerTpop = require('./kontrolliereRelevanzAusserkantonalerTpop')
+  kontrolliereRelevanzAusserkantonalerTpop = require('./kontrolliereRelevanzAusserkantonalerTpop'),
+  getApiHost = require('./getApiHost')
 
 function tellUserIfNoIssues () {
   var html

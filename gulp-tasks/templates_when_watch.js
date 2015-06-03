@@ -9,7 +9,6 @@ requireDir('../gulp-tasks', {recurse: true})
 gulp.task('templates_when_watch', function () {
   runSequence(
     'templates',
-    'browserify',
-    'dev_notify'
+    'browserify'
   )
 })

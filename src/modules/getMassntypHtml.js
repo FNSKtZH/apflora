@@ -10,7 +10,8 @@
 'use strict'
 
 var $ = require('jquery'),
-  _ = require('underscore')
+  _ = require('underscore'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function (callback) {
   var html = window.apf.tpopmassntypHtml
@@ -18,7 +19,7 @@ module.exports = function (callback) {
   if (!html) {
     $.ajax({
       type: 'get',
-      url: 'api/v1/tpopMassnTypen'
+      url: getApiHost() + '/api/v1/tpopMassnTypen'
     }).done(function (data) {
       if (data && data.length > 0) {
         // Feld mit Daten beliefern

@@ -3,13 +3,14 @@
 
 'use strict'
 
-var $ = require('jquery')
+var $ = require('jquery'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function (id) {
   window.localStorage.zielberId = id
   $.ajax({
     type: 'get',
-    url: 'api/v1/apflora/tabelle=zielber/feld=ZielBerId/wertString=' + window.localStorage.zielberId
+    url: getApiHost() + '/api/v1/apflora/tabelle=zielber/feld=ZielBerId/wertString=' + window.localStorage.zielberId
   }).done(function (data) {
     // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
     if (data && data[0]) {

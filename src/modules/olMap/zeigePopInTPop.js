@@ -3,14 +3,15 @@
 var $ = require('jquery'),
   melde = require('../melde'),
   initiiereLayertree = require('./initiiereLayertree'),
-  erstellePopLayer = require('./erstellePopLayer')
+  erstellePopLayer = require('./erstellePopLayer'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (overlayPopVisible, popidMarkiert) {
   var popGezeigt = $.Deferred()
 
   $.ajax({
     type: 'get',
-    url: 'api/v1/popKarteAlle/apId=' + window.apf.ap.ApArtId
+    url: getApiHost() + '/api/v1/popKarteAlle/apId=' + window.apf.ap.ApArtId
   }).done(function (popListe) {
     // Layer für Symbole und Beschriftung erstellen
     $.when(erstellePopLayer(popListe, popidMarkiert, overlayPopVisible)).then(function () {

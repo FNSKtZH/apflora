@@ -4,18 +4,19 @@ var $ = require('jquery'),
   erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
   melde = require('../melde'),
   zeigeBeobUndTPop = require('../gMap/zeigeBeobUndTPop'),
-  zeigeBeob = require('../gMap/zeigeBeob')
+  zeigeBeob = require('../gMap/zeigeBeob'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (nodeBeobId) {
   $.ajax({
     type: 'get',
-    url: '/api/v1/beobKarte/apId=/tpopId=/beobId=' + erstelleIdAusDomAttributId(nodeBeobId) + '/nichtZuzuordnen='
+    url: getApiHost() + '/api/v1/beobKarte/apId=/tpopId=/beobId=' + erstelleIdAusDomAttributId(nodeBeobId) + '/nichtZuzuordnen='
   }).done(function (beob) {
     if (beob && beob[0]) {
       // Array belassen -zeigeBeob benötigt einen Array
       $.ajax({
         type: 'get',
-        url: 'api/v1/apKarte/apId=' + window.localStorage.apId
+        url: getApiHost() + '/api/v1/apKarte/apId=' + window.localStorage.apId
       }).done(function (tpop) {
         if (tpop && tpop.length > 0) {
           zeigeBeobUndTPop(beob, tpop)

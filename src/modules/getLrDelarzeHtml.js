@@ -10,7 +10,8 @@
 'use strict'
 
 var $ = require('jquery'),
-  _ = require('underscore')
+  _ = require('underscore'),
+  getApiHost = require('./getApiHost')
 
 module.exports = function (callback) {
   var html = window.apf.lrdelarzeHtml
@@ -18,7 +19,7 @@ module.exports = function (callback) {
   if (!html) {
     $.ajax({
       type: 'get',
-      url: 'api/v1/lrDelarze'
+      url: getApiHost() + '/api/v1/lrDelarze'
     }).done(function (data) {
       if (data) {
         // Feld mit Daten beliefern

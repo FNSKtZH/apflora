@@ -5,7 +5,8 @@ var $ = require('jquery'),
   limiter = require('../lib/limiter'),
   zeigeFormular = require('./zeigeFormular'),
   melde = require('./melde'),
-  leereFelderVonFormular = require('./leereFelderVonFormular')
+  leereFelderVonFormular = require('./leereFelderVonFormular'),
+  getApiHost = require('./getApiHost')
 
 // damit kann man die verbleibende Anzahl Zeichen, die in einem Feld erfasst werden, anzeigen
 // Quelle: https://www.scriptiny.com/2012/09/jquery-input-textarea-limiter/
@@ -43,7 +44,7 @@ module.exports = function (apId, berId) {
   // Daten für die ber aus der DB holen
   $.ajax({
     type: 'get',
-    url: '/api/v1/apflora/tabelle=ber/feld=BerId/wertNumber=' + window.localStorage.berId
+    url: getApiHost() + '/api/v1/apflora/tabelle=ber/feld=BerId/wertNumber=' + window.localStorage.berId
   }).done(function (data) {
     // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
     if (data && data[0]) {

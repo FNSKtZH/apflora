@@ -3,7 +3,8 @@
 var $ = require('jquery'),
   erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
   melde = require('../melde'),
-  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
+  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (aktiverNode) {
   // nur aktualisieren, wenn Schreibrechte bestehen
@@ -13,7 +14,7 @@ module.exports = function (aktiverNode) {
   // Daten des Objekts holen
   $.ajax({
     type: 'get',
-    url: 'api/v1/apflora/tabelle=tpopmassn/feld=TPopMassnId/wertNumber=' + erstelleIdAusDomAttributId($(window.apf.tpopmassnNodeKopiert).attr('id'))
+    url: getApiHost() + '/api/v1/apflora/tabelle=tpopmassn/feld=TPopMassnId/wertNumber=' + erstelleIdAusDomAttributId($(window.apf.tpopmassnNodeKopiert).attr('id'))
   }).done(function (data) {
     if (data && data[0]) {
       window.apf.tpopmassnObjektKopiert = data[0]

@@ -8,7 +8,8 @@ var $ = require('jquery'),
   chToWgsLng = require('../../lib/chToWgsLng'),
   chToWgsLat = require('../../lib/chToWgsLat'),
   zeigeFormular = require('../zeigeFormular'),
-  makeListenerMarkerClick = require('./makeListenerMarkerClick')
+  makeListenerMarkerClick = require('./makeListenerMarkerClick'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (beobListe) {
   var anzBeob,
@@ -127,7 +128,7 @@ module.exports = function (beobListe) {
     maxZoom: 17,
     styles: [{
       height: 53,
-      url: 'img/m5.png',
+      url: getApiHost() + '/img/m5.png',
       width: 53
     }]
   }

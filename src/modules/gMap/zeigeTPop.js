@@ -8,7 +8,8 @@ var _ = require('underscore'),
   chToWgsLng = require('../../lib/chToWgsLng'),
   zeigeFormular = require('../zeigeFormular'),
   beschrifteTPopMitNrFuerKarte = require('../beschrifteTPopMitNrFuerKarte'),
-  makeListenerMarkerClick = require('./makeListenerMarkerClick')
+  makeListenerMarkerClick = require('./makeListenerMarkerClick'),
+  getApiHost = require('../getApiHost')
 
 module.exports = function (tpopListe) {
   var anzTpop,
@@ -106,14 +107,14 @@ module.exports = function (tpopListe) {
     maxZoom: 17,
     styles: [{
       height: 53,
-      url: 'img/m8.png',
+      url: getApiHost() + '/img/m8.png',
       width: 53
     }]
   }
 
   // globale Variable verwenden, damit ein Klick auf die Checkbox die Ebene einblenden kann
   window.apf.googleKarteDetailplaene = new google.maps.KmlLayer({
-    url: 'http://apflora.ch/kml/rueteren.kml',
+    url: getApiHost() + '/kml/rueteren.kml',
     preserveViewport: true
   })
   window.apf.googleKarteDetailplaene.setMap(null)
