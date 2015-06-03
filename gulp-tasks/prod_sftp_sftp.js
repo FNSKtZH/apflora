@@ -16,7 +16,7 @@ gulp.task('prod_sftp_sftp', function () {
     .pipe(sftp({
       host: 'apflora.ch',
       port: 30000,
-      remotePath: 'apflora',
+      remotePath: 'apflora/app',
       user: sftpPass.user,
       pass: sftpPass.pass
     }))
