@@ -6,7 +6,7 @@
 'use strict'
 
 module.exports = function () {
-  var apiHost = 'http://api.' + window.location.hostname + ':4001'
+  var apiHost = 'http://api.' + window.location.hostname + ':4000'
 
   return apiHost
 }
