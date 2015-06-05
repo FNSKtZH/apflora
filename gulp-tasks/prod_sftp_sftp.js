@@ -14,9 +14,9 @@ requireDir('../gulp-tasks', {recurse: true})
 gulp.task('prod_sftp_sftp', function () {
   return gulp.src('dist/**/*')
     .pipe(sftp({
-      host: 'apflora.ch',
+      host: '46.101.131.190',
       port: 30000,
-      remotePath: 'apflora/app',
+      remotePath: 'apflora',
       user: sftpPass.user,
       pass: sftpPass.pass
     }))
