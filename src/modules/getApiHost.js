@@ -6,7 +6,8 @@
 'use strict'
 
 module.exports = function () {
-  var apiHost = 'http://api.' + window.location.hostname + ':4001'
+  var hostname = window.location.hostname === '46.101.131.190' ? 'apflora.ch' : window.location.hostname
+  var apiHost = 'http://api.' + hostname + ':4001'
 
   return apiHost
 }
