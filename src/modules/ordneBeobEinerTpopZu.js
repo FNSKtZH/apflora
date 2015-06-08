@@ -147,41 +147,50 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
       })
       break
     case 'nicht_zuordnen':
+      // in tabelle beobzuordnung einen neuen Datensatz schaffen
       $.ajax({
         type: 'post',
-        url: getApiHost() + '/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=beobNichtZuordnen/wert=1/user=' + encodeURIComponent(window.sessionStorage.user)
+        url: getApiHost() + '/insert/apflora/tabelle=beobzuordnung/feld=NO_NOTE/wert=' + beobId + '/user=' + encodeURIComponent(window.sessionStorage.user)
       }).done(function () {
-        // TPopId null setzen
+        // beobNichtZuordnen 1 setzen
         $.ajax({
           type: 'post',
-          url: getApiHost() + '/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=/user=' + encodeURIComponent(window.sessionStorage.user)
+          url: getApiHost() + '/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=beobNichtZuordnen/wert=1/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
-          // tree aktualisieren, falls von move_node ausgelöst
-          if (jstreeCallback) { jstreeCallback() }
-          // olMap aktualisieren, falls von ihr ausgelöst
-          if (olmapCallback) { olmapCallback() }
-          // wenn kein olmapCallback aber olmap offen
-          if (!olmapCallback && window.apf.olMap.beobZuordnungsLayerFeatures && $('#olMap').is(':visible')) {
-            // vermutlich sollte das beobzuordnungs-Layer nachgeführt werden
-            // und zwar soll die BeobZuordnung bleiben, aber nur ein Punkt sein
-            var newBeobZuordGeometry,
-              beobZuordnungFeature,
-              beobX = window.apf.beob.COORDONNEE_FED_E,
-              beobY = window.apf.beob.COORDONNEE_FED_N
+          // TPopId null setzen
+          $.ajax({
+            type: 'post',
+            url: getApiHost() + '/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=/user=' + encodeURIComponent(window.sessionStorage.user)
+          }).done(function () {
+            // tree aktualisieren, falls von move_node ausgelöst
+            if (jstreeCallback) { jstreeCallback() }
+            // olMap aktualisieren, falls von ihr ausgelöst
+            if (olmapCallback) { olmapCallback() }
+            // wenn kein olmapCallback aber olmap offen
+            if (!olmapCallback && window.apf.olMap.beobZuordnungsLayerFeatures && $('#olMap').is(':visible')) {
+              // vermutlich sollte das beobzuordnungs-Layer nachgeführt werden
+              // und zwar soll die BeobZuordnung bleiben, aber nur ein Punkt sein
+              var newBeobZuordGeometry,
+                beobZuordnungFeature,
+                beobX = window.apf.beob.COORDONNEE_FED_E,
+                beobY = window.apf.beob.COORDONNEE_FED_N
 
-            newBeobZuordGeometry = new ol.geom.LineString([[beobX, beobY], [beobX, beobY]])
-            // beob zuordnen
-            beobZuordnungFeature = _.find(window.apf.olMap.beobZuordnungsLayerFeatures, function (feature) {
-              return feature.get('myId') == beobId
-            })
+              newBeobZuordGeometry = new ol.geom.LineString([[beobX, beobY], [beobX, beobY]])
+              // beob zuordnen
+              beobZuordnungFeature = _.find(window.apf.olMap.beobZuordnungsLayerFeatures, function (feature) {
+                return feature.get('myId') == beobId
+              })
 
-            // beobZuordnung anpassen
-            beobZuordnungFeature.setGeometry(newBeobZuordGeometry)
-          }
-          // globale Variable aktualisieren
-          aktualisiereGlobaleVariable()
+              // beobZuordnung anpassen
+              beobZuordnungFeature.setGeometry(newBeobZuordGeometry)
+            }
+            // globale Variable aktualisieren
+            aktualisiereGlobaleVariable()
+          }).fail(function () {
+            console.log('fehler beim Leeren von TPopId')
+          })
         }).fail(function () {
-          console.log('fehler beim Leeren von TPopId')
+          console.log('fehler beim setzen von beobNichtZuordnen')
         })
       }).fail(function () {
         melde('Fehler: Die Beobachtung wurde nicht verschoben')
