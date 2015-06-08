@@ -12,9 +12,9 @@ module.exports = function (beob) {
     return
   }
 
-  beobStatus = (beob.beobNichtZuordnen ? 'nicht_zuzuordnen' : 'nicht_beurteilt')
+  beobStatus = beob.beobNichtZuordnen ? 'nicht_zuzuordnen' : 'nicht_beurteilt'
 
-  beobTyp = (isNaN(beob.NO_NOTE) ? 'evab' : 'infospezies')
+  beobTyp = isNaN(beob.NO_NOTE) ? 'evab' : 'infospezies'
 
   window.localStorage.beobtyp = beobTyp
   initiiereBeob(beobTyp, beob.NO_NOTE, beobStatus)
