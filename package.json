@@ -3,6 +3,13 @@
   "version": "1.0.1",
   "description": "Aktionsplan Flora Kt. Zürich",
   "main": "server.js",
+  "scripts": {
+    "dev": "npm run gulp & npm start",
+    "predeploy": "gulp prod_clean_dist",
+    "deploy": "gulp prod",
+    "postdeploy": "gulp prod_sftp_sftp",
+    "test": "standard src/apflora.js && standard src/modules/**/*.js && standard src/lib/**/*.js"
+  },
   "browserify": {
     "transform": [
       "browserify-shim"
@@ -56,13 +63,6 @@
     "require-dir": "0.3.0",
     "run-sequence": "1.1.0",
     "vinyl-source-stream": "1.1.0"
-  },
-  "scripts": {
-    "dev": "npm run gulp & npm start",
-    "predeploy": "gulp prod_clean_dist",
-    "deploy": "gulp prod",
-    "postdeploy": "gulp prod_sftp_sftp",
-    "test": "standard src/apflora.js && standard src/modules/**/*.js && standard src/lib/**/*.js"
   },
   "repository": {
     "type": "git",
