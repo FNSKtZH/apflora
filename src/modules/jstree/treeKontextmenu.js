@@ -1192,9 +1192,8 @@ module.exports = function (node) {
         'NeuePopAusBeob': {
           'label': 'neue Population gründen',
           'separator_before': true,
-          'icon': '',
+          'icon': 'style/images/plus_thick.png',
           'action': function () {
-            console.log('gründe Population aus Beobachtung mit id ', $(aktiverNode).attr('id'))
             gruendePopAusBeob($(aktiverNode).attr('id'))
           }
         }
