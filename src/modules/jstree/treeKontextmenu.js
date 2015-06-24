@@ -76,7 +76,8 @@ var _ = require('underscore'),
   zeigeBeobNichtZuzuordnenAufGmap = require('./zeigeBeobNichtZuzuordnenAufGmap'),
   uebertrageKoordBeobZugeordnetAufTpop = require('./uebertrageKoordBeobZugeordnetAufTpop'),
   beurteileBeobAufOlmap = require('./beurteileBeobAufOlmap'),
-  getApiHost = require('../getApiHost')
+  getApiHost = require('../getApiHost'),
+  gruendePopAusBeob = require('../gruendePopAusBeob')
 
 module.exports = function (node) {
   var items,
@@ -1173,7 +1174,7 @@ module.exports = function (node) {
           }
         },
         'GoogleMapsMitTPopBeob': {
-          'label': 'auf Luftbild einer Teilpopulation<br>&nbsp;&nbsp;&nbsp;zuordnen',
+          'label': 'auf Luftbild einer<br>&nbsp;&nbsp;&nbsp;Teilpopulation zuordnen',
           'separator_before': true,
           'icon': 'style/images/flora_icon_violett.png',
           'action': function () {
@@ -1186,6 +1187,15 @@ module.exports = function (node) {
           'icon': 'style/images/wappen_zuerich.png',
           'action': function () {
             zeigeBeobKoordinatenImGisBrowser()
+          }
+        },
+        'NeuePopAusBeob': {
+          'label': 'neue Population gründen',
+          'separator_before': true,
+          'icon': '',
+          'action': function () {
+            console.log('gründe Population aus Beobachtung mit id ', $(aktiverNode).attr('id'))
+            gruendePopAusBeob($(aktiverNode).attr('id'))
           }
         }
       }
