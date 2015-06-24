@@ -147,17 +147,11 @@ module.exports = function () {
   chVogelreservateLayer.set('visible', false)
   chVogelreservateLayer.set('kategorie', 'CH Biotopinventare')
 
-  detailplaeneLayerSource = new ol.source.GeoJSON({
-    url: getApiHost() + '/geojson/detailplaene.geojson' /*,
-        // ol 3.5.0 deprecates ol.source.GeoJSON, see: https://github.com/openlayers/ol3/releases/tag/v3.5.0
-        // make ol.source.Vector and the next line:
-        //format: new ol.format.GeoJSON(),
-         myTyp: 'Detailplan'*/    // funktioniert nicht
+  detailplaeneLayerSource = new ol.source.Vector({
+    url: getApiHost() + '/geojson/detailplaene.geojson',
+    format: new ol.format.GeoJSON({defaultDataProjection: 'EPSG:21781'}) /*,
+    myTyp: 'Detailplan'*/
   })
-  /* funktioniert nicht:
-   detailplaeneLayerSource.forEachFeature(function (feature) {
-   feature.setValues('myTyp', 'Detailplan')
-   });*/
 
   detailplaeneLayer = new ol.layer.Vector({
     title: 'Detailpläne',
