@@ -4,7 +4,12 @@ var $ = require('jquery'),
   erstelleIdAusDomAttributId = require('./erstelleIdAusDomAttributId'),
   melde = require('./melde'),
   getApiHost = require('./getApiHost'),
-  getAppHost = require('./getAppHost')
+  getAppHost = require('./getAppHost'),
+  insertNeuePop = require('./jstree/insertNeuePop'),
+  insertNeueTpop = require('./jstree/insertNeueTpop'),
+  ordneBeobEinerTpopZu = require('./ordneBeobEinerTpopZu'),
+  erstelleUnterordnerVonPop = require('./jstree/erstelleUnterordnerVonPop'),
+  erstelleUnterordnerVonTpop = require('./jstree/erstelleUnterordnerVonTpop')
 
 module.exports = function (beobNodeId) {
   console.log('gruendePopAusBeob.js: called with beobNodeId =', beobNodeId)
@@ -58,28 +63,38 @@ module.exports = function (beobNodeId) {
       url: apiHost + '/updateMultiple/apflora/tabelle=tpop/felder=' + JSON.stringify(felder)
     })
   }).then(function () {
-    // 7. assign beob to tpop
-    // 7.1: insert new row in table beobzuordnung
-    return $.ajax({
-      type: 'post',
-      url: apiHost + '/insert/apflora/tabelle=beobzuordnung/feld=NO_NOTE/wert=' + beobId + '/user=' + user
-    })
-  }).then(function () {
-    // 7.2: update this row
-    return $.ajax({
-      type: 'post',
-      url: apiHost + '/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + user
-    })
-  }).then(function () {
-    // 8. update ui
-    // create url, example:
-    // http://localhost:4000/index.html?ap=100&pop=2146169980&tpop=2146453055&beobZugeordnet=63D291BA-0603-45A1-8380-60D8C39A8C3E
-    var url = getAppHost() + '/index.html?ap=' + apId + '&pop=' + popId + '&tpop=' + tpopId + '&beobZugeordnet=' + beobId
-    // full reload so the tree rebuilds
+    // 7. move beob
+    // this assigns it to tpop und updates ui
+    var neuerPopNode,
+      popOrdnerNode,
+      neuerTPopNode,
+      tpopOrdnerNode
 
-    console.log('gruendePopAusBeob.js: url to open', url)
+    // create pop node
+    popOrdnerNode = $('#apOrdnerPop' + apId)
+    neuerPopNode = $.jstree._reference(popOrdnerNode).create_node(popOrdnerNode, 'last', {
+      'data': 'neue Population',
+      'attr': {
+        'id': popId,
+        'typ': 'pop'
+      }
+    })
+    erstelleUnterordnerVonPop(neuerPopNode, popId)
 
-    window.open(url, '_self')
+    // create tpop node
+    tpopOrdnerNode = $('#tree').find('[typ="popOrdnerTpop"]#' + popId)
+    neuerTPopNode = $.jstree._reference(tpopOrdnerNode).create_node(tpopOrdnerNode, 'last', {
+      'data': 'neue Teilpopulation',
+      'attr': {
+        'id': tpopId,
+        'typ': 'tpop'
+      }
+    })
+    erstelleUnterordnerVonTpop(neuerTPopNode, tpopId)
+
+    // move beob to top node for beob
+    $('#tree').jstree('move_node', '#beob' + beobId, '[typ="tpopOrdnerBeobZugeordnet"]#' + tpopId, 'first')
+
   }).fail(function (error) {
     melde('Fehler: Die Population wurde nicht geründet. Die Anwendung lieferte folgende Fehlermeldung:', error)
   })
