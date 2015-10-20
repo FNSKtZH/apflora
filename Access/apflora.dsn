@@ -1,5 +1,6 @@
 [ODBC]
 DRIVER=MySQL ODBC 5.3 Unicode Driver
 UID=alexande
+PASSWORD=__HierDasRichtigePasswortEinsetzen__
 PORT=3306
 SERVER=api.apflora.ch
