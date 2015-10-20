@@ -1,5 +1,5 @@
 [ODBC]
-DRIVER=MySQL ODBC 5.2 Unicode Driver
+DRIVER=MySQL ODBC 5.3 Unicode Driver
 UID=alexande
 PORT=3306
-SERVER=apflora.ch
+SERVER=api.apflora.ch
