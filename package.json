@@ -4,7 +4,7 @@
   "description": "Aktionsplan Flora Kt. Zürich",
   "main": "server.js",
   "scripts": {
-    "dev": "npm run gulp & npm start",
+    "start": "gulp dev & server.js",
     "predeploy": "gulp prod_clean_dist",
     "deploy": "gulp prod",
     "postdeploy": "gulp prod_sftp_sftp",
