@@ -115,10 +115,11 @@ module.exports = function (berichtjahr) {
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnestatus')
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnebekanntseit')
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohneapberrelevant')
+  createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnekoordinaten')
+  // tpop relevant, die nicht relevant sein sollten
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_statuspotentiellfuerapberrelevant')
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_erloschenundrelevantaberletztebeobvor1950')
-
-  createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_ohnekoordinaten')
+  kontrolliereRelevanzAusserkantonalerTpop()
   // pop/tpop mit Status unklar ohne Begründung
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_mitstatusunklarohnebegruendung')
   // tpop mit mehrdeutiger Kombination von PopNr und TPopNr
@@ -129,7 +130,8 @@ module.exports = function (berichtjahr) {
   createUrlToAddDataFromQueryToQsList(qsList, 'qkTpopOhneMassnber', berichtjahr)
   // Teilpopulation mit Status "Ansaatversuch", bei denen in einer Kontrolle eine Anzahl festgestellt wurde:
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_mitstatusansaatversuchundzaehlungmitanzahl')
-  // Teilpopulation mit Status "potentieller Wuchs-/Ansiedlungsort", bei der eine Massnahme des Typs "Ansiedlung" existiert:
+  // Teilpopulation mit Status "potentieller Wuchs-/Ansiedlungsort",
+  // bei der eine Massnahme des Typs "Ansiedlung" existiert:
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_mitstatuspotentiellundmassnansiedlung')
   // Teilpopulation mit Status "aktuell", gemäss einem Teilpopulationsbericht erloschen
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_mitstatusaktuellundtpopbererloschen')
@@ -139,13 +141,11 @@ module.exports = function (berichtjahr) {
   // Massn.-Bericht ohne Jahr/Entwicklung
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_massnber_ohnejahr')
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_massnber_ohneerfbeurt', berichtjahr)
-  // Kontrolle ohne Jahr
+  // Kontrolle ohne Jahr/Zählung/Kontrolltyp
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnejahr')
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_freiwkontr_ohnejahr')
-  // TODO: Kontrolle ohne Zählung
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnezaehlung', berichtjahr)
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_freiwkontr_ohnezaehlung', berichtjahr)
-  // Feldkontrolle ohne Kontrolltyp
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_feldkontr_ohnetyp', berichtjahr)
   // Zählung ohne Einheit/Methode/Anzahl
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_feldkontrzaehlung_ohneeinheit', berichtjahr)
@@ -178,6 +178,4 @@ module.exports = function (berichtjahr) {
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_apber_ohnebeurteilung', berichtjahr)
   // assoziierte Art ohne Art
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_assozart_ohneart')
-
-  kontrolliereRelevanzAusserkantonalerTpop()
 }
