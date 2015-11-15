@@ -576,7 +576,6 @@ module.exports = function (node) {
           'icon': 'style/images/flora_icon_violett.png',
           'action': function () {
             beurteileBeobAufOlmap($(aktiverNode).attr('id'))
-          // melde('oops, dieses Feature wird noch entwickelt')
           }
         },
         'GoogleMaps': {
