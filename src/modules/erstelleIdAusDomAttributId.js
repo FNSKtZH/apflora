@@ -42,7 +42,8 @@ module.exports = function (domAttributId) {
     console.log('window.apf.erstelleIdAusDomAttributId meldet: erhalten ' + domAttributId + ', zurückgegeben: ' + returnWert + '. Die Regel in der function muss wohl angepasst werden')
   }
 
-  if (typeof returnWert === 'number') {
+  // if (typeof returnWert === 'number') {  changed 2015.11.15 ag
+  if (!isNaN(returnWert)) {
     returnWert = parseInt(returnWert, 10)
   }
 
