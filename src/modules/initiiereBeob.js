@@ -81,9 +81,6 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
         htmlDistzutpop = '<tr class="fieldcontain distZuTPop"><td class="label"><label for="distZuTPop">Einer Teilpopulation zuordnen:</label></td><td class="Datenfelder"><div class="Datenfelder" id="DistZuTPop_Felder">'
         if (data) {
           _.each(data, function (beob, index) {
-            /*if (index > 0) {
-                htmlDistzutpop += "<br>"
-            }*/
             htmlDistzutpop += '<div class="radio-wrapper">'
             htmlDistzutpop += '<input type="radio" name="distZuTPop" id="distZuTPop'
             htmlDistzutpop += beob.TPopId
@@ -101,12 +98,13 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
             // Label beginnen
             htmlDistzutpop += '<label for="distZuTPop'
             htmlDistzutpop += beob.TPopId
+            var label = beob.PopNr + '/' + beob.TPopNr + ' "' + beob.TPopFlurname + '"'
             htmlDistzutpop += '">'
             // Wenn TPop keine Koordinaten haben, dies anzeigen und Anzeige von NAN verhindern
             if (parseInt(beob.DistZuTPop, 10) >= 0) {
-              htmlDistzutpop += parseInt(beob.DistZuTPop, 10) + 'm: ' + beob.TPopFlurname
+              htmlDistzutpop += parseInt(beob.DistZuTPop, 10) + 'm: ' + label
             } else {
-              htmlDistzutpop += beob.TPopFlurname
+              htmlDistzutpop += label
             }
             // Label abschliessen
             htmlDistzutpop += '</label>'
