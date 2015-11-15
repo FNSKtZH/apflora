@@ -1149,6 +1149,14 @@ module.exports = function (node) {
           'action': function () {
             zeigeBeobNichtBeurteiltUndTpopAufGmap($(aktiverNode).attr('id'))
           }
+        },
+        'aufOlmapBeobZuordnen': {
+          'label': 'auf CH-Karten<br>&nbsp;&nbsp;&nbsp;Beobachtungen zuordnen',
+          'separator_before': true,
+          'icon': 'style/images/flora_icon_violett.png',
+          'action': function () {
+            beurteileBeobAufOlmap()
+          }
         }
       }
       if (window.apf.beobNodeAusgeschnitten) {
