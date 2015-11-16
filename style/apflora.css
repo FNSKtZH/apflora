@@ -362,6 +362,10 @@ textarea {
     padding: 1px 7px !important;
 }
 
+#exporte .ui-button-text {
+    padding: 4px 7px !important;
+}
+
 /*nach Löschen und neu erstellen setzt jQuery UI einen zusätzlichen span mit .ui-button-text hinein!*/
 .ui-button-text .ui-button-text {
     padding: 0 0 !important;

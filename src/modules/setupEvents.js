@@ -8,7 +8,9 @@ var $ = require('jquery'),
   onClickProgrammWahl = require('./events/menu/onClickProgrammWahl'),
   onClickApLoeschen = require('./events/menu/onClickApLoeschen'),
   onChangeApWaehlen = require('./events/menu/onChangeApWaehlen'),
+  onChangeEwmsApWaehlen = require('./events/menu/onChangeEwmsApWaehlen'),
   onClickApWaehlenTextLoeschen = require('./events/menu/onClickApWaehlenTextLoeschen'),
+  onClickEwmsApWaehlenTextLoeschen = require('./events/menu/onClickEwmsApWaehlenTextLoeschen'),
   onKeyupClickSuchen = require('./events/menu/onKeyupClickSuchen'),
   onKeydownForm = require('./events/forms/onKeydownForm'),
   onChangeSpeichern = require('./events/forms/onChangeSpeichern'),
@@ -58,8 +60,12 @@ module.exports = function () {
     .on('click', onClickApLoeschen)
   $('#apWaehlen')
     .on('change', onChangeApWaehlen)
+  $('#ewmsApWaehlen')
+    .on('change', onChangeEwmsApWaehlen)
   $('#apWaehlenTextLoeschen')
     .on('click', onClickApWaehlenTextLoeschen)
+  $('#ewmsApWaehlenTextLoeschen')
+    .on('click', onClickEwmsApWaehlenTextLoeschen)
   $('#suchen')
     .on('keydown', onKeydownSuchen)
     .on('keyup click', onKeyupClickSuchen)

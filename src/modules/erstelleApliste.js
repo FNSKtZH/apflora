@@ -2,6 +2,7 @@
 
 var $ = require('jquery'),
   setzeAutocompleteFuerApliste = require('./setzeAutocompleteFuerApliste'),
+  setzeAutocompleteFuerEwmsApliste = require('./setzeAutocompleteFuerEwmsApliste'),
   getApiHost = require('./getApiHost')
 
 module.exports = function (programm, callback) {
@@ -21,12 +22,14 @@ module.exports = function (programm, callback) {
       // die Daten werden später benötigt > globale Variable erstellen
       window.apf.apliste[programm] = data
       setzeAutocompleteFuerApliste(programm)
+      setzeAutocompleteFuerEwmsApliste(programm)
       if (callback) {
         callback()
       }
     })
   } else {
     setzeAutocompleteFuerApliste(programm)
+    setzeAutocompleteFuerEwmsApliste(programm)
     if (callback) {
       callback()
     }
