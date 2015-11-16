@@ -29,15 +29,18 @@ module.exports = function (markerBeob, Beob) {
       url: getApiHost() + '/beobNaechsteTpop/apId=' + Beob.NO_ISFS + '/X=' + X + '/Y=' + Y
     }).done(function (data) {
       var beobtxt
+      var tpop = data[0]
+      var label = tpop.PopNr + '/' + tpop.TPopNr + ': ' + tpop.TPopFlurname
 
       if (Beob.Autor) {
         beobtxt = 'Beobachtung von ' + Beob.Autor + ' aus dem Jahr ' + Beob.A_NOTE
       } else {
         beobtxt = 'Beobachtung ohne Autor aus dem Jahr ' + Beob.A_NOTE
       }
+
       // rückfragen
       $('#Meldung')
-        .html('Soll die ' + beobtxt + "<br>der Teilpopulation '" + data[0].TPopFlurname + "' zugeordnet werden?")
+        .html('Soll die ' + beobtxt + "<br>der Teilpopulation '" + label + "' zugeordnet werden?")
         .dialog({
           modal: true,
           title: 'Zuordnung bestätigen',
@@ -45,7 +48,7 @@ module.exports = function (markerBeob, Beob) {
           buttons: {
             Ja: function () {
               var beobRef = '#beob' + Beob.NO_NOTE,
-                tpopOrdnerRef = '#tpopOrdnerBeobZugeordnet' + data[0].TPopId
+                tpopOrdnerRef = '#tpopOrdnerBeobZugeordnet' + tpop.TPopId
 
               $(this).dialog('close')
 
