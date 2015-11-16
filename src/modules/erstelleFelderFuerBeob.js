@@ -26,7 +26,6 @@ module.exports = function (data, beobtyp) {
       if (value.toString().length < 70) {
         htmlBeobfelder += beobFeldInputText({index: index, value: value})
       } else {
-        console.log('value.length', value.length)
         htmlBeobfelder += beobFeldTextarea({index: index, value: value})
       }
     }
