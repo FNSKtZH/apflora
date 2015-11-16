@@ -1983,10 +1983,10 @@
           <a name="Anleitung"></a>
           <h2 class="borderTop">So geht's</h2>
           <p>Hier sind alle Auswertungen (bzw. Abfragen, Kontrollen, Listen).</p>
-          <p>Die Daten werden direkt als mit Strichpunkten (=Semikolon) getrennte .csv-Datei heruntergeladen.</p>
+          <p>Die Daten werden direkt als mit Kommas getrennte .csv-Datei heruntergeladen.</p>
           <p>Diese Datei kann nach dem Download auf zwei Arten geöffnet werden:</p>
           <ol>
-            <li>Heruntergeladene Datei doppelklicken. Meist wählt das Betriebssystem ein geeignetes Programm, um die Datei damit zu öffnen und dieses Programm erkennt am Datenformat, dass der Importassistent geöffnet werden muss. In Excel funktioniert dies manchmal nicht!</li>
+            <li>Heruntergeladene Datei doppelklicken. Meist wählt das Betriebssystem ein geeignetes Programm, um die Datei damit zu öffnen und dieses Programm erkennt am Datenformat, dass der Importassistent geöffnet werden muss. In Excel funktioniert dies häufig nicht!</li>
             <li>Gewünschtes Programm öffnen und damit die heruntergeladene Datei öffnen oder die Daten importieren</li>
           </ol>
           <div style="padding:10px 5px 10px 5px; margin-right:10px; border-radius:5px; background-color: #FFDA8F; box-shadow: 5px 5px 5px #888;"><b>ACHTUNG: Microsoft Excel braucht Streicheleinheiten:</b>
@@ -1994,10 +1994,12 @@
               <li>Excel öffnen</li>
               <li>"Daten" > "Externe Daten abrufen" > "Aus Text" wählen</li>
               <li>Nun erscheit der Textkonvertierungs-Assistent. Im Schritt 1 als Dateiursprung statt dem vorgegebenen "Windows (ANSI)" dies hier wählen: "65001 : Unicode (UTF-8)". Excel versteht sonst partout keine Umlaute</li>
+              <li>Vorsicht: Excel ist fähig, die importierten Daten nach eigenem Ermessen willkürlich zu vermanschen. Daher bitte obige Tipps missachten und Excel nur für die Auswertung von Daten benutzten - nicht im .csv-Dateien zu öffnen.</li>
             </ol>
           </div>
-          <p>Fragt das Programm, mit welchem Zeichen die einzelnen Felder getrennt werden? Es sind Strichpunkte (=Semikolon, =";").</p>
-          <p>Zeigt das Programm nach dem Öffnen ungeordnete Daten an? Dann muss die Datei nochmals geöffnet werden und dabei ist die Option zu suchen, mit der eine Trennung der Felder mittels Strichpunkten erzwungen werden kann. Vielleicht muss wie in Excel statt dem Öffnen-Befehl ein Import-Befehl verwendet werden. Vorsicht: Es sollte nicht noch zusätzlich eine andere Option gewählt sein, z.B. Trennung durch Kommatas.</p>
+          <p>Um .csv-Dateien zu öffnen ist <a href="https://de.libreoffice.org/" target="_blank">Libre Office</a> sehr empfehlenswert: 1. Mit Libre Office öffnen, 2. als .xlsx-Datei speichern, 3. mit Excel öffnen und auswerten.</p>
+          <p>Fragt das Programm, mit welchem Zeichen die einzelnen Felder getrennt werden? Es sind Kommas.</p>
+          <p>Zeigt das Programm nach dem Öffnen ungeordnete Daten an? Dann muss die Datei nochmals geöffnet werden und dabei ist die Option zu suchen, mit der eine Trennung der Felder mittels Kommas erzwungen werden kann. Vielleicht muss wie in Excel statt dem Öffnen-Befehl ein Import-Befehl verwendet werden. Vorsicht: Es sollte nicht noch zusätzlich eine andere Option gewählt sein, z.B. Trennung durch Strichpunkte.</p>
           <div style="padding:10px 5px 10px 5px; margin-right:10px; border-radius:5px; background-color: #FFDA8F; box-shadow: 5px 5px 5px #888;"><b>Enthält der Export zuviele Daten?</b><br>
             Meist werden alle verfügbaren Datensätze und Felder angezeigt. Daher können Listen sehr viele Zeilen und Spalten enthalten und unübersichtlich werden.
             <ul style="-webkit-margin-after: 0em; -webkit-margin-before: 0.5em;">
@@ -2067,7 +2069,7 @@
               <button id="exportTpopPopnrTpopnrMehrdeutig" class="export" view="v_tpop_popnrtpopnrmehrdeutig" filename="TeilpopulationenPopnrTpopnrMehrdeutig">Teilpopulationen mit mehrdeutiger<br>Kombination von PopNr und TPopNr</button><br><br>
 
               <button id="exportTpopAnzMassn" class="export" view="v_tpop_anzmassn" filename="TeilpopulationenAnzahlMassnahmen">Anzahl Massnahmen pro Teilpopulation</button><br>
-              <button id="exportTpopAnzKontrInklLetzteInklLetzteTPopBer" class="export" view="v_tpop_anzkontrinklletzterundletztertpopber" filename="TeilpopulationenAnzKontrInklusiveLetzteKontrUndLetztenTPopBericht">Anzahl Kontrollen pro Teilpopulation<br>inklusive der letzten Kontrolle,<br>dem letzten Teilpopulationsbericht<br>und der letzten Zählung<br>= "Eier legende Wollmilchsau"</button>
+              <button id="exportTpopAnzKontrInklLetzteInklLetzteTPopBer" class="export" view="v_tpop_anzkontrinklletzterundletztertpopber" filename="TeilpopulationenAnzKontrInklusiveLetzteKontrUndLetztenTPopBericht">Teilpopulationen inkl. anzahl Kontrollen,<br>der letzten Kontrolle,<br>dem letzten Teilpopulationsbericht<br>und der letzten Zählung<br>= "Eier legende Wollmilchsau"</button>
               <div class='fieldcontain' style="margin-right:5px; margin-bottom:5px; position:relative;">
                 <p style='margin-bottom: 3px;'>Die "Eier legende Wollmilchsau" für eine Art:</p>
                 <input type="text" id="ewmsApWaehlenText" style="width:100%; font-size:17px; box-sizing:border-box; padding-right:20px;" placeholder="Art wählen">
