@@ -41,7 +41,7 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
   $BeobBemerkungen = $('#BeobBemerkungen')
 
   // beobid hat meist 'beob' vorangestellt - entfernen!
-  if (beobId.indexOf('beob') > -1) {
+  if (typeof beobId === 'string' && beobId.indexOf('beob') > -1) {
     beobId = beobId.replace('beob', '')
   }
   // beobid bereitstellen
