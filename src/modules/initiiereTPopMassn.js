@@ -141,7 +141,7 @@ module.exports = function (apId, popId, tpopId, massnId) {
       window.history.pushState(null, null, 'index.html?ap=' + apId + '&pop=' + popId + '&tpop=' + tpopId + '&tpopmassn=' + massnId)
 
       // bei neuen Datensätzen Fokus steuern
-      $('#TPopMassnJahr').focus()
+      $('#TPopMassnDatum').focus()
     }
   }).fail(function () {
     melde('Fehler: keine Daten für die Massnahme erhalten')
