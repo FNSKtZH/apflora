@@ -6,9 +6,10 @@
 module.exports = function (domAttributId) {
   var returnWert
 
-  if (!domAttributId) {
-    return null
-  }
+  console.log('domAttributId', domAttributId)
+
+  if (!domAttributId) return null
+  if (!isNaN(domAttributId)) return domAttributId
 
   returnWert = domAttributId
     .replace('qualitaetskontrollen', '')
@@ -42,10 +43,7 @@ module.exports = function (domAttributId) {
     console.log('window.apf.erstelleIdAusDomAttributId meldet: erhalten ' + domAttributId + ', zurückgegeben: ' + returnWert + '. Die Regel in der function muss wohl angepasst werden')
   }
 
-  // if (typeof returnWert === 'number') {  changed 2015.11.15 ag
-  if (!isNaN(returnWert)) {
-    returnWert = parseInt(returnWert, 10)
-  }
+  if (!isNaN(returnWert)) returnWert = parseInt(returnWert, 10)
 
   return returnWert
 }
