@@ -6,8 +6,6 @@
 module.exports = function (domAttributId) {
   var returnWert
 
-  console.log('domAttributId', domAttributId)
-
   if (!domAttributId) return null
   if (!isNaN(domAttributId)) return domAttributId
 
