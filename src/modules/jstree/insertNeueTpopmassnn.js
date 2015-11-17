@@ -8,9 +8,16 @@ var $ = require('jquery'),
   getApiHost = require('../getApiHost')
 
 module.exports = function (aktiverNode, parentNode, nodeTpopId) {
+  // window.apf.ap.ApBearb is standard for TPopMassnBearb
+  var felder = {}
+  felder.TPopId = erstelleIdAusDomAttributId(nodeTpopId)
+  felder.TPopMassnBearb = window.apf.ap.ApBearb
+  felder.MutWann = new Date().toISOString()
+  felder.MutWer = encodeURIComponent(window.sessionStorage.user)
+
   $.ajax({
     type: 'post',
-    url: getApiHost() + '/insert/apflora/tabelle=tpopmassn/feld=TPopId/wert=' + erstelleIdAusDomAttributId(nodeTpopId) + '/user=' + encodeURIComponent(window.sessionStorage.user)
+    url: getApiHost() + '/insertMultiple/apflora/tabelle=tpopmassn/felder=' + JSON.stringify(felder)
   }).done(function (id) {
     var strukturtyp = 'tpopmassn',
       beschriftung = 'neue Massnahme'
