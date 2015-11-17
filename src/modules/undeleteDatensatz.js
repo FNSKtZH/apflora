@@ -113,9 +113,7 @@ module.exports = function () {
   // window.apf.deleted enthält alle Feldnamen - viele können leer sein
   // daher nur solche mit Werten übernehmen
   _.each(window.apf.deleted, function (feldwert, feldname) {
-    if (feldwert) {
-      data[feldname] = feldwert
-    }
+    if (feldwert) data[feldname] = feldwert
   })
 
   // Datensatz hinzufügen
