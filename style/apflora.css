@@ -364,6 +364,7 @@ textarea {
 
 #exporte .ui-button-text {
     padding: 4px 7px !important;
+    line-height: 1.3em;
 }
 
 /*nach Löschen und neu erstellen setzt jQuery UI einen zusätzlichen span mit .ui-button-text hinein!*/
@@ -1112,7 +1113,7 @@ p.ergebnisAuswahlListeTitelTPop {
 
 #exporte button {
     text-align: left;
-    margin: 2px 2px 2px 0;
+    margin: 0 2px 10px 0;
 }
 
 .export_abschnitt_tooltip_class {
