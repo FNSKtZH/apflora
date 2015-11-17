@@ -23,6 +23,7 @@ var $ = require('jquery'),
   getApiHost = require('./getApiHost')
 
 module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
+  var $TPopKontrDatum = $('#TPopKontrDatum')
   // prüfen, ob voraussetzungen gegeben sind
   if (!apId && !window.localStorage.apId) {
     // Anwendung neu initiieren
@@ -125,9 +126,9 @@ module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
         // chrome akzeptiert nur - getrennte Daten. Und zeigt sie dann gemäss Pattern korrekt an
         // die übrigen stellen mit - getrennte Daten leider mit - dar
         if (!window.chrome) {
-          $('#TPopKontrDatum').val(dateFormat(data.TPopKontrDatum, 'dd.mm.yyyy'))
+          $TPopKontrDatum.val(dateFormat(data.TPopKontrDatum, 'dd.mm.yyyy'))
         } else {
-          $('#TPopKontrDatum').val(dateFormat(data.TPopKontrDatum, 'yyyy-mm-dd'))
+          $TPopKontrDatum.val(dateFormat(data.TPopKontrDatum, 'yyyy-mm-dd'))
         }
       }
       $('#TPopKontrTxt').val(data.TPopKontrTxt)
@@ -284,7 +285,7 @@ module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
       }
 
       // Fokus steuern
-      $TPopKontrJahr.focus()
+      $TPopKontrDatum.focus()
       $(window).scrollTop(0)
 
       // Daten für Zählungen holen
