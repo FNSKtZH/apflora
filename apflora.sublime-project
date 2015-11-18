@@ -61,7 +61,11 @@
 			"path": "style"
 		},
 		{
-			"path": "/Users/alex/apflora_api"
+			"path": "C:/Users/alex/apflora",
+			"folder_exclude_patterns":
+			[
+				"*"
+			]
 		}
 	]
 }
