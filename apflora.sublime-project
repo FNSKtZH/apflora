@@ -2,22 +2,19 @@
 	"folders":
 	[
 		{
-			"folder_exclude_patterns": [
+			"folder_exclude_patterns":
+			[
 				"*"
 			],
-			"follow_symlinks": true,
-			"path": "/"
+			"path": ""
 		},
 		{
-			"follow_symlinks": true,
 			"path": "gulp-tasks"
 		},
 		{
-			"follow_symlinks": true,
 			"path": "geojson"
 		},
 		{
-			"follow_symlinks": true,
 			"path": "kml"
 		},
 		{
@@ -45,10 +42,10 @@
 				"underscore.js",
 				"react.js"
 			],
-			"folder_exclude_patterns": [
+			"folder_exclude_patterns":
+			[
 				"template"
 			],
-			"follow_symlinks": true,
 			"path": "src"
 		},
 		{
@@ -61,8 +58,10 @@
 				"jquery.qtip.css",
 				"jquery-ui.css"
 			],
-			"follow_symlinks": true,
 			"path": "style"
+		},
+		{
+			"path": "/Users/alex/apflora_api"
 		}
 	]
 }

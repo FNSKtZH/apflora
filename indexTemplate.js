@@ -1,11 +1,14 @@
-<!doctype html>
+'use strict'
+
+module.exports = () => {
+  return `<!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name=viewport content="width=device-width, initial-scale=1">
     <link rel="SHORTCUT ICON" href="img/favicon.ico">
     <link rel="stylesheet" href="style/jquery-ui.css">
-    <link rel="stylesheet" href="style/apflora.css">
+    <link rel="stylesheet" href="app.css">
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="src/jquery.js" type="text/javascript"><\/script>')</script>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
@@ -2157,3 +2160,6 @@
     </script>
   </body>
 </html>
+
+`
+}
