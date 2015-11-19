@@ -135,7 +135,7 @@ Dazu werden die Feld- und Freiwilligenkontrollen (ausser solche von soeben anges
 ##Technische Umsetzung
 Die Anwendung wird auf einem virtuellen Server mit Ubuntu 14.04 gehostet.
 
-Serverseitig wird sie mit [node.js](//nodejs.org/) gesteuert. Als Webserver dient [hapi](//hapijs.com/), als Datenbank [MySQL](//de.wikipedia.org/wiki/MySQL) mit drei separaten Datenbanken:
+Serverseitig wird sie mit [node.js](//nodejs.org/) gesteuert. Als Webserver dient [hapi](http://hapijs.com/), als Datenbank [MySQL](//de.wikipedia.org/wiki/MySQL) mit drei separaten Datenbanken:
 - apflora: die projekteigenen Daten. Sie sind vollständig von den übrigen Datenbanken getrennt, um Datensicherung und -wiederherstellung zu vereinfachen. Hier ein [Diagramm der Beziehungen](https://github.com/FNSKtZH/apflora/raw/master/etc/beziehungen.png)
 - apflora_views: die Views. Sie liegen getrennt, weil der Aufbau komplexer Views eine Wiederherstellung der DB mittels sql-Dumpfile empfindlich stören kann
 - apflora_beob: benutzte Fremddaten, v.a. Beobachtungen von Info Spezies und der FNS sowie Arteigenschaften
@@ -146,14 +146,14 @@ Die Anwendung ist zweigeteilt:
 
 Die Benutzeroberfläche basiert auf [HTML5](//de.wikipedia.org/wiki/HTML5), [CSS](//de.wikipedia.org/wiki/Cascading_Style_Sheets), [jQuery UI](//jqueryui.com), [jQuery](//jquery.com/) und [jsTree](//www.jstree.com/) und wird mit [JavaScript](//de.wikipedia.org/wiki/JavaScript) gesteuert. Sie baut auf einer einzigen HTML-Seite auf.
 
-Für die Karten werden [Open Layers 3](//ol3js.org/) mit [api.geo.admin.ch](http://www.geo.admin.ch/internet/geoportal/de/home/services/geoservices/display_services/api_services.html) und [GoogleMaps](https://developers.google.com/maps/documentation/javascript/reference) verwendet.
+Für die Karten werden [Open Layers 3](http://openlayers.org) mit [api.geo.admin.ch](http://www.geo.admin.ch/internet/geoportal/de/home/services/geoservices/display_services/api_services.html) und [GoogleMaps](https://developers.google.com/maps/documentation/javascript/reference) verwendet.
 
 <a href="#top">&#8593; top</a>
 
 
 <a name="OpenSource"></a>
 ##Open source
-Die verwendete [Lizenz](https://github.com/FNSKtZH/apflora/blob/master/License.md) ist sehr freizügig. Neben dem Code steht auch die [Datenstruktur](https://github.com/FNSKtZH/apflora/raw/master/etc/apflora_struktur.sql) zur Verfügung. Die eigentlichen Daten aber, mit denen gearbeitet wird, gehören der Fachstelle Naturschutz des Kantons Zürich und stehen nicht zur freien Verfügung (die Beobachtungen werden der [Info Spezies](//www.infoflora.ch/de/allgemeines/info-species.html) gemeldet).
+Die verwendete [Lizenz](https://github.com/FNSKtZH/apflora/blob/master/License.md) ist sehr freizügig. Neben dem Code steht auch die [Datenstruktur](https://github.com/FNSKtZH/apflora/blob/master/etc/apflora_struktur.sql) zur Verfügung. Die eigentlichen Daten aber, mit denen gearbeitet wird, gehören der Fachstelle Naturschutz des Kantons Zürich und stehen nicht zur freien Verfügung (die Beobachtungen werden der [Info Spezies](//www.infoflora.ch/de/allgemeines/info-species.html) gemeldet).
 
 Wer will, kann selber die [Entwicklungsumgebung einrichten](https://github.com/FNSKtZH/apflora/wiki/Entwicklungsumgebung-einrichten) und die [Anwendung auf einem Webserver bereitstellen](https://github.com/FNSKtZH/apflora/wiki/Anwendung-auf-einem-Server-bereitstellen).
 
