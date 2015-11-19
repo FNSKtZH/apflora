@@ -35,9 +35,8 @@
     "List": "global:List"
   },
   "dependencies": {
-    "async": "1.4.2",
-    "autolinker": "0.18.1",
-    "backbone": "1.2.1",
+    "async": "1.5.0",
+    "autolinker": "0.22.0",
     "browserify": "11.0.1",
     "dateformat": "1.0.11",
     "handlebars": "3.0.3",
