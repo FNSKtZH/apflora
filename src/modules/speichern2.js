@@ -95,7 +95,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
     }
     // dito in tpopmassn
     if (feldname === 'TPopMassnJahr') {
-      if (window.apf.tpopfeldkontr.TPopMassnDatum) {
+      if (window.apf.tpopmassn.TPopMassnDatum) {
         $('#TPopMassnDatum').val(null)
         $.ajax({
           type: 'post',
