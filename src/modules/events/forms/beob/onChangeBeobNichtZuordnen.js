@@ -10,5 +10,6 @@ module.exports = function () {
     olmapCallback = null,
     jstreeCallback = null
 
+  window.localStorage.beobStatus = beobStatus
   ordneBeobEinerTpopZu(beobId, beobStatus, tpopId, beobTpopId, olmapCallback, jstreeCallback)
 }
