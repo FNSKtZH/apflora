@@ -40,8 +40,8 @@ module.exports = function (aktiverNode, parentNode) {
     type: 'post',
     url: getApiHost() + '/tpopInsertKopie/popId=' + data.PopId + '/tpopId=' + erstelleIdAusDomAttributId($(window.apf.tpopNodeKopiert).attr('id')) + '/user=' + data.MutWer
   }).done(function (tpopId) {
-    var strukturtyp = 'tpop',
-      beschriftung = window.apf.tpopObjektKopiert.TPopNr + ' ' + window.apf.tpopObjektKopiert.TPopFlurname
+    var strukturtyp = 'tpop'
+    var beschriftung = window.apf.tpopObjektKopiert.TPopNr + ' ' + window.apf.tpopObjektKopiert.TPopFlurname
 
     insertNeuenNodeAufGleicherHierarchiestufe(aktiverNode, parentNode, strukturtyp, tpopId, beschriftung)
   }).fail(function () {

@@ -4,9 +4,9 @@ var $ = require('jquery')
 var erstelleApliste = require('./erstelleApliste')
 
 module.exports = function (programm) {
-  var $apWaehlen = $('#apWaehlen'),
-    $apWaehlenText = $('#apWaehlenText'),
-    aplisteErstellt = $.Deferred()
+  var $apWaehlen = $('#apWaehlen')
+  var $apWaehlenText = $('#apWaehlenText')
+  var aplisteErstellt = $.Deferred()
 
   $apWaehlenText.attr('placeholder', 'Daten werden aufbereitet...')
   $apWaehlen.val('')
@@ -21,8 +21,8 @@ module.exports = function (programm) {
   $('#exportieren1').show()
 
   erstelleApliste(programm, function () {
-    var $programmWahlChecked = $("[name='programmWahl']:checked"),
-      hinweisText
+    var $programmWahlChecked = $("[name='programmWahl']:checked")
+    var hinweisText
 
     if ($programmWahlChecked.attr('id') === 'programmNeu') {
       hinweisText = 'Art für neues Förderprogramm wählen'

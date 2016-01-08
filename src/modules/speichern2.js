@@ -12,44 +12,44 @@ var erstelleLabelFuerMassnahme = require('./erstelleLabelFuerMassnahme')
 var getApiHost = require('./getApiHost')
 
 module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId, feldname, feldwert) {
-  var popbeschriftung,
-    popberbeschriftung,
-    popberentwicklungLabel,
-    popmassnberbeschriftung,
-    popmassnberbeschriftungLabel,
-    tpopbeschriftung,
-    tpopkontrjahr,
-    $TPopKontrJahr,
-    tpopfeldkontrLabel,
-    tpopberjahr,
-    tpopberentwicklung,
-    tpopberentwicklungLabel,
-    $PopName,
-    $PopNr,
-    $PopBerJahr,
-    $PopMassnBerJahr,
-    $TPopNr,
-    $TPopFlurname,
-    $TPopBerJahr,
-    tpopmassnbezeichnung,
-    $TPopMassnJahr,
-    $TPopMassnTypChecked,
-    tpopmassberbeschriftung,
-    tpopmassberbeschriftungLabel,
-    $TPopMassnBerJahr,
-    zielbeschriftung,
-    $ZielBerJahr,
-    zielberbeschriftung,
-    $ZielBerErreichung,
-    erfkritbeschriftung,
-    erfkritbeschriftungLabel,
-    jberbeschriftung,
-    berbeschriftung,
-    $BerJahr,
-    $BerTitel,
-    aabeschriftung,
-    $tree = $('#tree'),
-    jahr
+  var popbeschriftung
+  var popberbeschriftung
+  var popberentwicklungLabel
+  var popmassnberbeschriftung
+  var popmassnberbeschriftungLabel
+  var tpopbeschriftung
+  var tpopkontrjahr
+  var $TPopKontrJahr
+  var tpopfeldkontrLabel
+  var tpopberjahr
+  var tpopberentwicklung
+  var tpopberentwicklungLabel
+  var $PopName
+  var $PopNr
+  var $PopBerJahr
+  var $PopMassnBerJahr
+  var $TPopNr
+  var $TPopFlurname
+  var $TPopBerJahr
+  var tpopmassnbezeichnung
+  var $TPopMassnJahr
+  var $TPopMassnTypChecked
+  var tpopmassberbeschriftung
+  var tpopmassberbeschriftungLabel
+  var $TPopMassnBerJahr
+  var zielbeschriftung
+  var $ZielBerJahr
+  var zielberbeschriftung
+  var $ZielBerErreichung
+  var erfkritbeschriftung
+  var erfkritbeschriftungLabel
+  var jberbeschriftung
+  var berbeschriftung
+  var $BerJahr
+  var $BerTitel
+  var aabeschriftung
+  var $tree = $('#tree')
+  var jahr
 
   $.ajax({
     type: 'post',

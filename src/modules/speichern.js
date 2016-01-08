@@ -14,16 +14,16 @@ var speichern2 = require('./speichern2')
 var getApiHost = require('./getApiHost')
 
 module.exports = function (that) {
-  var feldtyp,
-    formular,
-    tabelleInDb,
-    tabelleIdFeld,
-    tabelleId,
-    feldname,
-    feldwert,
-    table,
-    apJahr,
-    bekanntSeit
+  var feldtyp
+  var formular
+  var tabelleInDb
+  var tabelleIdFeld
+  var tabelleId
+  var feldname
+  var feldwert
+  var table
+  var apJahr
+  var bekanntSeit
 
   if (!pruefeSchreibvoraussetzungen()) return
 

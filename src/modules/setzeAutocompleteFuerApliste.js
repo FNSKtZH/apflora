@@ -17,9 +17,9 @@ module.exports = function (programm) {
     },
     change: function (event, ui) {
       // sicherstellen, dass nur Werte aus der Liste gewählt werden können
-      var textPasstZuId = true,
-        id = $('#apWaehlen').val(),
-        text
+      var textPasstZuId = true
+      var id = $('#apWaehlen').val()
+      var text
 
       if (id) {
         text = _.find(window.apf.apliste.programmAlle, function (art) {

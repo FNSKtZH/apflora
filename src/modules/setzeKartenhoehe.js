@@ -5,9 +5,9 @@ var google = require('google')
 var berechneLayertreeMaxhoehe = require('./olMap/berechneLayertreeMaxhoehe')
 
 module.exports = function () {
-  var lytMaxHeight = berechneLayertreeMaxhoehe,
-    formsHeight,
-    maxWidth
+  var lytMaxHeight = berechneLayertreeMaxhoehe
+  var formsHeight
+  var maxWidth
 
   // Formulare sind unbegrenzt hoch aber Karten sollen das nicht sein
   if (window.apf.kartenhoeheManuell) {

@@ -20,10 +20,10 @@ var erstelleTree = require('./jstree/erstelleTree')
 var getApiHost = require('./getApiHost')
 
 module.exports = function () {
-  var tabelle,
-    data = {},
-    typ,
-    id
+  var tabelle
+  var data = {}
+  var typ
+  var id
 
   if (!window.apf.deleted) {
     melde('Wiederherstellung gescheitert', 'Fehler')

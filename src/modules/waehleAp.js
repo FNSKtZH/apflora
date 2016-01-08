@@ -7,17 +7,17 @@
 // sind sie leere Objekte!!!!!
 
 module.exports = function (apId) {
-  var $ = require('jquery'),
-    _ = require('underscore'),
-    zeigeFormular = require('./zeigeFormular'),
-    initiiereAp = require('./initiiereAp'),
-    waehleApliste = require('./waehleApliste'),
-    melde = require('./melde'),
-    erstelleTree = require('./jstree/erstelleTree'),
-    getApiHost = require('./getApiHost'),
-    programm = $("[name='programmWahl']:checked").attr('id'),
-    apWaehlenText,
-    placeholderText = 'Artförderprogramm wählen'
+  var $ = require('jquery')
+  var _ = require('underscore')
+  var zeigeFormular = require('./zeigeFormular')
+  var initiiereAp = require('./initiiereAp')
+  var waehleApliste = require('./waehleApliste')
+  var melde = require('./melde')
+  var erstelleTree = require('./jstree/erstelleTree')
+  var getApiHost = require('./getApiHost')
+  var programm = $("[name='programmWahl']:checked").attr('id')
+  var apWaehlenText
+  var placeholderText = 'Artförderprogramm wählen'
 
   if (apId) {
     // einen AP gewählt
