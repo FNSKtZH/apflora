@@ -5,12 +5,12 @@ var melde = require('../melde')
 var download = require('../download')
 
 module.exports = function (layer, selectedValue) {
-  var layerName = layer.get('title') || 'Eigene_Ebene',
-    allFeatures = layer.getSource().getFeatures(),
-    format = new ol.format[selectedValue](),
-    dataParsed,
-    dataStringified,
-    serializer
+  var layerName = layer.get('title') || 'Eigene_Ebene'
+  var allFeatures = layer.getSource().getFeatures()
+  var format = new ol.format[selectedValue]()
+  var dataParsed
+  var dataStringified
+  var serializer
 
   layerName += '.' + selectedValue
   try {

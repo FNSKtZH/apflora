@@ -13,11 +13,11 @@ var addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectab
 var pruefeObPopTpopGewaehltWurden = require('./pruefeObPopTpopGewaehltWurden')
 
 module.exports = function (tpopListe, tpopidMarkiert, visible, beobZuordnen) {
-  var tpopLayerErstellt = $.Deferred(),
-    tpopLayer,
-    markers = [],
-    marker,
-    selectedFeatures
+  var tpopLayerErstellt = $.Deferred()
+  var tpopLayer
+  var markers = []
+  var marker
+  var selectedFeatures
 
   if (window.apf.olMap.map.olmapSelectInteraction && tpopidMarkiert) {
     selectedFeatures = window.apf.olMap.map.olmapSelectInteraction.getFeatures().getArray()

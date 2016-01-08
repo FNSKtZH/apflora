@@ -7,8 +7,8 @@
 'use strict'
 
 module.exports = function (polygon) {
-  var area = polygon.getArea(),
-    output
+  var area = polygon.getArea()
+  var output
 
   if (area > 1000000) {
     output = (Math.round(area / 1000000 * 100) / 100) + ' km<sup>2</sup>'

@@ -15,13 +15,13 @@ var entfernePopupOverlays = require('./entfernePopupOverlays')
 var oeffneFormularAlsPopup = require('../oeffneFormularAlsPopup')
 
 module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
-  var beobLayerErstellt = $.Deferred(),
-    markers = [],
-    marker,
-    myName,
-    popupContent,
-    beobLayer,
-    selectedFeatures
+  var beobLayerErstellt = $.Deferred()
+  var markers = []
+  var marker
+  var myName
+  var popupContent
+  var beobLayer
+  var selectedFeatures
 
   if (window.apf.olMap.map && window.apf.olMap.map.olmapSelectInteraction && beobidMarkiert) {
     selectedFeatures = window.apf.olMap.map.olmapSelectInteraction.getFeatures().getArray()
@@ -65,15 +65,15 @@ module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
       window.apf.olMap.modifyBeobFeatureZaehler = 0
 
       marker.on('change', function (event) {
-        var zaehler,
-          coordinates = this.getGeometry().getCoordinates(),
-          pixel = window.apf.olMap.map.getPixelFromCoordinate(coordinates),
-          beob = this,
-          beobId = this.get('myId'),
-          beobX = this.get('xkoord'),
-          beobY = this.get('ykoord'),
-          beobTPopId = this.get('TPopId'),
-          beobGeometryBefore = new ol.geom.Point([beobX, beobY])
+        var zaehler
+        var coordinates = this.getGeometry().getCoordinates()
+        var pixel = window.apf.olMap.map.getPixelFromCoordinate(coordinates)
+        var beob = this
+        var beobId = this.get('myId')
+        var beobX = this.get('xkoord')
+        var beobY = this.get('ykoord')
+        var beobTPopId = this.get('TPopId')
+        var beobGeometryBefore = new ol.geom.Point([beobX, beobY])
 
         // allfällige Popups entfernen
         entfernePopupOverlays()

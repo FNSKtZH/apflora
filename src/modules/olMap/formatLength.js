@@ -7,8 +7,8 @@
 'use strict'
 
 module.exports = function (line) {
-  var length = Math.round(line.getLength() * 100) / 100,
-    output
+  var length = Math.round(line.getLength() * 100) / 100
+  var output
 
   if (length > 1000) {
     output = (Math.round(length / 1000 * 100) / 100) + ' km'

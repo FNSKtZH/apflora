@@ -4,9 +4,9 @@ var $ = require('jquery')
 var nenneEbeneUm = require('./nenneEbeneUm')
 
 module.exports = function (eigeneEbene) {
-  var nameErfragt = $.Deferred(),
-    $olMapEigeneEbeneName = $('#olMapEigeneEbeneName'),
-    $olMapEigeneEbeneNameContainer = $('#olMapEigeneEbeneNameContainer')
+  var nameErfragt = $.Deferred()
+  var $olMapEigeneEbeneName = $('#olMapEigeneEbeneName')
+  var $olMapEigeneEbeneNameContainer = $('#olMapEigeneEbeneNameContainer')
 
   // eigene Ebene global speichern, damit der eventhandler darauf zugreifen kann
   window.apf.olMap.eigeneEbene = eigeneEbene

@@ -51,12 +51,12 @@ module.exports = function (modifySource) {
         $.when(aktualisiereKoordinatenVonTPop(window.apf.tpop)).then(function () {
           // marker in tpopLayer ergänzen
           // tpopLayer neu zeichnen
-          var layers = window.apf.olMap.map.getLayers().getArray(),
-            tpopLayerNr = $('#olMapLayertreeTeilpopulationen').val(),
-            tpopLayer = layers[tpopLayerNr],
-            tpopLayerSource = tpopLayer.getSource(),
-            tpopLayerFeatures = tpopLayerSource.getFeatures(),
-            aktuellesFeature
+          var layers = window.apf.olMap.map.getLayers().getArray()
+          var tpopLayerNr = $('#olMapLayertreeTeilpopulationen').val()
+          var tpopLayer = layers[tpopLayerNr]
+          var tpopLayerSource = tpopLayer.getSource()
+          var tpopLayerFeatures = tpopLayerSource.getFeatures()
+          var aktuellesFeature
 
           aktuellesFeature = _.find(tpopLayerFeatures, function (feature) {
             return feature.get('myId') === window.apf.tpop.TPopId

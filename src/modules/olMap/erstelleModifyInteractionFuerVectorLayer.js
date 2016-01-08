@@ -10,8 +10,8 @@ var aktualisiereEbeneInLocalStorage = require('./aktualisiereEbeneInLocalStorage
 var erstelleGuid = require('../erstelleGuid')
 
 module.exports = function (vectorlayer) {
-  var layerTitle,
-    $geom_type_select
+  var layerTitle
+  var $geom_type_select
 
   if (vectorlayer === 'neuerLayer') {
     vectorlayer = new ol.layer.Vector({
@@ -51,16 +51,16 @@ module.exports = function (vectorlayer) {
 
   window.apf.olMap.selectedFeatures.on('add', function (event) {
     // now listen if the feature is changed
-    var feature = event.element,
-      featureId = feature.getId()
+    var feature = event.element
+    var featureId = feature.getId()
     // wenn jemand eine eigene Ebene ergänzt hat, kann es sein, dass die features keine id's haben
     // also wenn nötig ergänzen
     if (!featureId) {
       feature.setId(_.uniqueId())
     }
     feature.on('change', function (event) {
-      var changeEventFeature = event.target,
-        changeEventFeatureId = changeEventFeature.getId()
+      var changeEventFeature = event.target
+      var changeEventFeatureId = changeEventFeature.getId()
       window.apf.olMap.modifiedFeatures = window.apf.olMap.modifiedFeatures || []
       // id in modified_features ergänzen
       window.apf.olMap.modifiedFeatures = _.union(window.apf.olMap.modifiedFeatures, [changeEventFeatureId])
@@ -73,9 +73,9 @@ module.exports = function (vectorlayer) {
       if (event.keyCode == 46) {
         // alle gewählten features aus select_interaction und source entfernen
         window.apf.olMap.selectedFeatures.forEach(function (selectedFeature) {
-          var selectedFeatureId,
-            vectorlayerFeatures,
-            sourceFeatureId
+          var selectedFeatureId
+          var vectorlayerFeatures
+          var sourceFeatureId
 
           selectedFeatureId = selectedFeature.getId()
           window.apf.olMap.selectedFeatures.remove(selectedFeature)
@@ -99,9 +99,9 @@ module.exports = function (vectorlayer) {
   })
 
   window.apf.olMap.selectedFeatures.on('remove', function (event) {
-    var feature = event.element,
-      featureId = feature.getId(),
-      feature_index = window.apf.olMap.modifiedFeatures.indexOf(featureId)
+    var feature = event.element
+    var featureId = feature.getId()
+    var feature_index = window.apf.olMap.modifiedFeatures.indexOf(featureId)
 
     if (feature_index > -1) {
       // speichern

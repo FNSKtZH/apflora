@@ -12,14 +12,14 @@ var addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectab
 var pruefeObPopTpopGewaehltWurden = require('./pruefeObPopTpopGewaehltWurden')
 
 module.exports = function (popliste, popidMarkiert, visible) {
-  var popLayerErstellt = $.Deferred(),
-    markers = [],
-    marker,
-    myLabel,
-    myName,
-    popupContent,
-    popMitNrLayer,
-    selectedFeatures
+  var popLayerErstellt = $.Deferred()
+  var markers = []
+  var marker
+  var myLabel
+  var myName
+  var popupContent
+  var popMitNrLayer
+  var selectedFeatures
 
   if (window.apf.olMap.map && window.apf.olMap.map.olmapSelectInteraction && popidMarkiert) {
     selectedFeatures = window.apf.olMap.map.olmapSelectInteraction.getFeatures().getArray()

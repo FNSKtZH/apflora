@@ -10,15 +10,15 @@ var ol = require('ol')
 var styleBeobZuordnung = require('./styleBeobZuordnung')
 
 module.exports = function (beobArray, tpopArray, visible) {
-  var beobZuordnungsLayerErstellt = $.Deferred(),
-    lines = [],
-    line,
-    tpop,
-    beobZuordnungLayer
+  var beobZuordnungsLayerErstellt = $.Deferred()
+  var lines = []
+  var line
+  var tpop
+  var beobZuordnungLayer
 
   visible = (visible === true)
 
-  _.each(beobArray, function (beob) {
+  beobArray.forEach(function (beob) {
     if (beob.X && beob.Y) {
       // tpop suchen
       tpop = _.find(tpopArray, function (tpop) {
@@ -26,8 +26,8 @@ module.exports = function (beobArray, tpopArray, visible) {
       })
 
       // für jede beob eine Linie erstellen, damit später Linien nur noch angepasst werden müssen
-      var tpopX = tpop && tpop.TPopXKoord ? tpop.TPopXKoord : beob.X,
-        tpopY = tpop && tpop.TPopYKoord ? tpop.TPopYKoord : beob.Y
+      var tpopX = tpop && tpop.TPopXKoord ? tpop.TPopXKoord : beob.X
+      var tpopY = tpop && tpop.TPopYKoord ? tpop.TPopYKoord : beob.Y
 
       // line erstellen...
       line = new ol.Feature({
