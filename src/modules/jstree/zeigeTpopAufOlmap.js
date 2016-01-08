@@ -1,10 +1,10 @@
 'use strict'
 
-var $ = require('jquery'),
-  erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
-  melde = require('../melde'),
-  zeigeTPop = require('../olMap/zeigeTPop'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
+var melde = require('../melde')
+var zeigeTPop = require('../olMap/zeigeTPop')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (nodeTpopId) {
   $.ajax({
