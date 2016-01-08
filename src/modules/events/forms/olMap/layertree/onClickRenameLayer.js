@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  frageNameFuerEbene = require('../../../../olMap/frageNameFuerEbene')
+var $ = require('jquery')
+var frageNameFuerEbene = require('../../../../olMap/frageNameFuerEbene')
 
 module.exports = function () {
   // layer holen

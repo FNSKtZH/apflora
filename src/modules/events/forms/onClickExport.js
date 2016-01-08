@@ -1,8 +1,8 @@
 'use strict'
 
-var $ = require('jquery'),
-  downloadFileFromView = require('../..//downloadFileFromView'),
-  melde = require('../../melde')
+var $ = require('jquery')
+var downloadFileFromView = require('../..//downloadFileFromView')
+var melde = require('../../melde')
 
 module.exports = function (event) {
   // view v_tpop_anzkontrinklletzterundletztertpopber stürzt auf dem Server ab

@@ -1,8 +1,8 @@
 'use strict'
 
-var $ = require('jquery'),
-  entferneModifyInteractionFuerVectorLayer = require('../../../../olMap/entferneModifyInteractionFuerVectorLayer'),
-  erstelleModifyInteractionFuerVectorLayer = require('../../../../olMap/erstelleModifyInteractionFuerVectorLayer')
+var $ = require('jquery')
+var entferneModifyInteractionFuerVectorLayer = require('../../../../olMap/entferneModifyInteractionFuerVectorLayer')
+var erstelleModifyInteractionFuerVectorLayer = require('../../../../olMap/erstelleModifyInteractionFuerVectorLayer')
 
 module.exports = function () {
   // layer holen

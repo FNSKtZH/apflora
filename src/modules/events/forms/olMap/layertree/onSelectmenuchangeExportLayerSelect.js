@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  exportiereLayer = require('../../../../olMap/exportiereLayer')
+var $ = require('jquery')
+var exportiereLayer = require('../../../../olMap/exportiereLayer')
 
 module.exports = function () {
   // layer holen
