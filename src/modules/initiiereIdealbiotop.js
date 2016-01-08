@@ -1,12 +1,12 @@
 'use strict'
 
-var $ = require('jquery'),
-  dateFormat = require('dateformat'),
-  pruefeSchreibvoraussetzungen = require('./pruefeSchreibvoraussetzungen'),
-  zeigeFormular = require('./zeigeFormular'),
-  melde = require('./melde'),
-  leereFelderVonFormular = require('./leereFelderVonFormular'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var dateFormat = require('dateformat')
+var pruefeSchreibvoraussetzungen = require('./pruefeSchreibvoraussetzungen')
+var zeigeFormular = require('./zeigeFormular')
+var melde = require('./melde')
+var leereFelderVonFormular = require('./leereFelderVonFormular')
+var getApiHost = require('./getApiHost')
 
 var initiiereIdealbiotop = function (apId) {
   // prüfen, ob voraussetzungen gegeben sind

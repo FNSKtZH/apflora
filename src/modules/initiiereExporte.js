@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  zeigeFormular = require('./zeigeFormular')
+var $ = require('jquery')
+var zeigeFormular = require('./zeigeFormular')
 
 module.exports = function (anchor) {
   $('#testartDiv').hide()
