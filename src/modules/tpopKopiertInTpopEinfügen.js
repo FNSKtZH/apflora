@@ -14,7 +14,7 @@ module.exports = function (aktiverNode, parentNode) {
   var data = {}
 
   // nur aktualisieren, wenn Schreibrechte bestehen
-  if (!pruefeSchreibvoraussetzungen()) { return }
+  if (!pruefeSchreibvoraussetzungen()) return
   // drop kennt den parent nicht
   if (!parentNode) {
     parentNode = $.jstree._reference(aktiverNode)._get_parent(aktiverNode)

@@ -25,7 +25,7 @@ module.exports = function (that) {
     apJahr,
     bekanntSeit
 
-  if (!pruefeSchreibvoraussetzungen()) { return }
+  if (!pruefeSchreibvoraussetzungen()) return
 
   formular = $(that).attr('formular') || $(that).data('formular')
 
