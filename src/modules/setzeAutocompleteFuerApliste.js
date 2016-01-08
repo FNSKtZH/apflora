@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore')
+var $ = require('jquery')
+var _ = require('underscore')
 
 module.exports = function (programm) {
   $('#apWaehlenText').autocomplete({

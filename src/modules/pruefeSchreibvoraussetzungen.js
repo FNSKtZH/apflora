@@ -1,7 +1,7 @@
 'use strict'
 
-var pruefeLesevoraussetzungen = require('./pruefeLesevoraussetzungen'),
-  melde = require('./melde')
+var pruefeLesevoraussetzungen = require('./pruefeLesevoraussetzungen')
+var melde = require('./melde')
 
 module.exports = function () {
   // kontrollieren, ob der User online ist

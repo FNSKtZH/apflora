@@ -4,8 +4,8 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  initializeTooltipsInElement = require('./initializeTooltipsInElement')
+var $ = require('jquery')
+var initializeTooltipsInElement = require('./initializeTooltipsInElement')
 
 module.exports = function () {
   // jQuery ui widgets initiieren

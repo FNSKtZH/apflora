@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  pruefeAnmeldung = require('./pruefeAnmeldung')
+var $ = require('jquery')
+var pruefeAnmeldung = require('./pruefeAnmeldung')
 
 module.exports = function () {
   var $Useranmeldung = $('#anmeldeDialog').dialog({

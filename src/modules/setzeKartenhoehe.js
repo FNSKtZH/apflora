@@ -1,8 +1,8 @@
 'use strict'
 
-var $ = require('jquery'),
-  google = require('google'),
-  berechneLayertreeMaxhoehe = require('./olMap/berechneLayertreeMaxhoehe')
+var $ = require('jquery')
+var google = require('google')
+var berechneLayertreeMaxhoehe = require('./olMap/berechneLayertreeMaxhoehe')
 
 module.exports = function () {
   var lytMaxHeight = berechneLayertreeMaxhoehe,
