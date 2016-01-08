@@ -1340,10 +1340,8 @@ MarkerClusterer.prototype.getExtendedBounds = function (bounds) {
   var projection = this.getProjection();
 
   // Turn the bounds into latlng.
-  var tr = new google.maps.LatLng(bounds.getNorthEast().lat()
-    var bounds.getNorthEast().lng());
-  var bl = new google.maps.LatLng(bounds.getSouthWest().lat()
-    var bounds.getSouthWest().lng());
+  var tr = new google.maps.LatLng(bounds.getNorthEast().lat(), bounds.getNorthEast().lng());
+  var bl = new google.maps.LatLng(bounds.getSouthWest().lat(), bounds.getSouthWest().lng());
 
   // Convert the points to pixels and the extend out by the grid size.
   var trPix = projection.fromLatLngToDivPixel(tr);
