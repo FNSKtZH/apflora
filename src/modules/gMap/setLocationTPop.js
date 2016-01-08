@@ -19,7 +19,7 @@ module.exports = function (latLng, map, marker, tpop) {
     Y
 
   // nur aktualisieren, wenn Schreibrechte bestehen
-  if (!pruefeSchreibvoraussetzungen()) { return }
+  if (!pruefeSchreibvoraussetzungen()) return
 
   title = (tpop && tpop.TPopFlurname ? tpop.TPopFlurname : 'neue Teilpopulation')
   lat = latLng.lat()

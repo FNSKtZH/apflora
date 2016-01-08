@@ -1,12 +1,12 @@
 'use strict'
 
-var $ = require('jquery'),
-  erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
-  insertNeuenNodeEineHierarchiestufeTiefer = require('./insertNeuenNodeEineHierarchiestufeTiefer'),
-  insertNeuenNodeAufGleicherHierarchiestufe = require('./insertNeuenNodeAufGleicherHierarchiestufe'),
-  melde = require('../melde'),
-  erstelleLabelFuerFeldkontrolle = require('../erstelleLabelFuerFeldkontrolle'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
+var insertNeuenNodeEineHierarchiestufeTiefer = require('./insertNeuenNodeEineHierarchiestufeTiefer')
+var insertNeuenNodeAufGleicherHierarchiestufe = require('./insertNeuenNodeAufGleicherHierarchiestufe')
+var melde = require('../melde')
+var erstelleLabelFuerFeldkontrolle = require('../erstelleLabelFuerFeldkontrolle')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (aktiverNode, parentNode, nodeTpopId) {
   var herkunftKontrId = erstelleIdAusDomAttributId($(window.apf.tpopfeldkontrNodeKopiert).attr('id'))

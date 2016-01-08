@@ -1,18 +1,18 @@
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
-  melde = require('../melde'),
-  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var _ = require('underscore')
+var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
+var melde = require('../melde')
+var pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (nodeFeldkontrId) {
   var data = {}
   data.id = erstelleIdAusDomAttributId(nodeFeldkontrId)
   data.user = window.sessionStorage.user
   // nur aktualisieren, wenn Schreibrechte bestehen
-  if (!pruefeSchreibvoraussetzungen()) { return }
+  if (!pruefeSchreibvoraussetzungen()) return
   _.each(window.apf.feldkontrBiotop, function (value, key) {
     $('#' + key).val(value)
     data[key] = value

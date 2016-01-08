@@ -33,21 +33,21 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  async = require('async'),
-  erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
-  melde = require('../melde'),
-  zeigeFormular = require('../zeigeFormular'),
-  waehleAusschnittFuerUebergebeneTPop = require('../olMap/waehleAusschnittFuerUebergebeneTPop'),
-  erstelleTPopLayer = require('../olMap/erstelleTPopLayer'),
-  erstelleBeobZuordnungsLayer = require('../olMap/erstelleBeobZuordnungsLayer'),
-  zeigePopInTPop = require('../olMap/zeigePopInTPop'),
-  erstelleBeobLayer = require('../olMap/erstelleBeobLayer'),
-  initiiereLayertree = require('../olMap/initiiereLayertree'),
-  stapleLayerEineEbeneTiefer = require('../olMap/stapleLayerEineEbeneTiefer'),
-  stapleLayerXTiefer = require('../olMap/stapleLayerXTiefer'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var _ = require('underscore')
+var async = require('async')
+var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
+var melde = require('../melde')
+var zeigeFormular = require('../zeigeFormular')
+var waehleAusschnittFuerUebergebeneTPop = require('../olMap/waehleAusschnittFuerUebergebeneTPop')
+var erstelleTPopLayer = require('../olMap/erstelleTPopLayer')
+var erstelleBeobZuordnungsLayer = require('../olMap/erstelleBeobZuordnungsLayer')
+var zeigePopInTPop = require('../olMap/zeigePopInTPop')
+var erstelleBeobLayer = require('../olMap/erstelleBeobLayer')
+var initiiereLayertree = require('../olMap/initiiereLayertree')
+var stapleLayerEineEbeneTiefer = require('../olMap/stapleLayerEineEbeneTiefer')
+var stapleLayerXTiefer = require('../olMap/stapleLayerXTiefer')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (nodeTpopId) {
   var tpopId = erstelleIdAusDomAttributId(nodeTpopId)

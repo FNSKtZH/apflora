@@ -1,22 +1,22 @@
 'use strict'
 
-var $ = require('jquery'),
-  treeKontextmenu = require('./treeKontextmenu'),
-  melde = require('../melde'),
-  initiierePop = require('../initiierePop'),
-  initiiereTPop = require('../initiiereTPop'),
-  initiiereTPopKontr = require('../initiiereTPopKontr'),
-  initiiereTPopMassn = require('../initiiereTPopMassn'),
-  erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
-  crrmCheckMove = require('./crrmCheckMove'),
-  types = require('./types.json'),
-  loaded = require('./loaded'),
-  select_node = require('./select_node'),
-  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen'),
-  beschrifteOrdner = require('../beschrifteOrdner'),
-  setzeTreehoehe = require('./setzeTreehoehe'),
-  ordneBeobEinerTpopZu = require('../ordneBeobEinerTpopZu'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var treeKontextmenu = require('./treeKontextmenu')
+var melde = require('../melde')
+var initiierePop = require('../initiierePop')
+var initiiereTPop = require('../initiiereTPop')
+var initiiereTPopKontr = require('../initiiereTPopKontr')
+var initiiereTPopMassn = require('../initiiereTPopMassn')
+var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
+var crrmCheckMove = require('./crrmCheckMove')
+var types = require('./types.json')
+var loaded = require('./loaded')
+var select_node = require('./select_node')
+var pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
+var beschrifteOrdner = require('../beschrifteOrdner')
+var setzeTreehoehe = require('./setzeTreehoehe')
+var ordneBeobEinerTpopZu = require('../ordneBeobEinerTpopZu')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (ApArtId) {
   var jstreeErstellt = $.Deferred()
@@ -30,15 +30,15 @@ module.exports = function (ApArtId) {
       }
     },
     'core': {
-      'open_parents': true,    // wird ein node programmatisch geöffnet, öffnen sich alle parents
-      'strings': {    // Deutsche Übersetzungen
+      'open_parents': true, // wird ein node programmatisch geöffnet, öffnen sich alle parents
+      'strings': { // Deutsche Übersetzungen
         'loading': 'hole Daten...',
         'new_node': 'neuer Knoten'
       }
     },
     'ui': {
-      'select_limit': 1,    // nur ein Datensatz kann aufs mal gewählt werden
-      'selected_parent_open': true,    // wenn Code einen node wählt, werden alle parents geöffnet
+      'select_limit': 1, // nur ein Datensatz kann aufs mal gewählt werden
+      'selected_parent_open': true, // wenn Code einen node wählt, werden alle parents geöffnet
       'select_prev_on_delete': true
     },
     'search': {
@@ -411,7 +411,7 @@ module.exports = function (ApArtId) {
         beobId = window.localStorage.beobId
         beobStatus = 'zugeordnet'
         tpopId = zielNodeTyp === 'tpopOrdnerBeobZugeordnet' ? zielNodeId : zielParentNodeId
-        beobTpopId = 1  // wird nur benutzt, um zu wissen, ob ein insert nötig ist
+        beobTpopId = 1 // wird nur benutzt, um zu wissen, ob ein insert nötig ist
         olmapCallback = null
         jstreeCallback = function () {
           // Anzahlen anpassen der parent-nodes am Herkunfts- und Zielort

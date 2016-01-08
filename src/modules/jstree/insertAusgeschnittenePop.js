@@ -1,10 +1,10 @@
 'use strict'
 
-var $ = require('jquery'),
-  erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
-  melde = require('../melde'),
-  erstelleTree = require('./erstelleTree'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
+var melde = require('../melde')
+var erstelleTree = require('./erstelleTree')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (nodeApId) {
   var apId = erstelleIdAusDomAttributId(nodeApId)
