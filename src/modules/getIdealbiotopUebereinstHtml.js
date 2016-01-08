@@ -8,9 +8,8 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var getApiHost = require('./getApiHost')
 
 module.exports = function (callback) {
   var html = window.apf.IdealBiotopUebereinstHtml
@@ -23,7 +22,7 @@ module.exports = function (callback) {
       if (data && data.length > 0) {
         // Feld mit Daten beliefern
         html = '<option></option>'
-        _.each(data, function (uebereinst) {
+        data.forEach(function (uebereinst) {
           html += '<option value="' + uebereinst.DomainCode + '">' + uebereinst.DomainTxt + '</option>'
         })
         window.apf.IdealBiotopUebereinstHtml = html

@@ -1,8 +1,8 @@
 'use strict'
 
-var google = require('google'),
-  setLocationTPop = require('./setLocationTPop'),
-  clearMarkers = require('./clearMarkers')
+var google = require('google')
+var setLocationTPop = require('./setLocationTPop')
+var clearMarkers = require('./clearMarkers')
 
 module.exports = function (location, map, marker, tpop) {
   // title muss String sein

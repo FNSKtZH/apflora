@@ -9,9 +9,9 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var _ = require('underscore')
+var getApiHost = require('./getApiHost')
 
 module.exports = function (callback) {
   var html = window.apf.adressenHtml

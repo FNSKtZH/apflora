@@ -9,8 +9,8 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var getApiHost = require('./getApiHost')
 
 module.exports = function () {
   var dataGeholt = $.Deferred()

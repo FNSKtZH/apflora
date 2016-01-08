@@ -9,9 +9,8 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var getApiHost = require('./getApiHost')
 
 module.exports = function (callback) {
   var html = window.apf.tpopmassntypHtml
@@ -24,7 +23,7 @@ module.exports = function (callback) {
       if (data && data.length > 0) {
         // Feld mit Daten beliefern
         html = '<option></option>'
-        _.each(data, function (tpopmassnTyp) {
+        data.forEach(function (tpopmassnTyp) {
           html += '<option value="' + tpopmassnTyp.id + '">' + tpopmassnTyp.MassnTypTxt + '</option>'
         })
         window.apf.tpopmassntypHtml = html

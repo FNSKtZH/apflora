@@ -9,9 +9,8 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var getApiHost = require('./getApiHost')
 
 module.exports = function (callback) {
   var html = window.apf.lrdelarzeHtml
@@ -24,7 +23,7 @@ module.exports = function (callback) {
       if (data) {
         // Feld mit Daten beliefern
         html = '<option></option>'
-        _.each(data, function (lr) {
+        data.forEach(function (lr) {
           html += '<option value="' + lr.id + '">' + lr.Einheit + '</option>'
         })
         window.apf.lrdelarzeHtml = html
