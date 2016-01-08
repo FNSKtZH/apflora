@@ -1,9 +1,9 @@
 'use strict'
 
-var $ = require('jquery'),
-  Handlebars = require('handlebars'),
-  pruefeObAngemeldet = require('./pruefeObAngemeldet'),
-  isDateSupported = require('./isDateSupported')
+var $ = require('jquery')
+var Handlebars = require('handlebars')
+var pruefeObAngemeldet = require('./pruefeObAngemeldet')
+var isDateSupported = require('./isDateSupported')
 
 // benötigte globale Variabeln initialisieren
 window.apf = window.apf || {}

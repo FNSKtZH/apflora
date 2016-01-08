@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  ordneBeobEinerTpopZu = require('../../../ordneBeobEinerTpopZu')
+var $ = require('jquery')
+var ordneBeobEinerTpopZu = require('../../../ordneBeobEinerTpopZu')
 
 module.exports = function () {
   var beobId = window.localStorage.beobId,

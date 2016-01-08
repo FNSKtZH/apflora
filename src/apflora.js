@@ -1,16 +1,16 @@
 'use strict'
 
-var $ = require('jquery'),
-  createGlobals = require('./modules/createGlobals'),
-  clearLocalStorage = require('./modules/clearLocalStorage'),
-  erstelleGemeindeliste = require('./modules/erstelleGemeindeliste'),
-  erstelleArtlisten = require('./modules/erstelleArtlisten'),
-  waehleApliste = require('./modules/waehleApliste'),
-  oeffneUri = require('./modules/oeffneUri'),
-  setupEvents = require('./modules/setupEvents'),
-  setupJqueryUi = require('./modules/setupJqueryUi'),
-  pruefeLesevoraussetzungen = require('./modules/pruefeLesevoraussetzungen'),
-  preventMousescrollEvent = require('./lib/preventMousescrollEvent')
+var $ = require('jquery')
+var createGlobals = require('./modules/createGlobals')
+var clearLocalStorage = require('./modules/clearLocalStorage')
+var erstelleGemeindeliste = require('./modules/erstelleGemeindeliste')
+var erstelleArtlisten = require('./modules/erstelleArtlisten')
+var waehleApliste = require('./modules/waehleApliste')
+var oeffneUri = require('./modules/oeffneUri')
+var setupEvents = require('./modules/setupEvents')
+var setupJqueryUi = require('./modules/setupJqueryUi')
+var pruefeLesevoraussetzungen = require('./modules/pruefeLesevoraussetzungen')
+var preventMousescrollEvent = require('./lib/preventMousescrollEvent')
 
 // benötigte globale Variabeln initialisieren
 window.apf = window.apf || {}

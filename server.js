@@ -11,9 +11,9 @@
       request: ['error']
     }
   },*/
-var Hapi = require('hapi'),
-  Inert = require('inert'),
-  server = new Hapi.Server()
+var Hapi = require('hapi')
+var Inert = require('inert')
+var server = new Hapi.Server()
 
 server.register(Inert, function () {
   server.connection({
