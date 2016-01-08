@@ -1,10 +1,10 @@
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  ol = require('ol'),
-  entfernePopupOverlays = require('./entfernePopupOverlays'),
-  sucheFeaturesAtPixel = require('./sucheFeaturesAtPixel')
+var $ = require('jquery')
+var _ = require('underscore')
+var ol = require('ol')
+var entfernePopupOverlays = require('./entfernePopupOverlays')
+var sucheFeaturesAtPixel = require('./sucheFeaturesAtPixel')
 
 module.exports = function (pixel, coordinate) {
   var features = sucheFeaturesAtPixel(pixel),
@@ -24,7 +24,7 @@ module.exports = function (pixel, coordinate) {
   if (featuresMitTyp && featuresMitTyp.length > 0) {
     // wenn mehrere featuresMitTyp vorkommen: die Infos aller sammeln und anzeigen
     if (featuresMitTyp.length > 1) {
-      _.each(featuresMitTyp, function (feature, index) {
+      featuresMitTyp.forEach(function (feature, index) {
         if (feature.get('myTyp') === 'Detailplan') {
           popupText += '<h3>Objekt ID: ' + feature.get('OBJECTID') + '</h3>'
           popupText += '<table><tr><td><p>Typ:</p></td><td><p>Detailplan</p></td></tr>' +

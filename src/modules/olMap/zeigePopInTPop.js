@@ -1,10 +1,10 @@
 'use strict'
 
-var $ = require('jquery'),
-  melde = require('../melde'),
-  initiiereLayertree = require('./initiiereLayertree'),
-  erstellePopLayer = require('./erstellePopLayer'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var melde = require('../melde')
+var initiiereLayertree = require('./initiiereLayertree')
+var erstellePopLayer = require('./erstellePopLayer')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (overlayPopVisible, popidMarkiert) {
   var popGezeigt = $.Deferred()

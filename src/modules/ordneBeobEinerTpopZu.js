@@ -13,11 +13,11 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  ol = require('ol'),
-  _ = require('underscore'),
-  melde = require('./melde'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var ol = require('ol')
+var _ = require('underscore')
+var melde = require('./melde')
+var getApiHost = require('./getApiHost')
 
 function aktualisiereGlobaleVariable (tpopId) {
   if (window.apf.beob) {

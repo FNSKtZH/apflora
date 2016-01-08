@@ -1,13 +1,13 @@
 'use strict'
 
-var $ = require('jquery'),
-  zeigeFormular = require('../zeigeFormular'),
-  erstelleTPopLayer = require('./erstelleTPopLayer'),
-  initiiereLayertree = require('./initiiereLayertree'),
-  zeigePopInTPop = require('./zeigePopInTPop'),
-  melde = require('../melde'),
-  waehleAusschnittFuerUebergebenePop = require('./waehleAusschnittFuerUebergebenePop'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var zeigeFormular = require('../zeigeFormular')
+var erstelleTPopLayer = require('./erstelleTPopLayer')
+var initiiereLayertree = require('./initiiereLayertree')
+var zeigePopInTPop = require('./zeigePopInTPop')
+var melde = require('../melde')
+var waehleAusschnittFuerUebergebenePop = require('./waehleAusschnittFuerUebergebenePop')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (popListeMarkiert) {
   var markiertePop

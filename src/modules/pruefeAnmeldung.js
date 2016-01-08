@@ -1,8 +1,8 @@
 'use strict'
 
-var $ = require('jquery'),
-  melde = require('./melde'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var melde = require('./melde')
+var getApiHost = require('./getApiHost')
 
 module.exports = function () {
   var $anmeldungName = $('#anmeldungName').val(),
