@@ -11,16 +11,16 @@ module.exports = function (beobNodeId) {
   console.log('gruendePopAusBeob.js: called with beobNodeId =', beobNodeId)
 
   // 1. get ap id
-  var apId = window.apf.ap.ApArtId,
-    popId,
-    user = encodeURIComponent(window.sessionStorage.user),
-    tpopId,
-    beob = window.apf.beob,
-    beobId = erstelleIdAusDomAttributId(beobNodeId),
-    // 2. TODO: get koords of beob,
-    XKoord = beob.COORDONNEE_FED_E ? beob.COORDONNEE_FED_E : beob.FNS_XGIS,
-    YKoord = beob.COORDONNEE_FED_N ? beob.COORDONNEE_FED_N : beob.FNS_YGIS,
-    apiHost = getApiHost()
+  var apId = window.apf.ap.ApArtId
+  var popId
+  var user = encodeURIComponent(window.sessionStorage.user)
+  var tpopId
+  var beob = window.apf.beob
+  var beobId = erstelleIdAusDomAttributId(beobNodeId)
+  // 2. TODO: get koords of beob
+  var XKoord = beob.COORDONNEE_FED_E ? beob.COORDONNEE_FED_E : beob.FNS_XGIS
+  var YKoord = beob.COORDONNEE_FED_N ? beob.COORDONNEE_FED_N : beob.FNS_YGIS
+  var apiHost = getApiHost()
 
   // 3. create new pop for ap
   $.ajax({

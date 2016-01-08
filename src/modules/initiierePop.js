@@ -9,8 +9,8 @@ var leereFelderVonFormular = require('./leereFelderVonFormular')
 var getApiHost = require('./getApiHost')
 
 module.exports = function (apId, popId, ohneZuZeigen) {
-  var $PopName = $('#PopName'),
-    $PopNr = $('#PopNr')
+  var $PopName = $('#PopName')
+  var $PopNr = $('#PopNr')
 
   // prüfen, ob voraussetzungen gegeben sind
   if (!apId && !window.localStorage.apId) {

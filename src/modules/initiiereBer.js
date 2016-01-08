@@ -31,10 +31,10 @@ module.exports = function (apId, berId) {
   window.localStorage.berId = window.localStorage.berId || berId
   berId = berId || window.localStorage.berId
 
-  var $BerAutor = $('#BerAutor'),
-    $BerJahr = $('#BerJahr'),
-    $BerTitel = $('#BerTitel'),
-    $berUrl = $('#berUrl')
+  var $BerAutor = $('#BerAutor')
+  var $BerJahr = $('#BerJahr')
+  var $BerTitel = $('#BerTitel')
+  var $berUrl = $('#berUrl')
 
   // damit kann man die verbleibende Anzahl Zeichen, die in einem Feld erfasst werden, anzeigen
   limiter($)

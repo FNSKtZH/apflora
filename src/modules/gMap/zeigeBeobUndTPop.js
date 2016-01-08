@@ -13,31 +13,31 @@ var makeListenerMarkerClick = require('./makeListenerMarkerClick')
 var makeListenerBeobMarkerDragend = require('./makeListenerBeobMarkerDragend')
 
 module.exports = function (beobListe, tpopListe) {
-  var anzBeob,
-    anzTpop,
-    infowindowBeob = new google.maps.InfoWindow(),
-    infowindowTpop = new google.maps.InfoWindow(),
-    lat,
-    lng,
-    latlng,
-    options,
-    map,
-    bounds,
-    markersTpop,
-    latlng2,
-    marker_beob,
-    marker_tpop,
-    contentstringBeob,
-    contentstringTpop,
-    markerOptionsTpop,
-    datum,
-    titelBeob,
-    tpopBeschriftung,
-    aNote,
-    myFlurname,
-    autor,
-    projekt,
-    ort
+  var anzBeob
+  var anzTpop
+  var infowindowBeob = new google.maps.InfoWindow()
+  var infowindowTpop = new google.maps.InfoWindow()
+  var lat
+  var lng
+  var latlng
+  var options
+  var map
+  var bounds
+  var markersTpop
+  var latlng2
+  var marker_beob
+  var marker_tpop
+  var contentstringBeob
+  var contentstringTpop
+  var markerOptionsTpop
+  var datum
+  var titelBeob
+  var tpopBeschriftung
+  var aNote
+  var myFlurname
+  var autor
+  var projekt
+  var ort
 
   // vor Erneuerung zeigen - sonst klappt Wiederaufruf nicht, wenn die Karte schon angezeigt ist
   zeigeFormular('gMap')

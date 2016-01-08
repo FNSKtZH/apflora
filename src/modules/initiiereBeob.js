@@ -20,13 +20,13 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
   // sicherstellen, dass beobtyp immer bekannt ist
   window.localStorage.beobtyp = beobTyp
 
-  var url,
-    urlDistzutpop,
-    urlZuordnung,
-    $BeobBemerkungen,
-    idFeld,
-    htmlBeobfelder,
-    htmlDistzutpop
+  var url
+  var urlDistzutpop
+  var urlZuordnung
+  var $BeobBemerkungen
+  var idFeld
+  var htmlBeobfelder
+  var htmlDistzutpop
 
   if (!beobId && !ohneZuZeigen) {
     // es fehlen benötigte Daten > eine Ebene höher

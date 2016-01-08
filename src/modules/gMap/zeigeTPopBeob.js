@@ -1,6 +1,5 @@
 'use strict'
 
-var _ = require('underscore')
 var google = require('google')
 var MarkerWithLabel = require('MarkerWithLabel')
 var MarkerClusterer = require('MarkerClusterer')
@@ -10,24 +9,24 @@ var zeigeFormular = require('../zeigeFormular')
 var makeListenerMarkerClick = require('./makeListenerMarkerClick')
 
 module.exports = function (tpopBeobListe) {
-  var anzTpopBeob,
-    infowindow = new google.maps.InfoWindow(),
-    lat,
-    lng,
-    latlng,
-    options,
-    map,
-    bounds,
-    markers,
-    latlng2,
-    marker,
-    contentString,
-    markerOptions,
-    datum,
-    titel,
-    autor,
-    projekt,
-    ort
+  var anzTpopBeob
+  var infowindow = new google.maps.InfoWindow()
+  var lat
+  var lng
+  var latlng
+  var options
+  var map
+  var bounds
+  var markers
+  var latlng2
+  var marker
+  var contentString
+  var markerOptions
+  var datum
+  var titel
+  var autor
+  var projekt
+  var ort
 
   // vor Erneuerung zeigen - sonst klappt Wiederaufruf nicht, wenn die Karte schon angezeigt ist
   zeigeFormular('gMap')
@@ -36,7 +35,7 @@ module.exports = function (tpopBeobListe) {
   // TPopListe bearbeiten:
   // Objekte löschen, die keine Koordinaten haben
   // Lat und Lng ergänzen
-  _.each(tpopBeobListe, function (tpopBeob, index) {
+  tpopBeobListe.forEach(function (tpopBeob, index) {
     if (tpopBeob.X && tpopBeob.Y) {
       if (!tpopBeob.Lat || !tpopBeob.Lng) {
         tpopBeob.Lat = chToWgsLat(parseInt(tpopBeob.X, 10), parseInt(tpopBeob.Y, 10))
@@ -79,7 +78,7 @@ module.exports = function (tpopBeobListe) {
 
   // für alle Orte Marker erstellen
   markers = []
-  _.each(tpopBeobListe, function (tpopBeob, index) {
+  tpopBeobListe.forEach(function (tpopBeob, index) {
     datum = tpopBeob.Datum
     latlng2 = new google.maps.LatLng(tpopBeob.Lat, tpopBeob.Lng)
     if (anzTpopBeob === 1) {

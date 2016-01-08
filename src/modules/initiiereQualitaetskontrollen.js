@@ -14,10 +14,10 @@ var kontrolliereProgramm = require('./kontrolliereProgramm')
 
 module.exports = function (apId) {
   var listOptions = {
-      valueNames: ['hw', 'link'],
-      item: '<li><p class="hw"></p><p class="link"></p></li>'
-    },
-    qsList = new window.List('qualitaetskontrollen', listOptions)
+    valueNames: ['hw', 'link'],
+    item: '<li><p class="hw"></p><p class="link"></p></li>'
+  }
+  var qsList = new window.List('qualitaetskontrollen', listOptions)
 
   $('#qkRefresh').button({
     icons: {

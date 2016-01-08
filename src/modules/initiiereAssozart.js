@@ -33,8 +33,8 @@ module.exports = function (apId, assozId) {
     assozId = window.localStorage.assozartenId
   }
 
-  var $AaSisfNrText = $('#AaSisfNrText'),
-    aaSisfNrText
+  var $AaSisfNrText = $('#AaSisfNrText')
+  var aaSisfNrText
 
   // Felder zurücksetzen
   leereFelderVonFormular('assozarten')

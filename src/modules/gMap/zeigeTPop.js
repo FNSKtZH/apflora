@@ -1,6 +1,5 @@
 'use strict'
 
-var _ = require('underscore')
 var google = require('google')
 var MarkerClusterer = require('MarkerClusterer')
 var MarkerWithLabel = require('MarkerWithLabel')
@@ -12,21 +11,21 @@ var makeListenerMarkerClick = require('./makeListenerMarkerClick')
 var getApiHost = require('../getApiHost')
 
 module.exports = function (tpopListe) {
-  var anzTpop,
-    infowindow = new google.maps.InfoWindow(),
-    tpopBeschriftung,
-    lat,
-    lng,
-    latlng,
-    options,
-    map,
-    bounds,
-    markers,
-    latlng2,
-    marker,
-    contentString,
-    markerOptions,
-    myFlurname
+  var anzTpop
+  var infowindow = new google.maps.InfoWindow()
+  var tpopBeschriftung
+  var lat
+  var lng
+  var latlng
+  var options
+  var map
+  var bounds
+  var markers
+  var latlng2
+  var marker
+  var contentString
+  var markerOptions
+  var myFlurname
 
   // vor Erneuerung zeigen - sonst klappt Wiederaufruf nicht, wenn die Karte schon angezeigt ist
   zeigeFormular('gMap')
@@ -36,7 +35,7 @@ module.exports = function (tpopListe) {
   // TPopListe bearbeiten:
   // Objekte löschen, die keine Koordinaten haben
   // Lat und Lng ergänzen
-  _.each(tpopListe, function (tpop, index) {
+  tpopListe.forEach(function (tpop, index) {
     if (tpop.TPopXKoord && tpop.TPopYKoord) {
       tpop.Lat = chToWgsLat(parseInt(tpop.TPopXKoord, 10), parseInt(tpop.TPopYKoord, 10))
       tpop.Lng = chToWgsLng(parseInt(tpop.TPopXKoord, 10), parseInt(tpop.TPopYKoord, 10))
@@ -66,7 +65,7 @@ module.exports = function (tpopListe) {
 
   // für alle TPop Marker erstellen
   markers = []
-  _.each(tpopListe, function (tpop) {
+  tpopListe.forEach(function (tpop) {
     tpopBeschriftung = beschrifteTPopMitNrFuerKarte(tpop.PopNr, tpop.TPopNr)
     latlng2 = new google.maps.LatLng(tpop.Lat, tpop.Lng)
     if (anzTpop === 1) {

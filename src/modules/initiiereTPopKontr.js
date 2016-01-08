@@ -80,13 +80,13 @@ module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
     kontrTyp = 'feldKontr'
   }
 
-  var feldlisteFeldkontr,
-    feldlisteFreiwkontr,
-    $TPopKontrJahr = $('#TPopKontrJahr'),
-    $TPopKontrJungPflJN_ja = $('#TPopKontrJungPflJN_ja'),
-    $TPopKontrJungPflJN_nein = $('#TPopKontrJungPflJN_nein'),
-    $TPopKontrJungPflJN_leer = $('#TPopKontrJungPflJN_leer'),
-    htmlZaehlungen = ''
+  var feldlisteFeldkontr
+  var feldlisteFreiwkontr
+  var $TPopKontrJahr = $('#TPopKontrJahr')
+  var $TPopKontrJungPflJN_ja = $('#TPopKontrJungPflJN_ja')
+  var $TPopKontrJungPflJN_nein = $('#TPopKontrJungPflJN_nein')
+  var $TPopKontrJungPflJN_leer = $('#TPopKontrJungPflJN_leer')
+  var htmlZaehlungen = ''
 
   // Variablen setzen für Formular Feldkontrollen, hier damit nur ein mal
   feldlisteFeldkontr = ['TPopKontrJahr', 'TPopKontrDatum', 'TPopKontrTxt', 'TPopKontrBearb', 'TPopKontrTyp', 'TPopKontrJungpfl', 'TPopKontrVitalitaet', 'TPopKontrUeberleb', 'TPopKontrEntwicklung', 'TPopKontrUrsach', 'TPopKontrUrteil', 'TPopKontrAendUms', 'TPopKontrAendKontr', 'TPopKontrGuid', 'TPopKontrFlaeche', 'TPopKontrVegTyp', 'TPopKontrKonkurrenz', 'TPopKontrMoosschicht', 'TPopKontrKrautschicht', 'TPopKontrStrauchschicht', 'TPopKontrBaumschicht', 'TPopKontrBodenTyp', 'TPopKontrBodenKalkgehalt', 'TPopKontrBodenDurchlaessigkeit', 'TPopKontrBodenHumus', 'TPopKontrBodenNaehrstoffgehalt', 'TPopKontrBodenAbtrag', 'TPopKontrWasserhaushalt', 'TPopKontrHandlungsbedarf', 'TPopKontrIdealBiotopUebereinst', 'TPopKontrLeb', 'TPopKontrLebUmg']
