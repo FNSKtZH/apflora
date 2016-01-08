@@ -1,7 +1,6 @@
 'use strict'
 
-var _ = require('underscore'),
-  initiiereLayertree = require('./initiiereLayertree')
+var initiiereLayertree = require('./initiiereLayertree')
 
 module.exports = function () {
   var layersArray,
@@ -15,14 +14,14 @@ module.exports = function () {
     layersArray = window.apf.olMap.map.getLayers().getArray()
     // zuerst nur einen Array mit den zu löschenden Layern erstellen
     // wenn man sofort löscht, wird nur der erste entfernt!
-    _.each(layersArray, function (layer) {
+    layersArray.forEach(function (layer) {
       kategorie = layer.get('kategorie')
       title = layer.get('title')
       if (kategorie && kategorie === 'AP Flora' && title !== 'Detailpläne') {
         zuLoeschendeLayer.push(layer)
       }
     })
-    _.each(zuLoeschendeLayer, function (layer) {
+    zuLoeschendeLayer.forEach(function (layer) {
       window.apf.olMap.map.removeLayer(layer)
     })
     initiiereLayertree()

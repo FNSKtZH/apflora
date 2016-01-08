@@ -4,15 +4,15 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  ol = require('ol'),
-  styleBeob = require('./styleBeob'),
-  beobContent = require('../../templates/olMap/popupBeob'),
-  addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers'),
-  ordneBeobEinerTpopZu = require('../ordneBeobEinerTpopZu'),
-  entfernePopupOverlays = require('./entfernePopupOverlays'),
-  oeffneFormularAlsPopup = require('../oeffneFormularAlsPopup')
+var $ = require('jquery')
+var _ = require('underscore')
+var ol = require('ol')
+var styleBeob = require('./styleBeob')
+var beobContent = require('../../templates/olMap/popupBeob')
+var addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers')
+var ordneBeobEinerTpopZu = require('../ordneBeobEinerTpopZu')
+var entfernePopupOverlays = require('./entfernePopupOverlays')
+var oeffneFormularAlsPopup = require('../oeffneFormularAlsPopup')
 
 module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
   var beobLayerErstellt = $.Deferred(),
@@ -32,7 +32,7 @@ module.exports = function (beobArray, tpopArray, beobidMarkiert, visible) {
 
   visible = (visible === true)
 
-  _.each(beobArray, function (beob) {
+  beobArray.forEach(function (beob) {
     if (beob.X && beob.Y) {
       myName = 'Beobachtung ' + (beob.DESC_LOCALITE || '(kein Ort)')
       if (beob.TPopId) {

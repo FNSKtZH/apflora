@@ -4,10 +4,10 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  ol = require('ol'),
-  styleBeobZuordnung = require('./styleBeobZuordnung')
+var $ = require('jquery')
+var _ = require('underscore')
+var ol = require('ol')
+var styleBeobZuordnung = require('./styleBeobZuordnung')
 
 module.exports = function (beobArray, tpopArray, visible) {
   var beobZuordnungsLayerErstellt = $.Deferred(),

@@ -1,10 +1,10 @@
 'use strict'
 
-var ol = require('ol'),
-  addDragBoxForPopTpop = require('./addDragBoxForPopTpop'),
-  stylePop = require('./stylePop'),
-  styleTPop = require('./styleTPop'),
-  detailplanStyleSelected = require('./detailplanStyleSelected')
+var ol = require('ol')
+var addDragBoxForPopTpop = require('./addDragBoxForPopTpop')
+var stylePop = require('./stylePop')
+var styleTPop = require('./styleTPop')
+var detailplanStyleSelected = require('./detailplanStyleSelected')
 
 module.exports = function () {
   window.apf.olMap.map.olmapSelectInteraction = new ol.interaction.Select({

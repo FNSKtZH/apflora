@@ -5,9 +5,9 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  ol = require('ol'),
-  _ = require('underscore')
+var $ = require('jquery')
+var ol = require('ol')
+var _ = require('underscore')
 
 module.exports = function (layer, remove) {
   // mit der guid kontrollieren, ob die Ebene schon existiert

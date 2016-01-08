@@ -1,12 +1,12 @@
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  ol = require('ol'),
-  ga = require('ga'),
-  defaultStyle = require('./defaultStyle'),
-  detailplanStyle = require('./detailplanStyle'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var _ = require('underscore')
+var ol = require('ol')
+var ga = require('ga')
+var defaultStyle = require('./defaultStyle')
+var detailplanStyle = require('./detailplanStyle')
+var getApiHost = require('../getApiHost')
 
 module.exports = function () {
   var bingStylesObject,

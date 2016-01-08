@@ -1,7 +1,7 @@
 'use strict'
 
-var zeigeFeatureInfo = require('./zeigeFeatureInfo'),
-  pruefeObPopTpopGewaehltWurden = require('./pruefeObPopTpopGewaehltWurden')
+var zeigeFeatureInfo = require('./zeigeFeatureInfo')
+var pruefeObPopTpopGewaehltWurden = require('./pruefeObPopTpopGewaehltWurden')
 
 module.exports = function () {
   window.apf.olMap.map.on('singleclick', function (event) {

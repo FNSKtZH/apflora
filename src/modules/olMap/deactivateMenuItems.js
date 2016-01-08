@@ -2,11 +2,11 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  entfernePopupOverlays = require('./entfernePopupOverlays'),
-  removeSelectFeaturesInSelectableLayers = require('./removeSelectFeaturesInSelectableLayers'),
-  removeMeasureInteraction = require('./removeMeasureInteraction'),
-  entferneModifyInteractionFuerTpop = require('./entferneModifyInteractionFuerTpop')
+var $ = require('jquery')
+var entfernePopupOverlays = require('./entfernePopupOverlays')
+var removeSelectFeaturesInSelectableLayers = require('./removeSelectFeaturesInSelectableLayers')
+var removeMeasureInteraction = require('./removeMeasureInteraction')
+var entferneModifyInteractionFuerTpop = require('./entferneModifyInteractionFuerTpop')
 
 module.exports = function () {
   // messen deaktivieren

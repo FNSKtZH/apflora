@@ -1,8 +1,8 @@
 'use strict'
 
-var ol = require('ol'),
-  tpopContent = require('../../templates/olMap/popupTpop'),
-  erstelleTPopNrLabel = require('../erstelleTPopNrLabel')
+var ol = require('ol')
+var tpopContent = require('../../templates/olMap/popupTpop')
+var erstelleTPopNrLabel = require('../erstelleTPopNrLabel')
 
 module.exports = function (tpop) {
   return new ol.Feature({
@@ -11,7 +11,7 @@ module.exports = function (tpop) {
     popNr: tpop.PopNr,
     tpopNrLabel: erstelleTPopNrLabel(tpop.PopNr, tpop.TPopNr),
     tpopName: tpop.TPopFlurname || '(kein Name)',
-    name: erstelleTPopNrLabel(tpop.PopNr, tpop.TPopNr),  // brauchts das noch? TODO: entfernen
+    name: erstelleTPopNrLabel(tpop.PopNr, tpop.TPopNr), // brauchts das noch? TODO: entfernen
     popupContent: tpopContent(tpop),
     popupTitle: tpop.Artname,
     // koordinaten werden benötigt damit das popup am richtigen Ort verankert wird

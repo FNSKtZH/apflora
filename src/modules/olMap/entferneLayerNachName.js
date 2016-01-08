@@ -1,15 +1,14 @@
 'use strict'
 
-var _ = require('underscore'),
-  aktualisiereEbeneInLocalStorage = require('./aktualisiereEbeneInLocalStorage'),
-  getLayersWithTitle = require('./getLayersWithTitle')
+var aktualisiereEbeneInLocalStorage = require('./aktualisiereEbeneInLocalStorage')
+var getLayersWithTitle = require('./getLayersWithTitle')
 
 module.exports = function (name) {
   var layersArray = getLayersWithTitle(),
     layername,
     layerKategorie
 
-  _.each(layersArray, function (layer) {
+  layersArray.forEach(function (layer) {
     layername = layer.get('title')
     layerKategorie = layer.get('kategorie')
     if (layername === name) {
