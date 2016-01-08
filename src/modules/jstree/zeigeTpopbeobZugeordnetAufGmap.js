@@ -7,8 +7,8 @@ var zeigeTPopBeob = require('../gMap/zeigeTPopBeob')
 var getApiHost = require('../getApiHost')
 
 module.exports = function (nodeTpopId, nodeBeobId) {
-  var tpopId = '',
-    beobId = ''
+  var tpopId = ''
+  var beobId = ''
 
   // id's vorbereiten
   if (nodeTpopId) { tpopId = erstelleIdAusDomAttributId(nodeTpopId) }

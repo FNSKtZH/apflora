@@ -8,10 +8,10 @@ var $ = require('jquery')
 var initiiereBeob = require('./initiiereBeob')
 
 module.exports = function (formularname, id, statusZuordnung) {
-  var $formularname = $('#' + formularname),
-    title,
-    beobTyp,
-    formWidth = 600
+  var $formularname = $('#' + formularname)
+  var title
+  var beobTyp
+  var formWidth = 600
 
   // id setzen
   window.localStorage[formularname + 'Id'] = id

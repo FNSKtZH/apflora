@@ -7,8 +7,8 @@ var zeigeBeob = require('../gMap/zeigeBeob')
 var getApiHost = require('../getApiHost')
 
 module.exports = function (nodeApId, nodeBeobId) {
-  var apId = nodeApId ? erstelleIdAusDomAttributId(nodeApId) : '',
-    beobId = nodeBeobId ? erstelleIdAusDomAttributId(nodeBeobId) : ''
+  var apId = nodeApId ? erstelleIdAusDomAttributId(nodeApId) : ''
+  var beobId = nodeBeobId ? erstelleIdAusDomAttributId(nodeBeobId) : ''
 
   $.ajax({
     type: 'get',

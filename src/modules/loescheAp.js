@@ -8,8 +8,8 @@ var erstelleApliste = require('./erstelleApliste')
 var getApiHost = require('./getApiHost')
 
 module.exports = function (apId) {
-  var $apWaehlenText = $('#apWaehlenText'),
-    $exportieren2 = $('#exportieren2')
+  var $apWaehlenText = $('#apWaehlenText')
+  var $exportieren2 = $('#exportieren2')
 
   // Variable zum rückgängig machen erstellen
   window.apf.deleted = window.apf.ap

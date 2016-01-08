@@ -12,13 +12,13 @@ var fitTextareaToContent = require('./fitTextareaToContent')
 var setzeKartenhoehe = require('./setzeKartenhoehe')
 
 module.exports = function (Formularname) {
-  var formularAngezeigt = $.Deferred(),
-    $forms = $('#forms'),
-    $form = $('form'),
-    $testartDiv = $('#testartDiv'),
-    $formsTitelzeile = $('#formsTitelzeile'),
-    $apWaehlen = $('#apWaehlen'),
-    $Formularname
+  var formularAngezeigt = $.Deferred()
+  var $forms = $('#forms')
+  var $form = $('form')
+  var $testartDiv = $('#testartDiv')
+  var $formsTitelzeile = $('#formsTitelzeile')
+  var $apWaehlen = $('#apWaehlen')
+  var $Formularname
 
   // zuerst alle Formulare ausblenden
   $forms.hide()

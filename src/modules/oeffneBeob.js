@@ -1,10 +1,10 @@
 'use strict'
 
 module.exports = function (beob) {
-  var initiiereBeob = require('./initiiereBeob'),
-    oeffneTPopBeob = require('./oeffneTPopBeob'),
-    beobStatus,
-    beobTyp
+  var initiiereBeob = require('./initiiereBeob')
+  var oeffneTPopBeob = require('./oeffneTPopBeob')
+  var beobStatus
+  var beobTyp
 
   if (typeof beob === 'number' || typeof beob === 'string') {
     // die TPopId wurde übergeben

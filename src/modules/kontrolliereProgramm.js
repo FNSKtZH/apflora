@@ -50,8 +50,8 @@ function addDataToQsList (qsList, url) {
 }
 
 function createUrlToAddDataFromViewToQsList (qsList, viewName, berichtjahr) {
-  var baseUrl = getApiHost() + '/qkView/' + viewName + '/' + window.localStorage.apId,
-    url = berichtjahr ? baseUrl + '/' + berichtjahr : baseUrl
+  var baseUrl = getApiHost() + '/qkView/' + viewName + '/' + window.localStorage.apId
+  var url = berichtjahr ? baseUrl + '/' + berichtjahr : baseUrl
 
   addDataToQsList(qsList, url)
 }

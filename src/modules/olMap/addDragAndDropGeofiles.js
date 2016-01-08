@@ -7,8 +7,8 @@ var initiiereLayertree = require('./initiiereLayertree')
 var erstelleGuid = require('../erstelleGuid')
 
 module.exports = function () {
-  var styleFunction,
-    dragAndDropInteraction
+  var styleFunction
+  var dragAndDropInteraction
 
   styleFunction = function (feature, resolution) {
     var featureStyleFunction = feature.getStyleFunction()
