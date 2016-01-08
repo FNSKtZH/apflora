@@ -3,9 +3,9 @@
 var getSelectedFeatures = require('./getSelectedFeatures')
 
 module.exports = function (type) {
-  var featuresArray = getSelectedFeatures(),
-    returnArray = [],
-    featureType
+  var featuresArray = getSelectedFeatures()
+  var returnArray = []
+  var featureType
 
   if (featuresArray.length === 0) {
     return []

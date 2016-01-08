@@ -14,29 +14,29 @@ var contentLayertreeTpop = require('../../templates/olMap/layertreeTpop')
 var contentLayertreeEigeneEbene = require('../../templates/olMap/layertreeEigeneEbene')
 
 module.exports = function (activeKategorie) {
-  var layertitel,
-    visible,
-    kategorie,
-    // html_welt_hintergrund = '<h3>Welt Hintergrund</h3><div>',
-    htmlChHintergrund = '<h3>Hintergrund</h3><div>',
-    htmlChSachinfos = '<h3>CH Sachinformationen</h3><div>',
-    htmlChBiotopinv = '<h3>CH Biotopinventare</h3><div>',
-    htmlZhSachinfos = '<h3>ZH Sachinformationen</h3><div>',
-    htmlApflora = '<h3>ZH AP Flora</h3><div>',
-    htmlProv,
-    html,
-    $olMapLayertreeLayers = $('#olMapLayertreeLayers'),
-    $ga_karten_div_accordion = $('#olMapDiv').find('.accordion'),
-    layers = window.apf.olMap.map.getLayers().getArray(),
-    htmlEigeneLayerText,
-    htmlEigeneLayer = '<hr>',
-    eigeneLayerZaehler = 0,
-    initializeModifyLayer = false,
-    active,
-    exportLayerSelectIds = [],
-    legende,
-    legendeUrl,
-    initializeLegende = false
+  var layertitel
+  var visible
+  var kategorie
+  // html_welt_hintergrund = '<h3>Welt Hintergrund</h3><div>'
+  var htmlChHintergrund = '<h3>Hintergrund</h3><div>'
+  var htmlChSachinfos = '<h3>CH Sachinformationen</h3><div>'
+  var htmlChBiotopinv = '<h3>CH Biotopinventare</h3><div>'
+  var htmlZhSachinfos = '<h3>ZH Sachinformationen</h3><div>'
+  var htmlApflora = '<h3>ZH AP Flora</h3><div>'
+  var htmlProv
+  var html
+  var $olMapLayertreeLayers = $('#olMapLayertreeLayers')
+  var $ga_karten_div_accordion = $('#olMapDiv').find('.accordion')
+  var layers = window.apf.olMap.map.getLayers().getArray()
+  var htmlEigeneLayerText
+  var htmlEigeneLayer = '<hr>'
+  var eigeneLayerZaehler = 0
+  var initializeModifyLayer = false
+  var active
+  var exportLayerSelectIds = []
+  var legende
+  var legendeUrl
+  var initializeLegende = false
 
   htmlEigeneLayerText = '<h3>Eigene Ebenen</h3>'
   htmlEigeneLayerText += '<div>'

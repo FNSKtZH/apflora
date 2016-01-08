@@ -5,8 +5,8 @@ var erstelleListeDerAusgewaehltenPopTPop = require('../erstelleListeDerAusgewaeh
 var getSelectedFeaturesOfType = require('./getSelectedFeaturesOfType')
 
 module.exports = function () {
-  var popSelected = [],
-    tpopSelected = []
+  var popSelected = []
+  var tpopSelected = []
 
   // prüfen, ob pop / tpop gewählt wurden
   popSelected = getSelectedFeaturesOfType('pop')

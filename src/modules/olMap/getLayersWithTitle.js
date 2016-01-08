@@ -3,11 +3,8 @@
 var _ = require('underscore')
 
 module.exports = function () {
-  var layersArray,
-    layers
-
-  layersArray = window.apf.olMap.map.getLayers().getArray()
-  layers = _.filter(layersArray, function (layer) {
+  var layersArray = window.apf.olMap.map.getLayers().getArray()
+  var layers = _.filter(layersArray, function (layer) {
     return layer.get('title')
   })
   return layers || []

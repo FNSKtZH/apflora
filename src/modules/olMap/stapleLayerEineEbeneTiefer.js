@@ -3,9 +3,9 @@
 var initiiereLayertree = require('./initiiereLayertree')
 
 module.exports = function (layerTitle) {
-  var layers = window.apf.olMap.map.getLayers(),
-    layersArray = window.apf.olMap.map.getLayers().getArray(),
-    topLayer
+  var layers = window.apf.olMap.map.getLayers()
+  var layersArray = window.apf.olMap.map.getLayers().getArray()
+  var topLayer
 
   layersArray.forEach(function (layer, index) {
     if (index > 0) {

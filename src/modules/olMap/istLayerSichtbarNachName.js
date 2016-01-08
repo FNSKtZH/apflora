@@ -3,8 +3,8 @@
 var _ = require('underscore')
 
 module.exports = function (layername) {
-  var layerObjektArray,
-    layerIstSichtbar
+  var layerObjektArray
+  var layerIstSichtbar
 
   // prüfen, ob eine map existiert
   if (window.apf.olMap.map) {
