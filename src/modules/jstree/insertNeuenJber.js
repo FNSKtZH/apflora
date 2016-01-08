@@ -18,8 +18,8 @@ module.exports = function (aktiverNode, parentNode, nodeApId) {
     type: 'post',
     url: getApiHost() + '/insertMultiple/apflora/tabelle=apber/felder=' + JSON.stringify(felder)
   }).done(function (id) {
-    var strukturtyp = 'jber',
-      beschriftung = 'neuer AP-Bericht'
+    var strukturtyp = 'jber'
+    var beschriftung = 'neuer AP-Bericht'
     if ($(aktiverNode).attr('id') === nodeApId) {
       insertNeuenNodeEineHierarchiestufeTiefer(aktiverNode, parentNode, strukturtyp, id, beschriftung)
     } else {

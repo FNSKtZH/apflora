@@ -12,8 +12,8 @@ module.exports = function (aktiverNode, parentNode, nodeApId) {
     type: 'post',
     url: getApiHost() + '/insert/apflora/tabelle=ber/feld=ApArtId/wert=' + erstelleIdAusDomAttributId(nodeApId) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
-    var strukturtyp = 'ber',
-      beschriftung = 'neuer Bericht'
+    var strukturtyp = 'ber'
+    var beschriftung = 'neuer Bericht'
 
     console.log('$(aktiverNode).attr("id"): ', $(aktiverNode).attr('id'))
     console.log('nodeApId: ', nodeApId)

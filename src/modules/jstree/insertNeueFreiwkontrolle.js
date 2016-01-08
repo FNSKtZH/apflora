@@ -12,8 +12,8 @@ module.exports = function (aktiverNode, parentNode, nodeTpopId) {
     type: 'post',
     url: getApiHost() + '/insert/feldkontr/tpopId=' + erstelleIdAusDomAttributId(nodeTpopId) + '/tpopKontrtyp=tpopfreiwkontr/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
-    var strukturtyp = 'tpopfreiwkontr',
-      beschriftung = 'neue Freiwilligen-Kontrolle'
+    var strukturtyp = 'tpopfreiwkontr'
+    var beschriftung = 'neue Freiwilligen-Kontrolle'
     if ($(aktiverNode).attr('id') === nodeTpopId) {
       insertNeuenNodeEineHierarchiestufeTiefer(aktiverNode, parentNode, strukturtyp, id, beschriftung)
     } else {

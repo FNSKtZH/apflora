@@ -12,8 +12,8 @@ module.exports = function (aktiverNode, parentNode, nodeApId) {
     type: 'post',
     url: getApiHost() + '/insert/apflora/tabelle=assozart/feld=AaApArtId/wert=' + erstelleIdAusDomAttributId(nodeApId) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
-    var strukturtyp = 'assozarten',
-      beschriftung = 'neue assoziierte Art'
+    var strukturtyp = 'assozarten'
+    var beschriftung = 'neue assoziierte Art'
     if (erstelleIdAusDomAttributId($(aktiverNode).attr('id')) === nodeApId) {
       insertNeuenNodeEineHierarchiestufeTiefer(aktiverNode, parentNode, strukturtyp, id, beschriftung)
     } else {

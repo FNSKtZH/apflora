@@ -12,8 +12,8 @@ module.exports = function (aktiverNode, parentNode, nodePopId) {
     type: 'post',
     url: getApiHost() + '/tpopInsertKopie/popId=' + erstelleIdAusDomAttributId(nodePopId) + '/tpopId=' + erstelleIdAusDomAttributId($(window.apf.tpopNodeKopiert).attr('id')) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
-    var strukturtyp = 'tpop',
-      beschriftung = window.apf.tpopObjektKopiert.TPopFlurname
+    var strukturtyp = 'tpop'
+    var beschriftung = window.apf.tpopObjektKopiert.TPopFlurname
     if (window.apf.tpopObjektKopiert.TPopNr) {
       beschriftung = window.apf.tpopObjektKopiert.TPopNr + ': ' + window.apf.tpopObjektKopiert.TPopFlurname
     }

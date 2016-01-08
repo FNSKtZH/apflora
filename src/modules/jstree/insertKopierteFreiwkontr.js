@@ -13,8 +13,8 @@ module.exports = function (aktiverNode, parentNode, nodeTpopId) {
     type: 'post',
     url: getApiHost() + '/tpopkontrInsertKopie/tpopId=' + erstelleIdAusDomAttributId(nodeTpopId) + '/tpopKontrId=' + erstelleIdAusDomAttributId($(window.apf.tpopfreiwkontrNodeKopiert).attr('id')) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
-    var strukturtyp = 'tpopfreiwkontr',
-      beschriftung = window.apf.tpopfreiwkontrObjektKopiert.TPopKontrJahr.toString()
+    var strukturtyp = 'tpopfreiwkontr'
+    var beschriftung = window.apf.tpopfreiwkontrObjektKopiert.TPopKontrJahr.toString()
     if ($(aktiverNode).attr('id') === nodeTpopId) {
       insertNeuenNodeEineHierarchiestufeTiefer(aktiverNode, parentNode, strukturtyp, id, beschriftung)
     } else {

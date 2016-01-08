@@ -12,8 +12,8 @@ module.exports = function (aktiverNode, parentNode, nodeApId) {
     type: 'post',
     url: getApiHost() + '/popInsertKopie/apId=' + erstelleIdAusDomAttributId(nodeApId) + '/popId=' + erstelleIdAusDomAttributId($(window.apf.popNodeKopiert).attr('id')) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
-    var strukturtyp = 'pop',
-      beschriftung = window.apf.popObjektKopiert.PopName
+    var strukturtyp = 'pop'
+    var beschriftung = window.apf.popObjektKopiert.PopName
     if (window.apf.popObjektKopiert.PopNr) {
       beschriftung = window.apf.popObjektKopiert.PopNr + ': ' + window.apf.popObjektKopiert.PopName
     }

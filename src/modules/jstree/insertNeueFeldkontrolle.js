@@ -18,8 +18,8 @@ module.exports = function (aktiverNode, parentNode, nodeTpopId) {
     type: 'post',
     url: getApiHost() + '/insertMultiple/apflora/tabelle=tpopkontr/felder=' + JSON.stringify(felder)
   }).done(function (id) {
-    var strukturtyp = 'tpopfeldkontr',
-      beschriftung = 'neue Feldkontrolle'
+    var strukturtyp = 'tpopfeldkontr'
+    var beschriftung = 'neue Feldkontrolle'
     if ($(aktiverNode).attr('id') === nodeTpopId) {
       insertNeuenNodeEineHierarchiestufeTiefer(aktiverNode, parentNode, strukturtyp, id, beschriftung)
     } else {
