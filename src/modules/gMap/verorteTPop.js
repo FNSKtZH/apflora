@@ -10,19 +10,19 @@ var erstelleMarker = require('./erstelleMarker')
 var beschrifteTPopMitNrFuerKarte = require('../beschrifteTPopMitNrFuerKarte')
 
 module.exports = function (tpop) {
-  var infowindow = new google.maps.InfoWindow(),
-    lat,
-    lng,
-    latlng,
-    zoomLevel,
-    options,
-    map,
-    mapCanvas = $('#gMapDiv'),
-    verorted,
-    marker,
-    contentString,
-    tpopBeschriftung,
-    myFlurname
+  var infowindow = new google.maps.InfoWindow()
+  var lat
+  var lng
+  var latlng
+  var zoomLevel
+  var options
+  var map
+  var mapCanvas = $('#gMapDiv')
+  var verorted
+  var marker
+  var contentString
+  var tpopBeschriftung
+  var myFlurname
 
   window.apf.gMap.markersArray = []
 

@@ -3,8 +3,8 @@
 var $ = require('jquery')
 
 module.exports = function () {
-  var $berUrl = $('#berUrl'),
-    url = $berUrl.val()
+  var $berUrl = $('#berUrl')
+  var url = $berUrl.val()
 
   if (url.substring(0, 3) === 'www') {
     url = '//' + url

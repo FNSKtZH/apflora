@@ -44,10 +44,11 @@ function MercatorProjection () {
 
 MercatorProjection.prototype.fromLatLngToPoint = function (latLng, opt_point) {
   /*global Google*/
-  var me = this,
-    point = opt_point || new google.maps.Point(0, 0),
-    origin = me.pixelOrigin_,
-    siny
+  var me = this
+  var point = opt_point || new google.maps.Point(0, 0)
+  var origin = me.pixelOrigin_
+  var siny
+
   point.x = origin.x + latLng.lng() * me.pixelsPerLonDegree_
   // NOTE(appleton): Truncating to 0.9999 effectively limits latitude to
   // 89.189.  This is about a third of a tile past the edge of the world tile.
@@ -58,36 +59,36 @@ MercatorProjection.prototype.fromLatLngToPoint = function (latLng, opt_point) {
 
 MercatorProjection.prototype.fromDivPixelToLatLng = function (pixel, zoom) {
   /*global Google*/
-  var me = this,
-    origin = me.pixelOrigin_,
-    scale = Math.pow(2, zoom),
-    lng = (pixel.x / scale - origin.x) / me.pixelsPerLonDegree_,
-    latRadians = (pixel.y / scale - origin.y) / -me.pixelsPerLonRadian_,
-    lat = radiansToDegrees(2 * Math.atan(Math.exp(latRadians)) - Math.PI / 2)
+  var me = this
+  var origin = me.pixelOrigin_
+  var scale = Math.pow(2, zoom)
+  var lng = (pixel.x / scale - origin.x) / me.pixelsPerLonDegree_
+  var latRadians = (pixel.y / scale - origin.y) / -me.pixelsPerLonRadian_
+  var lat = radiansToDegrees(2 * Math.atan(Math.exp(latRadians)) - Math.PI / 2)
   return new google.maps.LatLng(lat, lng)
 }
 
 MercatorProjection.prototype.fromDivPixelToSphericalMercator = function (pixel, zoom) {
   /*global Google*/
-  var me = this,
-    coord = me.fromDivPixelToLatLng(pixel, zoom),
-    r = 6378137.0,
-    x = r * degreesToRadians(coord.lng()),
-    latRad = degreesToRadians(coord.lat()),
-    y = (r / 2) * Math.log((1 + Math.sin(latRad)) / (1 - Math.sin(latRad)))
+  var me = this
+  var coord = me.fromDivPixelToLatLng(pixel, zoom)
+  var r = 6378137.0
+  var x = r * degreesToRadians(coord.lng())
+  var latRad = degreesToRadians(coord.lat())
+  var y = (r / 2) * Math.log((1 + Math.sin(latRad)) / (1 - Math.sin(latRad)))
   return new google.maps.Point(x, y)
 }
 
 module.exports = function (map, baseURL, customParams) {
-  var tileHeight = 256,
-    tileWidth = 256,
-    opacityLevel = 0.75,
-    isPng = true,
-    minZoomLevel = 2,
-    maxZoomLevel = 28,
-    wmsParams,
-    overlayOptions,
-    overlayWMS
+  var tileHeight = 256
+  var tileWidth = 256
+  var opacityLevel = 0.75
+  var isPng = true
+  var minZoomLevel = 2
+  var maxZoomLevel = 28
+  var wmsParams
+  var overlayOptions
+  var overlayWMS
 
   // var baseURL = ""
   // für SVO

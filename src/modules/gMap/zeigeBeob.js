@@ -10,25 +10,25 @@ var zeigeFormular = require('../zeigeFormular')
 var makeListenerMarkerClick = require('./makeListenerMarkerClick')
 
 module.exports = function (beobListe) {
-  var anzBeob,
-    infowindow = new google.maps.InfoWindow(),
-    lat,
-    lng,
-    latlng,
-    options,
-    map,
-    bounds,
-    markers,
-    latlng2,
-    marker,
-    contentString,
-    markerOptions,
-    datum,
-    titel,
-    aNote,
-    autor,
-    projekt,
-    ort
+  var anzBeob
+  var infowindow = new google.maps.InfoWindow()
+  var lat
+  var lng
+  var latlng
+  var options
+  var map
+  var bounds
+  var markers
+  var latlng2
+  var marker
+  var contentString
+  var markerOptions
+  var datum
+  var titel
+  var aNote
+  var autor
+  var projekt
+  var ort
 
   // vor Erneuerung zeigen - sonst klappt Wiederaufruf nicht, wenn die Karte schon angezeigt ist
   zeigeFormular('gMap')

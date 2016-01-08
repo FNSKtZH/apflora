@@ -10,13 +10,13 @@ var pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
 var getApiHost = require('../getApiHost')
 
 module.exports = function (latLng, map, marker, tpop) {
-  var lat,
-    lng,
-    contentString,
-    infowindow,
-    title,
-    X,
-    Y
+  var lat
+  var lng
+  var contentString
+  var infowindow
+  var title
+  var X
+  var Y
 
   // nur aktualisieren, wenn Schreibrechte bestehen
   if (!pruefeSchreibvoraussetzungen()) return

@@ -6,15 +6,15 @@ var erstelleModifyInteractionFuerVectorLayer = require('../../../../olMap/erstel
 
 module.exports = function () {
   // layer holen
-  var layerDiv = $(this).parent().siblings('input'),
-    layerIndex = layerDiv.val(),
-    layer = window.apf.olMap.map.getLayers().getArray()[layerIndex],
-    buttonDiv = $(this).siblings('label').first(),
-    geomSelectDiv = $(this).siblings('.modifyLayerGeomType'),
-    geomSelectDivId = geomSelectDiv.attr('id'),
-    buttonIcon = $(this).button('option', 'icons').primary,
-    $nonModifyOptions = $(this).siblings('.nonModifyOptions'),
-    tooltipContent
+  var layerDiv = $(this).parent().siblings('input')
+  var layerIndex = layerDiv.val()
+  var layer = window.apf.olMap.map.getLayers().getArray()[layerIndex]
+  var buttonDiv = $(this).siblings('label').first()
+  var geomSelectDiv = $(this).siblings('.modifyLayerGeomType')
+  var geomSelectDivId = geomSelectDiv.attr('id')
+  var buttonIcon = $(this).button('option', 'icons').primary
+  var $nonModifyOptions = $(this).siblings('.nonModifyOptions')
+  var tooltipContent
 
   // modify-layer steuern
   if (window.apf.olMap.modifyInteractionFuerVectorlayer) {

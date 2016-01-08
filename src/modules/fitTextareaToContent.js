@@ -3,12 +3,10 @@
 'use strict'
 
 module.exports = function (id, maxHeight) {
-  var text = id && id.style ? id : document.getElementById(id),
-    adjustedHeight
+  var text = id && id.style ? id : document.getElementById(id)
+  var adjustedHeight
 
-  if (!text) {
-    return
-  }
+  if (!text) return
 
   /* Accounts for rows being deleted, pixel value may need adjusting */
   if (text.clientHeight == text.scrollHeight) {
