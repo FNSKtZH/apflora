@@ -8,8 +8,8 @@ var zeigeBeob = require('../gMap/zeigeBeob')
 var getApiHost = require('../getApiHost')
 
 module.exports = function (nodeApId, nodeBeobId) {
-  var apId,
-    beobId
+  var apId
+  var beobId
 
   apId = nodeApId ? erstelleIdAusDomAttributId(nodeApId) : ''
   beobId = nodeBeobId ? erstelleIdAusDomAttributId(nodeBeobId) : ''

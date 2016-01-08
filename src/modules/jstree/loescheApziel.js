@@ -9,8 +9,8 @@ var beschrifteOrdner = require('../beschrifteOrdner')
 var getApiHost = require('../getApiHost')
 
 module.exports = function (aktiverNode, parentNode) {
-  var grandparentNode,
-    bezeichnung
+  var grandparentNode
+  var bezeichnung
 
   // nur aktualisieren, wenn Schreibrechte bestehen
   if (!pruefeSchreibvoraussetzungen()) return

@@ -11,10 +11,10 @@ var turf = require('turf')
 var ol = require('ol')
 
 module.exports = function (polygon, x, y) {
-  var koordLv03 = [x, y],
-    koordWgs84,
-    koordPt,
-    isInsidePolygon = false
+  var koordLv03 = [x, y]
+  var koordWgs84
+  var koordPt
+  var isInsidePolygon = false
 
   // convert koordinates to wgs84
   koordWgs84 = ol.proj.transform(koordLv03, 'EPSG:21781', 'EPSG:4326')

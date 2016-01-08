@@ -76,13 +76,13 @@ var getApiHost = require('../getApiHost')
 var gruendePopAusBeob = require('../gruendePopAusBeob')
 
 module.exports = function (node) {
-  var items,
-    aktiverNode,
-    aktiverNodeText,
-    parentNode,
-    parentNodeText,
-    grandparentNode,
-    label
+  var items
+  var aktiverNode
+  var aktiverNodeText
+  var parentNode
+  var parentNodeText
+  var grandparentNode
+  var label
 
   // relevante nodes zwischenspeichern
   aktiverNode = node

@@ -5,11 +5,11 @@ var aktualisiereKoordinatenVonTPop = require('../aktualisiereKoordinatenVonTPop'
 var melde = require('../melde')
 
 module.exports = function () {
-  var beobfelder_FNS_XGISVal = $('#beobfelder_FNS_XGIS').val(),
-    beobfelder_FNS_YGISVal = $('#beobfelder_FNS_YGIS').val(),
-    beobfelder_COORDONNEE_FED_EVal = $('#beobfelder_COORDONNEE_FED_E').val(),
-    beobfelder_COORDONNEE_FED_NVal = $('#beobfelder_COORDONNEE_FED_N').val(),
-    tpop
+  var beobfelder_FNS_XGISVal = $('#beobfelder_FNS_XGIS').val()
+  var beobfelder_FNS_YGISVal = $('#beobfelder_FNS_YGIS').val()
+  var beobfelder_COORDONNEE_FED_EVal = $('#beobfelder_COORDONNEE_FED_E').val()
+  var beobfelder_COORDONNEE_FED_NVal = $('#beobfelder_COORDONNEE_FED_N').val()
+  var tpop
 
   tpop = {}
   tpop.TPopId = window.apf.tpop.TPopId

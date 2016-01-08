@@ -5,24 +5,24 @@ var $ = require('jquery')
 var pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
 
 module.exports = function () {
-  var tpopKontrFlaeche = $('#TPopKontrFlaeche').val(),
-    tpopKontrLeb = $('#TPopKontrLeb').val(),
-    tpopKontrLebUmg = $('#TPopKontrLebUmg').val(),
-    tpopKontrVegTyp = $('#TPopKontrVegTyp').val(),
-    tpopKontrKonkurrenz = $('#TPopKontrKonkurrenz').val(),
-    tpopKontrMoosschicht = $('#TPopKontrMoosschicht').val(),
-    tpopKontrKrautschicht = $('#TPopKontrKrautschicht').val(),
-    tpopKontrStrauchschicht = $('#TPopKontrStrauchschicht').val(),
-    tpopKontrBaumschicht = $('#TPopKontrBaumschicht').val(),
-    tpopKontrBodenTyp = $('#TPopKontrBodenTyp').val(),
-    tpopKontrBodenKalkgehalt = $('#TPopKontrBodenKalkgehalt').val(),
-    tpopKontrBodenDurchlaessigkeit = $('#TPopKontrBodenDurchlaessigkeit').val(),
-    tpopKontrBodenHumus = $('#TPopKontrBodenHumus').val(),
-    tpopKontrBodenNaehrstoffgehalt = $('#TPopKontrBodenNaehrstoffgehalt').val(),
-    tpopKontrBodenAbtrag = $('#TPopKontrBodenAbtrag').val(),
-    tpopKontrWasserhaushalt = $('#TPopKontrWasserhaushalt').val(),
-    tpopKontrHandlungsbedarf = $('#TPopKontrHandlungsbedarf').val(),
-    fkb
+  var tpopKontrFlaeche = $('#TPopKontrFlaeche').val()
+  var tpopKontrLeb = $('#TPopKontrLeb').val()
+  var tpopKontrLebUmg = $('#TPopKontrLebUmg').val()
+  var tpopKontrVegTyp = $('#TPopKontrVegTyp').val()
+  var tpopKontrKonkurrenz = $('#TPopKontrKonkurrenz').val()
+  var tpopKontrMoosschicht = $('#TPopKontrMoosschicht').val()
+  var tpopKontrKrautschicht = $('#TPopKontrKrautschicht').val()
+  var tpopKontrStrauchschicht = $('#TPopKontrStrauchschicht').val()
+  var tpopKontrBaumschicht = $('#TPopKontrBaumschicht').val()
+  var tpopKontrBodenTyp = $('#TPopKontrBodenTyp').val()
+  var tpopKontrBodenKalkgehalt = $('#TPopKontrBodenKalkgehalt').val()
+  var tpopKontrBodenDurchlaessigkeit = $('#TPopKontrBodenDurchlaessigkeit').val()
+  var tpopKontrBodenHumus = $('#TPopKontrBodenHumus').val()
+  var tpopKontrBodenNaehrstoffgehalt = $('#TPopKontrBodenNaehrstoffgehalt').val()
+  var tpopKontrBodenAbtrag = $('#TPopKontrBodenAbtrag').val()
+  var tpopKontrWasserhaushalt = $('#TPopKontrWasserhaushalt').val()
+  var tpopKontrHandlungsbedarf = $('#TPopKontrHandlungsbedarf').val()
+  var fkb
 
   // nur fortfahren, wenn Schreibrechte bestehen
   if (!pruefeSchreibvoraussetzungen()) return

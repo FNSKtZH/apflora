@@ -23,9 +23,9 @@ var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
 var initiiereQualitaetskontrollen = require('../initiiereQualitaetskontrollen')
 
 module.exports = function (event, data, ApArtId) {
-  var node,
-    nodeTyp,
-    nodeId
+  var node
+  var nodeTyp
+  var nodeId
 
   // Erinnerung an letzten Klick im Baum löschen
   delete window.localStorage.tpopfreiwkontr

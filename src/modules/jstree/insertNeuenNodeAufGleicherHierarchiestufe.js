@@ -9,8 +9,8 @@ var erstelleUnterordnerVonPop = require('./erstelleUnterordnerVonPop')
 var beschrifteOrdner = require('../beschrifteOrdner')
 
 module.exports = function (aktiverNode, parentNode, strukturtyp, dsId, beschriftung) {
-  var neuerNode,
-    grandparentNode
+  var neuerNode
+  var grandparentNode
 
   // Beschriftung muss String sein
   if (beschriftung && typeof beschriftung !== 'string') {

@@ -11,8 +11,8 @@ var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
 var beschrifteOrdner = require('../beschrifteOrdner')
 
 module.exports = function (aktiverNode, parentNode, strukturtyp, dsId, beschriftung) {
-  var neuerNode,
-    neueApzieleNode
+  var neuerNode
+  var neueApzieleNode
 
   // Beschriftung muss String sein
   if (beschriftung && typeof beschriftung !== 'string') {
