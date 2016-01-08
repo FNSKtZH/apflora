@@ -8,9 +8,9 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  zeigeFormular = require('./zeigeFormular'),
-  kontrolliereProgramm = require('./kontrolliereProgramm')
+var $ = require('jquery')
+var zeigeFormular = require('./zeigeFormular')
+var kontrolliereProgramm = require('./kontrolliereProgramm')
 
 module.exports = function (apId) {
   var listOptions = {

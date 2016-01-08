@@ -4,23 +4,23 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  dateFormat = require('dateformat'),
-  _ = require('underscore'),
-  limiter = require('../lib/limiter'),
-  initiiereAp = require('./initiiereAp'),
-  initiierePop = require('./initiierePop'),
-  initiiereTPop = require('./initiiereTPop'),
-  getAdressenHtml = require('./getAdressenHtml'),
-  getZaehleinheitenOptionen = require('./getZaehleinheitenOptionen'),
-  getLrDelarzeHtml = require('./getLrDelarzeHtml'),
-  getIdealbiotopUebereinstHtml = require('./getIdealbiotopUebereinstHtml'),
-  zeigeFormular = require('./zeigeFormular'),
-  melde = require('./melde'),
-  leereFelderVonFormular = require('./leereFelderVonFormular'),
-  tPopKontrZaehl = require('../templates/tPopKontrZaehl'),
-  initializeTooltipsInElement = require('./initializeTooltipsInElement'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var dateFormat = require('dateformat')
+var _ = require('underscore')
+var limiter = require('../lib/limiter')
+var initiiereAp = require('./initiiereAp')
+var initiierePop = require('./initiierePop')
+var initiiereTPop = require('./initiiereTPop')
+var getAdressenHtml = require('./getAdressenHtml')
+var getZaehleinheitenOptionen = require('./getZaehleinheitenOptionen')
+var getLrDelarzeHtml = require('./getLrDelarzeHtml')
+var getIdealbiotopUebereinstHtml = require('./getIdealbiotopUebereinstHtml')
+var zeigeFormular = require('./zeigeFormular')
+var melde = require('./melde')
+var leereFelderVonFormular = require('./leereFelderVonFormular')
+var tPopKontrZaehl = require('../templates/tPopKontrZaehl')
+var initializeTooltipsInElement = require('./initializeTooltipsInElement')
+var getApiHost = require('./getApiHost')
 
 module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
   var $TPopKontrDatum = $('#TPopKontrDatum')
