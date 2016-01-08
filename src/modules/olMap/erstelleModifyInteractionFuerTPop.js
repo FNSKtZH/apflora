@@ -20,21 +20,24 @@ module.exports = function (modifySource) {
       return styleTPop(feature, resolution, false, true)
     }
   })
+
   // neues oder gewähltes feature hinzufügen
   modifyOverlay.addFeature(modifySource.getFeatures()[0])
+
   // modify-interaction erstellen
   // global, weil es später entfernt werden muss
   window.apf.olMap.modifyInteraction = new ol.interaction.Modify({
     features: modifyOverlay.getFeatures()
   })
+
   // zählt, wieviele male .on('change') ausgelöst wurde
   window.apf.olMap.modifyInteraction.zaehler = 0
   // interaction.Modify meldet nicht, wenn etwas verändert wurde
   // daher muss registriert werden, wann das feature geändert wird
   modifyOverlay.getFeatures().getArray()[0].on('change', function () {
     // funktioniert zwar, wird aber beim Verschieben Dutzende bis hunderte Male ausgelöst
-    var zaehler,
-      coordinates = this.getGeometry().getCoordinates()
+    var zaehler
+    var coordinates = this.getGeometry().getCoordinates()
 
     window.apf.olMap.modifyInteraction.zaehler++
     // speichert, wieviele male .on('change') ausgelöst wurde, bis setTimout aufgerufen wurde

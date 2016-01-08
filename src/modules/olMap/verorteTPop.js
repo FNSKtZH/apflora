@@ -1,15 +1,15 @@
 'use strict'
 
-var $ = require('jquery'),
-  ol = require('ol'),
-  erstelleModifyInteractionFuerTPop = require('./erstelleModifyInteractionFuerTPop'),
-  zeigeTPop = require('./zeigeTPop'),
-  styleTPop = require('./styleTPop'),
-  erstelleMarkerFuerTPopLayer = require('./erstelleMarkerFuerTPopLayer'),
-  aktualisiereKoordinatenVonTPop = require('../aktualisiereKoordinatenVonTPop'),
-  stapleLayerZuoberst = require('./stapleLayerZuoberst'),
-  deactivateMenuItems = require('./deactivateMenuItems'),
-  removeSelectFeaturesInSelectableLayers = require('./removeSelectFeaturesInSelectableLayers')
+var $ = require('jquery')
+var ol = require('ol')
+var erstelleModifyInteractionFuerTPop = require('./erstelleModifyInteractionFuerTPop')
+var zeigeTPop = require('./zeigeTPop')
+var styleTPop = require('./styleTPop')
+var erstelleMarkerFuerTPopLayer = require('./erstelleMarkerFuerTPopLayer')
+var aktualisiereKoordinatenVonTPop = require('../aktualisiereKoordinatenVonTPop')
+var stapleLayerZuoberst = require('./stapleLayerZuoberst')
+var deactivateMenuItems = require('./deactivateMenuItems')
+var removeSelectFeaturesInSelectableLayers = require('./removeSelectFeaturesInSelectableLayers')
 
 module.exports = function (tpop) {
   var bounds,
@@ -78,18 +78,19 @@ module.exports = function (tpop) {
         $.when(aktualisiereKoordinatenVonTPop(tpop)).then(function () {
           // marker in tpopLayer ergänzen
           // tpopLayer holen
-          var layers = window.apf.olMap.map.getLayers().getArray(),
-            tpopLayerNr = $('#olMapLayertreeTeilpopulationen').val(),
-            tpopLayer = layers[tpopLayerNr],
-            tpopLayerSource = tpopLayer.getSource()
+          var layers = window.apf.olMap.map.getLayers().getArray()
+          var tpopLayerNr = $('#olMapLayertreeTeilpopulationen').val()
+          var tpopLayer = layers[tpopLayerNr]
+          var tpopLayerSource = tpopLayer.getSource()
           // marker ergänzen
           tpopLayerSource.addFeature(erstelleMarkerFuerTPopLayer(tpop))
           // selects entfernen - aus unerfindlichem Grund ist der neue Marker selektiert
           removeSelectFeaturesInSelectableLayers()
+
+          window.apf.olMap.map.removeInteraction(window.apf.olMap.draw_interaction)
+          // modify-interaction erstellen
+          erstelleModifyInteractionFuerTPop(modifySource)
         })
-        window.apf.olMap.map.removeInteraction(window.apf.olMap.draw_interaction)
-        // modify-interaction erstellen
-        erstelleModifyInteractionFuerTPop(modifySource)
       }, this)
       // verzögern, sonst funktioniert es nicht
       setTimeout(function () {
