@@ -1,8 +1,8 @@
 'use strict'
 
-var $ = require('jquery'),
-  erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
-  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
+var $ = require('jquery')
+var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
+var pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
 
 module.exports = function (aktiverNode) {
   // nur aktualisieren, wenn Schreibrechte bestehen

@@ -1,26 +1,26 @@
 'use strict'
 
-var $ = require('jquery'),
-  initiiereBeob = require('../initiiereBeob'),
-  initiiereIdealbiotop = require('../initiiereIdealbiotop'),
-  initiiereAp = require('../initiiereAp'),
-  initiierePop = require('../initiierePop'),
-  initiiereApziel = require('../initiiereApziel'),
-  initiiereZielber = require('../initiiereZielber'),
-  initiiereErfkrit = require('../initiiereErfkrit'),
-  initiiereJber = require('../initiiereJber'),
-  initiiereJberUebersicht = require('../initiiereJberUebersicht'),
-  initiiereBer = require('../initiiereBer'),
-  initiiereAssozart = require('../initiiereAssozart'),
-  initiierePopMassnBer = require('../initiierePopMassnBer'),
-  initiiereTPop = require('../initiiereTPop'),
-  initiierePopBer = require('../initiierePopBer'),
-  initiiereTPopKontr = require('../initiiereTPopKontr'),
-  initiiereTPopMassn = require('../initiiereTPopMassn'),
-  initiiereTPopMassnBer = require('../initiiereTPopMassnBer'),
-  initiiereTPopBer = require('../initiiereTPopBer'),
-  erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
-  initiiereQualitaetskontrollen = require('../initiiereQualitaetskontrollen')
+var $ = require('jquery')
+var initiiereBeob = require('../initiiereBeob')
+var initiiereIdealbiotop = require('../initiiereIdealbiotop')
+var initiiereAp = require('../initiiereAp')
+var initiierePop = require('../initiierePop')
+var initiiereApziel = require('../initiiereApziel')
+var initiiereZielber = require('../initiiereZielber')
+var initiiereErfkrit = require('../initiiereErfkrit')
+var initiiereJber = require('../initiiereJber')
+var initiiereJberUebersicht = require('../initiiereJberUebersicht')
+var initiiereBer = require('../initiiereBer')
+var initiiereAssozart = require('../initiiereAssozart')
+var initiierePopMassnBer = require('../initiierePopMassnBer')
+var initiiereTPop = require('../initiiereTPop')
+var initiierePopBer = require('../initiierePopBer')
+var initiiereTPopKontr = require('../initiiereTPopKontr')
+var initiiereTPopMassn = require('../initiiereTPopMassn')
+var initiiereTPopMassnBer = require('../initiiereTPopMassnBer')
+var initiiereTPopBer = require('../initiiereTPopBer')
+var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
+var initiiereQualitaetskontrollen = require('../initiiereQualitaetskontrollen')
 
 module.exports = function (event, data, ApArtId) {
   var node,

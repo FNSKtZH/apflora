@@ -1,8 +1,8 @@
 'use strict'
 
-var $ = require('jquery'),
-  aktualisiereKoordinatenVonTPop = require('../aktualisiereKoordinatenVonTPop'),
-  melde = require('../melde')
+var $ = require('jquery')
+var aktualisiereKoordinatenVonTPop = require('../aktualisiereKoordinatenVonTPop')
+var melde = require('../melde')
 
 module.exports = function () {
   var beobfelder_FNS_XGISVal = $('#beobfelder_FNS_XGIS').val(),

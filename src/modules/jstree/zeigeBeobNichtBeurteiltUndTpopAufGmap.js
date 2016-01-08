@@ -1,11 +1,11 @@
 'use strict'
 
-var $ = require('jquery'),
-  erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
-  melde = require('../melde'),
-  zeigeBeobUndTPop = require('../gMap/zeigeBeobUndTPop'),
-  zeigeBeob = require('../gMap/zeigeBeob'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
+var melde = require('../melde')
+var zeigeBeobUndTPop = require('../gMap/zeigeBeobUndTPop')
+var zeigeBeob = require('../gMap/zeigeBeob')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (nodeApId, nodeBeobId) {
   var apId,
