@@ -1,19 +1,18 @@
 'use strict'
 
-var _ = require('underscore'),
-  $ = require('jquery')
+var $ = require('jquery')
 
 module.exports = function () {
   var overlays = window.apf.olMap.map.getOverlays().getArray(),
     zuLoeschendeOverlays = []
 
-  _.each(overlays, function (overlay) {
+  overlays.forEach(function (overlay) {
     if (overlay.get('typ') === 'popup') {
       zuLoeschendeOverlays.push(overlay)
     }
   })
 
-  _.each(zuLoeschendeOverlays, function (overlay) {
+  zuLoeschendeOverlays.forEach(function (overlay) {
     window.apf.olMap.map.removeOverlay(overlay)
   })
 

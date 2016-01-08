@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  removeDragBox = require('./removeDragBox')
+var $ = require('jquery')
+var removeDragBox = require('./removeDragBox')
 
 module.exports = function () {
   if (window.apf.olMap.map.olmapSelectInteraction) {

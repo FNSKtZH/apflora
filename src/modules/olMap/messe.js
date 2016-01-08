@@ -1,8 +1,8 @@
 'use strict'
 
-var addMeasureInteraction = require('./addMeasureInteraction'),
-  deactivateMenuItems = require('./deactivateMenuItems'),
-  removeMeasureInteraction = require('./removeMeasureInteraction')
+var addMeasureInteraction = require('./addMeasureInteraction')
+var deactivateMenuItems = require('./deactivateMenuItems')
+var removeMeasureInteraction = require('./removeMeasureInteraction')
 
 module.exports = function (element) {
   deactivateMenuItems()

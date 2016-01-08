@@ -1,17 +1,17 @@
 'use strict'
 
-var ol = require('ol'),
-  ga = require('ga'),
-  initiiereLayertree = require('./initiiereLayertree'),
-  createLayers = require('./createLayers'),
-  addDragAndDropGeofiles = require('./addDragAndDropGeofiles'),
-  blendeOlmapExportieren = require('./blendeOlmapExportieren'),
-  entferneAlleApfloraLayer = require('./entferneAlleApfloraLayer'),
-  addShowFeatureInfoOnClick = require('./addShowFeatureInfoOnClick'),
-  changeCursorOverFeature = require('./changeCursorOverFeature'),
-  addMousePositionControl = require('./addMousePositionControl'),
-  addFullScreenControl = require('./addFullScreenControl'),
-  entferneModifyInteractionFuerTpop = require('./entferneModifyInteractionFuerTpop')
+var ol = require('ol')
+var ga = require('ga')
+var initiiereLayertree = require('./initiiereLayertree')
+var createLayers = require('./createLayers')
+var addDragAndDropGeofiles = require('./addDragAndDropGeofiles')
+var blendeOlmapExportieren = require('./blendeOlmapExportieren')
+var entferneAlleApfloraLayer = require('./entferneAlleApfloraLayer')
+var addShowFeatureInfoOnClick = require('./addShowFeatureInfoOnClick')
+var changeCursorOverFeature = require('./changeCursorOverFeature')
+var addMousePositionControl = require('./addMousePositionControl')
+var addFullScreenControl = require('./addFullScreenControl')
+var entferneModifyInteractionFuerTpop = require('./entferneModifyInteractionFuerTpop')
 
 module.exports = function () {
   // allfällige Apflora-Ebenen entfernen

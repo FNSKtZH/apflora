@@ -1,7 +1,7 @@
 'use strict'
 
-var initiiereLayertree = require('./initiiereLayertree'),
-  aktualisiereEbeneInLocalStorage = require('./aktualisiereEbeneInLocalStorage')
+var initiiereLayertree = require('./initiiereLayertree')
+var aktualisiereEbeneInLocalStorage = require('./aktualisiereEbeneInLocalStorage')
 
 module.exports = function (layer, title) {
   layer.set('title', title)

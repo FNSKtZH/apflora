@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  entferneLayerNachName = require('./entferneLayerNachName')
+var $ = require('jquery')
+var entferneLayerNachName = require('./entferneLayerNachName')
 
 module.exports = function () {
   entferneLayerNachName('messen')

@@ -1,8 +1,8 @@
 'use strict'
 
-var $ = require('jquery'),
-  erstelleListeDerAusgewaehltenPopTPop = require('../erstelleListeDerAusgewaehltenPopTPop'),
-  getSelectedFeaturesOfType = require('./getSelectedFeaturesOfType')
+var $ = require('jquery')
+var erstelleListeDerAusgewaehltenPopTPop = require('../erstelleListeDerAusgewaehltenPopTPop')
+var getSelectedFeaturesOfType = require('./getSelectedFeaturesOfType')
 
 module.exports = function () {
   var popSelected = [],

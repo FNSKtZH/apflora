@@ -1,14 +1,13 @@
 'use strict'
 
-var _ = require('underscore'),
-  initiiereLayertree = require('./initiiereLayertree')
+var initiiereLayertree = require('./initiiereLayertree')
 
 module.exports = function (layerTitle) {
   var layers = window.apf.olMap.map.getLayers(),
     layersArray = window.apf.olMap.map.getLayers().getArray(),
     topLayer
 
-  _.each(layersArray, function (layer, index) {
+  layersArray.forEach(function (layer, index) {
     if (index > 0) {
       if (layer.get('title') === layerTitle) {
         topLayer = layers.removeAt(index)
