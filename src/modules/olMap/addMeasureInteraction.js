@@ -2,11 +2,11 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  ol = require('ol'),
-  removeMeasureInteraction = require('./removeMeasureInteraction'),
-  formatLength = require('./formatLength'),
-  formatArea = require('./formatArea')
+var $ = require('jquery')
+var ol = require('ol')
+var removeMeasureInteraction = require('./removeMeasureInteraction')
+var formatLength = require('./formatLength')
+var formatArea = require('./formatArea')
 
 module.exports = function (type) {
   var source,

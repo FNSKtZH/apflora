@@ -1,11 +1,10 @@
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  isPointInsidePolygon = require('./isPointInsidePolygon'),
-  zhGeojson = require('../../geojson/ktZh.json'),
-  melde = require('./melde'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var isPointInsidePolygon = require('./isPointInsidePolygon')
+var zhGeojson = require('../../geojson/ktZh.json')
+var melde = require('./melde')
+var getApiHost = require('./getApiHost')
 
 module.exports = function () {
   var qsList = window.apf.qsList
@@ -17,7 +16,7 @@ module.exports = function () {
   }).done(function (data) {
     // Rückgabewert null wird offenbar auch als success gewertet, gibt weiter unten Fehler, also Ausführung verhindern
     if (data) {
-      _.each(data, function (tpop) {
+      data.forEach(function (tpop) {
         if (tpop.TPopApBerichtRelevant === 1 && !isPointInsidePolygon(zhGeojson, tpop.TPopXKoord, tpop.TPopYKoord)) {
           // diese tpop liegt ausserhalb des Kantons, daher sollte sie nicht relevant sein
           // von qsList benötigte Daten anfügen

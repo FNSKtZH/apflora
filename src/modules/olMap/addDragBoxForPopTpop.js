@@ -1,8 +1,8 @@
 'use strict'
 
-var $ = require('jquery'),
-  ol = require('ol'),
-  pruefeObPopTpopGewaehltWurden = require('./pruefeObPopTpopGewaehltWurden')
+var $ = require('jquery')
+var ol = require('ol')
+var pruefeObPopTpopGewaehltWurden = require('./pruefeObPopTpopGewaehltWurden')
 
 module.exports = function () {
   // interaction erstellen

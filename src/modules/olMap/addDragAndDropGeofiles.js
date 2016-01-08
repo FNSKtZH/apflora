@@ -1,10 +1,10 @@
 'use strict'
 
-var ol = require('ol'),
-  frageNameFuerEbene = require('./frageNameFuerEbene'),
-  defaultStyle = require('./defaultStyle'),
-  initiiereLayertree = require('./initiiereLayertree'),
-  erstelleGuid = require('../erstelleGuid')
+var ol = require('ol')
+var frageNameFuerEbene = require('./frageNameFuerEbene')
+var defaultStyle = require('./defaultStyle')
+var initiiereLayertree = require('./initiiereLayertree')
+var erstelleGuid = require('../erstelleGuid')
 
 module.exports = function () {
   var styleFunction,

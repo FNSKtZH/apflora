@@ -4,8 +4,8 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  initiiereBeob = require('./initiiereBeob')
+var $ = require('jquery')
+var initiiereBeob = require('./initiiereBeob')
 
 module.exports = function (formularname, id, statusZuordnung) {
   var $formularname = $('#' + formularname),

@@ -12,11 +12,11 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  aktuellesBerichtjahr = require('./aktuellesBerichtjahr'),
-  kontrolliereRelevanzAusserkantonalerTpop = require('./kontrolliereRelevanzAusserkantonalerTpop'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var _ = require('underscore')
+var aktuellesBerichtjahr = require('./aktuellesBerichtjahr')
+var kontrolliereRelevanzAusserkantonalerTpop = require('./kontrolliereRelevanzAusserkantonalerTpop')
+var getApiHost = require('./getApiHost')
 
 function tellUserIfNoIssues () {
   var html

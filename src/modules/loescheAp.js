@@ -1,11 +1,11 @@
 'use strict'
 
-var $ = require('jquery'),
-  zeigeFormular = require('./zeigeFormular'),
-  frageObUndeleteDatensatz = require('./frageObUndeleteDatensatz'),
-  melde = require('./melde'),
-  erstelleApliste = require('./erstelleApliste'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var zeigeFormular = require('./zeigeFormular')
+var frageObUndeleteDatensatz = require('./frageObUndeleteDatensatz')
+var melde = require('./melde')
+var erstelleApliste = require('./erstelleApliste')
+var getApiHost = require('./getApiHost')
 
 module.exports = function (apId) {
   var $apWaehlenText = $('#apWaehlenText'),

@@ -1,46 +1,45 @@
-/*jslint node: true, browser: true, nomen: true, todo: true, white: true, asi: true */
+/* jslint node: true, browser: true, nomen: true, todo: true, white: true, asi: true */
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  Uri = require('Uri'),
-  initiiereIdealbiotop = require('./initiiereIdealbiotop'),
-  initiiereAp = require('./initiiereAp'),
-  initiierePop = require('./initiierePop'),
-  initiiereApziel = require('./initiiereApziel'),
-  initiiereErfkrit = require('./initiiereErfkrit'),
-  initiiereZielber = require('./initiiereZielber'),
-  initiiereJber = require('./initiiereJber'),
-  initiiereJberUebersicht = require('./initiiereJberUebersicht'),
-  initiiereBer = require('./initiiereBer'),
-  initiierePopMassnBer = require('./initiierePopMassnBer'),
-  initiiereTPop = require('./initiiereTPop'),
-  initiierePopBer = require('./initiierePopBer'),
-  initiiereTPopKontr = require('./initiiereTPopKontr'),
-  initiiereTPopMassn = require('./initiiereTPopMassn'),
-  initiiereTPopMassnBer = require('./initiiereTPopMassnBer'),
-  initiiereTPopBer = require('./initiiereTPopBer'),
-  initiiereBeob = require('./initiiereBeob'),
-  erstelleTree = require('./jstree/erstelleTree'),
-  setzeWindowAp = require('./setzeWindowAp'),
-  setzeWindowPop = require('./setzeWindowPop'),
-  setzeWindowApziel = require('./setzeWindowApziel'),
-  setzeWindowZielber = require('./setzeWindowZielber'),
-  setzeWindowErfkrit = require('./setzeWindowErfkrit'),
-  setzeWindowJber = require('./setzeWindowJber'),
-  setzeWindowJberUebersicht = require('./setzeWindowJberUebersicht'),
-  setzeWindowBer = require('./setzeWindowBer'),
-  setzeWindowIdealbiotop = require('./setzeWindowIdealbiotop'),
-  setzeWindowAssozarten = require('./setzeWindowAssozarten'),
-  setzeWindowPopmassnber = require('./setzeWindowPopmassnber'),
-  setzeWindowTpop = require('./setzeWindowTpop'),
-  setzeWindowPopber = require('./setzeWindowPopber'),
-  setzeWindowTpopfeldkontr = require('./setzeWindowTpopfeldkontr'),
-  setzeWindowTpopmassn = require('./setzeWindowTpopmassn'),
-  setzeWindowTpopmassnber = require('./setzeWindowTpopmassnber'),
-  setzeWindowTpopber = require('./setzeWindowTpopber'),
-  initiiereExporte = require('./initiiereExporte'),
-  initiiereQualitaetskontrollen = require('./initiiereQualitaetskontrollen')
+var $ = require('jquery')
+var _ = require('underscore')
+var Uri = require('Uri')
+var initiiereIdealbiotop = require('./initiiereIdealbiotop')
+var initiiereAp = require('./initiiereAp')
+var initiiereApziel = require('./initiiereApziel')
+var initiiereErfkrit = require('./initiiereErfkrit')
+var initiiereZielber = require('./initiiereZielber')
+var initiiereJber = require('./initiiereJber')
+var initiiereJberUebersicht = require('./initiiereJberUebersicht')
+var initiiereBer = require('./initiiereBer')
+var initiierePopMassnBer = require('./initiierePopMassnBer')
+var initiiereTPop = require('./initiiereTPop')
+var initiierePopBer = require('./initiierePopBer')
+var initiiereTPopKontr = require('./initiiereTPopKontr')
+var initiiereTPopMassn = require('./initiiereTPopMassn')
+var initiiereTPopMassnBer = require('./initiiereTPopMassnBer')
+var initiiereTPopBer = require('./initiiereTPopBer')
+var initiiereBeob = require('./initiiereBeob')
+var erstelleTree = require('./jstree/erstelleTree')
+var setzeWindowAp = require('./setzeWindowAp')
+var setzeWindowPop = require('./setzeWindowPop')
+var setzeWindowApziel = require('./setzeWindowApziel')
+var setzeWindowZielber = require('./setzeWindowZielber')
+var setzeWindowErfkrit = require('./setzeWindowErfkrit')
+var setzeWindowJber = require('./setzeWindowJber')
+var setzeWindowJberUebersicht = require('./setzeWindowJberUebersicht')
+var setzeWindowBer = require('./setzeWindowBer')
+var setzeWindowIdealbiotop = require('./setzeWindowIdealbiotop')
+var setzeWindowAssozarten = require('./setzeWindowAssozarten')
+var setzeWindowPopmassnber = require('./setzeWindowPopmassnber')
+var setzeWindowTpop = require('./setzeWindowTpop')
+var setzeWindowPopber = require('./setzeWindowPopber')
+var setzeWindowTpopfeldkontr = require('./setzeWindowTpopfeldkontr')
+var setzeWindowTpopmassn = require('./setzeWindowTpopmassn')
+var setzeWindowTpopmassnber = require('./setzeWindowTpopmassnber')
+var setzeWindowTpopber = require('./setzeWindowTpopber')
+var initiiereExporte = require('./initiiereExporte')
+var initiiereQualitaetskontrollen = require('./initiiereQualitaetskontrollen')
 
 module.exports = function () {
   var uri = new Uri($(window.location).attr('href')),
@@ -185,8 +184,6 @@ module.exports = function () {
         // muss pop sein
         // markieren, dass nach dem loaded-event im Tree die Pop angezeigt werden soll
         window.apf.popZeigen = true
-      // direkt initiieren, bevor der baum fertig aufgebaut ist
-      // initiierePop(apId, popId)
       }
     } else if (apzielId) {
       if (zielberId) {
