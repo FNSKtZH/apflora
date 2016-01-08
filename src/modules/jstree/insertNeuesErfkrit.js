@@ -12,8 +12,8 @@ module.exports = function (aktiverNode, parentNode, nodeApId) {
     type: 'post',
     url: getApiHost() + '/insert/apflora/tabelle=erfkrit/feld=ApArtId/wert=' + erstelleIdAusDomAttributId(nodeApId) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
-    var strukturtyp = 'erfkrit',
-      beschriftung = 'neues Erfolgskriterium'
+    var strukturtyp = 'erfkrit'
+    var beschriftung = 'neues Erfolgskriterium'
     if ($(aktiverNode).attr('id') === nodeApId) {
       insertNeuenNodeEineHierarchiestufeTiefer(aktiverNode, parentNode, strukturtyp, id, beschriftung)
     } else {

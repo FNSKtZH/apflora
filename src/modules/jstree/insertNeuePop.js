@@ -12,8 +12,8 @@ module.exports = function (aktiverNode, parentNode, nodeApId) {
     type: 'post',
     url: getApiHost() + '/insert/apflora/tabelle=pop/feld=ApArtId/wert=' + erstelleIdAusDomAttributId(nodeApId) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
-    var strukturtyp = 'pop',
-      beschriftung = 'neue Population'
+    var strukturtyp = 'pop'
+    var beschriftung = 'neue Population'
     if ($(aktiverNode).attr('id') === nodeApId) {
       insertNeuenNodeEineHierarchiestufeTiefer(aktiverNode, parentNode, strukturtyp, id, beschriftung)
     } else {

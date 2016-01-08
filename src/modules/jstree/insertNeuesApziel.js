@@ -12,8 +12,8 @@ module.exports = function (aktiverNode, parentNode, nodeApId) {
     type: 'post',
     url: getApiHost() + '/insert/apflora/tabelle=ziel/feld=ApArtId/wert=' + erstelleIdAusDomAttributId(nodeApId) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
-    var strukturtyp = 'apziel',
-      beschriftung = 'neues Ziel'
+    var strukturtyp = 'apziel'
+    var beschriftung = 'neues Ziel'
 
     // mitteilen, dass von ganz oben ein apziel erstellt wird und daher noch ein Zwischenordner erstellt werden muss
     window.localStorage.apzielVonOrdnerApziel = true

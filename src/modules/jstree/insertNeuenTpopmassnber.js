@@ -12,8 +12,8 @@ module.exports = function (aktiverNode, parentNode, nodeTpopId) {
     type: 'post',
     url: getApiHost() + '/insert/apflora/tabelle=tpopmassnber/feld=TPopId/wert=' + erstelleIdAusDomAttributId(nodeTpopId) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
-    var strukturtyp = 'tpopmassnber',
-      beschriftung = 'neuer Massnahmen-Bericht'
+    var strukturtyp = 'tpopmassnber'
+    var beschriftung = 'neuer Massnahmen-Bericht'
     if ($(aktiverNode).attr('id') === nodeTpopId) {
       insertNeuenNodeEineHierarchiestufeTiefer(aktiverNode, parentNode, strukturtyp, id, beschriftung)
     } else {
