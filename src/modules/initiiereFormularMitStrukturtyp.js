@@ -6,10 +6,10 @@
  * ruft diese Funktion auf
  */
 
-var _ = require('underscore'),
-  conf = require('../../configuration'),
-  fn = {},
-  fnInitiiereFunktion
+var _ = require('underscore')
+var conf = require('../../configuration')
+var fn = {}
+var fnInitiiereFunktion
 
 // diese Funktionen werden in ein Objekt gepackt
 // Grund: Ihr Name kann für die Ausführung als String übergeben werden

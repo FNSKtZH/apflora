@@ -1,7 +1,7 @@
 'use strict'
 
-var setzeKartenhoehe = require('../setzeKartenhoehe'),
-  setzeTreehoehe = require('../jstree/setzeTreehoehe')
+var setzeKartenhoehe = require('../setzeKartenhoehe')
+var setzeTreehoehe = require('../jstree/setzeTreehoehe')
 
 module.exports = function () {
   setzeTreehoehe()
