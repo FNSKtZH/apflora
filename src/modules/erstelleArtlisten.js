@@ -30,10 +30,10 @@ module.exports = function () {
         },
         change: function (event, ui) {
           // sicherstellen, dass nur Werte aus der Liste gewählt werden können
-          var textPasstZuId = true,
-            $AaSisfNr = $('#AaSisfNr'),
-            id = $AaSisfNr.val(),
-            text
+          var textPasstZuId = true
+          var $AaSisfNr = $('#AaSisfNr')
+          var id = $AaSisfNr.val()
+          var text
 
           if (id) {
             text = _.find(window.apf.artliste, function (art) {

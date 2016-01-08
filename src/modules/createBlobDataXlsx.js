@@ -21,12 +21,12 @@ function datenum(v, date1904) {
 }
 
 function sheetFromArrayOfArrays(data) {
-    var ws = {},
-        range = {s: {c: 10000000, r: 10000000}, e: {c: 0, r: 0 }},
-        R,
-        C,
-        cell,
-        cell_ref;
+    var ws = {}
+    var range = {s: {c: 10000000, r: 10000000}, e: {c: 0, r: 0 }}
+    var R
+    var C
+    var cell
+    var cell_ref;
 
     for (R = 0; R !== data.length; ++R) {
         for (C = 0; C !== data[R].length; ++C) {

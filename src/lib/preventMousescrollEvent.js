@@ -57,11 +57,11 @@ module.exports = function ($) {
   })
 
   function handler (event) {
-    var orgEvent = event || window.event,
-      args = [].slice.call(arguments, 1),
-      delta = 0,
-      deltaX = 0,
-      deltaY = 0
+    var orgEvent = event || window.event
+    var args = [].slice.call(arguments, 1)
+    var delta = 0
+    var deltaX = 0
+    var deltaY = 0
 
     event = $.event.fix(orgEvent)
     event.type = 'mousewheel'

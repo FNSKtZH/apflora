@@ -74,10 +74,10 @@ module.exports = function (nodeTpopId) {
       })
     }
   }, function (err, results) {
-    var beobArray = results.getBeob || null,
-      tpopArray = results.getTpop || null,
-      markierteTpop,
-      tpopListeMarkiert
+    var beobArray = results.getBeob || null
+    var tpopArray = results.getTpop || null
+    var markierteTpop
+    var tpopListeMarkiert
 
     // prüfen, ob Daten erhalten wurden
     if (err) {
@@ -96,7 +96,7 @@ module.exports = function (nodeTpopId) {
     // o.k., wir haben nun alle benötigten Daten
 
     tpopListeMarkiert = _.filter(tpopArray, function (tpop) {
-      return tpop.TPopId === tpopId    // 2015.05.29 == korrigiert, ag
+      return tpop.TPopId === tpopId // 2015.05.29 == korrigiert, ag
     })
 
     markierteTpop = waehleAusschnittFuerUebergebeneTPop(tpopListeMarkiert, true)

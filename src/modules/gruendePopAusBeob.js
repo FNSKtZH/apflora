@@ -61,10 +61,10 @@ module.exports = function (beobNodeId) {
   }).then(function () {
     // 7. move beob
     // this assigns it to tpop und updates ui
-    var neuerPopNode,
-      popOrdnerNode,
-      neuerTPopNode,
-      tpopOrdnerNode
+    var neuerPopNode
+    var popOrdnerNode
+    var neuerTPopNode
+    var tpopOrdnerNode
 
     // create pop node
     popOrdnerNode = $('#apOrdnerPop' + apId)

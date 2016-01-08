@@ -100,20 +100,20 @@ module.exports = function (ApArtId) {
         .focus()
     }
   }).bind('move_node.jstree', function (e, data) {
-    var herkunftNode,
-      herkunftNodeId,
-      herkunftNodeTyp,
-      zielNode,
-      zielNodeId,
-      zielNodeTyp,
-      zielParentNode,
-      zielParentNodeId,
-      beobId,
-      beobStatus,
-      tpopId,
-      beobTpopId,
-      olmapCallback,
-      jstreeCallback
+    var herkunftNode
+    var herkunftNodeId
+    var herkunftNodeTyp
+    var zielNode
+    var zielNodeId
+    var zielNodeTyp
+    var zielParentNode
+    var zielParentNodeId
+    var beobId
+    var beobStatus
+    var tpopId
+    var beobTpopId
+    var olmapCallback
+    var jstreeCallback
 
     // nur aktualisieren, wenn Schreibrechte bestehen
     if (!pruefeSchreibvoraussetzungen()) {

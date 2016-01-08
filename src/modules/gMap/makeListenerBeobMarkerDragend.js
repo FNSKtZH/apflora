@@ -11,11 +11,11 @@ var getApiHost = require('../getApiHost')
 
 module.exports = function (markerBeob, Beob) {
   google.maps.event.addListener(markerBeob, 'dragend', function (event) {
-    var lat,
-      lng,
-      X,
-      Y,
-      that
+    var lat
+    var lng
+    var X
+    var Y
+    var that
 
     that = this
     // Koordinaten berechnen

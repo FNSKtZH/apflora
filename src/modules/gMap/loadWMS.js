@@ -118,16 +118,16 @@ module.exports = function (map, baseURL, customParams) {
 
   overlayOptions = {
     getTileUrl: function (coord, zoom) {
-      var lULP = new google.maps.Point(coord.x * 256, (coord.y + 1) * 256),
-        lLRP = new google.maps.Point((coord.x + 1) * 256, coord.y * 256),
-        projectionMap = new MercatorProjection(),
-        lULg = projectionMap.fromDivPixelToSphericalMercator(lULP, zoom),
-        lLRg = projectionMap.fromDivPixelToSphericalMercator(lLRP, zoom),
-        lUL_Latitude = lULg.y,
-        lUL_Longitude = lULg.x,
-        lLR_Latitude = lLRg.y,
-        lLR_Longitude = lLRg.x,
-        urlResult
+      var lULP = new google.maps.Point(coord.x * 256, (coord.y + 1) * 256)
+      var lLRP = new google.maps.Point((coord.x + 1) * 256, coord.y * 256)
+      var projectionMap = new MercatorProjection()
+      var lULg = projectionMap.fromDivPixelToSphericalMercator(lULP, zoom)
+      var lLRg = projectionMap.fromDivPixelToSphericalMercator(lLRP, zoom)
+      var lUL_Latitude = lULg.y
+      var lUL_Longitude = lULg.x
+      var lLR_Latitude = lLRg.y
+      var lLR_Longitude = lLRg.x
+      var urlResult
 
       // GJ: there is a bug when crossing the -180 longitude border (tile does not render) - this check seems to fix it
       if (lLR_Longitude < lUL_Longitude) {
