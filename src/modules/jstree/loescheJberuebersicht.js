@@ -1,11 +1,11 @@
 'use strict'
 
-var $ = require('jquery'),
-  erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
-  melde = require('../melde'),
-  frageObUndeleteDatensatz = require('../frageObUndeleteDatensatz'),
-  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
+var melde = require('../melde')
+var frageObUndeleteDatensatz = require('../frageObUndeleteDatensatz')
+var pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (aktiverNode) {
   // nur aktualisieren, wenn Schreibrechte bestehen

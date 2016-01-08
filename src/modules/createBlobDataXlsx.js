@@ -6,7 +6,7 @@
  *
  **/
 
-/*jslint node: true, browser: true, nomen: true, todo: true, plusplus: true, continue: true*/
+/* jslint node: true, browser: true, nomen: true, todo: true, plusplus: true, continue: true*/
 'use strict';
 
 var XLSX = require('XLSX'),

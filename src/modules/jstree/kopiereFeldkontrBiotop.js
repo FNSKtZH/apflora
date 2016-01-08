@@ -1,4 +1,4 @@
-/*jslint node: true, browser: true, nomen: true, todo: true, white: true, asi: true */
+/* jslint node: true, browser: true, nomen: true, todo: true, white: true, asi: true */
 'use strict'
 
 var $ = require('jquery')
