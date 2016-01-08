@@ -3,12 +3,12 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  initiiereFormularMitStrukturtyp = require('../initiiereFormularMitStrukturtyp'),
-  erstelleUnterordnerVonTpop = require('./erstelleUnterordnerVonTpop'),
-  erstelleUnterordnerVonPop = require('./erstelleUnterordnerVonPop'),
-  erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
-  beschrifteOrdner = require('../beschrifteOrdner')
+var $ = require('jquery')
+var initiiereFormularMitStrukturtyp = require('../initiiereFormularMitStrukturtyp')
+var erstelleUnterordnerVonTpop = require('./erstelleUnterordnerVonTpop')
+var erstelleUnterordnerVonPop = require('./erstelleUnterordnerVonPop')
+var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
+var beschrifteOrdner = require('../beschrifteOrdner')
 
 module.exports = function (aktiverNode, parentNode, strukturtyp, dsId, beschriftung) {
   var neuerNode,

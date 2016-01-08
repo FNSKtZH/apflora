@@ -1,9 +1,9 @@
 'use strict'
 
-var $ = require('jquery'),
-  insertNeuenNodeEineHierarchiestufeTiefer = require('./insertNeuenNodeEineHierarchiestufeTiefer'),
-  melde = require('../melde'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var insertNeuenNodeEineHierarchiestufeTiefer = require('./insertNeuenNodeEineHierarchiestufeTiefer')
+var melde = require('../melde')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (aktiverNode, parentNode, nodeText) {
   $.ajax({
