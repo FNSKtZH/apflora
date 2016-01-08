@@ -1,15 +1,15 @@
 'use strict'
 
-var _ = require('underscore'),
-  google = require('google'),
-  MarkerClusterer = require('MarkerClusterer'),
-  MarkerWithLabel = require('MarkerWithLabel'),
-  chToWgsLat = require('../../lib/chToWgsLat'),
-  chToWgsLng = require('../../lib/chToWgsLng'),
-  zeigeFormular = require('../zeigeFormular'),
-  beschrifteTPopMitNrFuerKarte = require('../beschrifteTPopMitNrFuerKarte'),
-  makeListenerMarkerClick = require('./makeListenerMarkerClick'),
-  getApiHost = require('../getApiHost')
+var _ = require('underscore')
+var google = require('google')
+var MarkerClusterer = require('MarkerClusterer')
+var MarkerWithLabel = require('MarkerWithLabel')
+var chToWgsLat = require('../../lib/chToWgsLat')
+var chToWgsLng = require('../../lib/chToWgsLng')
+var zeigeFormular = require('../zeigeFormular')
+var beschrifteTPopMitNrFuerKarte = require('../beschrifteTPopMitNrFuerKarte')
+var makeListenerMarkerClick = require('./makeListenerMarkerClick')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (tpopListe) {
   var anzTpop,

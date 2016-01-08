@@ -1,13 +1,13 @@
 'use strict'
 
-var $ = require('jquery'),
-  google = require('google'),
-  chToWgsLat = require('../../lib/chToWgsLat'),
-  chToWgsLng = require('../../lib/chToWgsLng'),
-  ddInChY = require('../../lib/ddInChY'),
-  ddInChX = require('../../lib/ddInChX'),
-  melde = require('../melde'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var google = require('google')
+var chToWgsLat = require('../../lib/chToWgsLat')
+var chToWgsLng = require('../../lib/chToWgsLng')
+var ddInChY = require('../../lib/ddInChY')
+var ddInChX = require('../../lib/ddInChX')
+var melde = require('../melde')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (markerBeob, Beob) {
   google.maps.event.addListener(markerBeob, 'dragend', function (event) {

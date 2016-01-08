@@ -1,13 +1,13 @@
 'use strict'
 
-var _ = require('underscore'),
-  google = require('google'),
-  MarkerWithLabel = require('MarkerWithLabel'),
-  MarkerClusterer = require('MarkerClusterer'),
-  chToWgsLng = require('../../lib/chToWgsLng'),
-  chToWgsLat = require('../../lib/chToWgsLat'),
-  zeigeFormular = require('../zeigeFormular'),
-  makeListenerMarkerClick = require('./makeListenerMarkerClick')
+var _ = require('underscore')
+var google = require('google')
+var MarkerWithLabel = require('MarkerWithLabel')
+var MarkerClusterer = require('MarkerClusterer')
+var chToWgsLng = require('../../lib/chToWgsLng')
+var chToWgsLat = require('../../lib/chToWgsLat')
+var zeigeFormular = require('../zeigeFormular')
+var makeListenerMarkerClick = require('./makeListenerMarkerClick')
 
 module.exports = function (beobListe) {
   var anzBeob,

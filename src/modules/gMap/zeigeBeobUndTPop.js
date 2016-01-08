@@ -1,16 +1,16 @@
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  google = require('google'),
-  MarkerWithLabel = require('MarkerWithLabel'),
-  MarkerClusterer = require('MarkerClusterer'),
-  chToWgsLat = require('../../lib/chToWgsLat'),
-  chToWgsLng = require('../../lib/chToWgsLng'),
-  zeigeFormular = require('../zeigeFormular'),
-  beschrifteTPopMitNrFuerKarte = require('../beschrifteTPopMitNrFuerKarte'),
-  makeListenerMarkerClick = require('./makeListenerMarkerClick'),
-  makeListenerBeobMarkerDragend = require('./makeListenerBeobMarkerDragend')
+var $ = require('jquery')
+var _ = require('underscore')
+var google = require('google')
+var MarkerWithLabel = require('MarkerWithLabel')
+var MarkerClusterer = require('MarkerClusterer')
+var chToWgsLat = require('../../lib/chToWgsLat')
+var chToWgsLng = require('../../lib/chToWgsLng')
+var zeigeFormular = require('../zeigeFormular')
+var beschrifteTPopMitNrFuerKarte = require('../beschrifteTPopMitNrFuerKarte')
+var makeListenerMarkerClick = require('./makeListenerMarkerClick')
+var makeListenerBeobMarkerDragend = require('./makeListenerBeobMarkerDragend')
 
 module.exports = function (beobListe, tpopListe) {
   var anzBeob,

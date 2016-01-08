@@ -1,13 +1,13 @@
 'use strict'
 
-var $ = require('jquery'),
-  google = require('google'),
-  chToWgsLng = require('../../lib/chToWgsLng'),
-  chToWgsLat = require('../../lib/chToWgsLat'),
-  zeigeFormular = require('../zeigeFormular'),
-  setLocationTPop = require('./setLocationTPop'),
-  erstelleMarker = require('./erstelleMarker'),
-  beschrifteTPopMitNrFuerKarte = require('../beschrifteTPopMitNrFuerKarte')
+var $ = require('jquery')
+var google = require('google')
+var chToWgsLng = require('../../lib/chToWgsLng')
+var chToWgsLat = require('../../lib/chToWgsLat')
+var zeigeFormular = require('../zeigeFormular')
+var setLocationTPop = require('./setLocationTPop')
+var erstelleMarker = require('./erstelleMarker')
+var beschrifteTPopMitNrFuerKarte = require('../beschrifteTPopMitNrFuerKarte')
 
 module.exports = function (tpop) {
   var infowindow = new google.maps.InfoWindow(),

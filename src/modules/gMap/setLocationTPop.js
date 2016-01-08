@@ -1,13 +1,13 @@
 'use strict'
 
-var $ = require('jquery'),
-  google = require('google'),
-  ddInChY = require('../../lib/ddInChY'),
-  ddInChX = require('../../lib/ddInChX'),
-  melde = require('../melde'),
-  clearInfoWindows = require('./clearInfoWindows'),
-  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var google = require('google')
+var ddInChY = require('../../lib/ddInChY')
+var ddInChX = require('../../lib/ddInChX')
+var melde = require('../melde')
+var clearInfoWindows = require('./clearInfoWindows')
+var pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (latLng, map, marker, tpop) {
   var lat,
