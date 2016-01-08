@@ -9,44 +9,44 @@ var detailplanStyle = require('./detailplanStyle')
 var getApiHost = require('../getApiHost')
 
 module.exports = function () {
-  var bingStylesObject,
-    bingStyles,
-    bingLayers,
-    chOrtholuftbildLayer,
-    chLkGrauLayer,
-    chLkFarbeLayer,
-    chSiegriedkarteLayer,
-    chGemeindenLayer,
-    chKantoneLayer,
-    chParzellenLayer,
-    chAmLayer,
-    chAmWanderLayer,
-    chAuenLayer,
-    chFmLayer,
-    chHmLayer,
-    chTwwLayer,
-    chVogelreservateLayer,
-    detailplaeneLayerSource,
-    detailplaeneLayer,
-    zhAvLayer,
-    zhKartierungenLayerSource,
-    loadZhKartierungenLayerLource,
-    zhKartierungenLayer,
-    zhSvoFarbigLayer,
-    zhSvoGrauLayer,
-    zhLichteWaelderLayer,
-    zhWaldkartierungLayer,
-    zhGemeindenLayer,
-    zhOrtholuftbildLayer1,
-    zhOrtholuftbildLayer,
-    zhUepLayer,
-    zhBasiskartenLayer,
-    zhHoehenmodellLayer,
-    layersProv,
-    layers,
-    styleFunction,
-    eigeneEbenen,
-    eigeneEbenenLayers
+  var bingStylesObject
+  var bingStyles
+  var bingLayers
+  var chOrtholuftbildLayer
+  var chLkGrauLayer
+  var chLkFarbeLayer
+  var chSiegriedkarteLayer
+  var chGemeindenLayer
+  var chKantoneLayer
+  var chParzellenLayer
+  var chAmLayer
+  var chAmWanderLayer
+  var chAuenLayer
+  var chFmLayer
+  var chHmLayer
+  var chTwwLayer
+  var chVogelreservateLayer
+  var detailplaeneLayerSource
+  var detailplaeneLayer
+  var zhAvLayer
+  var zhKartierungenLayerSource
+  var loadZhKartierungenLayerLource
+  var zhKartierungenLayer
+  var zhSvoFarbigLayer
+  var zhSvoGrauLayer
+  var zhLichteWaelderLayer
+  var zhWaldkartierungLayer
+  var zhGemeindenLayer
+  var zhOrtholuftbildLayer1
+  var zhOrtholuftbildLayer
+  var zhUepLayer
+  var zhBasiskartenLayer
+  var zhHoehenmodellLayer
+  var layersProv
+  var layers
+  var styleFunction
+  var eigeneEbenen
+  var eigeneEbenenLayers
 
   // bing-maps wäre schön
     // ol3 can't reproject raster tiles yet though
@@ -428,11 +428,11 @@ module.exports = function () {
     // diese hinzufügen
     eigeneEbenen = JSON.parse(window.localStorage.olmapEigeneEbenen)
     eigeneEbenenLayers = []
-    _.each(eigeneEbenen, function (ebene) {
-      var format,
-        features,
-        vectorSource,
-        layer
+    eigeneEbenen.forEach(function (ebene) {
+      var format
+      var features
+      var vectorSource
+      var layer
 
       format = new ol.format.GeoJSON()
       features = format.readFeatures(ebene)

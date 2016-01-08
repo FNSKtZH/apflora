@@ -3,10 +3,10 @@
 var initiiereLayertree = require('./initiiereLayertree')
 
 module.exports = function () {
-  var layersArray,
-    kategorie,
-    title,
-    zuLoeschendeLayer = []
+  var layersArray
+  var kategorie
+  var title
+  var zuLoeschendeLayer = []
 
   if (window.apf.olMap && window.apf.olMap.map) {
     // getLayers retourniert ein Objekt!!!

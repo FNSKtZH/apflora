@@ -9,15 +9,15 @@ var formatLength = require('./formatLength')
 var formatArea = require('./formatArea')
 
 module.exports = function (type) {
-  var source,
-    messenLayer,
+  var source
+  var messenLayer
     // Currently drawed feature
     // @type {ol.Feature}
-    sketch = null,
+  var sketch = null
     // Element for currently drawed feature
     // @type {Element}
-    sketchElement,
-    mouseMoveHandler
+  var sketchElement
+  var mouseMoveHandler
 
   // allfällige Resten entfernen
   removeMeasureInteraction()

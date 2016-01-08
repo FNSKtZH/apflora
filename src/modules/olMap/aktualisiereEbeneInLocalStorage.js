@@ -11,10 +11,10 @@ var _ = require('underscore')
 
 module.exports = function (layer, remove) {
   // mit der guid kontrollieren, ob die Ebene schon existiert
-  var guid = layer.get('guid'),
-    eigeneEbenen = [],
-    format,
-    dataParsed
+  var guid = layer.get('guid')
+  var eigeneEbenen = []
+  var format
+  var dataParsed
 
   if (window.localStorage.olmapEigeneEbenen) {
     eigeneEbenen = JSON.parse(window.localStorage.olmapEigeneEbenen)

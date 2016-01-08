@@ -3,8 +3,8 @@
 var $ = require('jquery')
 
 module.exports = function () {
-  var overlays = window.apf.olMap.map.getOverlays().getArray(),
-    zuLoeschendeOverlays = []
+  var overlays = window.apf.olMap.map.getOverlays().getArray()
+  var zuLoeschendeOverlays = []
 
   overlays.forEach(function (overlay) {
     if (overlay.get('typ') === 'popup') {

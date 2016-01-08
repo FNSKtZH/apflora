@@ -32,9 +32,9 @@ module.exports = function () {
   window.apf.olMap.map.addInteraction(dragAndDropInteraction)
 
   dragAndDropInteraction.on('addfeatures', function (event) {
-    var vectorSource,
-      dragAndDropLayer,
-      view
+    var vectorSource
+    var dragAndDropLayer
+    var view
 
     vectorSource = new ol.source.Vector({
       features: event.features

@@ -24,16 +24,16 @@ module.exports = function () {
 
   // Aktion bei boxend erstellen
   window.apf.olMap.dragBoxInteraction.on('boxend', function () {
-    var geometry = window.apf.olMap.dragBoxInteraction.getGeometry(),
-      extent = geometry.getExtent(),
-      layers = window.apf.olMap.map.getLayers().getArray(),
-      popLayerNr = $('#olMapLayertreePopulationen').val(),
-      popLayer = layers[popLayerNr],
-      tpopLayerNr = $('#olMapLayertreeTeilpopulationen').val(),
-      tpopLayer = layers[tpopLayerNr],
-      popLayerSource = popLayer.getSource(),
-      tpopLayerSource = tpopLayer.getSource(),
-      selectedFeatures = window.apf.olMap.map.olmapSelectInteraction.getFeatures().getArray()
+    var geometry = window.apf.olMap.dragBoxInteraction.getGeometry()
+    var extent = geometry.getExtent()
+    var layers = window.apf.olMap.map.getLayers().getArray()
+    var popLayerNr = $('#olMapLayertreePopulationen').val()
+    var popLayer = layers[popLayerNr]
+    var tpopLayerNr = $('#olMapLayertreeTeilpopulationen').val()
+    var tpopLayer = layers[tpopLayerNr]
+    var popLayerSource = popLayer.getSource()
+    var tpopLayerSource = tpopLayer.getSource()
+    var selectedFeatures = window.apf.olMap.map.olmapSelectInteraction.getFeatures().getArray()
 
     if (popLayer.get('visible') === true) {
       popLayerSource.forEachFeatureInExtent(extent, function (feature) {

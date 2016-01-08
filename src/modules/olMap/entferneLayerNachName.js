@@ -4,9 +4,9 @@ var aktualisiereEbeneInLocalStorage = require('./aktualisiereEbeneInLocalStorage
 var getLayersWithTitle = require('./getLayersWithTitle')
 
 module.exports = function (name) {
-  var layersArray = getLayersWithTitle(),
-    layername,
-    layerKategorie
+  var layersArray = getLayersWithTitle()
+  var layername
+  var layerKategorie
 
   layersArray.forEach(function (layer) {
     layername = layer.get('title')
