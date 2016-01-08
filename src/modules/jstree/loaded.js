@@ -1,8 +1,8 @@
 'use strict'
 
-var $ = require('jquery'),
-  initiiereAp = require('../initiiereAp'),
-  setzeTreehoehe = require('./setzeTreehoehe')
+var $ = require('jquery')
+var initiiereAp = require('../initiiereAp')
+var setzeTreehoehe = require('./setzeTreehoehe')
 
 module.exports = function (ApArtId) {
   setzeTreehoehe()

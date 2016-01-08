@@ -1,8 +1,8 @@
 /*jslint node: true, browser: true, nomen: true, todo: true, white: true, asi: true */
 'use strict'
 
-var $ = require('jquery'),
-  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
+var $ = require('jquery')
+var pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
 
 module.exports = function () {
   var tpopKontrFlaeche = $('#TPopKontrFlaeche').val(),
@@ -25,7 +25,7 @@ module.exports = function () {
     fkb
 
   // nur fortfahren, wenn Schreibrechte bestehen
-  if (!pruefeSchreibvoraussetzungen()) { return }
+  if (!pruefeSchreibvoraussetzungen()) return
   delete window.apf.feldkontrBiotop
   window.apf.feldkontrBiotop = fkb = {}
   if (tpopKontrFlaeche) { fkb.TPopKontrFlaeche = tpopKontrFlaeche }

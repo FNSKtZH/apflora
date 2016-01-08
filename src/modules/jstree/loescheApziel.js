@@ -1,19 +1,19 @@
 'use strict'
 
-var $ = require('jquery'),
-  erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
-  melde = require('../melde'),
-  frageObUndeleteDatensatz = require('../frageObUndeleteDatensatz'),
-  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen'),
-  beschrifteOrdner = require('../beschrifteOrdner'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
+var melde = require('../melde')
+var frageObUndeleteDatensatz = require('../frageObUndeleteDatensatz')
+var pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
+var beschrifteOrdner = require('../beschrifteOrdner')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (aktiverNode, parentNode) {
   var grandparentNode,
     bezeichnung
 
   // nur aktualisieren, wenn Schreibrechte bestehen
-  if (!pruefeSchreibvoraussetzungen()) { return }
+  if (!pruefeSchreibvoraussetzungen()) return
   // selektieren, falls direkt mit der rechten Maustaste gewählt wurde
   $.jstree._reference(aktiverNode).deselect_all()
   // alle tieferen Knoten öffnen um zu zeigen, was mit gelöscht wird
