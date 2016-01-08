@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  erstelleApliste = require('./erstelleApliste')
+var $ = require('jquery')
+var erstelleApliste = require('./erstelleApliste')
 
 module.exports = function (programm) {
   var $apWaehlen = $('#apWaehlen'),

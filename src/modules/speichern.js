@@ -5,13 +5,13 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  configuration = require('../../configuration'),
-  melde = require('./melde'),
-  pruefeSchreibvoraussetzungen = require('./pruefeSchreibvoraussetzungen'),
-  speichern2 = require('./speichern2'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var _ = require('underscore')
+var configuration = require('../../configuration')
+var melde = require('./melde')
+var pruefeSchreibvoraussetzungen = require('./pruefeSchreibvoraussetzungen')
+var speichern2 = require('./speichern2')
+var getApiHost = require('./getApiHost')
 
 module.exports = function (that) {
   var feldtyp,
@@ -33,7 +33,7 @@ module.exports = function (that) {
   table = _.findWhere(configuration.tables, {form: formular})
   tabelleInDb = table.tabelleInDb
   tabelleIdFeld = table.tabelleIdFeld
-  feldname = $(that).data('feld') || that.name   // tpopkontrzahl: die Namen müssen die id enthalten
+  feldname = $(that).data('feld') || that.name // tpopkontrzahl: die Namen müssen die id enthalten
   feldtyp = $(that).attr('type') || null
 
   // Feldwert ermitteln

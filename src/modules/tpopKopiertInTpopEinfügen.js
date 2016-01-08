@@ -2,13 +2,13 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  insertNeuenNodeAufGleicherHierarchiestufe = require('./jstree/insertNeuenNodeAufGleicherHierarchiestufe'),
-  erstelleIdAusDomAttributId = require('./erstelleIdAusDomAttributId'),
-  melde = require('./melde'),
-  pruefeSchreibvoraussetzungen = require('./pruefeSchreibvoraussetzungen'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var _ = require('underscore')
+var insertNeuenNodeAufGleicherHierarchiestufe = require('./jstree/insertNeuenNodeAufGleicherHierarchiestufe')
+var erstelleIdAusDomAttributId = require('./erstelleIdAusDomAttributId')
+var melde = require('./melde')
+var pruefeSchreibvoraussetzungen = require('./pruefeSchreibvoraussetzungen')
+var getApiHost = require('./getApiHost')
 
 module.exports = function (aktiverNode, parentNode) {
   var data = {}

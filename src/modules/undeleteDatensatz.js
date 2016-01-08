@@ -11,13 +11,13 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  melde = require('./melde'),
-  waehleApliste = require('./waehleApliste'),
-  oeffneUri = require('./oeffneUri'),
-  erstelleTree = require('./jstree/erstelleTree'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var _ = require('underscore')
+var melde = require('./melde')
+var waehleApliste = require('./waehleApliste')
+var oeffneUri = require('./oeffneUri')
+var erstelleTree = require('./jstree/erstelleTree')
+var getApiHost = require('./getApiHost')
 
 module.exports = function () {
   var tabelle,

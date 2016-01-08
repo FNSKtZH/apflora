@@ -6,10 +6,10 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  initiiereOlmap = require('./olMap/initiiereOlmap'),
-  fitTextareaToContent = require('./fitTextareaToContent'),
-  setzeKartenhoehe = require('./setzeKartenhoehe')
+var $ = require('jquery')
+var initiiereOlmap = require('./olMap/initiiereOlmap')
+var fitTextareaToContent = require('./fitTextareaToContent')
+var setzeKartenhoehe = require('./setzeKartenhoehe')
 
 module.exports = function (Formularname) {
   var formularAngezeigt = $.Deferred(),

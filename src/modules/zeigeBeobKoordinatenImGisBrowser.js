@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  melde = require('./melde')
+var $ = require('jquery')
+var melde = require('./melde')
 
 module.exports = function () {
   var url,

@@ -5,11 +5,11 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  waehleAp = require('./waehleAp'),
-  melde = require('./melde'),
-  erstelleLabelFuerMassnahme = require('./erstelleLabelFuerMassnahme'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var waehleAp = require('./waehleAp')
+var melde = require('./melde')
+var erstelleLabelFuerMassnahme = require('./erstelleLabelFuerMassnahme')
+var getApiHost = require('./getApiHost')
 
 module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId, feldname, feldwert) {
   var popbeschriftung,
