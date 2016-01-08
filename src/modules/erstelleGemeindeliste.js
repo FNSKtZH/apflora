@@ -1,9 +1,9 @@
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  melde = require('./melde'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var _ = require('underscore')
+var melde = require('./melde')
+var getApiHost = require('./getApiHost')
 
 // übernimmt $ wegen jquery ui
 module.exports = function () {

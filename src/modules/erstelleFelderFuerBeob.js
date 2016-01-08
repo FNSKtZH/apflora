@@ -3,9 +3,9 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  beobFeldInputText = require('../templates/beobFeldInputText'),
-  beobFeldTextarea = require('../templates/beobFeldTextarea')
+var $ = require('jquery')
+var beobFeldInputText = require('../templates/beobFeldInputText')
+var beobFeldTextarea = require('../templates/beobFeldTextarea')
 
 module.exports = function (data, beobtyp) {
   // Titel für Beob im Formular erstellen

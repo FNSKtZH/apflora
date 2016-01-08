@@ -1,8 +1,8 @@
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var _ = require('underscore')
+var getApiHost = require('./getApiHost')
 
 module.exports = function () {
   // nur machen, wenn noch nicht passiert - sonst werden die html dauernd ersetzt

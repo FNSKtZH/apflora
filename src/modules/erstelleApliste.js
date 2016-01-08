@@ -1,9 +1,9 @@
 'use strict'
 
-var $ = require('jquery'),
-  setzeAutocompleteFuerApliste = require('./setzeAutocompleteFuerApliste'),
-  setzeAutocompleteFuerEwmsApliste = require('./setzeAutocompleteFuerEwmsApliste'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var setzeAutocompleteFuerApliste = require('./setzeAutocompleteFuerApliste')
+var setzeAutocompleteFuerEwmsApliste = require('./setzeAutocompleteFuerEwmsApliste')
+var getApiHost = require('./getApiHost')
 
 module.exports = function (programm, callback) {
   window.apf.apliste = window.apf.apliste || {}

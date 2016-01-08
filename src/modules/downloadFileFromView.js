@@ -3,11 +3,11 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  saveAs = require('saveAs'),
-  getTimestamp = require('./getTimestamp'),
-  createBlobDataXlsx = require('./createBlobDataXlsx'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var saveAs = require('saveAs')
+var getTimestamp = require('./getTimestamp')
+var createBlobDataXlsx = require('./createBlobDataXlsx')
+var getApiHost = require('./getApiHost')
 
 module.exports = function (view, filename, format) {
   var url,
