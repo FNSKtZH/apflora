@@ -1,11 +1,11 @@
 'use strict'
 
-var $ = require('jquery'),
-  getAdressenHtml = require('./getAdressenHtml'),
-  zeigeFormular = require('./zeigeFormular'),
-  melde = require('./melde'),
-  leereFelderVonFormular = require('./leereFelderVonFormular'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var getAdressenHtml = require('./getAdressenHtml')
+var zeigeFormular = require('./zeigeFormular')
+var melde = require('./melde')
+var leereFelderVonFormular = require('./leereFelderVonFormular')
+var getApiHost = require('./getApiHost')
 
 module.exports = function (apId) {
   // prüfen, ob voraussetzungen gegeben sind

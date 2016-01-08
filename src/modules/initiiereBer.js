@@ -1,12 +1,12 @@
 'use strict'
 
-var $ = require('jquery'),
-  initiiereAp = require('./initiiereAp'),
-  limiter = require('../lib/limiter'),
-  zeigeFormular = require('./zeigeFormular'),
-  melde = require('./melde'),
-  leereFelderVonFormular = require('./leereFelderVonFormular'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var initiiereAp = require('./initiiereAp')
+var limiter = require('../lib/limiter')
+var zeigeFormular = require('./zeigeFormular')
+var melde = require('./melde')
+var leereFelderVonFormular = require('./leereFelderVonFormular')
+var getApiHost = require('./getApiHost')
 
 // damit kann man die verbleibende Anzahl Zeichen, die in einem Feld erfasst werden, anzeigen
 // Quelle: https://www.scriptiny.com/2012/09/jquery-input-textarea-limiter/

@@ -1,14 +1,14 @@
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  dateFormat = require('dateformat'),
-  capitaliseFirstLetter = require('../lib/capitaliseFirstLetter'),
-  initiiereAp = require('./initiiereAp'),
-  zeigeFormular = require('./zeigeFormular'),
-  melde = require('./melde'),
-  erstelleFelderFuerBeob = require('./erstelleFelderFuerBeob'),
-  getApiHost = require('./getApiHost')
+var $ = require('jquery')
+var _ = require('underscore')
+var dateFormat = require('dateformat')
+var capitaliseFirstLetter = require('../lib/capitaliseFirstLetter')
+var initiiereAp = require('./initiiereAp')
+var zeigeFormular = require('./zeigeFormular')
+var melde = require('./melde')
+var erstelleFelderFuerBeob = require('./erstelleFelderFuerBeob')
+var getApiHost = require('./getApiHost')
 
 var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
   // beobStatus markiert, ob die Beobachtung:

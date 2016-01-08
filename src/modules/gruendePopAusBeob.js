@@ -1,15 +1,11 @@
 'use strict'
 
-var $ = require('jquery'),
-  erstelleIdAusDomAttributId = require('./erstelleIdAusDomAttributId'),
-  melde = require('./melde'),
-  getApiHost = require('./getApiHost'),
-  getAppHost = require('./getAppHost'),
-  insertNeuePop = require('./jstree/insertNeuePop'),
-  insertNeueTpop = require('./jstree/insertNeueTpop'),
-  ordneBeobEinerTpopZu = require('./ordneBeobEinerTpopZu'),
-  erstelleUnterordnerVonPop = require('./jstree/erstelleUnterordnerVonPop'),
-  erstelleUnterordnerVonTpop = require('./jstree/erstelleUnterordnerVonTpop')
+var $ = require('jquery')
+var erstelleIdAusDomAttributId = require('./erstelleIdAusDomAttributId')
+var melde = require('./melde')
+var getApiHost = require('./getApiHost')
+var erstelleUnterordnerVonPop = require('./jstree/erstelleUnterordnerVonPop')
+var erstelleUnterordnerVonTpop = require('./jstree/erstelleUnterordnerVonTpop')
 
 module.exports = function (beobNodeId) {
   console.log('gruendePopAusBeob.js: called with beobNodeId =', beobNodeId)

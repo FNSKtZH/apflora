@@ -1,6 +1,6 @@
 'use strict'
 
-var $ = require('jquery'),
-  google = require('google')
+var $ = require('jquery')
+var google = require('google')
 
 module.exports = function () {}
