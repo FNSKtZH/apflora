@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  waehleAp = require('../../waehleAp')
+var $ = require('jquery')
+var waehleAp = require('../../waehleAp')
 
 module.exports = function () {
   waehleAp()

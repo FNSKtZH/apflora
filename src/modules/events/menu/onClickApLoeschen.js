@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  loescheAp = require('../../loescheAp')
+var $ = require('jquery')
+var loescheAp = require('../../loescheAp')
 
 module.exports = function () {
   var $apWaehlen = $('#apWaehlen')

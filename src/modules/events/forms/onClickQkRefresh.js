@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  kontrolliereProgramm = require('../../kontrolliereProgramm')
+var $ = require('jquery')
+var kontrolliereProgramm = require('../../kontrolliereProgramm')
 
 module.exports = function (event) {
   event.preventDefault()

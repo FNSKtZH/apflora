@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  waehleApListe = require('../../waehleApListe')
+var $ = require('jquery')
+var waehleApListe = require('../../waehleApListe')
 
 module.exports = function () {
   waehleApListe($(this).attr('id'))

@@ -1,8 +1,8 @@
 'use strict'
 
-var $ = require('jquery'),
-  getTimestamp = require('../../getTimestamp'),
-  getApiHost = require('../../getApiHost')
+var $ = require('jquery')
+var getTimestamp = require('../../getTimestamp')
+var getApiHost = require('../../getApiHost')
 
 module.exports = function () {
   var apId = this.value
