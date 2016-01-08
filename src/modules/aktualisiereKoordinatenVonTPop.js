@@ -5,8 +5,8 @@ var melde = require('./melde')
 var getApiHost = require('./getApiHost')
 
 module.exports = function (tpop) {
-  var koordAktualisiert = $.Deferred(),
-    felder = {}
+  var koordAktualisiert = $.Deferred()
+  var felder = {}
 
   // Objekt vorbereiten, das die Felder, ihre Werte und übrige benötigte Angaben enthält
   felder.id = tpop.TPopId

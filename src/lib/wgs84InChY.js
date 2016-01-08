@@ -6,11 +6,11 @@
 'use strict'
 
 module.exports = function (breiteGrad, breiteMin, breiteSec, laengeGrad, laengeMin, laengeSec) {
-  var lat,
-    lng,
-    latAux,
-    lngAux,
-    y
+  var lat
+  var lng
+  var latAux
+  var lngAux
+  var y
 
   // Converts degrees dec to sex
   lat = breiteSec + breiteMin * 60 + breiteGrad * 3600

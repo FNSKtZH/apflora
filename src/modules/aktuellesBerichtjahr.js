@@ -6,19 +6,12 @@
 'use strict'
 
 module.exports = function () {
-  var date,
-    month,
-    jear,
-    berichtjahr
+  var date = new Date()
+  var month = date.getMonth()
+  var jear = date.getFullYear()
+  var berichtjahr = jear
 
-  date = new Date()
-  month = date.getMonth()
-  jear = date.getFullYear()
-  berichtjahr = jear
-
-  if (month < 4) {
-    berichtjahr = jear - 1
-  }
+  if (month < 4) berichtjahr = jear - 1
 
   return berichtjahr
 }

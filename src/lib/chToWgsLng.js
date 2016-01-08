@@ -7,9 +7,9 @@
 
 module.exports = function (y, x) {
   // Converts militar to civil and to unit = 1000km
-  var lng,
-    yAux,
-    xAux
+  var lng
+  var yAux
+  var xAux
 
   // Axiliary values (% Bern)
   yAux = (y - 600000) / 1000000
