@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  nenneEbeneUm = require('./nenneEbeneUm')
+var $ = require('jquery')
+var nenneEbeneUm = require('./nenneEbeneUm')
 
 module.exports = function (eigeneEbene) {
   var nameErfragt = $.Deferred(),

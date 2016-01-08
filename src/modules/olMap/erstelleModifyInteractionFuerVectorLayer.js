@@ -1,13 +1,13 @@
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  ol = require('ol'),
-  frageNameFuerEbene = require('./frageNameFuerEbene'),
-  entferneModifyInteractionFuerVectorLayer = require('./entferneModifyInteractionFuerVectorLayer'),
-  defaultStyle = require('./defaultStyle'),
-  aktualisiereEbeneInLocalStorage = require('./aktualisiereEbeneInLocalStorage'),
-  erstelleGuid = require('../erstelleGuid')
+var $ = require('jquery')
+var _ = require('underscore')
+var ol = require('ol')
+var frageNameFuerEbene = require('./frageNameFuerEbene')
+var entferneModifyInteractionFuerVectorLayer = require('./entferneModifyInteractionFuerVectorLayer')
+var defaultStyle = require('./defaultStyle')
+var aktualisiereEbeneInLocalStorage = require('./aktualisiereEbeneInLocalStorage')
+var erstelleGuid = require('../erstelleGuid')
 
 module.exports = function (vectorlayer) {
   var layerTitle,

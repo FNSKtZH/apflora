@@ -5,13 +5,12 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  ol = require('ol'),
-  styleTPop = require('./styleTPop'),
-  erstelleMarkerFuerTPopLayer = require('./erstelleMarkerFuerTPopLayer'),
-  addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers'),
-  pruefeObPopTpopGewaehltWurden = require('./pruefeObPopTpopGewaehltWurden')
+var $ = require('jquery')
+var ol = require('ol')
+var styleTPop = require('./styleTPop')
+var erstelleMarkerFuerTPopLayer = require('./erstelleMarkerFuerTPopLayer')
+var addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers')
+var pruefeObPopTpopGewaehltWurden = require('./pruefeObPopTpopGewaehltWurden')
 
 module.exports = function (tpopListe, tpopidMarkiert, visible, beobZuordnen) {
   var tpopLayerErstellt = $.Deferred(),
@@ -29,7 +28,7 @@ module.exports = function (tpopListe, tpopidMarkiert, visible, beobZuordnen) {
 
   visible = (visible === true)
 
-  _.each(tpopListe, function (tpop) {
+  tpopListe.forEach(function (tpop) {
     // marker erstellen...
     marker = erstelleMarkerFuerTPopLayer(tpop)
 

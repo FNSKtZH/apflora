@@ -1,6 +1,6 @@
 // wird aufgerufen, wenn der ap geändert wird
 
-/*jslint node: true, browser: true, nomen: true, todo: true, white: true, asi: true */
+/* jslint node: true, browser: true, nomen: true, todo: true, white: true, asi: true */
 'use strict'
 
 // ULTRA KOMISCHER FEHLER: Wenn Module vor module.exports referenziert werden,

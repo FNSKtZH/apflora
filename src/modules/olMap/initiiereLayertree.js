@@ -3,15 +3,15 @@
 // <li><input type="checkbox" id="olmap_layertree_Ebene 1"><label for="olmap_layertree_Ebene 1">Ebene 1</label></li><hr>
 // activeKategorie: der Bereich dieser Kategorie soll offen sein
 
-/*jslint node: true, browser: true, nomen: true, todo: true, plusplus: true, asi: true */
+/* jslint node: true, browser: true, nomen: true, todo: true, plusplus: true, asi: true */
 'use strict'
 
-var _ = require('underscore'),
-  $ = require('jquery'),
-  berechneLayertreeMaxhoehe = require('./berechneLayertreeMaxhoehe'),
-  contentLayertreePop = require('../../templates/olMap/layertreePop'),
-  contentLayertreeTpop = require('../../templates/olMap/layertreeTpop'),
-  contentLayertreeEigeneEbene = require('../../templates/olMap/layertreeEigeneEbene')
+var _ = require('underscore')
+var $ = require('jquery')
+var berechneLayertreeMaxhoehe = require('./berechneLayertreeMaxhoehe')
+var contentLayertreePop = require('../../templates/olMap/layertreePop')
+var contentLayertreeTpop = require('../../templates/olMap/layertreeTpop')
+var contentLayertreeEigeneEbene = require('../../templates/olMap/layertreeEigeneEbene')
 
 module.exports = function (activeKategorie) {
   var layertitel,
@@ -62,7 +62,7 @@ module.exports = function (activeKategorie) {
     .accordion({collapsible: true, active: false, heightStyle: 'content'})
     .accordion('destroy')
 
-  _.each(layers, function (layer, index) {
+  layers.forEach(function (layer, index) {
     layertitel = layer.get('title') || '(Ebene ohne Titel)'
     visible = layer.get('visible')
     kategorie = layer.get('kategorie')

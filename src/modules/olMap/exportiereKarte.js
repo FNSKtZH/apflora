@@ -1,7 +1,7 @@
 'use strict'
 
-var saveAs = require('saveAs'),
-  canvas = require('canvas')
+var saveAs = require('saveAs')
+var canvas = require('canvas')
 
 module.exports = function () {
   canvas = document.getElementsByTagName('canvas')[0]

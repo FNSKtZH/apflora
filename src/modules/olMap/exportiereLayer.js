@@ -1,8 +1,8 @@
 'use strict'
 
-var ol = require('ol'),
-  melde = require('../melde'),
-  download = require('../download')
+var ol = require('ol')
+var melde = require('../melde')
+var download = require('../download')
 
 module.exports = function (layer, selectedValue) {
   var layerName = layer.get('title') || 'Eigene_Ebene',

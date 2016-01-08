@@ -4,13 +4,12 @@
 
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  ol = require('ol'),
-  stylePop = require('./stylePop'),
-  popContent = require('../../templates/olMap/popupPop'),
-  addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers'),
-  pruefeObPopTpopGewaehltWurden = require('./pruefeObPopTpopGewaehltWurden')
+var $ = require('jquery')
+var ol = require('ol')
+var stylePop = require('./stylePop')
+var popContent = require('../../templates/olMap/popupPop')
+var addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers')
+var pruefeObPopTpopGewaehltWurden = require('./pruefeObPopTpopGewaehltWurden')
 
 module.exports = function (popliste, popidMarkiert, visible) {
   var popLayerErstellt = $.Deferred(),
@@ -31,7 +30,7 @@ module.exports = function (popliste, popidMarkiert, visible) {
 
   visible = (visible === true)
 
-  _.each(popliste, function (pop) {
+  popliste.forEach(function (pop) {
     myName = pop.PopName || '(kein Name)'
     popupContent = popContent(pop)
 

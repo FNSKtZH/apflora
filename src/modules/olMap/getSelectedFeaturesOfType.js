@@ -1,7 +1,6 @@
 'use strict'
 
-var _ = require('underscore'),
-  getSelectedFeatures = require('./getSelectedFeatures')
+var getSelectedFeatures = require('./getSelectedFeatures')
 
 module.exports = function (type) {
   var featuresArray = getSelectedFeatures(),
@@ -11,7 +10,7 @@ module.exports = function (type) {
   if (featuresArray.length === 0) {
     return []
   }
-  _.each(featuresArray, function (feature) {
+  featuresArray.forEach(function (feature) {
     featureType = feature.get('myTyp')
     if (featureType === type) {
       returnArray.push(feature)
