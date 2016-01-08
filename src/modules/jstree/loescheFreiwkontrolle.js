@@ -1,18 +1,18 @@
 'use strict'
 
-var $ = require('jquery'),
-  erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId'),
-  melde = require('../melde'),
-  frageObUndeleteDatensatz = require('../frageObUndeleteDatensatz'),
-  pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen'),
-  beschrifteOrdner = require('../beschrifteOrdner'),
-  getApiHost = require('../getApiHost')
+var $ = require('jquery')
+var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
+var melde = require('../melde')
+var frageObUndeleteDatensatz = require('../frageObUndeleteDatensatz')
+var pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
+var beschrifteOrdner = require('../beschrifteOrdner')
+var getApiHost = require('../getApiHost')
 
 module.exports = function (aktiverNode, parentNode) {
   var bezeichnung
 
   // nur aktualisieren, wenn Schreibrechte bestehen
-  if (!pruefeSchreibvoraussetzungen()) { return }
+  if (!pruefeSchreibvoraussetzungen()) return
   bezeichnung = $.jstree._reference(aktiverNode).get_text(aktiverNode)
   $('#loeschen_dialog_mitteilung').html("Die Freiwilligen-Kontrolle '" + bezeichnung + "' wird gelöscht.")
   $('#loeschen_dialog').dialog({

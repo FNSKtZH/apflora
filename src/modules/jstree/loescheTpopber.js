@@ -12,7 +12,7 @@ module.exports = function (aktiverNode, parentNode) {
   var bezeichnung
 
   // nur aktualisieren, wenn Schreibrechte bestehen
-  if (!pruefeSchreibvoraussetzungen()) { return }
+  if (!pruefeSchreibvoraussetzungen()) return
   bezeichnung = $.jstree._reference(aktiverNode).get_text(aktiverNode)
   $('#loeschen_dialog_mitteilung').html("Der Teilpopulations-Bericht '" + bezeichnung + "' wird gelöscht.")
   $('#loeschen_dialog').dialog({
