@@ -1,8 +1,8 @@
 'use strict'
 
-var _ = require('underscore'),
-  downloadFileFromView = require('../../downloadFileFromView'),
-  downloadFileFromViewWehreIdIn = require('../../downloadFileFromViewWehreIdIn')
+var _ = require('underscore')
+var downloadFileFromView = require('../../downloadFileFromView')
+var downloadFileFromViewWehreIdIn = require('../../downloadFileFromViewWehreIdIn')
 
 module.exports = function () {
   // wenn pop ausgewählt, diese übergeben
