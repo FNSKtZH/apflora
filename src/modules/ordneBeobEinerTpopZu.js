@@ -31,12 +31,12 @@ function aktualisiereGlobaleVariable (tpopId) {
 }
 
 function aktualisiereZuordnungInOlmap (beobId, tpopId) {
-  var newBeobZuordGeometry,
-    beobZuordnungFeature,
-    beobX = window.apf.beob.COORDONNEE_FED_E,
-    beobY = window.apf.beob.COORDONNEE_FED_N,
-    tpopX,
-    tpopY
+  var newBeobZuordGeometry
+  var beobZuordnungFeature
+  var beobX = window.apf.beob.COORDONNEE_FED_E
+  var beobY = window.apf.beob.COORDONNEE_FED_N
+  var tpopX
+  var tpopY
 
   // koordinaten der tpop holen
   $.ajax({
@@ -60,8 +60,8 @@ function aktualisiereZuordnungInOlmap (beobId, tpopId) {
 }
 
 module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback, jstreeCallback) {
-  var $beobNode,
-    $beobNichtBeurteilt
+  var $beobNode
+  var $beobNichtBeurteilt
 
   $beobNode = $('#beob' + beobId)
 
@@ -126,10 +126,10 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
         if (!olmapCallback && window.apf.olMap.beobZuordnungsLayerFeatures && $('#olMap').is(':visible')) {
           // vermutlich sollte das beobzuordnungs-Layer nachgeführt werden
           // und zwar soll die BeobZuordnung bleiben, aber nur ein Punkt sein
-          var newBeobZuordGeometry,
-            beobZuordnungFeature,
-            beobX = window.apf.beob.COORDONNEE_FED_E,
-            beobY = window.apf.beob.COORDONNEE_FED_N
+          var newBeobZuordGeometry
+          var beobZuordnungFeature
+          var beobX = window.apf.beob.COORDONNEE_FED_E
+          var beobY = window.apf.beob.COORDONNEE_FED_N
 
           newBeobZuordGeometry = new ol.geom.LineString([[beobX, beobY], [beobX, beobY]])
           // beob zuordnen

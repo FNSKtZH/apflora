@@ -7,14 +7,14 @@ var $ = require('jquery')
 var ol = require('ol')
 
 module.exports = function (feature, resolution, selected) {
-  var icon = 'img/flora_icon_braun.png',
-    imageStyle,
-    textInhalt,
-    textStyle,
-    strokeColor = 'white',
-    styleWithText,
-    styleWithoutText,
-    $layertreePopNr = $('#layertreePopNr')
+  var icon = 'img/flora_icon_braun.png'
+  var imageStyle
+  var textInhalt
+  var textStyle
+  var strokeColor = 'white'
+  var styleWithText
+  var styleWithoutText
+  var $layertreePopNr = $('#layertreePopNr')
 
   // markierte: icon ist orange und Text hat roten Hintergrund
   if (selected) {

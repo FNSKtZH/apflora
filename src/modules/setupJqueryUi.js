@@ -43,9 +43,9 @@ module.exports = function () {
   })
 
   // Datumsfelder: Widget initiieren
-  var monate = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
-    wochentageKurz = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
-    wochentageLang = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
+  var monate = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+  var wochentageKurz = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa']
+  var wochentageLang = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
 
   $.datepicker.setDefaults({
     buttonImage: 'style/images/calendar.gif',

@@ -9,14 +9,14 @@ var $ = require('jquery')
 var ol = require('ol')
 
 module.exports = function (feature, resolution, selected, verorten) {
-  var icon = 'img/flora_icon.png',
-    imageStyle,
-    textInhalt,
-    textStyle,
-    strokeColor = 'white',
-    styleWithText,
-    styleWithoutText,
-    $layertreeTpopNr = $('#layertreeTpopNr')
+  var icon = 'img/flora_icon.png'
+  var imageStyle
+  var textInhalt
+  var textStyle
+  var strokeColor = 'white'
+  var styleWithText
+  var styleWithoutText
+  var $layertreeTpopNr = $('#layertreeTpopNr')
 
   // markierte: icon ist gelb
   if (selected) {

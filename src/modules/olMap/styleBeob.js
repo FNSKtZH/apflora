@@ -6,9 +6,9 @@
 var ol = require('ol')
 
 module.exports = function (feature, resolution, selected) {
-  var icon = selected ? 'img/flora_icon_blau.png' : 'img/flora_icon_violett.png',
-    imageStyle,
-    style
+  var icon = selected ? 'img/flora_icon_blau.png' : 'img/flora_icon_violett.png'
+  var imageStyle
+  var style
 
   imageStyle = new ol.style.Icon( /** @type {olx.style.IconOptions} */ ({
     anchor: [0.5, 35],

@@ -7,15 +7,15 @@
 var _ = require('underscore')
 
 module.exports = function (tpopListeMarkiert, zuordnen) {
-  var bounds,
-    xArray = [],
-    yArray = [],
-    xMax,
-    yMax,
-    xMin,
-    yMin,
-    dist,
-    tpopidMarkiert = []
+  var bounds
+  var xArray = []
+  var yArray = []
+  var xMax
+  var yMax
+  var xMin
+  var yMin
+  var dist
+  var tpopidMarkiert = []
 
   dist = zuordnen ? 500 : 70
 

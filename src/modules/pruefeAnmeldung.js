@@ -5,8 +5,8 @@ var melde = require('./melde')
 var getApiHost = require('./getApiHost')
 
 module.exports = function () {
-  var $anmeldungName = $('#anmeldungName').val(),
-    $anmeldungPasswort = $('#anmeldungPasswort').val()
+  var $anmeldungName = $('#anmeldungName').val()
+  var $anmeldungPasswort = $('#anmeldungPasswort').val()
 
   // Leserechte zurücksetzen
   delete window.sessionStorage.NurLesen

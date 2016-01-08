@@ -12,14 +12,14 @@ var deactivateMenuItems = require('./deactivateMenuItems')
 var removeSelectFeaturesInSelectableLayers = require('./removeSelectFeaturesInSelectableLayers')
 
 module.exports = function (tpop) {
-  var bounds,
-    xMax,
-    xMin,
-    yMax,
-    yMin,
-    newFeature,
-    modifySource,
-    modifyLayer
+  var bounds
+  var xMax
+  var xMin
+  var yMax
+  var yMin
+  var newFeature
+  var modifySource
+  var modifyLayer
 
   // tpop hat keine PopNr
   // Infos von Pop müssen ergänzt werden, weil sie als Label angezeigt werden

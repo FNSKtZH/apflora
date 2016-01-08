@@ -7,14 +7,14 @@ var entfernePopupOverlays = require('./entfernePopupOverlays')
 var sucheFeaturesAtPixel = require('./sucheFeaturesAtPixel')
 
 module.exports = function (pixel, coordinate) {
-  var features = sucheFeaturesAtPixel(pixel),
-    overlay,
-    popupId,
-    popupIdArray = [],
-    koordinaten,
-    popupTitle,
-    popupText = '',
-    featuresMitTyp
+  var features = sucheFeaturesAtPixel(pixel)
+  var overlay
+  var popupId
+  var popupIdArray = []
+  var koordinaten
+  var popupTitle
+  var popupText = ''
+  var featuresMitTyp
 
   // es scheint auch weitere Features zu geben (z.B. wenn man genau auf die Koordinate einer Pop klickt)
   // nur die gewollten behalten

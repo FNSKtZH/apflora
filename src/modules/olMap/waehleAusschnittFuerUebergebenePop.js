@@ -7,18 +7,18 @@
 var _ = require('underscore')
 
 module.exports = function (popListeMarkiert) {
-  var bounds,
-    xArray = [],
-    yArray = [],
-    xMax,
-    yMax,
-    xMin,
-    yMin,
-    popidMarkiert = []
+  var bounds
+  var xArray = []
+  var yArray = []
+  var xMax
+  var yMax
+  var xMin
+  var yMin
+  var popidMarkiert = []
 
   // bounds der anzuzeigenden bestimmen
   if (popListeMarkiert && popListeMarkiert.length > 0) {
-    _.each(popListeMarkiert, function (pop) {
+    popListeMarkiert.forEach(function (pop) {
       popidMarkiert.push(pop.PopId)
       xArray.push(pop.PopXKoord)
       yArray.push(pop.PopYKoord)
