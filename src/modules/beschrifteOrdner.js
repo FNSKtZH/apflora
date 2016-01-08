@@ -6,9 +6,9 @@
 var $ = require('jquery')
 
 module.exports = function (node) {
-  var anz,
-    anzTxt,
-    nodeTyp = node.attr('typ')
+  var anz
+  var anzTxt
+  var nodeTyp = node.attr('typ')
 
   anz = $(node).find('> ul > li').length
 

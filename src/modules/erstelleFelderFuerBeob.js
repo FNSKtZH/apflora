@@ -9,9 +9,9 @@ var beobFeldTextarea = require('../templates/beobFeldTextarea')
 
 module.exports = function (data, beobtyp) {
   // Titel für Beob im Formular erstellen
-  var beobtitel = '<h1>Informationen aus ',
-    htmlBeobfelder,
-    nichtAnzuzeigendeFelder = ['NO_ISFS', 'ESPECE', 'CUSTOM_TEXT_5_', 'OBJECTID', 'FNS_GISLAYER', 'FNS_ISFS', 'ID', 'FNS_JAHR', 'NOM_COMPLET', 'FAMILLE']
+  var beobtitel = '<h1>Informationen aus '
+  var htmlBeobfelder
+  var nichtAnzuzeigendeFelder = ['NO_ISFS', 'ESPECE', 'CUSTOM_TEXT_5_', 'OBJECTID', 'FNS_GISLAYER', 'FNS_ISFS', 'ID', 'FNS_JAHR', 'NOM_COMPLET', 'FAMILLE']
 
   if (beobtyp === 'infospezies') {
     beobtitel += 'Info Spezies'

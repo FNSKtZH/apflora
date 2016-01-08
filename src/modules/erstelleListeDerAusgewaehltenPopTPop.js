@@ -5,16 +5,16 @@ var _ = require('underscore')
 
 module.exports = function (popSelected, tpopSelected) {
   // rückmelden, welche Objekte gewählt wurden
-  var rueckmeldung = '',
-    popId,
-    popNr,
-    tpopId,
-    tpopNr,
-    popTpopNr,
-    listentitel,
-    exportieren,
-    exportierenPop,
-    exportierenTPop
+  var rueckmeldung = ''
+  var popId
+  var popNr
+  var tpopId
+  var tpopNr
+  var popTpopNr
+  var listentitel
+  var exportieren
+  var exportierenPop
+  var exportierenTPop
 
   // globale Variabeln anlegen, damit die Exportfunktionen sie später nutzen können
   window.apf.olMap.popSelected = popSelected
@@ -31,7 +31,7 @@ module.exports = function (popSelected, tpopSelected) {
       rueckmeldung += "<p class='ergebnisAuswahlListeTitel'>" + popSelected.length + ' Populationen: </p>'
     }
     rueckmeldung += '<table>'
-    _.each(popSelected, function (pop) {
+    popSelected.forEach(function (pop) {
       popId = pop.get('myId')
       rueckmeldung += '<tr><td><a href="#" onclick="window.apf.oeffnePop(\'' + popId + '\')">'
       rueckmeldung += pop.get('popNr') + ':<\/a></td><td><a href="#" onclick="window.apf.oeffnePop(\'' + popId + '\')">' + pop.get('popName') + '<\/a></td></tr>'
@@ -51,7 +51,7 @@ module.exports = function (popSelected, tpopSelected) {
       rueckmeldung += "<p class='ergebnisAuswahlListeTitel ergebnisAuswahlListeTitelTPop'>" + tpopSelected.length + ' Teilpopulationen: </p>'
     }
     rueckmeldung += '<table>'
-    _.each(tpopSelected, function (tpop) {
+    tpopSelected.forEach(function (tpop) {
       tpopId = tpop.get('myId')
       rueckmeldung += '<tr><td><a href="#" onclick="window.apf.oeffneTPopInNeuemTab(\'' + tpopId + '\')">'
       rueckmeldung += tpop.get('tpopNrLabel') + ':<\/a></td><td><a href="#" onclick="window.apf.oeffneTPopInNeuemTab(\'' + tpopId + '\')">'

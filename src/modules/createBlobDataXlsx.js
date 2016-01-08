@@ -9,8 +9,8 @@
 /* jslint node: true, browser: true, nomen: true, todo: true, plusplus: true, continue: true*/
 'use strict';
 
-var XLSX = require('XLSX'),
-    _    = require('underscore');
+var XLSX = require('XLSX')
+var _    = require('underscore')
 
 function datenum(v, date1904) {
     if (date1904) {

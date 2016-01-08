@@ -10,9 +10,9 @@ var createBlobDataXlsx = require('./createBlobDataXlsx')
 var getApiHost = require('./getApiHost')
 
 module.exports = function (view, filename, format) {
-  var url,
-    blob,
-    blobData
+  var url
+  var blob
+  var blobData
 
   format = format || 'csv'
 
@@ -20,9 +20,10 @@ module.exports = function (view, filename, format) {
     // Daten als json holen
     // TODO: wird als text/html geholt!!!????
     $.ajax({
-      /*beforeSend: function(xhrObj){
-              xhrObj.setRequestHeader("Content-Type","application/json")
-              xhrObj.setRequestHeader("Accept","application/json")
+      /*
+      beforeSend: function(xhrObj){
+        xhrObj.setRequestHeader("Content-Type","application/json")
+        xhrObj.setRequestHeader("Accept","application/json")
       },*/
       type: 'get',
       url: getApiHost() + '/exportView/xlsx/view=' + view,
