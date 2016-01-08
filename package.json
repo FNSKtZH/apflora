@@ -9,6 +9,7 @@
     "predeploy": "gulp prod_clean_dist",
     "deploy": "gulp prod",
     "postdeploy": "gulp prod_sftp_sftp",
+    "yolo": "npm run deploy",
     "test": "standard src/apflora.js && standard src/modules/**/*.js && standard src/lib/**/*.js"
   },
   "browserify": {
