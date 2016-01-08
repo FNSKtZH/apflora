@@ -1,13 +1,13 @@
 /*jslint node: true, browser: true, nomen: true, todo: true, plusplus: true, asi: true */
 'use strict'
 
-var $ = require('jquery'),
-  _ = require('underscore'),
-  ol = require('ol'),
-  styleTPop = require('./styleTPop'),
-  aktualisiereKoordinatenVonTPop = require('../aktualisiereKoordinatenVonTPop'),
-  tpopContent = require('../../templates/olMap/popupTpop'),
-  entferneModifyInteractionFuerTpop = require('./entferneModifyInteractionFuerTpop')
+var $ = require('jquery')
+var _ = require('underscore')
+var ol = require('ol')
+var styleTPop = require('./styleTPop')
+var aktualisiereKoordinatenVonTPop = require('../aktualisiereKoordinatenVonTPop')
+var tpopContent = require('../../templates/olMap/popupTpop')
+var entferneModifyInteractionFuerTpop = require('./entferneModifyInteractionFuerTpop')
 
 module.exports = function (modifySource) {
   var modifyOverlay

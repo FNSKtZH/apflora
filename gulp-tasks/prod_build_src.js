@@ -1,8 +1,8 @@
 'use strict'
 
-var gulp = require('gulp'),
-  uglify = require('gulp-uglify'),
-  concat = require('gulp-concat')
+var gulp = require('gulp')
+var uglify = require('gulp-uglify')
+var concat = require('gulp-concat')
 
 gulp.task('prod_build_src', function () {
   return gulp.src([

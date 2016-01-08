@@ -1,9 +1,9 @@
 'use strict'
 
-var gulp = require('gulp'),
-  gulpHandlebars = require('gulp-handlebars'),
-  handlebars = require('handlebars'),
-  defineModule = require('gulp-define-module')
+var gulp = require('gulp')
+var gulpHandlebars = require('gulp-handlebars')
+var handlebars = require('handlebars')
+var defineModule = require('gulp-define-module')
 
 gulp.task('templates', function () {
   return gulp.src('src/templatesDev/**/*')

@@ -1,7 +1,7 @@
 'use strict'
 
-var gulp = require('gulp'),
-  concat = require('gulp-concat-sourcemap')
+var gulp = require('gulp')
+var concat = require('gulp-concat-sourcemap')
 
 gulp.task('dev_src', function () {
   return gulp.src([

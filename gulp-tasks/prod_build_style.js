@@ -1,7 +1,7 @@
-var gulp = require('gulp'),
-  autoprefixer = require('gulp-autoprefixer'),
-  minifycss = require('gulp-minify-css'),
-  concat = require('gulp-concat-sourcemap')
+var gulp = require('gulp')
+var autoprefixer = require('gulp-autoprefixer')
+var minifycss = require('gulp-minify-css')
+var concat = require('gulp-concat-sourcemap')
 
 gulp.task('prod_build_style', function () {
   return gulp.src([
