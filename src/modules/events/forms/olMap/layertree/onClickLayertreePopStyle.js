@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  stylePop = require('../../../../olMap/stylePop')
+var $ = require('jquery')
+var stylePop = require('../../../../olMap/stylePop')
 
 module.exports = function () {
   var layers = window.apf.olMap.map.getLayers().getArray(),

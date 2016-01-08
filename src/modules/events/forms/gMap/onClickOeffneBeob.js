@@ -1,7 +1,7 @@
 'use strict'
 
-var $ = require('jquery'),
-  oeffneBeob = require('../../../oeffneBeob')
+var $ = require('jquery')
+var oeffneBeob = require('../../../oeffneBeob')
 
 module.exports = function (event) {
   event.preventDefault()
