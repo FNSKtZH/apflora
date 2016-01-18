@@ -48,7 +48,7 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
   window.localStorage.beobId = beobId
 
   // EvAB oder Infospezies? > entsprechende url zusammensetzen
-  if (beobTyp === 'evab') {
+  if (beobTyp.includes('evab')) {
     idFeld = 'NO_NOTE_PROJET'
     url = getApiHost() + '/beob/tabelle=beob_evab/feld=' + idFeld + '/wertString=' + beobId
   } else {
