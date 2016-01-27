@@ -111,6 +111,10 @@ module.exports = function (berichtjahr) {
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_statusaktuellletzterpopbererloschen')
   // Population: Status ist "erloschen", der letzte Populations-Bericht meldet aber "aktuell"
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_statuserloschenletzterpopberaktuell')
+  // Teilpopulation: Status ist "aktuell", der letzte Teilpopulations-Bericht meldet aber "erloschen"
+  createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_statusaktuellletzterpopbererloschen')
+  // Teilpopulation: Status ist "erloschen", der letzte Teilpopulations-Bericht meldet aber "aktuell"
+  createUrlToAddDataFromViewToQsList(qsList, 'v_qk_tpop_statuserloschenletzterpopberaktuell')
   // Population: Status ist "potenzieller Wuchs-/Ansiedlungsort", es gibt aber eine Teilpopulation mit Status "angesiedelt" oder "ursprünglich":
   createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_statusaktuellletzterpopbererloschen')
   // tpop ohne Nr/Flurname/Status/bekannt seit/Koordinaten
