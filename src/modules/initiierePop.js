@@ -64,6 +64,11 @@ module.exports = function (apId, popId, ohneZuZeigen) {
       // daher muss 210 zu 200 geändert werden
       var popherkunftCheckboxwert = data.PopHerkunft === 210 ? 200 : data.PopHerkunft
 
+      // data.TPopHerkunft 202 und 211 müssen in derselben Schaltfläche dargestellt werden
+      // die Schaltfläche hat die id 2011
+      // daher muss 202 zu 211 geändert werden
+      if (popherkunftCheckboxwert === 202) popherkunftCheckboxwert = 211
+
       // pop bereitstellen
       window.apf.pop = data
 
