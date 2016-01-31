@@ -88,5 +88,9 @@
       "**/_vorlage.js",
       "**/createBlobDataXlsx.js"
     ]
+  },
+  "repository": {
+      "type": "git",
+      "url": "git://github.com/FNSKtZH/apflora.git"
   }
 }
