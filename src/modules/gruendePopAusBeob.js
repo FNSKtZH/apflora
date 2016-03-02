@@ -36,7 +36,7 @@ module.exports = function (beobNodeId) {
       PopYKoord: YKoord
     }
     return $.ajax({
-      type: 'post',
+      type: 'put',
       url: apiHost + '/updateMultiple/apflora/tabelle=pop/felder=' + JSON.stringify(felder)
     })
   }).then(function () {
@@ -55,7 +55,7 @@ module.exports = function (beobNodeId) {
       TPopYKoord: YKoord
     }
     return $.ajax({
-      type: 'post',
+      type: 'put',
       url: apiHost + '/updateMultiple/apflora/tabelle=tpop/felder=' + JSON.stringify(felder)
     })
   }).then(function () {

@@ -11,11 +11,11 @@ module.exports = function (xKoord, yKoord) {
   if (xKoord > 100000 && yKoord > 100000) {
     // Koordinaten der Pop nachführen
     $.ajax({
-      type: 'post',
+      type: 'put',
       url: getApiHost() + '/update/apflora/tabelle=pop/tabelleIdFeld=PopId/tabelleId=' + window.localStorage.popId + '/feld=PopXKoord/wert=' + xKoord + '/user=' + encodeURIComponent(window.sessionStorage.user)
     }).done(function () {
       $.ajax({
-        type: 'post',
+        type: 'put',
         url: getApiHost() + '/update/apflora/tabelle=pop/tabelleIdFeld=PopId/tabelleId=' + window.localStorage.popId + '/feld=PopYKoord/wert=' + yKoord + '/user=' + encodeURIComponent(window.sessionStorage.user)
       }).done(function () {
         $kopiereKoordinatenInPopRueckmeldung.fadeIn('slow')

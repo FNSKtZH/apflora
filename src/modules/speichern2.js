@@ -52,7 +52,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
   var jahr
 
   $.ajax({
-    type: 'post',
+    type: 'put',
     url: getApiHost() + '/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=' + feldname + '/wert=' + encodeURIComponent(feldwert) + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function () {
     // Variable für Objekt nachführen
@@ -70,7 +70,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       jahr = feldwert.split('.')[0]
       $('#TPopKontrJahr').val(jahr)
       $.ajax({
-        type: 'post',
+        type: 'put',
         url: getApiHost() + '/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopKontrJahr/wert=' + encodeURIComponent(jahr) + '/user=' + encodeURIComponent(window.sessionStorage.user)
       })
     }
@@ -79,7 +79,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       jahr = feldwert.split('.')[0]
       $('#TPopMassnJahr').val(jahr)
       $.ajax({
-        type: 'post',
+        type: 'put',
         url: getApiHost() + '/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopMassnJahr/wert=' + encodeURIComponent(jahr) + '/user=' + encodeURIComponent(window.sessionStorage.user)
       })
     }
@@ -88,7 +88,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       if (window.apf.tpopfeldkontr.TPopKontrDatum) {
         $('#TPopKontrDatum').val(null)
         $.ajax({
-          type: 'post',
+          type: 'put',
           url: getApiHost() + '/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopKontrDatum/wert=/user=' + encodeURIComponent(window.sessionStorage.user)
         })
       }
@@ -98,7 +98,7 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
       if (window.apf.tpopmassn.TPopMassnDatum) {
         $('#TPopMassnDatum').val(null)
         $.ajax({
-          type: 'post',
+          type: 'put',
           url: getApiHost() + '/update/apflora/tabelle=' + tabelleInDb + '/tabelleIdFeld=' + tabelleIdFeld + '/tabelleId=' + tabelleId + '/feld=TPopMassnDatum/wert=/user=' + encodeURIComponent(window.sessionStorage.user)
         })
       }

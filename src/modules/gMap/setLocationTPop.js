@@ -28,11 +28,11 @@ module.exports = function (latLng, map, marker, tpop) {
   Y = ddInChX(lat, lng)
 
   $.ajax({
-    type: 'post',
+    type: 'put',
     url: getApiHost() + '/update/apflora/tabelle=tpop/tabelleIdFeld=TPopId/tabelleId=' + window.localStorage.tpopId + '/feld=TPopXKoord/wert=' + X + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function () {
     $.ajax({
-      type: 'post',
+      type: 'put',
       url: getApiHost() + '/update/apflora/tabelle=tpop/tabelleIdFeld=TPopId/tabelleId=' + window.localStorage.tpopId + '/feld=TPopYKoord/wert=' + Y + '/user=' + encodeURIComponent(window.sessionStorage.user)
     }).done(function () {
       clearInfoWindows()

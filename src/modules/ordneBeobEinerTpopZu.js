@@ -154,12 +154,12 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
       }).done(function () {
         // beobNichtZuordnen 1 setzen
         $.ajax({
-          type: 'post',
+          type: 'put',
           url: getApiHost() + '/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=beobNichtZuordnen/wert=1/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // TPopId null setzen
           $.ajax({
-            type: 'post',
+            type: 'put',
             url: getApiHost() + '/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=/user=' + encodeURIComponent(window.sessionStorage.user)
           }).done(function () {
             // tree aktualisieren, falls von move_node ausgelöst
@@ -203,7 +203,7 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
         // es gibt schon einen Datensatz in Tabelle beobzuordnung
         // er muss nur noch aktualisiert werden
         $.ajax({
-          type: 'post',
+          type: 'put',
           url: getApiHost() + '/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // tree aktualisieren, falls von move_node ausgelöst
@@ -230,7 +230,7 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
         }).done(function () {
           // jetzt aktualisieren
           $.ajax({
-            type: 'post',
+            type: 'put',
             url: getApiHost() + '/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=TPopId/wert=' + tpopId + '/user=' + encodeURIComponent(window.sessionStorage.user)
           }).done(function () {
             // tree aktualisieren, falls von move_node ausgelöst

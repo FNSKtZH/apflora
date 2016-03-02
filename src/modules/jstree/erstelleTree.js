@@ -135,7 +135,7 @@ module.exports = function (ApArtId) {
     if (herkunftNodeTyp === 'pop') {
       if (zielNodeTyp === 'pop') {
         $.ajax({
-          type: 'post',
+          type: 'put',
           url: getApiHost() + '/update/apflora/tabelle=pop/tabelleIdFeld=PopId/tabelleId=' + zielNodeId + '/feld=ApArtId/wert=' + zielParentNodeId + '/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // Anzahlen anpassen der parent-nodes am Herkunfts- und Zielort
@@ -155,7 +155,7 @@ module.exports = function (ApArtId) {
       }
       if (zielNodeTyp === 'tpop') {
         $.ajax({
-          type: 'post',
+          type: 'put',
           url: getApiHost() + '/update/apflora/tabelle=tpop/tabelleIdFeld=PopId/tabelleId=' + zielParentNodeId + '/feld=TPopId/wert=' + zielNodeId + '/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // Anzahlen anpassen der parent-nodes am Herkunfts- und Zielort
@@ -176,7 +176,7 @@ module.exports = function (ApArtId) {
       }
       if (zielNodeTyp === 'popOrdnerTpop') {
         $.ajax({
-          type: 'post',
+          type: 'put',
           url: getApiHost() + '/update/apflora/tabelle=tpop/tabelleIdFeld=PopId/tabelleId=' + zielNodeId + '/feld=TPopId/wert=' + herkunftNodeId + '/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // Anzahlen anpassen der parent-nodes am Herkunfts- und Zielort
@@ -198,7 +198,7 @@ module.exports = function (ApArtId) {
     if (herkunftNodeTyp === 'tpop') {
       if (zielNodeTyp === 'tpop') {
         $.ajax({
-          type: 'post',
+          type: 'put',
           url: getApiHost() + '/update/apflora/tabelle=tpop/tabelleIdFeld=TPopId/tabelleId=' + herkunftNodeId + '/feld=PopId/wert=' + zielParentNodeId + '/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // Anzahlen anpassen der parent-nodes am Herkunfts- und Zielort
@@ -219,7 +219,7 @@ module.exports = function (ApArtId) {
       }
       if (zielNodeTyp === 'popOrdnerTpop') {
         $.ajax({
-          type: 'post',
+          type: 'put',
           url: getApiHost() + '/update/apflora/tabelle=tpop/tabelleIdFeld=TPopId/tabelleId=' + herkunftNodeId + '/feld=PopId/wert=' + zielNodeId + '/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // Anzahlen anpassen der parent-nodes am Herkunfts- und Zielort
@@ -242,7 +242,7 @@ module.exports = function (ApArtId) {
     if (herkunftNodeTyp === 'tpopmassn') {
       if (zielNodeTyp === 'tpopmassn') {
         $.ajax({
-          type: 'post',
+          type: 'put',
           url: getApiHost() + '/update/apflora/tabelle=tpopmassn/tabelleIdFeld=TPopMassnId/tabelleId=' + herkunftNodeId + '/feld=TPopId/wert=' + zielParentNodeId + '/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // Anzahlen anpassen der parent-nodes am Herkunfts- und Zielort
@@ -263,7 +263,7 @@ module.exports = function (ApArtId) {
       }
       if (zielNodeTyp === 'tpopOrdnerMassn') {
         $.ajax({
-          type: 'post',
+          type: 'put',
           url: getApiHost() + '/update/apflora/tabelle=tpopmassn/tabelleIdFeld=TPopMassnId/tabelleId=' + herkunftNodeId + '/feld=TPopId/wert=' + zielNodeId + '/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // Anzahlen anpassen der parent-nodes am Herkunfts- und Zielort
