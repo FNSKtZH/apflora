@@ -7,7 +7,7 @@
 
 module.exports = function () {
   var hostnameWithoutWww = window.location.hostname.replace('www.', '')
-  var hostname = hostnameWithoutWww === '46.101.131.190' ? 'apflora.ch' : hostnameWithoutWww
+  var hostname = hostnameWithoutWww === '46.101.209.174' ? 'apflora.ch' : hostnameWithoutWww
   var apiHost = 'http://api.' + hostname + ':4001'
 
   return apiHost
