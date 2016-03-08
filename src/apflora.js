@@ -25,6 +25,7 @@ window.apf.initiiereApp = function () {
   createGlobals()
 
   // dataType ist immer json
+  // NEIN: nach insert wird eine id übergeben, nicht in json!
   // Bei jedem Lesezugriff soll geprüft werden, ob alle Voraussetzungen erfüllt sind
   // v.a., ob der User online ist
   $.ajaxSetup({
