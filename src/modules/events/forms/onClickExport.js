@@ -12,7 +12,6 @@ module.exports = function (event) {
       event.preventDefault()
       return melde('Sie haben die eierlegende Wollmilchsau gewählt.<br><br>Leider überfordert sie den Server.<br><br>Bitten Sie <a href="mailto:alex@gabriel-software.ch">Alex</a>, die Abfrage auf seinem PC auszuführen und Ihnen die Daten zu schicken', 'oh je')
     }
-
   }
   downloadFileFromView($(this).attr('view'), $(this).attr('filename'), $(this).attr('format') || null)
   return false // this is critical to stop the click event which will trigger a normal file download!
