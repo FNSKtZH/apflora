@@ -155,7 +155,7 @@ module.exports = function (beobId, beobStatus, tpopId, beobTpopId, olmapCallback
         // beobNichtZuordnen 1 setzen
         $.ajax({
           type: 'put',
-          url: getApiHost() + '/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=beobNichtZuordnen/wert=1/user=' + encodeURIComponent(window.sessionStorage.user)
+          url: getApiHost() + '/update/apflora/tabelle=beobzuordnung/tabelleIdFeld=NO_NOTE/tabelleId=' + beobId + '/feld=BeobNichtZuordnen/wert=1/user=' + encodeURIComponent(window.sessionStorage.user)
         }).done(function () {
           // TPopId null setzen
           $.ajax({
