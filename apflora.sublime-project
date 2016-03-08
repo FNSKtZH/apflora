@@ -10,11 +10,11 @@
 		},
 		{
 			"follow_symlinks": true,
-			"path": "gulp-tasks"
+			"path": "geojson"
 		},
 		{
 			"follow_symlinks": true,
-			"path": "geojson"
+			"path": "gulp-tasks"
 		},
 		{
 			"follow_symlinks": true,

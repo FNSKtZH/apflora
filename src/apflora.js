@@ -28,7 +28,7 @@ window.apf.initiiereApp = function () {
   // Bei jedem Lesezugriff soll geprüft werden, ob alle Voraussetzungen erfüllt sind
   // v.a., ob der User online ist
   $.ajaxSetup({
-    dataType: 'json',
+    // dataType: 'json',
     beforeSend: function () {
       if (!pruefeLesevoraussetzungen()) {
         return false
