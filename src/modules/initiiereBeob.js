@@ -120,12 +120,7 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
           $BeobBemerkungen.attr('placeholder', '')
 
           if (beobStatus !== 'nicht_beurteilt') {
-            // Daten der Zuordnung holen
-            if (beobTyp === 'evab') {
-              urlZuordnung = getApiHost() + '/apflora/tabelle=beobzuordnung/feld=NO_NOTE/wertString=' + beobId
-            } else {
-              urlZuordnung = getApiHost() + '/apflora/tabelle=beobzuordnung/feld=NO_NOTE/wertNumber=' + beobId
-            }
+            urlZuordnung = getApiHost() + '/apflora/tabelle=beobzuordnung/feld=NO_NOTE/wertString=' + beobId
             $.ajax({
               type: 'get',
               url: urlZuordnung
