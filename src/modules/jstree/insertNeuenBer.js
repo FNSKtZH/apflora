@@ -15,9 +15,6 @@ module.exports = function (aktiverNode, parentNode, nodeApId) {
     var strukturtyp = 'ber'
     var beschriftung = 'neuer Bericht'
 
-    console.log('$(aktiverNode).attr("id"): ', $(aktiverNode).attr('id'))
-    console.log('nodeApId: ', nodeApId)
-
     if (erstelleIdAusDomAttributId($(aktiverNode).attr('id')) === nodeApId) {
       insertNeuenNodeEineHierarchiestufeTiefer(aktiverNode, parentNode, strukturtyp, id, beschriftung)
     } else {
