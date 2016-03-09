@@ -113,7 +113,7 @@ module.exports = function () {
   $('#gMapDistanzMessenEntfernen')
     .on('click', onClickGMapDistanzMessenEntfernen)
 
-  $('#berUrl')
+  $('#BerURL')
     .on('change', onChangeBerUrl)
 
   $('#beob')

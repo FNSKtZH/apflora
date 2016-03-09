@@ -3,15 +3,15 @@
 var $ = require('jquery')
 
 module.exports = function () {
-  var $berUrl = $('#berUrl')
-  var url = $berUrl.val()
+  var $BerURL = $('#BerURL')
+  var url = $BerURL.val()
 
   if (url.substring(0, 3) === 'www') {
     url = '//' + url
-    $berUrl.val(url)
+    $BerURL.val(url)
   } else if (url.substring(0, 4) !== 'http') {
     url = '//www.' + url
-    $berUrl.val(url)
+    $BerURL.val(url)
   }
   $('#BerURLHref').attr('onClick', "window.open('" + url + "', target='_blank')")
 }
