@@ -2,9 +2,7 @@
 	"folders":
 	[
 		{
-			"folder_exclude_patterns": [
-				"*"
-			],
+			"folder_exclude_patterns": ["*"],
 			"follow_symlinks": true,
 			"path": "/"
 		},
