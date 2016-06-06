@@ -41,9 +41,9 @@
     "browserify": "13.0.1",
     "dateformat": "1.0.12",
     "handlebars": "4.0.5",
-    "hapi": "13.4.0",
+    "hapi": "13.4.1",
     "inert": "4.0.0",
-    "jquery": "2.2.3",
+    "jquery": "2.2.4",
     "jquery-ui": "1.10.5",
     "turf": "3.0.5",
     "underscore": "1.8.3"
@@ -63,7 +63,7 @@
     "gulp-sftp": "0.1.5",
     "gulp-uglify": "1.5.3",
     "require-dir": "0.3.0",
-    "run-sequence": "1.2.0",
+    "run-sequence": "1.2.1",
     "vinyl-source-stream": "1.1.0"
   },
   "repository": {
