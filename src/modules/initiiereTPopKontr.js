@@ -293,6 +293,9 @@ module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
         type: 'get',
         url: getApiHost() + '/apflora/tabelle=tpopkontrzaehl/feld=TPopKontrId/wertNumber=' + feldKontrId
       }).done(function (data) {
+        // nach TPopKontrId sortieren
+        // Topos will, dass die Eingabereihenfolge erhalten bleibt
+        _.sortBy(data, 'TPopKontrZaehlId')
         // zuerst die Zähleinheiten holen
         $.when(getZaehleinheitenOptionen()).then(function () {
           var leereZaehleinheit = {
@@ -301,7 +304,6 @@ module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
             Zaehleinheit: null,
             zaehlungenOptionen: window.apf.tPopKontrZaehleinheitOptionen
           }
-          // TODO: mehrere Zählungen ermöglichen
           htmlZaehlungen = ''
           _.each(data, function (zaehleinheit, index) {
             if (index < 3) {
