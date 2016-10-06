@@ -37,11 +37,11 @@
   },
   "dependencies": {
     "async": "2.0.1",
-    "autolinker": "1.1.0",
+    "autolinker": "1.2.0",
     "browserify": "13.1.0",
     "dateformat": "1.0.12",
     "handlebars": "4.0.5",
-    "hapi": "15.0.3",
+    "hapi": "15.1.1",
     "inert": "4.0.2",
     "jquery": "3.1.1",
     "jquery-ui": "1.12.1",
