@@ -10,7 +10,7 @@ Web-Applikation zur Verwaltung des [Aktionsplans Flora der Fachstelle Naturschut
 * <a href="#machen">Was kann man mit ApFloraDb machen?</a>
 * <a href="#fns">Produkte für die Fachstelle Naturschutz</a>
 * <a href="#Technik">Technische Umsetzung</a>
-* <a href="#OpenSource">Open source</a> 
+* <a href="#OpenSource">Open source</a>
 
 
 <a name="machen"></a>
@@ -105,7 +105,7 @@ Die nachfolgend aufgelisteten Funktionen werden nur von Topos in einer einfachen
 Verglichen mit der ehemaligen Access-Anwendung:
 
 - Einfacheres Gesamtsystem mit weniger Abhängigkeiten
-- Die Anwendung ist professioneller aufgebaut, im Code dokumentiert und einfacher zu warten 
+- Die Anwendung ist professioneller aufgebaut, im Code dokumentiert und einfacher zu warten
 
 **Daten nach Verlust wiederherstellen:**
 
@@ -124,9 +124,9 @@ Die FNS erhält aus der ApFloraDb folgende Produkte:
 - Artbeobachtungen<br>
 Dazu werden die Feld- und Freiwilligenkontrollen (ausser solche von soeben angesäten, noch nicht etablierten Teilpopulationen) aus der Access-Admin-DB in einer Form exportiert, die einfach in [EvAB](http://www.aln.zh.ch/internet/baudirektion/aln/de/naturschutz/naturschutzdaten/tools/evab.html#a-content) importiert werden kann
 - Daten für die Anzeige in GIS und [Web-GIS BUN](http://www.aln.zh.ch/internet/baudirektion/aln/de/naturschutz/naturschutzdaten/web_gis.html):
- - [Teilpopulationen](http://api.apflora.ch:4001/exportView/csv/view=v_tpop/filename=Teilpopulationen)
- - [Kontrollen](http://api.apflora.ch:4001/exportView/csv/view=v_tpopkontr/filename=Kontrollen)
- - [Massnahmen](http://api.apflora.ch:4001/exportView/csv/view=v_massn/filename=Massnahmen)
+ - [Teilpopulationen](https://api.apflora.ch/exportView/csv/view=v_tpop/filename=Teilpopulationen)
+ - [Kontrollen](https://api.apflora.ch/exportView/csv/view=v_tpopkontr/filename=Kontrollen)
+ - [Massnahmen](https://api.apflora.ch/exportView/csv/view=v_massn/filename=Massnahmen)
 
 <a href="#top">&#8593; top</a>
 
