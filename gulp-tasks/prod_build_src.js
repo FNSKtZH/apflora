@@ -30,7 +30,7 @@ gulp.task('prod_build_src', function (cb) {
         'src/list.js'
       ]),
       concat('apflora_built.js'),
-      uglify(),
+      // uglify(),
       gulp.dest('./src'),
       gulp.dest('./dist/src')
     ],

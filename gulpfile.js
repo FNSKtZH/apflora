@@ -17,4 +17,4 @@
 var requireDir = require('require-dir')
 
 // initiate modularized tasks
-requireDir('./gulp-tasks', { recurse: true })
+requireDir('./gulp-tasks')
