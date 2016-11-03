@@ -1,6 +1,6 @@
 /*
 
- Quelle: https://github.com/greypants/gulp-starter
+ Source: https://github.com/greypants/gulp-starter
 
  gulpfile.js
  ===========
@@ -17,4 +17,4 @@
 var requireDir = require('require-dir')
 
 // initiate modularized tasks
-requireDir('./gulp-tasks', {recurse: true})
+requireDir('./gulp-tasks', { recurse: true })
