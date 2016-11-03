@@ -13,3 +13,4 @@ src/templates/
 *.map
 *.TMP
 style/apflora_built.css
+style/main_built.css
