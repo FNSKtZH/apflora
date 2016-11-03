@@ -7,7 +7,8 @@
 
 module.exports = function () {
   var hostnameWithoutWww = window.location.hostname.replace('www.', '')
-  var hostname = hostnameWithoutWww === '46.101.131.190' ? 'apflora.ch' : hostnameWithoutWww
+  const isLocalhost = hostnameWithoutWww === 'localhost'
+  var hostname = isLocalhost ? 'localhost' : 'apflora.ch'
   var appHost = 'http://' + hostname + ':4000'
 
   return appHost
