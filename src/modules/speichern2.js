@@ -125,8 +125,13 @@ module.exports = function (that, formular, tabelleInDb, tabelleIdFeld, tabelleId
         })
       }
     }
-  }).fail(function () {
-    melde('Fehler: Die letzte Änderung wurde nicht gespeichert')
+  }).fail(function (error) {
+    console.log('error:', error)
+    if (error.responseJSON && error.responseJSON.message) {
+      melde(`Die letzte Änderung wurde nicht gespeichert.<br><br>Fehlermeldung:<br>${error.responseJSON.message}`)
+    } else {
+      melde(`Fehler: Die letzte Änderung wurde nicht gespeichert`)
+    }
   })
   // nodes im Tree updaten, wenn deren Bezeichnung ändert
   switch (feldname) {
