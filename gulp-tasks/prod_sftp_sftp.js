@@ -9,7 +9,7 @@ var sftp = require('gulp-sftp')
 var requireDir = require('require-dir')
 var sftpPass = require('../sftpPass.json')
 
-requireDir('../gulp-tasks', {recurse: true})
+requireDir('../gulp-tasks', { recurse: true })
 
 gulp.task('prod_sftp_sftp', function () {
   return gulp.src('dist/**/*')
