@@ -295,7 +295,7 @@ module.exports = function (apId, popId, tpopId, feldKontrId, kontrTyp) {
       }).done(function (data) {
         // nach TPopKontrId sortieren
         // Topos will, dass die Eingabereihenfolge erhalten bleibt
-        _.sortBy(data, 'TPopKontrZaehlId')
+        data = _.sortBy(data, 'TPopKontrZaehlId')
         // zuerst die Zähleinheiten holen
         $.when(getZaehleinheitenOptionen()).then(function () {
           var leereZaehleinheit = {
