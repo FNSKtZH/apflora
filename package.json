@@ -45,12 +45,12 @@
     "inert": "4.0.2",
     "jquery": "3.1.1",
     "jquery-ui": "1.12.1",
-    "turf": "3.0.14",
+    "turf-inside": "3.0.12",
     "underscore": "1.8.3"
   },
   "devDependencies": {
     "babel-preset-babili": "0.0.8",
-    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-es2015": "6.18.0",
     "browserify-shim": "3.8.12",
     "del": "2.2.2",
     "gulp": "3.9.1",

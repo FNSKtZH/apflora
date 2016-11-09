@@ -7,7 +7,7 @@
 
 'use strict'
 
-var turf = require('turf')
+var inside = require('turf-inside')
 var ol = require('ol')
 
 module.exports = function (polygon, x, y) {
@@ -29,7 +29,7 @@ module.exports = function (polygon, x, y) {
   }
 
   // let turf check if the point is in zh
-  isInsidePolygon = turf.inside(koordPt, polygon)
+  isInsidePolygon = inside(koordPt, polygon)
 
   return isInsidePolygon
 }
