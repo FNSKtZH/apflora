@@ -24,7 +24,6 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
   var urlDistzutpop
   var urlZuordnung
   var $BeobBemerkungen
-  var idFeld
   var htmlBeobfelder
   var htmlDistzutpop
 
@@ -48,12 +47,10 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
   window.localStorage.beobId = beobId
 
   // EvAB oder Infospezies? > entsprechende url zusammensetzen
-  if (beobTyp.includes('evab')) {
-    idFeld = 'NO_NOTE_PROJET'
-    url = getApiHost() + '/beob/tabelle=beob_evab/feld=' + idFeld + '/wertString=' + beobId
+  if (isNaN(beobId)) {
+    url = getApiHost() + '/beob/tabelle=beob_evab/feld=NO_NOTE_PROJET/wertString=' + beobId
   } else {
-    idFeld = 'NO_NOTE'
-    url = getApiHost() + '/beob/tabelle=beob_infospezies/feld=' + idFeld + '/wertNumber=' + beobId
+    url = getApiHost() + '/beob/tabelle=beob_infospezies/feld=NO_NOTE/wertNumber=' + beobId
   }
 
   // Daten für die beob aus der DB holen
