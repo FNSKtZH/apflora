@@ -10,7 +10,7 @@ var melde = require('./melde')
 var erstelleFelderFuerBeob = require('./erstelleFelderFuerBeob')
 var getApiHost = require('./getApiHost')
 
-var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
+var initiiereBeob = function (beobTypPassed, beobId, beobStatus, ohneZuZeigen) {
   // beobStatus markiert, ob die Beobachtung:
   // - schon zugewiesen ist (zugeordnet)
   // - noch nicht beurteilt ist (nicht_beurteilt)
@@ -18,6 +18,8 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
   // beobStatus muss gespeichert werden, damit bei Datenänderungen bekannt ist, ob ein bestehender Datensatz bearbeitet oder ein neuer geschaffen werden muss
   window.localStorage.beobStatus = beobStatus
   // sicherstellen, dass beobtyp immer bekannt ist
+  // offenbar kommt es vor, dass der Beobtyp falsch überreicht wird
+  var beobTyp = isNaN(beobId) ? 'evab' : 'infospezies'
   window.localStorage.beobtyp = beobTyp
 
   var url
@@ -47,7 +49,7 @@ var initiiereBeob = function (beobTyp, beobId, beobStatus, ohneZuZeigen) {
   window.localStorage.beobId = beobId
 
   // EvAB oder Infospezies? > entsprechende url zusammensetzen
-  if (isNaN(beobId)) {
+  if (beobTyp === 'evab') {
     url = getApiHost() + '/beob/tabelle=beob_evab/feld=NO_NOTE_PROJET/wertString=' + beobId
   } else {
     url = getApiHost() + '/beob/tabelle=beob_infospezies/feld=NO_NOTE/wertNumber=' + beobId
