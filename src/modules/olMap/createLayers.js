@@ -233,7 +233,7 @@ module.exports = function () {
     visible: false,
     kategorie: 'ZH Sachinformationen',
     legende: true,
-    legende_url: 'http://wms.zh.ch/FnsSVOZHWMS?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=zonen-schutzverordnungen&format=image/png&STYLE=default',
+    legende_url: 'https://wms.zh.ch/FnsSVOZHWMS?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=zonen-schutzverordnungen&format=image/png&STYLE=default',
     source: new ol.source.TileWMS({
       url: '//wms.zh.ch/FnsSVOZHWMS',
       crossOrigin: null,
@@ -248,7 +248,7 @@ module.exports = function () {
     visible: false,
     kategorie: 'ZH Sachinformationen',
     legende: true,
-    legende_url: 'http://wms.zh.ch/FnsSVOZHWMS?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=zonen-schutzverordnungen-raster&format=image/png&STYLE=default',
+    legende_url: 'https://wms.zh.ch/FnsSVOZHWMS?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=zonen-schutzverordnungen-raster&format=image/png&STYLE=default',
     source: new ol.source.TileWMS({
       url: '//wms.zh.ch/FnsSVOZHWMS',
       crossOrigin: null,
@@ -264,7 +264,7 @@ module.exports = function () {
     visible: false,
     kategorie: 'ZH Sachinformationen',
     legende: true,
-    legende_url: 'http://wms.zh.ch/FnsLWZHWMS?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=objekte-lichte-waelder-kanton-zuerich&format=image/png&STYLE=default',
+    legende_url: 'https://wms.zh.ch/FnsLWZHWMS?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=objekte-lichte-waelder-kanton-zuerich&format=image/png&STYLE=default',
     source: new ol.source.TileWMS({
       url: '//maps.zh.ch/wms/FnsLWZH',
       crossOrigin: null,
@@ -281,7 +281,7 @@ module.exports = function () {
     visible: false,
     kategorie: 'ZH Sachinformationen',
     legende: true,
-    legende_url: 'http://wms.zh.ch/WaldVKWMS?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=waldgesellschaften&format=image/png&STYLE=default',
+    legende_url: 'https://wms.zh.ch/WaldVKWMS?version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=waldgesellschaften&format=image/png&STYLE=default',
     source: new ol.source.TileWMS({
       url: '//maps.zh.ch/wms/WaldVKWMS',
       crossOrigin: null,
@@ -342,7 +342,7 @@ module.exports = function () {
     visible: false,
     kategorie: 'Hintergrund',
     source: new ol.source.TileWMS({
-      url: 'http://wms.zh.ch/upwms',
+      url: 'https://wms.zh.ch/upwms',
       crossOrigin: null,
       params: {
         'layers': 'upwms',

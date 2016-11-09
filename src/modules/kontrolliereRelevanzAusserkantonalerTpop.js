@@ -21,7 +21,7 @@ module.exports = function () {
           // diese tpop liegt ausserhalb des Kantons, daher sollte sie nicht relevant sein
           // von qsList benötigte Daten anfügen
           tpop.hw = "Teilpopulation ist als 'Für AP-Bericht relevant' markiert, liegt aber ausserhalb des Kt. Zürich und sollte daher nicht relevant sein:"
-          tpop.link = "<a href='http://apflora.ch/index.html?ap=" + tpop.ApArtId + '&pop=' + tpop.PopId + '&tpop=' + tpop.TPopId + "' target='_blank'>Pop: "
+          tpop.link = "<a href='https://apflora.ch/index.html?ap=" + tpop.ApArtId + '&pop=' + tpop.PopId + '&tpop=' + tpop.TPopId + "' target='_blank'>Pop: "
           if (tpop.PopNr >= 0) {
             tpop.link += 'Pop: ' + tpop.PopNr
           } else {
