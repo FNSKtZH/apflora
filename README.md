@@ -124,9 +124,9 @@ Die FNS erhält aus der ApFloraDb folgende Produkte:
 - Artbeobachtungen<br>
 Dazu werden die Feld- und Freiwilligenkontrollen (ausser solche von soeben angesäten, noch nicht etablierten Teilpopulationen) aus der Access-Admin-DB in einer Form exportiert, die einfach in [EvAB](http://www.aln.zh.ch/internet/baudirektion/aln/de/naturschutz/naturschutzdaten/tools/evab.html#a-content) importiert werden kann
 - Daten für die Anzeige in GIS und [Web-GIS BUN](http://www.aln.zh.ch/internet/baudirektion/aln/de/naturschutz/naturschutzdaten/web_gis.html):
- - [Teilpopulationen](https://api.apflora.ch/exportView/csv/view=v_tpop/filename=Teilpopulationen)
- - [Kontrollen](https://api.apflora.ch/exportView/csv/view=v_tpopkontr/filename=Kontrollen)
- - [Massnahmen](https://api.apflora.ch/exportView/csv/view=v_massn/filename=Massnahmen)
+ - [Teilpopulationen](https://apflora.ch/api/exportView/csv/view=v_tpop/filename=Teilpopulationen)
+ - [Kontrollen](https://apflora.ch/api/exportView/csv/view=v_tpopkontr/filename=Kontrollen)
+ - [Massnahmen](https://apflora.ch/api/exportView/csv/view=v_massn/filename=Massnahmen)
 
 <a href="#top">&#8593; top</a>
 

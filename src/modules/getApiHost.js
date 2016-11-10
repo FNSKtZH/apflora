@@ -8,7 +8,6 @@
 module.exports = function () {
   var hostnameWithoutWww = window.location.hostname.replace('www.', '')
   const isLocalhost = hostnameWithoutWww === 'localhost'
-  var hostname = isLocalhost ? 'localhost' : 'apflora.ch'
-  var apiHost = isLocalhost ? 'http://localhost:4001' : 'https://api.apflora.ch'
+  var apiHost = isLocalhost ? 'http://localhost:4001' : 'https://apflora.ch/api'
   return apiHost
 }
