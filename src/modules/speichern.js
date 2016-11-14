@@ -151,7 +151,7 @@ module.exports = function (that) {
 
   // '/' and '\' produces an error when passed in production
   // but not in dev - dont know why
-  // DANGER: bad in date fields
+  // DANGER: bad things happen in date fields
   const dataFields = ['MutWann', 'BeobMutWann', 'IbErstelldatum', 'JBerDatum', 'TPopKontrDatum', 'TPopKontrMutDat', 'TPopMassnDatum']
   if (!_.contains(dataFields, feldname)) {
     if (feldwert.includes && feldwert.search(/\//)) {
