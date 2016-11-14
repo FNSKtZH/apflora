@@ -151,13 +151,17 @@ module.exports = function (that) {
 
   // '/' and '\' produces an error when passed in production
   // but not in dev - dont know why
-  if (feldwert.includes && feldwert.search(/\//)) {
-    feldwert = feldwert.replace(/\//g, '|')
-    $(that).val(feldwert)
-  }
-  if (feldwert.search && feldwert.search(/\\/) !== -1) {
-    feldwert = feldwert.replace(/\\/g, '|')
-    $(that).val(feldwert)
+  // DANGER: bad in date fields
+  const dataFields = ['MutWann', 'BeobMutWann', 'IbErstelldatum', 'JBerDatum', 'TPopKontrDatum', 'TPopKontrMutDat', 'TPopMassnDatum']
+  if (!_.contains(dataFields, feldname)) {
+    if (feldwert.includes && feldwert.search(/\//)) {
+      feldwert = feldwert.replace(/\//g, '|')
+      $(that).val(feldwert)
+    }
+    if (feldwert.search && feldwert.search(/\\/) !== -1) {
+      feldwert = feldwert.replace(/\\/g, '|')
+      $(that).val(feldwert)
+    }
   }
 
   speichern2(that, formular, tabelleInDb, tabelleIdFeld, tabelleId, feldname, feldwert)
