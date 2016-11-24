@@ -4,6 +4,14 @@ var $ = require('jquery')
 var _ = require('underscore')
 var getApiHost = require('./getApiHost')
 
+
+function split( val ) {
+  return val.split( /,\s*/ );
+}
+function extractLast( term ) {
+  return split( term ).pop();
+}
+
 module.exports = function () {
   // nur machen, wenn noch nicht passiert - sonst werden die html dauernd ersetzt
   if (!window.apf.artliste) {
@@ -52,23 +60,39 @@ module.exports = function () {
         }
       })
 
-      $('#TPopMassnAnsiedWirtspfl').autocomplete({
-        minLength: 0,
-        delay: 500,
-        source: window.apf.artliste,
-        select: function (event, ui) {
-          $(this)
-            .val(ui.item.label)
-            .trigger('change')
-          return false
-        },
-        change: function (event, ui) {
-          if (!ui.item) {
-            // kein zulässiger Eintrag > Feld leeren
-            $(this).val('')
+      $('#TPopMassnAnsiedWirtspfl')
+        // don't navigate away from the field on tab when selecting an item
+        .on('keydown', function( event ) {
+          if (event.keyCode === $.ui.keyCode.TAB &&
+              $(this).autocomplete('instance').menu.active) {
+            event.preventDefault();
           }
-        }
-      })
+        })
+        .autocomplete({
+          minLength: 0,
+          delay: 0,
+          source: function( request, response ) {
+            // delegate back to autocomplete, but extract the last term
+            response( $.ui.autocomplete.filter(
+              window.apf.artliste, extractLast( request.term ) ) );
+          },
+          focus: function() {
+            // prevent value inserted on focus
+            return false;
+          },
+          select: function( event, ui ) {
+            var terms = split( this.value );
+            // remove the current input
+            terms.pop();
+            // add the selected item
+            terms.push( ui.item.value );
+            // add placeholder to get the comma-and-space at the end
+            terms.push( "" );
+            this.value = terms.join( ", " );
+            $(this).trigger('change')
+            return false;
+          },
+        })
     })
   }
 }
