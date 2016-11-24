@@ -324,14 +324,14 @@ module.exports = function () {
 
   // error 401 (Authorization required)
   zhOrtholuftbildLayer = new ol.layer.Tile({
-    title: 'Luftbild ZH',
+    title: 'Luftbild ZH Frühjahr 2015/16',
     visible: false,
     kategorie: 'Hintergrund',
     source: new ol.source.TileWMS({
-      url: '//maps.zh.ch/wms/OrthoBackgroundZH',
+      url: 'https://wms.zh.ch/OrthoZHWMS',
       crossOrigin: null,
       params: {
-        'layers': 'orthoaktuell',
+        'layers': 'ortho_sp',
         'singleTile': true
       }
     })
