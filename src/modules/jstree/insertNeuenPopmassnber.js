@@ -10,7 +10,7 @@ var getApiHost = require('../getApiHost')
 module.exports = function (aktiverNode, parentNode, nodePopId) {
   $.ajax({
     type: 'post',
-    url: getApiHost() + '/insert/apflora/tabelle=popmassnber/feld=PopId/wert=' + erstelleIdAusDomAttributId($(aktiverNode).attr('id')) + '/user=' + encodeURIComponent(window.sessionStorage.user)
+    url: getApiHost() + '/insert/apflora/tabelle=popmassnber/feld=PopId/wert=' + nodePopId + '/user=' + encodeURIComponent(window.sessionStorage.user)
   }).done(function (id) {
     var strukturtyp = 'popmassnber'
     var beschriftung = 'neuer Massnahmen-Bericht'
