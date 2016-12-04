@@ -110,7 +110,7 @@ module.exports = function (that) {
 
   // ja/nein Felder zu boolean umbauen
   if (feldname === 'PopHerkunftUnklar' || feldname === 'TPopHerkunftUnklar' || feldname === 'TPopMassnPlan' || feldname === 'TPopKontrPlan') {
-    feldwert = (feldwert ? 1 : '')
+    feldwert = (feldwert ? 1 : 0)
   }
   if (feldname === 'BeobBemerkungen' && window.localStorage.beobStatus === 'nicht_beurteilt') {
     // hier soll nicht gespeichert werden
