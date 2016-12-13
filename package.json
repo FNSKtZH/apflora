@@ -36,11 +36,11 @@
     "List": "global:List"
   },
   "dependencies": {
-    "async": "2.1.2",
+    "async": "2.1.4",
     "autolinker": "1.2.1",
     "browserify": "13.1.1",
     "dateformat": "1.0.12",
-    "handlebars": "4.0.5",
+    "handlebars": "4.0.6",
     "hapi": "15.2.0",
     "inert": "4.0.2",
     "jquery": "3.1.1",
@@ -49,14 +49,14 @@
     "underscore": "1.8.3"
   },
   "devDependencies": {
-    "babel-preset-babili": "0.0.8",
+    "babel-preset-babili": "0.0.9",
     "babel-preset-es2015": "6.18.0",
     "browserify-shim": "3.8.12",
     "del": "2.2.2",
     "gulp": "3.9.1",
     "gulp-autoprefixer": "3.1.1",
     "gulp-babel": "6.1.2",
-    "gulp-clean-css": "^2.0.13",
+    "gulp-clean-css": "2.2.2",
     "gulp-concat": "2.x.x",
     "gulp-concat-sourcemap": "1.3.1",
     "gulp-connect": "5.0.0",
