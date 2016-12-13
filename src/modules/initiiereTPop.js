@@ -68,8 +68,6 @@ module.exports = function (apId, popId, tpopId, ohneZuZeigen) {
     if (data && data[0]) {
       data = data[0]
 
-      console.log('data.TPopHerkunft:', data.TPopHerkunft)
-
       // data.TPopHerkunft 200 und 210 müssen in derselben Schaltfläche dargestellt werden
       // die Schaltfläche hat die id 200
       // daher muss 210 zu 200 geändert werden
