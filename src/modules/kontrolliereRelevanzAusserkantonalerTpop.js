@@ -10,7 +10,7 @@ module.exports = function () {
   var qsList = window.apf.qsList
 
   // get list of tpop's of this window.localStorage.apId
-  $.ajax({
+  return $.ajax({
     type: 'get',
     url: getApiHost() + '/tpopKoordFuerProgramm/apId=' + window.localStorage.apId
   }).done(function (data) {
@@ -36,10 +36,9 @@ module.exports = function () {
           // an qsList anfügen
           qsList.add(tpop)
           $('#tree').jstree('rename_node', '#qualitaetskontrollen' + window.localStorage.apId, 'Qualitätskontrollen (' + qsList.items.length + ')')
+          return true
         }
       })
     }
-  }).fail(function () {
-    melde('Fehler: Keine Daten für Teilpopulationen erhalten')
-  })
+  }).fail(e => e)
 }
