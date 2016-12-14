@@ -43,7 +43,6 @@ function addDataToQsList (qsList, url) {
     if (data && data.length > 0) {
       qsList.add(data)
     }
-    // $('#tree').jstree('rename_node', '#qualitaetskontrollen' + window.localStorage.apId, 'Qualitätskontrollen (' + qsList.items.length + ')')
     return true
   }).fail(e => e)
 }
