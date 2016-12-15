@@ -53,8 +53,9 @@ module.exports = function (ApArtId) {
       'icons': false
     },
     'contextmenu': {
-      'items': treeKontextmenu,
-      'select_node': true
+      select_node: false,
+      show_at_node: false,
+      items: treeKontextmenu,
     },
     'crrm': {
       'move': {
