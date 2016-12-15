@@ -98,6 +98,8 @@ module.exports = function (berichtjahr) {
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_koordentsprechenkeinertpop'),
     // pop mit Status ansaatversuch, es gibt tpop mit status aktuell
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_statusansaatversuchmitaktuellentpop'),
+    // pop mit Status ansaatversuch, alle tpop sind gemäss Status erloschen
+    createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_statusansaatversuchalletpoperloschen'),
     // pop mit Status ansaatversuch, es gibt tpop mit status ursprünglich erloschen
     createUrlToAddDataFromViewToQsList(qsList, 'v_qk_pop_statusansaatversuchmittpopursprerloschen'),
     // Population: Status ist "erloschen" (ursprünglich oder angesiedelt), es gibt aber eine Teilpopulation mit Status "aktuell" (ursprünglich oder angesiedelt)
