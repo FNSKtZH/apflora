@@ -2,7 +2,6 @@
 
 var $ = require('jquery')
 var dateFormat = require('dateformat')
-var limiter = require('../lib/limiter')
 var initiiereAp = require('./initiiereAp')
 var getAdressenHtml = require('./getAdressenHtml')
 var zeigeFormular = require('./zeigeFormular')
@@ -33,9 +32,6 @@ module.exports = function (apId, apBerId) {
 
   var $JBerJahr = $('#JBerJahr')
 
-  // damit kann man die verbleibende Anzahl Zeichen, die in einem Feld erfasst werden, anzeigen
-  limiter($)
-
   // Felder zurücksetzen
   leereFelderVonFormular('jber')
 
@@ -58,9 +54,7 @@ module.exports = function (apId, apBerId) {
       $('#JBerBeurteilung' + data.JBerBeurteilung).prop('checked', true)
       // escapen, + und - werden sonst verändert
       $('#JBerVeraenGegenVorjahr\\' + data.JBerVeraenGegenVorjahr).prop('checked', true)
-      $('#JBerAnalyse')
-        .val(data.JBerAnalyse)
-        .limiter(255, $('#JBerAnalyse_limit'))
+      $('#JBerAnalyse').val(data.JBerAnalyse)
       $('#JBerUmsetzung').val(data.JBerUmsetzung)
       $('#JBerErfko').val(data.JBerErfko)
       $('#JBerATxt').val(data.JBerATxt)
