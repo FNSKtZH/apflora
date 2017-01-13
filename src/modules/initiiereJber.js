@@ -49,7 +49,6 @@ module.exports = function (apId, apBerId) {
 
       // Felder mit Daten beliefern
       $JBerJahr.val(data.JBerJahr)
-      $('#JBerSituation').val(data.JBerSituation)
       $('#JBerVergleichVorjahrGesamtziel').val(data.JBerVergleichVorjahrGesamtziel)
       $('#JBerBeurteilung' + data.JBerBeurteilung).prop('checked', true)
       // escapen, + und - werden sonst verändert

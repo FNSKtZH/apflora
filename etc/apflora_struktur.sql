@@ -159,7 +159,7 @@ CREATE TABLE `apber` (
   `JBerId` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primärschlüssel der Tabelle "tblJBer"',
   `ApArtId` int(10) NOT NULL,
   `JBerJahr` smallint(5) DEFAULT NULL COMMENT 'Für welches Jahr gilt der Bericht?',
-  `JBerSituation` longtext COMMENT 'Beschreibung der Situation im Berichtjahr',
+  `JBerSituation` longtext COMMENT 'Beschreibung der Situation im Berichtjahr. Nicht mehr verwendet: Früher wurden hier die Massnahmen aufgelistet',
   `JBerVergleichVorjahrGesamtziel` longtext COMMENT 'Vergleich zu Vorjahr und Ausblick auf das Gesamtziel',
   `JBerBeurteilung` int(10) DEFAULT NULL COMMENT 'Beurteilung des Erfolgs des Aktionsplans bisher',
   `JBerVeraenGegenVorjahr` varchar(2) DEFAULT NULL COMMENT 'Veränderung gegenüber dem Vorjahr: plus heisst aufgestiegen, minus heisst abgestiegen',
