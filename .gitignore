@@ -14,3 +14,4 @@ src/templates/
 *.TMP
 style/apflora_built.css
 style/main_built.css
+*.db
