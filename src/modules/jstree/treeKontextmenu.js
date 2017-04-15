@@ -768,6 +768,8 @@ module.exports = function (node) {
           }
         }
       }
+      /*
+      wegen Fehlfunktion ausgeschaltet
       if (!window.apf.tpopfeldkontrNodeAusgeschnitten) {
         items.ausschneiden = {
           // "label": "Feldkontrolle ausschneiden<br>&nbsp;&nbsp;&nbsp;Tipp: drag and drop me!",
@@ -778,7 +780,7 @@ module.exports = function (node) {
             schneideFeldkontrAus(aktiverNode)
           }
         }
-      }
+      }*/
       if (!window.apf.tpopfeldkontrNodeAusgeschnitten) {
         items.kopieren = {
           'label': 'kopieren',
