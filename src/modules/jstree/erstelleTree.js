@@ -15,7 +15,6 @@ var select_node = require('./select_node')
 var pruefeSchreibvoraussetzungen = require('../pruefeSchreibvoraussetzungen')
 var beschrifteOrdner = require('../beschrifteOrdner')
 var setzeTreehoehe = require('./setzeTreehoehe')
-var ordneBeobEinerTpopZu = require('../ordneBeobEinerTpopZu')
 var getApiHost = require('../getApiHost')
 
 module.exports = function (ApArtId) {
@@ -109,10 +108,7 @@ module.exports = function (ApArtId) {
     var zielNodeTyp
     var zielParentNode
     var zielParentNodeId
-    var beobId
-    var beobStatus
     var tpopId
-    var beobTpopId
     var olmapCallback
     var jstreeCallback
 

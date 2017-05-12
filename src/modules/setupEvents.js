@@ -33,8 +33,6 @@ var onClickRenameLayer = require('./events/forms/olMap/layertree/onClickRenameLa
 var onClickEntferneLayer = require('./events/forms/olMap/layertree/onClickEntferneLayer')
 var onClickNeuesLayer = require('./events/forms/olMap/layertree/onClickNeuesLayer')
 var onClickErgebnisAuswahlClose = require('./events/forms/olMap/onClickErgebnisAuswahlClose')
-var onClickOeffneBeob = require('./events/forms/gMap/onClickOeffneBeob')
-var onClickOeffneBeobInNeuemTab = require('./events/forms/gMap/onClickOeffneBeobInNeuemTab')
 var onClickGMapDistanzMessen = require('./events/forms/gMap/onClickGMapDistanzMessen')
 var onClickGMapDistanzMessenEntfernen = require('./events/forms/gMap/onClickGMapDistanzMessenEntfernen')
 var onClickDetailplaeneCheckbox = require('./events/forms/gMap/onClickDetailplaeneCheckbox')
@@ -100,9 +98,6 @@ module.exports = function () {
   $('#olMapErgebnisAuswahlHeader')
     .on('click', '.ui-icon.ui-icon-closethick', onClickErgebnisAuswahlClose)
 
-  $('#gMap')
-    .on('click', '.oeffneBeob', onClickOeffneBeob)
-    .on('click', '.oeffneBeobInNeuemTab', onClickOeffneBeobInNeuemTab)
   $('#gMapDetailplaeneCheckbox')
     .on('click', onClickDetailplaeneCheckbox)
   $('#gMapDistanzMessen')

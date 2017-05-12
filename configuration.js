@@ -194,16 +194,6 @@ config.tables = [
     form: 'tpopmassnber',
     initiiereFunktion: 'initiiereTPopMassnBer',
     treeTyp: 'tpopmassnber'
-  },
-  {
-    database: 'apflora',
-    tabelleInDb: 'beobzuordnung',
-    tabelleIdFeld: 'NO_NOTE',
-    mutWannFeld: 'BeobMutWann',
-    mutWerFeld: 'BeobMutWer',
-    form: 'beob',
-    initiiereFunktion: '',
-    treeTyp: 'drei verschiedene!'
   }
 ]
 

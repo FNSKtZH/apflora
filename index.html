@@ -1842,66 +1842,6 @@
           </table>
         </form>
 
-        <form id="beob" class="form" action="#" method="get" autocomplete="off">
-          <h1>Informationen des Aktionsplans</h1>
-          <table>
-            <tr class="fieldcontain">
-              <td class="label">
-                <label for='beobNichtBeurteilt'>Nicht beurteilt:</label>
-              </td>
-              <td class="Datenfelder">
-                <input type="radio" name="beobNichtZugeordnet" id="beobNichtBeurteilt" formular="beob">
-              </td>
-            </tr>
-            <tr class="fieldcontain">
-              <td class="label">
-                <label for='beobNichtZuordnen' class='apf-with-tooltip'>
-                  <span>Nicht zuordnen:</span>
-                </label>
-                <div class="tooltiptext">
-                  <p>Will heissen: Die Beobachtung kann nicht zugeordnet werden</p>
-                  <p>Mögliche Gründe: Unsichere Bestimmung, nicht lokalisierbar</p>
-                  <p>Bitte im Bemerkungsfeld begründen</p>
-                </div>
-              </td>
-              <td class="Datenfelder">
-                <input type="radio" name="beobNichtZugeordnet" id="beobNichtZuordnen" formular="beob">
-              </td>
-            </tr>
-            <tr class="fieldcontain">
-              <td class="label">
-                <label for='BeobBemerkungen'>Bemerkungen zur Zuordnung:</label>
-              </td>
-              <td class="Datenfelder">
-                <textarea name="BeobBemerkungen" id="BeobBemerkungen" class="speichern" formular="beob"></textarea>
-              </td>
-            </tr>
-          </table>
-          <table id="beob_zuordnungsfelder">
-          </table>
-          <table>
-            <tr class="fieldcontain">
-              <td class="label">
-                <label for="BeobMutWann">Zuletzt verändert...</label>
-              </td>
-              <td class="Datenfelder">
-                <input id="BeobMutWann" class="Datenfelder Datum" formular="beob" type="text" readonly="readonly" style="border:none;">
-              </td>
-            </tr>
-            <tr class="fieldcontain">
-              <td class="label">
-                <label for="BeobMutWer">...von:</label>
-              </td>
-              <td class="Datenfelder">
-                <input id="BeobMutWer" class="Datenfelder" formular="beob" type="text" readonly="readonly" style="border:none;">
-              </td>
-            </tr>
-          </table>
-          <hr>
-          <div id="beob_table">
-          </div>
-        </form>
-
         <div id="gMap" class="karte">
           <button id='gMapDistanzMessen'>Distanz messen</button>
           <button id='gMapDistanzMessenEntfernen'>Messung entfernen</button>
@@ -2087,24 +2027,6 @@
             <h2 class="borderTop">Massnahmen</h2>
             <div class="exportAbschnittExporte">
               <button id="exportMassn" class="exportMassn export" view="v_massn" filename="Massnahmen">Massnahmen</button><br>
-            </div>
-            <br><a href="#top">&uArr;&nbsp;top</a>
-          </div>
-          <div class="exportAbschnitt">
-            <a name="Beobachtungen"></a>
-            <h2 class="borderTop">Beobachtungen</h2>
-            <div class="exportAbschnittExporte">
-              <button id="exportBeob" class="export" view="v_beob" filename="Beobachtungen">
-                Beobachtungen<br/>
-                zugeordnet und nicht zuzuordnend<br/>
-                von Infospezies und EvAB
-              </button><br>
-              <button id="exportBeobInfospezies" class="export" view="v_beob_infospezies" filename="BeobachtungenInfospezies">
-                Beobachtungen<br/>
-                zugeordnet, nicht zuzuordnend<br/>
-                und nicht zugeordnet<br/>
-                nur von Infospezies
-              </button><br>
             </div>
             <br><a href="#top">&uArr;&nbsp;top</a>
           </div>
