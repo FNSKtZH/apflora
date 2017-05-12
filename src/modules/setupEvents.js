@@ -38,9 +38,6 @@ var onClickOeffneBeobInNeuemTab = require('./events/forms/gMap/onClickOeffneBeob
 var onClickGMapDistanzMessen = require('./events/forms/gMap/onClickGMapDistanzMessen')
 var onClickGMapDistanzMessenEntfernen = require('./events/forms/gMap/onClickGMapDistanzMessenEntfernen')
 var onClickDetailplaeneCheckbox = require('./events/forms/gMap/onClickDetailplaeneCheckbox')
-var onChangeBeobNichtBeurteilt = require('./events/forms/beob/onChangeBeobNichtBeurteilt')
-var onChangeBeobNichtZuordnen = require('./events/forms/beob/onChangeBeobNichtZuordnen')
-var onChangeDistZuTPop = require('./events/forms/beob/onChangeDistZuTPop')
 var onSelectmenuchangeExportLayerSelect = require('./events/forms/olMap/layertree/onSelectmenuchangeExportLayerSelect')
 var onClickQkSort = require('./events/forms/onClickQkSort')
 var onChangeQkBerichtjahr = require('./events/forms/onChangeQkBerichtjahr')
@@ -115,13 +112,6 @@ module.exports = function () {
 
   $('#BerURL')
     .on('change', onChangeBerUrl)
-
-  $('#beob')
-    .on('change', '[name="distZuTPop"]', onChangeDistZuTPop)
-  $('#beobNichtBeurteilt')
-    .on('change', onChangeBeobNichtBeurteilt)
-  $('#beobNichtZuordnen')
-    .on('change', onChangeBeobNichtZuordnen)
 
   $('#exporte')
     .on('click', '.export', onClickExport)
