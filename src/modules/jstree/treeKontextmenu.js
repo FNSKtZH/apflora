@@ -39,7 +39,6 @@ var insertNeuenTpopber = require('./insertNeuenTpopber')
 var loescheTpopber = require('./loescheTpopber')
 var insertNeuenTpopmassnber = require('./insertNeuenTpopmassnber')
 var loescheTpopmassnber = require('./loescheTpopmassnber')
-var zeigeTpopbeobZugeordnetAufGmap = require('./zeigeTpopbeobZugeordnetAufGmap')
 var loescheTpopmassn = require('./loescheTpopmassn')
 var schneideTpopmassnAus = require('./schneideTpopmassnAus')
 var insertNeuesApziel = require('./insertNeuesApziel')
@@ -65,15 +64,7 @@ var zeigeTpopAufOlmap = require('./zeigeTpopAufOlmap')
 var verorteTpopAufOlmap = require('./verorteTpopAufOlmap')
 var zeigeTpopAufGmap = require('./zeigeTpopAufGmap')
 var verorteTpopAufGmap = require('./verorteTpopAufGmap')
-var zeigeTpopUndBeobAufGmap = require('./zeigeTpopUndBeobAufGmap')
-var zeigeBeobNichtBeurteiltAufGmap = require('./zeigeBeobNichtBeurteiltAufGmap')
-var zeigeBeobNichtBeurteiltUndTpopAufGmap = require('./zeigeBeobNichtBeurteiltUndTpopAufGmap')
-var schneideBeobAus = require('./schneideBeobAus')
-var zeigeBeobNichtZuzuordnenAufGmap = require('./zeigeBeobNichtZuzuordnenAufGmap')
-var uebertrageKoordBeobZugeordnetAufTpop = require('./uebertrageKoordBeobZugeordnetAufTpop')
-var beurteileBeobAufOlmap = require('./beurteileBeobAufOlmap')
 var getApiHost = require('../getApiHost')
-var gruendePopAusBeob = require('../gruendePopAusBeob')
 
 module.exports = function (node) {
   var items
@@ -566,14 +557,6 @@ module.exports = function (node) {
             verorteTpopAufOlmap($(aktiverNode).attr('id'))
           }
         },
-        'aufOlmapBeobZuordnen': {
-          'label': 'auf CH-Karten<br>&nbsp;&nbsp;&nbsp;Beobachtungen zuordnen',
-          'separator_before': true,
-          'icon': 'style/images/flora_icon_violett.png',
-          'action': function () {
-            beurteileBeobAufOlmap($(aktiverNode).attr('id'))
-          }
-        },
         'GoogleMaps': {
           'label': 'auf Google-Karten zeigen',
           'separator_before': true,
@@ -1023,85 +1006,6 @@ module.exports = function (node) {
           }
         }
       }
-    case 'tpopOrdnerBeobZugeordnet':
-      items = {
-        'GoogleMaps': {
-          'label': 'auf Luftbild zeigen',
-          'separator_before': true,
-          'icon': 'style/images/flora_icon.png',
-          'action': function () {
-            zeigeTpopbeobZugeordnetAufGmap($(aktiverNode).attr('id'))
-          }
-        }
-      }
-      if (window.apf.beobNodeAusgeschnitten) {
-        items.einfuegen = {
-          'label': $.jstree._reference(window.apf.beobNodeAusgeschnitten).get_text(window.apf.beobNodeAusgeschnitten) + ' einfügen',
-          'separator_before': true,
-          'icon': 'style/images/einfuegen.png',
-          'action': function () {
-            $('#tree').jstree('move_node', window.apf.beobNodeAusgeschnitten, aktiverNode, 'first')
-          }
-        }
-      }
-      return items
-    case 'beobZugeordnet':
-      items = {
-        'GoogleMaps': {
-          'label': 'auf Luftbild zeigen',
-          'separator_before': true,
-          'icon': 'style/images/flora_icon.png',
-          'action': function () {
-            zeigeTpopbeobZugeordnetAufGmap(null, $(aktiverNode).attr('id'))
-          }
-        },
-        'GoogleMapsMitTPopTPopBeob': {
-          'label': 'auf Luftbild einer neuen<br>&nbsp;&nbsp;&nbsp;Teilpopulation zuordnen',
-          'separator_before': true,
-          'icon': 'style/images/flora_icon_violett.png',
-          'action': function () {
-            zeigeTpopUndBeobAufGmap($(aktiverNode).attr('id'))
-          }
-        },
-        'GisBrowser': {
-          'label': 'im GIS-Browser zeigen',
-          'separator_before': true,
-          'icon': 'style/images/wappen_zuerich.png',
-          'action': function () {
-            zeigeBeobKoordinatenImGisBrowser()
-          }
-        },
-        'KoordUebertragen': {
-          'label': 'Koordinaten auf die<br>&nbsp;&nbsp;&nbsp;Teilpopulation übertragen',
-          'separator_before': true,
-          'icon': 'style/images/koordinaten.png',
-          'action': function () {
-            uebertrageKoordBeobZugeordnetAufTpop()
-          }
-        }
-      }
-      if (!window.apf.beobNodeAusgeschnitten) {
-        items.ausschneiden = {
-          // "label": "ausschneiden<br>&nbsp;&nbsp;&nbsp;Tipp: drag and drop me!",
-          'label': 'ausschneiden',
-          'separator_before': true,
-          'icon': 'style/images/ausschneiden.png',
-          'action': function () {
-            schneideBeobAus(aktiverNode)
-          }
-        }
-      }
-      if (window.apf.beobNodeAusgeschnitten) {
-        items.einfuegen_beob = {
-          'label': $.jstree._reference(window.apf.beobNodeAusgeschnitten).get_text(window.apf.beobNodeAusgeschnitten) + ' einfügen',
-          'separator_before': true,
-          'icon': 'style/images/einfuegen.png',
-          'action': function () {
-            $.jstree._reference(parentNode).move_node(window.apf.beobNodeAusgeschnitten, parentNode, 'first', false)
-          }
-        }
-      }
-      return items
     case 'tpopOrdnerMassnber':
       return {
         'neu': {
@@ -1130,163 +1034,5 @@ module.exports = function (node) {
           }
         }
       }
-    case 'apOrdnerBeobNichtBeurteilt':
-      items = {
-        'GoogleMaps': {
-          'label': 'auf Luftbild zeigen',
-          'separator_before': true,
-          'icon': 'style/images/flora_icon_violett.png',
-          'action': function () {
-            zeigeBeobNichtBeurteiltAufGmap($(aktiverNode).attr('id'))
-          }
-        },
-        'GoogleMapsMitTPop': {
-          'label': 'auf Luftbild Teilpopulationen<br>&nbsp;&nbsp;&nbsp;zuordnen<br>&nbsp;&nbsp;&nbsp;Tipp: Beobachtungen auf<br>&nbsp;&nbsp;&nbsp;Teilpopulationen ziehen!',
-          'separator_before': true,
-          'icon': 'style/images/flora_icon_violett.png',
-          'action': function () {
-            zeigeBeobNichtBeurteiltUndTpopAufGmap($(aktiverNode).attr('id'))
-          }
-        },
-        'aufOlmapBeobZuordnen': {
-          'label': 'auf CH-Karten<br>&nbsp;&nbsp;&nbsp;Beobachtungen zuordnen',
-          'separator_before': true,
-          'icon': 'style/images/flora_icon_violett.png',
-          'action': function () {
-            beurteileBeobAufOlmap()
-          }
-        }
-      }
-      if (window.apf.beobNodeAusgeschnitten) {
-        items.einfuegen = {
-          'label': $.jstree._reference(window.apf.beobNodeAusgeschnitten).get_text(window.apf.beobNodeAusgeschnitten) + ' einfügen',
-          'separator_before': true,
-          'icon': 'style/images/einfuegen.png',
-          'action': function () {
-            $('#tree').jstree('move_node', window.apf.beobNodeAusgeschnitten, aktiverNode, 'first')
-          }
-        }
-      }
-      return items
-    case 'beobNichtBeurteilt':
-      items = {
-        'GoogleMaps': {
-          'label': 'auf Luftbild zeigen',
-          'separator_before': true,
-          'icon': 'style/images/flora_icon_violett.png',
-          'action': function () {
-            zeigeBeobNichtBeurteiltAufGmap(null, $(aktiverNode).attr('id'))
-          }
-        },
-        'GoogleMapsMitTPopBeob': {
-          'label': 'auf Luftbild einer<br>&nbsp;&nbsp;&nbsp;Teilpopulation zuordnen',
-          'separator_before': true,
-          'icon': 'style/images/flora_icon_violett.png',
-          'action': function () {
-            zeigeBeobNichtBeurteiltUndTpopAufGmap($(parentNode).attr('id'), $(aktiverNode).attr('id'))
-          }
-        },
-        'GisBrowser': {
-          'label': 'im GIS-Browser zeigen',
-          'separator_before': true,
-          'icon': 'style/images/wappen_zuerich.png',
-          'action': function () {
-            zeigeBeobKoordinatenImGisBrowser()
-          }
-        },
-        'NeuePopAusBeob': {
-          'label': 'neue Population gründen',
-          'separator_before': true,
-          'icon': 'style/images/plus_thick.png',
-          'action': function () {
-            gruendePopAusBeob($(aktiverNode).attr('id'))
-          }
-        }
-      }
-      if (!window.apf.beobNodeAusgeschnitten) {
-        items.ausschneiden = {
-          // "label": "ausschneiden<br>&nbsp;&nbsp;&nbsp;Tipp: drag and drop me!",
-          'label': 'ausschneiden',
-          'separator_before': true,
-          'icon': 'style/images/ausschneiden.png',
-          'action': function () {
-            schneideBeobAus(aktiverNode)
-          }
-        }
-      }
-      if (window.apf.beobNodeAusgeschnitten) {
-        items.einfuegen = {
-          'label': $.jstree._reference(window.apf.beobNodeAusgeschnitten).get_text(window.apf.beobNodeAusgeschnitten) + ' einfügen',
-          'separator_before': true,
-          'icon': 'style/images/einfuegen.png',
-          'action': function () {
-            $('#tree').jstree('move_node', window.apf.beobNodeAusgeschnitten, parentNode, 'first')
-          }
-        }
-      }
-      return items
-    case 'apOrdnerBeobNichtZuzuordnen':
-      items = {
-        'GoogleMaps': {
-          'label': 'auf Luftbild zeigen',
-          'separator_before': true,
-          'icon': 'style/images/flora_icon_violett.png',
-          'action': function () {
-            zeigeBeobNichtZuzuordnenAufGmap($(aktiverNode).attr('id'))
-          }
-        }
-      }
-      if (window.apf.beobNodeAusgeschnitten) {
-        items.einfuegen = {
-          'label': $.jstree._reference(window.apf.beobNodeAusgeschnitten).get_text(window.apf.beobNodeAusgeschnitten) + ' einfügen',
-          'separator_before': true,
-          'icon': 'style/images/einfuegen.png',
-          'action': function () {
-            $('#tree').jstree('move_node', window.apf.beobNodeAusgeschnitten, aktiverNode, 'first')
-          }
-        }
-      }
-      return items
-    case 'beobNichtZuzuordnen':
-      items = {
-        'GoogleMaps': {
-          'label': 'auf Luftbild zeigen',
-          'separator_before': true,
-          'icon': 'style/images/flora_icon_violett.png',
-          'action': function () {
-            zeigeBeobNichtZuzuordnenAufGmap(null, $(aktiverNode).attr('id'))
-          }
-        },
-        'GisBrowser': {
-          'label': 'im GIS-Browser zeigen',
-          'separator_before': true,
-          'icon': 'style/images/wappen_zuerich.png',
-          'action': function () {
-            zeigeBeobKoordinatenImGisBrowser()
-          }
-        }
-      }
-      if (!window.apf.beobNodeAusgeschnitten) {
-        items.ausschneiden = {
-          // "label": "ausschneiden<br>&nbsp;&nbsp;&nbsp;Tipp: drag and drop me!",
-          'label': 'ausschneiden',
-          'separator_before': true,
-          'icon': 'style/images/ausschneiden.png',
-          'action': function () {
-            schneideBeobAus(aktiverNode)
-          }
-        }
-      }
-      if (window.apf.beobNodeAusgeschnitten) {
-        items.einfuegen = {
-          'label': $.jstree._reference(window.apf.beobNodeAusgeschnitten).get_text(window.apf.beobNodeAusgeschnitten) + ' einfügen',
-          'separator_before': true,
-          'icon': 'style/images/einfuegen.png',
-          'action': function () {
-            $('#tree').jstree('move_node', window.apf.beobNodeAusgeschnitten, parentNode, 'first')
-          }
-        }
-      }
-      return items
   }
 }
