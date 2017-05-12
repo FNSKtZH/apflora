@@ -59,15 +59,6 @@ module.exports = function (node) {
     case 'tpopOrdnerFreiwkontr':
       anzTxt = 'Freiwilligen-Kontrollen (' + anz + ')'
       break
-    case 'tpopOrdnerBeobZugeordnet':
-      anzTxt = 'Beobachtungen (' + anz + ')'
-      break
-    case 'apOrdnerBeobNichtBeurteilt':
-      anzTxt = (anz === 100 ? 'nicht beurteilte Beobachtungen (neuste ' + anz + ')' : 'nicht beurteilte Beobachtungen (' + anz + ')')
-      break
-    case 'apOrdnerBeobNichtZuzuordnen':
-      anzTxt = (anz === 100 ? 'nicht zuzuordnende Beobachtungen (neuste ' + anz + ')' : 'nicht zuzuordnende Beobachtungen (' + anz + ')')
-      break
     case 'apOrdnerApziel':
       anz = 0
       $($.jstree._reference(node)._get_children(node)).each(function () {
