@@ -3,7 +3,7 @@
 var $ = require('jquery')
 var zeigeTPopAufGmap = require('../gMap/zeigeTPop')
 var melde = require('../melde')
-var zeigeBeobKoordinatenImGisBrowser = require('../zeigeBeobKoordinatenImGisBrowser')
+var zeigeTpopKoordinatenImGisBrowser = require('../zeigeTpopKoordinatenImGisBrowser')
 var erstelleIdAusDomAttributId = require('../erstelleIdAusDomAttributId')
 var insertNeuePop = require('./insertNeuePop')
 var loeschePop = require('./loeschePop')
@@ -578,7 +578,7 @@ module.exports = function (node) {
           'separator_before': true,
           'icon': 'style/images/wappen_zuerich.png',
           'action': function () {
-            zeigeBeobKoordinatenImGisBrowser()
+            zeigeTpopKoordinatenImGisBrowser()
           }
         }
       }

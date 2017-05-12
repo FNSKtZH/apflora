@@ -53,12 +53,6 @@
       "valid_children": "none",
       "new_node": "neuer Teilpopulations-Bericht"
     },
-    "tpopOrdnerBeobZugeordnet": {
-      "valid_children": "beobZugeordnet"
-    },
-    "beobZugeordnet": {
-      "valid_children": "none"
-    },
     "popOrdnerPopber": {
       "valid_children": "popber"
     },
@@ -114,18 +108,6 @@
     "ber": {
       "valid_children": "none",
       "new_node": "neuer Bericht"
-    },
-    "apOrdnerBeobNichtBeurteilt": {
-      "valid_children": "beobNichtBeurteilt"
-    },
-    "beobNichtBeurteilt": {
-      "valid_children": "none"
-    },
-    "apOrdnerBeobNichtZuzuordnen": {
-      "valid_children": "beobNichtZuzuordnen"
-    },
-    "beobNichtZuzuordnen": {
-      "valid_children": "none"
     },
     "idealbiotop": {
       "valid_children": "none"

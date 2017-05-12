@@ -9,7 +9,6 @@ var $ = require('jquery')
 module.exports = function (formularname, id, statusZuordnung) {
   var $formularname = $('#' + formularname)
   var title
-  var beobTyp
   var formWidth = 600
 
   // id setzen

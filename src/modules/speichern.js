@@ -112,12 +112,6 @@ module.exports = function (that) {
   if (feldname === 'PopHerkunftUnklar' || feldname === 'TPopHerkunftUnklar' || feldname === 'TPopMassnPlan' || feldname === 'TPopKontrPlan') {
     feldwert = (feldwert ? 1 : 0)
   }
-  if (feldname === 'BeobBemerkungen' && window.localStorage.beobStatus === 'nicht_beurteilt') {
-    // hier soll nicht gespeichert werden
-    $('#BeobBemerkungen').val('')
-    melde('Bemerkungen sind nur in zugeordneten oder nicht zuzuordnenden Beobachtungen möglich', 'Aktion abgebrochen')
-    return
-  }
 
   tabelleId = window.localStorage[formular + 'Id']
 

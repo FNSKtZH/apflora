@@ -12,7 +12,7 @@ var erstelleMarkerFuerTPopLayer = require('./erstelleMarkerFuerTPopLayer')
 var addSelectFeaturesInSelectableLayers = require('./addSelectFeaturesInSelectableLayers')
 var pruefeObPopTpopGewaehltWurden = require('./pruefeObPopTpopGewaehltWurden')
 
-module.exports = function (tpopListe, tpopidMarkiert, visible, beobZuordnen) {
+module.exports = function (tpopListe, tpopidMarkiert, visible) {
   var tpopLayerErstellt = $.Deferred()
   var tpopLayer
   var markers = []
@@ -59,7 +59,7 @@ module.exports = function (tpopListe, tpopidMarkiert, visible, beobZuordnen) {
   // globale Variable erstellen, dasmit das Layer direkt entfernt werden kann
   window.apf.olMap.tpopLayer = tpopLayer
 
-  if (selectedFeatures && selectedFeatures.length > 0 && !beobZuordnen) {
+  if (selectedFeatures && selectedFeatures.length > 0) {
     setTimeout(function () {
       pruefeObPopTpopGewaehltWurden()
     }, 100)

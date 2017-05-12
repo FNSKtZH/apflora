@@ -61,9 +61,6 @@ module.exports = function () {
   var berId = uri.getQueryParamValue('ber')
   var idealbiotopId = uri.getQueryParamValue('idealbiotop')
   var assozartenId = uri.getQueryParamValue('assozarten')
-  var beobZugeordnetId = uri.getQueryParamValue('beobZugeordnet')
-  var beobNichtBeurteiltId = uri.getQueryParamValue('beobNichtBeurteilt')
-  var beobNichtZuzuordnenId = uri.getQueryParamValue('beobNichtZuzuordnen')
   var exporte = uri.getQueryParamValue('exporte')
   var qualitaetskontrollen = uri.getQueryParamValue('qualitaetskontrollen')
   var apWaehlenText
