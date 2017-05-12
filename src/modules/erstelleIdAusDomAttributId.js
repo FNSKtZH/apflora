@@ -16,8 +16,8 @@ module.exports = function (domAttributId) {
     .replace('apOrdnerErfkrit', '')
     .replace('apOrdnerJber', '')
     .replace('apOrdnerBer', '')
-    .replace('apOrdnerBeobNichtBeurteilt', '')
-    .replace('apOrdnerBeobNichtZuzuordnen', '')
+    // .replace('apOrdnerBeobNichtBeurteilt', '')
+    // .replace('apOrdnerBeobNichtZuzuordnen', '')
     .replace('idealbiotop', '')
     .replace('apOrdnerAssozarten', '')
     .replace('tpopOrdnerMassnber', '')
@@ -33,8 +33,8 @@ module.exports = function (domAttributId) {
     .replace('tpopber', '')
     .replace('popOrdnerPopber', '')
     .replace('popber', '')
-    .replace('tpopOrdnerBeobZugeordnet', '')
-    .replace('beob', '')
+    // .replace('tpopOrdnerBeobZugeordnet', '')
+    // .replace('beob', '')
     .replace('ber', '')
 
   if (domAttributId == returnWert && parseInt(returnWert, 10) && parseInt(returnWert, 10) != returnWert) {

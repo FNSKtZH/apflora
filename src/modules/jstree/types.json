@@ -2,7 +2,7 @@
   "type_attr": "typ",
   "max_children": -2,
   "max_depth": -2,
-  "valid_children": ["apOrdnerPop", "apOrdnerApziel", "apOrdnerErfkrit", "apOrdnerJber", "apOrdnerBer", "apOrdnerBeobNichtBeurteilt", "apOrdnerBeobNichtZuzuordnen", "idealbiotop", "apOrdnerAssozarten"],
+  "valid_children": ["apOrdnerPop", "apOrdnerApziel", "apOrdnerErfkrit", "apOrdnerJber", "apOrdnerBer", "idealbiotop", "apOrdnerAssozarten"],
   "types": {
     "apOrdnerPop": {
       "valid_children": "pop"
@@ -15,7 +15,7 @@
       "valid_children": "tpop"
     },
     "tpop": {
-      "valid_children": ["tpopOrdnerMassn", "tpopOrdnerMassnber", "tpopOrdnerFeldkontr", "tpopOrdnerFreiwkontr", "tpopOrdnerTpopber", "tpopOrdnerBeobZugeordnet"],
+      "valid_children": ["tpopOrdnerMassn", "tpopOrdnerMassnber", "tpopOrdnerFeldkontr", "tpopOrdnerFreiwkontr", "tpopOrdnerTpopber"],
       "new_node": "neue Teilpopulation"
     },
     "tpopOrdnerMassn": {

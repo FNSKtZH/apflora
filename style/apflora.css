@@ -186,10 +186,6 @@ form table .label {
     display: block;
 }
 
-/*
- * in Beob sollen Felder in ganzer Breite sichtbar sein,
- * da hier lange und zusammenhängende Namen vorkommen, die nicht umgebrochen werden
- */
 #DistZuTPop_Felder {
     overflow-y: auto;
     max-height: 300px;

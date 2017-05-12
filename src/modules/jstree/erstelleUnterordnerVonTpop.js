@@ -41,11 +41,4 @@ module.exports = function (tpopNode, tpopId) {
       'typ': 'tpopOrdnerTpopber'
     }
   })
-  $.jstree._reference(tpopNode).create_node(tpopNode, 'last', {
-    'data': 'Beobachtungen',
-    'attr': {
-      'id': tpopId,
-      'typ': 'tpopOrdnerBeobZugeordnet'
-    }
-  })
 }
