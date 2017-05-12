@@ -146,29 +146,6 @@ module.exports = function (event, data, ApArtId) {
       window.localStorage.tpopberId = nodeId
       initiiereTPopBer()
     }
-  } else if (nodeTyp === 'beobZugeordnet') {
-    // verhindern, dass bereits offene Seiten nochmals geöffnet werden
-    if (!$('#beob').is(':visible') || window.localStorage.beobId !== nodeId || window.localStorage.beobStatus !== 'zugeordnet') {
-      window.localStorage.beobId = nodeId
-      window.localStorage.beobtyp = node.attr('beobtyp')
-      initiiereBeob(node.attr('beobtyp'), nodeId, 'zugeordnet')
-    }
-  } else if (nodeTyp === 'beobNichtBeurteilt') {
-    // verhindern, dass bereits offene Seiten nochmals geöffnet werden
-    if (!$('#beob').is(':visible') || window.localStorage.beobId !== nodeId || window.localStorage.beobStatus !== 'nicht_beurteilt') {
-      window.localStorage.beobId = nodeId
-      window.localStorage.beobtyp = node.attr('beobtyp')
-      // den Beobtyp mitgeben
-      initiiereBeob(node.attr('beobtyp'), nodeId, 'nicht_beurteilt')
-    }
-  } else if (nodeTyp === 'beobNichtZuzuordnen') {
-    // verhindern, dass bereits offene Seiten nochmals geöffnet werden
-    if (!$('#beob').is(':visible') || window.localStorage.beobId !== nodeId || window.localStorage.beobStatus !== 'nicht_zuzuordnen') {
-      window.localStorage.beobId = nodeId
-      window.localStorage.beobtyp = node.attr('beobtyp')
-      // den Beobtyp mitgeben
-      initiiereBeob(node.attr('beobtyp'), nodeId, 'nicht_zuzuordnen')
-    }
   } else if (nodeTyp === 'tpopmassnber') {
     // verhindern, dass bereits offene Seiten nochmals geöffnet werden
     if (!$('#tpopmassnber').is(':visible') || window.localStorage.tpopmassnberId !== nodeId) {

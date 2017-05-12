@@ -19,7 +19,6 @@ var initiiereTPopKontr = require('./initiiereTPopKontr')
 var initiiereTPopMassn = require('./initiiereTPopMassn')
 var initiiereTPopMassnBer = require('./initiiereTPopMassnBer')
 var initiiereTPopBer = require('./initiiereTPopBer')
-var initiiereBeob = require('./initiiereBeob')
 var erstelleTree = require('./jstree/erstelleTree')
 var setzeWindowAp = require('./setzeWindowAp')
 var setzeWindowPop = require('./setzeWindowPop')
@@ -143,20 +142,6 @@ module.exports = function () {
         window.apf.tpopberZeigen = true
         // direkt initiieren, bevor der baum fertig aufgebaut ist
         initiiereTPopBer(apId, popId, tpopId, tpopberId)
-      } else if (beobZugeordnetId) {
-        // markieren, dass nach dem loaded-event im Tree die beobZugeordnet angezeigt werden soll
-        window.apf.beobZugeordnetZeigen = true
-        // direkt initiieren, bevor der baum fertig aufgebaut ist
-        // herausfinden, ob beobtyp infospezies oder evab ist
-        window.localStorage.beobId = beobZugeordnetId
-        if (isNaN(beobZugeordnetId)) {
-          // evab
-          window.localStorage.beobtyp = 'evab'
-          initiiereBeob('evab', window.localStorage.beobId, 'zugeordnet')
-        } else {
-          window.localStorage.beobtyp = 'infospezies'
-          initiiereBeob('infospezies', window.localStorage.beobId, 'zugeordnet')
-        }
       } else if (tpopmassnberId) {
         // markieren, dass nach dem loaded-event im Tree die tpopmassnber angezeigt werden soll
         window.apf.tpopmassnberZeigen = true
@@ -227,34 +212,6 @@ module.exports = function () {
       // markieren, dass nach dem loaded-event im Tree die assozarten angezeigt werden soll
       window.apf.assozartenZeigen = true
     // NICHT direkt initiieren, weil sonst die Artliste noch nicht existiert
-    } else if (beobNichtBeurteiltId) {
-      // markieren, dass nach dem loaded-event im Tree die beobZugeordnet angezeigt werden soll
-      window.apf.beobNichtBeurteiltZeigen = true
-      // direkt initiieren, bevor der baum fertig aufgebaut ist
-      // herausfinden, ob beobtyp infospezies oder evab ist
-      window.localStorage.beobId = beobNichtBeurteiltId
-      if (isNaN(beobNichtBeurteiltId)) {
-        // evab
-        window.localStorage.beobtyp = 'evab'
-        initiiereBeob('evab', window.localStorage.beobId, 'nicht_beurteilt')
-      } else {
-        window.localStorage.beobtyp = 'infospezies'
-        initiiereBeob('infospezies', window.localStorage.beobId, 'nicht_beurteilt')
-      }
-    } else if (beobNichtZuzuordnenId) {
-      // markieren, dass nach dem loaded-event im Tree die beob angezeigt werden soll
-      window.apf.beobNichtZuzuordnenZeigen = true
-      // direkt initiieren, bevor der baum fertig aufgebaut ist
-      // herausfinden, ob beobtyp infospezies oder evab ist
-      window.localStorage.beobId = beobNichtZuzuordnenId
-      if (isNaN(beobNichtZuzuordnenId)) {
-        // evab
-        window.localStorage.beobtyp = 'evab'
-        initiiereBeob('evab', window.localStorage.beobId, 'nicht_zuzuordnen')
-      } else {
-        window.localStorage.beobtyp = 'infospezies'
-        initiiereBeob('infospezies', window.localStorage.beobId, 'nicht_zuzuordnen')
-      }
     } else if (qualitaetskontrollen) {
       // muss qualitaetskontrollen sein
       // markieren, dass nach dem loaded-event im Tree die qualitaetskontrollen angezeigt werden soll

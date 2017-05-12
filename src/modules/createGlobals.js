@@ -42,21 +42,6 @@ module.exports = function () {
     require('./oeffnePopInNeuemTab')(popId)
   }
 
-  // wird in index.html benutzt
-  window.apf.oeffneTPopBeob = function (beobId) {
-    require('./oeffneTPopBeob')(beobId)
-  }
-
-  // wird in index.html benutzt
-  window.apf.oeffneBeob = function (beob) {
-    require('./oeffneBeob')(beob)
-  }
-
-  // wird in index.html benutzt
-  window.apf.oeffneTPopBeobInNeuemTab = function (beobId) {
-    require('./oeffneTPopBeobInNeuemTab')(beobId)
-  }
-
   // wird in index.html verwendet
   window.apf.oeffneFormularAlsPopup = function (formularname, id) {
     require('./oeffneFormularAlsPopup')(formularname, id)
