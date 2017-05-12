@@ -198,18 +198,8 @@ form table .label {
     float:      left;
     margin-top: 2px !important;
 }
-#beob label,
-#tpopbeob label {
-    display:     block;
-    margin-left: 21px;
-}
 .radio-wrapper {
     margin-top: 5px;
-}
-#beob .label,
-#tpopbeob .label {
-    width:     215px;
-    word-wrap: break-word;
 }
 
 /*

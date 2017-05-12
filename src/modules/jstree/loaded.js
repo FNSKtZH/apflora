@@ -50,21 +50,6 @@ module.exports = function (ApArtId) {
     // diese Markierung entfernen, damit das nächste mal nicht mehr diese tpopber geöffnet wird
     delete window.apf.tpopberZeigen
   }
-  if (window.apf.beobZugeordnetZeigen) {
-    $('#tree').jstree('select_node', '#beob' + window.localStorage.beobId)
-    // diese Markierung entfernen, damit das nächste mal nicht mehr diese beobZugeordnet geöffnet wird
-    delete window.apf.beobZugeordnetZeigen
-  }
-  if (window.apf.beobNichtBeurteilZeigen) {
-    $('#tree').jstree('select_node', '#beob' + window.localStorage.beobId)
-    // diese Markierung entfernen, damit das nächste mal nicht mehr diese beobZugeordnet geöffnet wird
-    delete window.apf.beobNichtBeurteilZeigen
-  }
-  if (window.apf.beobNichtZuzuordnenZeigen) {
-    $('#tree').jstree('select_node', '#beob' + window.localStorage.beobId)
-    // diese Markierung entfernen, damit das nächste mal nicht mehr diese beobZugeordnet geöffnet wird
-    delete window.apf.beobNichtZuzuordnenZeigen
-  }
   if (window.apf.tpopmassnberZeigen) {
     $('#tree').jstree('select_node', "[typ='tpopmassnber']#" + window.localStorage.tpopmassnberId)
     // diese Markierung entfernen, damit das nächste mal nicht mehr diese tpopmassnber geöffnet wird
@@ -109,16 +94,6 @@ module.exports = function (ApArtId) {
     $('#tree').jstree('select_node', "[typ='assozarten']#" + window.localStorage.assozartenId)
     // diese Markierung entfernen, damit das nächste mal nicht mehr diese assozarten geöffnet wird
     delete window.apf.assozartenZeigen
-  }
-  if (window.apf.beobNichtBeurteiltZeigen) {
-    $('#tree').jstree('select_node', '#beob' + window.localStorage.beobId)
-    // diese Markierung entfernen, damit das nächste mal nicht mehr diese beob geöffnet wird
-    delete window.apf.beobNichtBeurteiltZeigen
-  }
-  if (window.apf.beobNichtZuzuordnenZeigen) {
-    $('#tree').jstree('select_node', '#beob' + window.localStorage.beobId)
-    // diese Markierung entfernen, damit das nächste mal nicht mehr diese beob geöffnet wird
-    delete window.apf.beobNichtZuzuordnenZeigen
   }
   if (window.apf.apZeigen) {
     initiiereAp(ApArtId)

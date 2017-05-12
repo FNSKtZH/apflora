@@ -5,7 +5,6 @@
 'use strict'
 
 var $ = require('jquery')
-var initiiereBeob = require('./initiiereBeob')
 
 module.exports = function (formularname, id, statusZuordnung) {
   var $formularname = $('#' + formularname)
@@ -27,12 +26,6 @@ module.exports = function (formularname, id, statusZuordnung) {
       title = 'Teilpopulation'
       // formular initiieren, ohne anzuzeigen
       require('./initiiereTpop')(null, null, id, true)
-      break
-    case 'beob':
-      title = 'Beobachtung'
-      beobTyp = (isNaN(id) ? 'evab' : 'infospezies')
-      // formular initiieren, ohne anzuzeigen
-      initiiereBeob(beobTyp, id, statusZuordnung, true)
       break
     default:
       title = ''

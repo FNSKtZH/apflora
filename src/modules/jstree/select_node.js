@@ -1,7 +1,6 @@
 'use strict'
 
 var $ = require('jquery')
-var initiiereBeob = require('../initiiereBeob')
 var initiiereIdealbiotop = require('../initiiereIdealbiotop')
 var initiiereAp = require('../initiiereAp')
 var initiierePop = require('../initiierePop')
